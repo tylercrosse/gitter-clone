@@ -25,7 +25,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.js?$/,
         loader: 'babel',
         query: {
           plugins: [
