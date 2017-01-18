@@ -1,13 +1,9 @@
-'use strict';
-
 import express from 'express';
-import path from 'path';
 
 import webpack from 'webpack';
-import webpackConfig from '../../webpack.config.dev';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import config from '../../webpack.config.dev';
+import webpackConfig from '../../webpack.config.dev';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,14 +19,14 @@ const middleware = webpackMiddleware(compiler, {
     chunkModules: false,
     modules: false
   }
-})
+});
 
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 
 app.get('/*', (req, res) => {
   res.status(200).end(renderFullPage());
-})
+});
 
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {
@@ -54,5 +50,5 @@ function renderFullPage() {
         <script src="/dist/bundle.js"></script>
       </body>
     </html>
-  `
+  `;
 }
