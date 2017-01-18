@@ -1,7 +1,12 @@
 import React from 'react';
+import Conversation from './Conversation.jsx';
+import MessageForm from './MessageForm.jsx';
 
 export default function() {
   return (
-    <h1>Hello world!</h1>
+    <div>
+      <Conversation />
+      <MessageForm />
+    </div>
   );
 }

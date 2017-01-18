@@ -1,15 +1,15 @@
 {
   "name": "gitter-clone",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Gitter Clone",
   "main": "index.js",
   "scripts": {
     "dev": "node src/server/server",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "redux", "express", "jest", "enzyme", "socket.io"],
+  "author": "Tyler Crosse",
+  "license": "MIT",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
