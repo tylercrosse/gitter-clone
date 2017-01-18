@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/server/server"
+    "dev": "node src/server/server",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -38,6 +40,7 @@
     "eslint-plugin-react": "^6.9.0",
     "html-webpack-plugin": "^2.26.0",
     "jest": "^18.1.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",

@@ -1,7 +1,14 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './configureStore';
+import App from './components/App.jsx';
+
+const store = configureStore();
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
