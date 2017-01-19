@@ -1,6 +1,6 @@
 import React from 'react';
-import MessageForm from './MessageForm.jsx';
 import { shallow } from 'enzyme';
+import MessageForm from './MessageForm.jsx';
 
 describe('<MessageForm />', () => {
   it('should ', () => {

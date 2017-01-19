@@ -3,7 +3,7 @@
   "env": {
     "browser": true,
     "node": true,
-    "mocha": true
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
@@ -37,6 +37,8 @@
     "no-func-assign": 1,
     "no-class-assign": 1,
     "import/extensions": 0,
+    "import/no-extraneous-dependencies": 1,
+    "import/prefer-default-export": 1,
     "no-mixed-operators": [2, {"allowSamePrecedence": true}],
     "space-before-function-paren": [2, "never"],
     "no-restricted-syntax": 0,

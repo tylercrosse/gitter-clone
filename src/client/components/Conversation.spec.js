@@ -1,6 +1,6 @@
 import React from 'react';
-import Conversation from './Conversation.jsx';
 import { shallow } from 'enzyme';
+import Conversation from './Conversation.jsx';
 
 describe('<Conversation />', () => {
   it('should ', () => {
