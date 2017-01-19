@@ -1,9 +1,10 @@
 import express from 'express';
-
+import SocketIo from 'socket.io';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../../webpack.config.dev';
+import socketActions from './config/socketActions';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,18 +25,6 @@ const middleware = webpackMiddleware(compiler, {
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 
-app.get('/*', (req, res) => {
-  res.status(200).end(renderFullPage());
-});
-
-app.listen(port, '0.0.0.0', (err) => {
-  if (err) {
-    console.log(err);
-  }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
-});
-
-
 function renderFullPage() {
   return `
     <!DOCTYPE html>
@@ -52,3 +41,17 @@ function renderFullPage() {
     </html>
   `;
 }
+
+app.get('/*', (req, res) => {
+  res.status(200).end(renderFullPage());
+});
+
+const server = app.listen(port, '0.0.0.0', (err) => {
+  if (err) {
+    console.log(err);
+  }
+  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
+});
+
+const io = new SocketIo(server);
+socketActions(io);
