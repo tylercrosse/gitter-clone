@@ -13,7 +13,7 @@ export const MessageList = ({ messages }) => (
   </ul>
 );
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   messages: state.messages
 });
 

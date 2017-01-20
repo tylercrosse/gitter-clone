@@ -2,23 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions/';
 
-let MessageForm = ({ dispatch }) => {
+export const MessageForm = ({ dispatch }) => {
   let input;
   return (
     <div>
-      <input
-        ref={(node) => {
-          input = node;
-        }}
-      />
-      <button
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log('🐈');
+          if (!input.value.trim()) {
+            return;
+          }
           dispatch(addMessage(input.value));
           input.value = '';
         }}
-      > Submit</button>
+      >
+        <input
+          ref={(node) => {
+            input = node;
+          }}
+        />
+        <button type="submit">
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
 
-export default MessageForm = connect()(MessageForm);
+export default connect()(MessageForm);
