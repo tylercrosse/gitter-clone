@@ -1,11 +1,11 @@
 import React from 'react';
-import Conversation from './Conversation.jsx';
+import MessageList from './MessageList.jsx';
 import MessageForm from './MessageForm.jsx';
 
 export default function() {
   return (
     <div>
-      <Conversation />
+      <MessageList />
       <MessageForm />
     </div>
   );

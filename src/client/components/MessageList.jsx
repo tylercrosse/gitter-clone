@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Message from './Message.jsx';
 
-const Message = ({ id, text }) => (
-  <li>
-    {id}: {text}
-  </li>
-);
-
-let Conversation = ({ messages }) => (
+export const MessageList = ({ messages }) => (
   <ul>
-    {messages.map(message =>
+    {messages.map((message) =>
       <Message
         key={message.id}
         {...message}
@@ -22,6 +17,6 @@ const mapStateToProps = (state) => ({
   messages: state.messages
 });
 
-export default Conversation = connect(
+export default connect(
   mapStateToProps
-)(Conversation);
+)(MessageList);
