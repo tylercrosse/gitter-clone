@@ -1,19 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
-import MessageList from './chat/MessageList.jsx';
-import MessageForm from './chat/MessageForm.jsx';
+import { App } from './App.jsx';
 
 describe('<App />', () => {
-  it('should contain <MessageList />', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.contains(<MessageList />))
-      .toEqual(true);
-  });
-
-  it('should contain <MessageForm />', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.contains(<MessageForm />))
-      .toEqual(true);
+  it('should render children when passed in', () => {
+    const wrapper = shallow(
+      <App>
+        <div className="unique" />
+      </App>
+    );
+    expect(wrapper.contains(<div className="unique" />)).toEqual(true);
   });
 });
