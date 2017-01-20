@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
-import MessageList from './MessageList.jsx';
-import MessageForm from './MessageForm.jsx';
+import MessageList from './chat/MessageList.jsx';
+import MessageForm from './chat/MessageForm.jsx';
 
 describe('<App />', () => {
   it('should contain <MessageList />', () => {

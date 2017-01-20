@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../actions/';
+import { addMessage } from '../../actions/';
 
 export const MessageForm = ({ dispatch }) => {
   let input;
