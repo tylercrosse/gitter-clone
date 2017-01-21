@@ -1,18 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Route } from 'react-router';
+import configureMockStore from 'redux-mock-store';
 import Root from './Root.jsx';
 import App from './App.jsx';
 
 const setup = () => {
-  const store = {
-    messages: []
-  };
-
+  const mockStore = configureMockStore();
+  const store = mockStore({ messages: [] });
   const wrapper = shallow(<Root store={store} />);
 
   return {
-    store,
+    mockStore,
     wrapper
   };
 };
