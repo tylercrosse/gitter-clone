@@ -1,30 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addMessage } from '../../actions/';
 
-export const MessageForm = ({ dispatch }) => {
-  let input;
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!input.value.trim()) {
-          return;
-        }
-        dispatch(addMessage(input.value));
-        input.value = '';
-      }}
-    >
-      <input
-        ref={(node) => {
-          input = node;
-        }}
-      />
-      <button type="submit">
-        Submit
-      </button>
-    </form>
-  );
-};
+class MessageForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      draft: ''
+    };
+  }
+  updateDraft(e) {
+    this.setState({
+      draft: e.target.value
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onMessageSubmit(this.state.draft);
+    this.setState({
+      draft: ''
+    });
+  }
+  render() {
+    return (
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <input
+          type="text"
+          onChange={(e) => this.updateDraft(e)}
+          value={this.state.draft}
+          placeholder="Click here to type a chat message."
+        />
+        <button type="submit">Send</button>
+      </form>
+    );
+  }
+}
 
-export default connect()(MessageForm);
+export default MessageForm;

@@ -1,20 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { shallow } from 'enzyme';
-import { MessageForm } from './MessageForm.jsx';
+import { mount, shallow } from 'enzyme';
+import MessageForm from './MessageForm.jsx';
 
-// const setup = (propOverrides) => {
-//   const props = Object.assign({
-//     dispatch: jest.fn()
-//   }, propOverrides);
-//
-//   const wrapper = shallow(<MessageForm {...props} />);
-//
-//   return {
-//     props,
-//     wrapper
-//   };
-// };
+const setup = (propOverrides) => {
+  const props = Object.assign({
+    onMessageSubmit: jest.fn()
+  }, propOverrides);
+
+  const component = <MessageForm {...props} />;
+  const wrapper = shallow(component);
+
+  return {
+    props,
+    component,
+    wrapper
+  };
+};
 
 describe('<MessageForm />', () => {
   it('should render correctly', () => {
@@ -23,19 +25,20 @@ describe('<MessageForm />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('simulate click events', () => {
-    // const { props, wrapper } = setup();
-    // const value = 'My new value';
-    // wrapper.find('input').simulate('change', {target: {value}});
-    // wrapper.find('form').simulate('submit');
-    // expect(props.dispatch).toHaveBeenCalledTimes(1);
+  it('should simulate input field', () => {
+    const value = 'My new value';
+    const { wrapper } = setup();
+    wrapper.find('input').simulate('change', {target: {value}});
+    expect(wrapper.find('input').props().value)
+      .toEqual(value);
   });
 
-  it('simulate input field', () => {
-    // const value = 'My new value';
-    // const { wrapper } = setup();
-    // wrapper.find('input').simulate('change', {target: {value}});
-    // expect(wrapper.find('input').text())
-    //   .toEqual(value);
+  it('should call submit action on submit', () => {
+    const value = 'My new value';
+    const { props, component } = setup();
+    const wrapper = mount(component);
+    wrapper.find('input').simulate('change', {target: {value}});
+    wrapper.find('form').simulate('submit');
+    expect(props.onMessageSubmit).toHaveBeenCalledTimes(1);
   });
 });

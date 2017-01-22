@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Chat } from './Chat';
+import { Chat, mapStateToProps } from './Chat';
 import MessageList from './MessageList.jsx';
 import MessageForm from './MessageForm.jsx';
 
@@ -11,6 +11,9 @@ const setup = (propOverrides) => {
     ],
     user: {
       loggedIn: true
+    },
+    actions: {
+      addMessage: jest.fn()
     }
   }, propOverrides);
 
@@ -43,5 +46,14 @@ describe('<Chat />', () => {
       expect(wrapper.find(MessageForm))
         .toHaveLength(0);
     });
+  });
+
+  it('should recieve the correct props from state', () => {
+    const { props } = setup();
+    expect(mapStateToProps(props))
+      .toEqual({
+        messages: props.messages,
+        user: props.user
+      });
   });
 });
