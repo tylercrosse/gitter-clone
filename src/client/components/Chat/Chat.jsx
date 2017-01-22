@@ -1,14 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MessageList from './MessageList.jsx';
 import MessageForm from './MessageForm.jsx';
+import * as actions from '../../actions/';
 
-const Chat = () => (
-  <div>
-    <Link to="/">Welcome</Link>
-    <MessageList />
+export const Chat = (props) => {
+  const form = props.user.loggedIn ? (
     <MessageForm />
-  </div>
-);
+  ) : (
+    'please log in to chat'
+  );
+  return (
+    <div>
+      <MessageList messages={props.messages} />
+      {form}
+    </div>
+  );
+};
 
-export default Chat;
+const mapStateToProps = (state) => ({
+  messages: state.messages,
+  user: state.user
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chat);

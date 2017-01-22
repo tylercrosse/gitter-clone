@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Message from './Message.jsx';
-import { MessageList, mapStateToProps } from './MessageList.jsx';
+import MessageList from './MessageList.jsx';
 
 const setup = () => {
   const props = {
@@ -13,7 +13,6 @@ const setup = () => {
       }
     ]
   };
-
   const component = <MessageList {...props} />;
   const wrapper = shallow(component);
 
@@ -36,12 +35,5 @@ describe('<MessageList />', () => {
     const { props, wrapper } = setup();
     expect(wrapper.find(Message))
       .toHaveLength(props.messages.length);
-  });
-
-  it('should properly structure props from state', () => {
-    const { props } = setup();
-    expect(mapStateToProps(props)).toEqual({
-      messages: props.messages
-    });
   });
 });
