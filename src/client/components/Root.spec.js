@@ -1,17 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Route } from 'react-router';
-import configureMockStore from 'redux-mock-store';
+import { createStore } from 'redux';
+import chatApp from '../reducers/';
 import Root from './Root.jsx';
 import App from './App.jsx';
 
 const setup = () => {
-  const mockStore = configureMockStore();
-  const store = mockStore({ messages: [] });
+  const store = createStore(chatApp);
   const wrapper = shallow(<Root store={store} />);
 
   return {
-    mockStore,
     wrapper
   };
 };

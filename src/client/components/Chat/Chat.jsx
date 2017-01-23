@@ -7,7 +7,7 @@ import * as actions from '../../actions/';
 export const Chat = (props) => {
   const form = props.user.loggedIn ? (
     <MessageForm
-      onMessageSubmit={props.actions.addMessage}
+      onMessageSubmit={props.addMessage}
     />
   ) : (
     'please log in to chat'
