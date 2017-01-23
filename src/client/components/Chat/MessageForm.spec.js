@@ -5,6 +5,9 @@ import MessageForm from './MessageForm.jsx';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
+    user: {
+      username: 'Bob'
+    },
     onMessageSubmit: jest.fn()
   }, propOverrides);
 
@@ -22,7 +25,8 @@ describe('<MessageForm />', () => {
   it('should render correctly', () => {
     const component = renderer.create(<MessageForm />);
     const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(tree)
+      .toMatchSnapshot();
   });
 
   it('should simulate input field', () => {
@@ -39,6 +43,7 @@ describe('<MessageForm />', () => {
     const wrapper = mount(component);
     wrapper.find('input').simulate('change', {target: {value}});
     wrapper.find('form').simulate('submit');
-    expect(props.onMessageSubmit).toHaveBeenCalledTimes(1);
+    expect(props.onMessageSubmit)
+      .toHaveBeenCalledTimes(1);
   });
 });

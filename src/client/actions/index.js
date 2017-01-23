@@ -2,9 +2,10 @@ import { push } from 'react-router-redux';
 
 let nextMessageId = 0;
 
-export const addMessage = (text) => ({
+export const addMessage = ({ text, username }) => ({
   type: 'server.ADD_MESSAGE',
   id: nextMessageId++,
+  username,
   text
 });
 

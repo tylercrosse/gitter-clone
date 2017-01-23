@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Message = ({ text }) => (
+const Message = ({ username, text }) => (
   <li>
-    {text}
+    {username}: {text}
   </li>
 );
 

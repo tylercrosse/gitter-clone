@@ -7,6 +7,7 @@ const socketActions = (io) => {
         console.log('🍕: ', action);
         io.emit('action', {
           type: 'ADD_MESSAGE',
+          username: action.username,
           text: action.text,
           id: v4()
         });

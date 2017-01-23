@@ -13,10 +13,15 @@ import * as actions from './index';
 
 describe('actions', () => {
   it('addMessage should create ADD_MESSAGE action', () => {
-    expect(actions.addMessage('Use Redux'))
+    const message = {
+      username: 'Bob',
+      text: 'Use Redux'
+    };
+    expect(actions.addMessage(message))
       .toEqual({
         type: 'server.ADD_MESSAGE',
         id: 0,
+        username: 'Bob',
         text: 'Use Redux'
       });
   });

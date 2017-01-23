@@ -3,6 +3,7 @@ const message = (state, action) => {
     case 'ADD_MESSAGE':
       return {
         id: action.id,
+        username: action.username,
         text: action.text
       };
     default:

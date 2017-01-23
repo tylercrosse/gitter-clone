@@ -14,7 +14,10 @@ class MessageForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onMessageSubmit(this.state.draft);
+    this.props.onMessageSubmit({
+      text: this.state.draft,
+      username: this.props.user.username
+    });
     this.setState({
       draft: ''
     });
