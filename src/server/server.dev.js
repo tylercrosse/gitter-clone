@@ -1,16 +1,34 @@
-import express from 'express';
-import SocketIo from 'socket.io';
-import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
+import express    from 'express';
+import bodyParser from 'body-parser';
+import mongoose   from 'mongoose';
+import Promise    from 'bluebird';
+import SocketIo   from 'socket.io';
+import webpack    from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../../webpack.config.dev';
-import socketActions from './config/socketActions';
+import socketActions from './controllers/sockets';
+import routes        from './config/routes';
 
 const app = express();
 const port = process.env.PORT || 3333;
 
+// db config
+mongoose.Promose = Promise;
+// if(process.env.NODE_ENV == "production"){
+//   mongoose.connect(process.env.MONGOLAB_URL);
+// }else{
+mongoose.connect('mongodb://localhost/gitter-clone');
+// }
+
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connection.once('open', () => {
+  console.log('==> 🛢 MongoDB connected!');
+});
+
+// webpack middleware
 const compiler = webpack(webpackConfig);
-const middleware = webpackMiddleware(compiler, {
+const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
   publicPath: webpackConfig.output.publicPath,
   stats: {
     colors: true,
@@ -21,9 +39,12 @@ const middleware = webpackMiddleware(compiler, {
     modules: false
   }
 });
-
-app.use(middleware);
+app.use(webpackDevMiddlewareInstance);
 app.use(webpackHotMiddleware(compiler));
+
+// other middleware
+app.use(bodyParser.json());
+app.use('/', routes);
 
 function renderFullPage() {
   return `
