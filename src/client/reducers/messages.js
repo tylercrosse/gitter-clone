@@ -1,23 +1,31 @@
+import { ADD_MESSAGE } from '../actions';
+
 const message = (state, action) => {
   switch (action.type) {
-    case 'ADD_MESSAGE':
+    case ADD_MESSAGE:
       return {
-        id: action.id,
-        username: action.username,
-        text: action.text
+        [action.message._id]: {
+          ...action.message
+        }
       };
     default:
       return state;
   }
 };
 
-const messages = (state = [], action) => {
+const messages = (state = {}, action) => {
+  if (action.response && action.response.entities.messages) {
+    return {
+      ...state,
+      ...action.response.entities.messages
+    };
+  }
   switch (action.type) {
-    case 'ADD_MESSAGE':
-      return [
+    case ADD_MESSAGE:
+      return {
         ...state,
-        message(undefined, action)
-      ];
+        ...message(undefined, action)
+      };
     default:
       return state;
   }

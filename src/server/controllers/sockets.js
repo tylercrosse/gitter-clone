@@ -13,9 +13,7 @@ const socketActions = (io) => {
           console.log('🍕 message: ', message);
           io.emit('action', {
             type: 'ADD_MESSAGE',
-            id: message._id,
-            username: message.username,
-            text: message.text
+            message
           });
         });
       }

@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Route } from 'react-router';
 import { createStore } from 'redux';
-import chatApp from '../reducers/';
+import rootReducer from '../reducers/';
 import Root from './Root.jsx';
 import App from './App.jsx';
 
 const setup = () => {
-  const store = createStore(chatApp);
+  const store = createStore(rootReducer);
   const wrapper = shallow(<Root store={store} />);
 
   return {

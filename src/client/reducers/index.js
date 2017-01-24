@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 import messages from './messages';
 import user from './user';
 
-const chatApp = combineReducers({
+const rootReducer = combineReducers({
   messages,
   user,
-  routing: routerReducer
+  routing
 });
 
-export default chatApp;
+export default rootReducer;

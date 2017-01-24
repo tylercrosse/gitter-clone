@@ -2,24 +2,30 @@ import React from 'react';
 import { connect }            from 'react-redux';
 import MessageList from './MessageList.jsx';
 import MessageForm from './MessageForm.jsx';
-import * as actions from '../../actions/';
+import { fetchMessages, addMessage } from '../../actions/';
 
-export const Chat = (props) => {
-  const form = props.user.loggedIn ? (
-    <MessageForm
-      user={props.user}
-      onMessageSubmit={props.addMessage}
-    />
-  ) : (
-    'please log in to chat'
-  );
-  return (
-    <div>
-      <MessageList messages={props.messages} />
-      {form}
-    </div>
-  );
-};
+export class Chat extends React.Component {
+  componentDidMount() {
+    this.props.fetchMessages();
+  }
+  render() {
+    const form = this.props.user.loggedIn ? (
+      <MessageForm
+        user={this.props.user}
+        onMessageSubmit={this.props.addMessage}
+      />
+    ) : (
+      'please log in to chat'
+    );
+    return (
+      <div>
+        <MessageList messages={this.props.messages} />
+        {form}
+      </div>
+    );
+  }
+}
+
 
 export const mapStateToProps = (state) => ({
   messages: state.messages,
@@ -28,5 +34,5 @@ export const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  actions
+  { fetchMessages, addMessage }
 )(Chat);

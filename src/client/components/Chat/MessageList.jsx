@@ -3,9 +3,9 @@ import Message from './Message.jsx';
 
 const MessageList = ({ messages }) => (
   <ul>
-    {messages.map((message) =>
+    {Object.values(messages).map((message) =>
       <Message
-        key={message.id}
+        key={message._id}
         {...message}
       />
     )}

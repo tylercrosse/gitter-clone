@@ -4,69 +4,79 @@ describe('messages reducer', () => {
   it('should handle initial state', () => {
     expect(
       messages(undefined, {})
-    ).toEqual([]);
+    ).toEqual({});
   });
 
   it('should handle ADD_MESSAGE', () => {
     expect(
-      messages([], {
+      messages({}, {
         type: 'ADD_MESSAGE',
-        text: 'Run the tests',
-        id: 0
-      })
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        id: 0
-      }
-    ]);
-
-    expect(
-      messages([
-        {
+        message: {
           text: 'Run the tests',
-          id: 0
+          _id: 0
         }
-      ], {
-        type: 'ADD_MESSAGE',
-        text: 'Use Redux',
-        id: 1
       })
-    ).toEqual([
-      {
+    ).toEqual({
+      0: {
         text: 'Run the tests',
-        id: 0
-      }, {
-        text: 'Use Redux',
-        id: 1
+        _id: 0
       }
-    ]);
+    });
 
     expect(
-      messages([
-        {
+      messages({
+        0: {
           text: 'Run the tests',
-          id: 0
-        }, {
+          _id: 0
+        }
+      }, {
+        type: 'ADD_MESSAGE',
+        message: {
           text: 'Use Redux',
-          id: 1
+          _id: 1
         }
-      ], {
-        type: 'ADD_MESSAGE',
-        text: 'Fix the tests',
-        id: 2
       })
-    ).toEqual([
-      {
+    ).toEqual({
+      0: {
         text: 'Run the tests',
-        id: 0
-      }, {
+        _id: 0
+      },
+      1: {
         text: 'Use Redux',
-        id: 1
-      }, {
-        text: 'Fix the tests',
-        id: 2
+        _id: 1
       }
-    ]);
+    });
+
+    expect(
+      messages({
+        0: {
+          text: 'Run the tests',
+          _id: 0
+        },
+        1: {
+          text: 'Use Redux',
+          _id: 1
+        }
+      }, {
+        type: 'ADD_MESSAGE',
+        message: {
+          text: 'Fix the tests',
+          _id: 2
+        }
+      })
+    ).toEqual({
+      0: {
+        text: 'Run the tests',
+        _id: 0
+      },
+      1: {
+        text: 'Use Redux',
+        _id: 1
+      },
+      2: {
+        text: 'Fix the tests',
+        _id: 2
+      }
+    });
   });
 });

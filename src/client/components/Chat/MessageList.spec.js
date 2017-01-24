@@ -8,7 +8,7 @@ const setup = () => {
   const props = {
     messages: [
       {
-        id: 0,
+        _id: 0,
         text: 'Use Redux'
       }
     ]
