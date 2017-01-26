@@ -1,4 +1,4 @@
 coverage/
-dist/
+static/
 webpack.config.dev.js
 webpack.config.prod.js
