@@ -1,4 +1,5 @@
 dist/
+compiled/
 coverage/
 __snapshots__/
 npm-debug.log

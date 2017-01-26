@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -14,7 +14,6 @@ module.exports = {
     publicPath: '/dist/'
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
     new CleanPlugin(['./static/dist'], {verbose: true}),
     new webpack.DefinePlugin({
       'process.env': {
@@ -27,6 +26,10 @@ module.exports = {
       compressor: {
         warnings: false
       }
+    }),
+    new StatsPlugin('webpack.stats.json', {
+      source: false,
+      modules: false
     })
   ],
   module: {

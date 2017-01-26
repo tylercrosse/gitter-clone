@@ -4,10 +4,14 @@
   "description": "Gitter Clone",
   "main": "index.js",
   "scripts": {
+    "start": "NODE_ENV=production node ./static/compiled/server.js",
     "dev": "nodemon src/server/server",
     "test": "jest",
     "lint": "eslint .",
-    "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js"
+    "build": "rimraf ./static/compiled && npm run build:node && npm run build:dist",
+    "build:dist": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
+    "build:node": "npm run babel -- ./src/server/ -d ./static/compiled",
+    "babel": "babel --presets es2015,stage-0 --ignore node_modules,public"
   },
   "keywords": [
     "react",
@@ -40,6 +44,7 @@
     "socket.io-client": "^1.7.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.22.2",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
@@ -67,6 +72,8 @@
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.3.3",
     "redux-mock-store": "^1.2.1",
+    "rimraf": "^2.5.4",
+    "stats-webpack-plugin": "^0.4.3",
     "webpack": "^1.14.0",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.9.0",
