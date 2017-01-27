@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node ./static/compiled/server.js",
-    "dev": "node src/server/server",
+    "dev": "NODE_ENV=development node src/server/server",
     "test": "jest",
     "lint": "eslint .",
     "build": "rimraf ./static/compiled && npm run build:node && npm run build:dist",
     "build:dist": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
     "build:node": "npm run babel -- ./src/server/ -d ./static/compiled",
-    "babel": "babel --presets es2015,stage-0 --ignore node_modules,public"
+    "babel": "babel --presets es2015,stage-0 --ignore node_modules,static,*.spec.js"
   },
   "keywords": [
     "react",
@@ -74,6 +74,7 @@
     "redux-mock-store": "^1.2.1",
     "rimraf": "^2.5.4",
     "stats-webpack-plugin": "^0.4.3",
+    "supertest": "^2.0.1",
     "webpack": "^1.14.0",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.9.0",
