@@ -1,6 +1,6 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
-import { server } from './server.prod.js';
+import { server } from './server';
 
 describe('express serving', () => {
   describe('routing', () => {
