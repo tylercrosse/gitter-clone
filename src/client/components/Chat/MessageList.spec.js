@@ -9,7 +9,9 @@ const setup = () => {
     messages: [
       {
         _id: 0,
-        text: 'Use Redux'
+        text: 'Use Redux',
+        updatedAt: '2017-01-25T00:58:33.702Z',
+        createdAt: '2017-01-25T00:58:33.702Z'
       }
     ]
   };

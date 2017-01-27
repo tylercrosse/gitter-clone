@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 import { normalize, schema } from 'normalizr';
 
 const API_ROOT = window.location.origin + '/api/';

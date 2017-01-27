@@ -23,8 +23,9 @@ const setup = (propOverrides) => {
 
 describe('<MessageForm />', () => {
   it('should render correctly', () => {
-    const component = renderer.create(<MessageForm />);
-    const tree = component.toJSON();
+    const { component } = setup();
+    const renderedComponent = renderer.create(component);
+    const tree = renderedComponent.toJSON();
     expect(tree)
       .toMatchSnapshot();
   });

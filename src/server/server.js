@@ -19,7 +19,7 @@ mongoose.connection.once('open', () => {
   console.log('==> 🛢 MongoDB connected!');
 });
 
-// webpack middleware
+// webpack middleware for dev
 if (process.env.NODE_ENV === 'development') {
   const webpackDevMiddlewareInstance = require('./config/devConfig.js').webpackDevMiddlewareInstance;
   const webpackHotMiddlewareInstance = require('./config/devConfig.js').webpackHotMiddlewareInstance;

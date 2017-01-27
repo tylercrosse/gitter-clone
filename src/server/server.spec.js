@@ -22,5 +22,12 @@ describe('express serving', () => {
         .expect(200)
         .expect('Content-Type', /json/);
     });
+
+    it('should respond to /* with the index.html', () => {
+      return request(server)
+        .get('/foo/bar')
+        .expect(200)
+        .expect((res) => expect(res.text).toContain('<div id="root"></div>'));
+    });
   });
 });

@@ -5,6 +5,7 @@ import * as apiCtlr from '../controllers/api';
 const router = express.Router();
 
 function renderFullPage(req, res) {
+  // res.sendfile() ?? https://expressjs.com/en/api.html#res.sendFile
   res.status(200).end(
 `<!DOCTYPE html>
 <html lang="en">

@@ -3,17 +3,26 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Message from './Message.jsx';
 
-// const props = {
-//   message: {
-//     id: 0,
-//     text: 'Use Redux'
-//   }
-// };
+const setup = () => {
+  const props = {
+    _id: 0,
+    text: 'Use Redux',
+    updatedAt: '2017-01-25T00:58:33.702Z',
+    createdAt: '2017-01-25T00:58:33.702Z'
+  };
+  const component = <Message {...props} />;
+
+  return {
+    props,
+    component
+  };
+};
 
 describe('<Message />', () => {
   it('should render correctly', () => {
-    const component = renderer.create(<Message />);
-    const tree = component.toJSON();
+    const { component } = setup();
+    const renderedComponent = renderer.create(component);
+    const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
