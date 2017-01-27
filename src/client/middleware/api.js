@@ -1,6 +1,6 @@
 import { normalize, schema } from 'normalizr';
 
-const API_ROOT = 'http://0.0.0.0:3333/api/';
+const API_ROOT = window.location.origin + '/api/';
 
 const callApi = (endpoint, schema) => {
   const fullUrl = API_ROOT + endpoint;
