@@ -24,15 +24,20 @@ class MessageForm extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input
-          type="text"
-          onChange={(e) => this.updateDraft(e)}
-          value={this.state.draft}
-          placeholder="Click here to type a chat message."
-        />
-        <button type="submit">Send</button>
-      </form>
+      <footer className="chat-input">
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <textarea
+            onChange={(e) => this.updateDraft(e)}
+            value={this.state.draft}
+            placeholder="Click here to type a chat message."
+            name="chat"
+            type="text"
+            autoFocus
+            autoComplete="off"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </footer>
     );
   }
 }

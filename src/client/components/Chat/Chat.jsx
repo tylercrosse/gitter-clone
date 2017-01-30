@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { connect }            from 'react-redux';
 import MessageList from './MessageList.jsx';
 import MessageForm from './MessageForm.jsx';
 import { fetchMessages, addMessage } from '../../actions/';
+import                  './chat.scss';
 
 export class Chat extends React.Component {
   componentDidMount() {
@@ -15,10 +17,12 @@ export class Chat extends React.Component {
         onMessageSubmit={this.props.addMessage}
       />
     ) : (
-      'please log in to chat'
+      <div className="chat-input">
+        <Link to="/">Sign In</Link>
+      </div>
     );
     return (
-      <div>
+      <div className="chat">
         <MessageList messages={this.props.messages} />
         {form}
       </div>

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { signIn } from '../actions/';
+import                 './welcome.scss';
 
 export const Welcome = ({ dispatch }) => {
   let input;
   return (
-    <div>
-      <Link to="/chat">Chat</Link>
+    <div className="welcome">
       <h1>Welcome!</h1>
       <form
         onSubmit={(e) => {

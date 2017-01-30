@@ -30,11 +30,11 @@ describe('<MessageForm />', () => {
       .toMatchSnapshot();
   });
 
-  it('should simulate input field', () => {
+  it('should simulate textarea field', () => {
     const value = 'My new value';
     const { wrapper } = setup();
-    wrapper.find('input').simulate('change', {target: {value}});
-    expect(wrapper.find('input').props().value)
+    wrapper.find('textarea').simulate('change', {target: {value}});
+    expect(wrapper.find('textarea').props().value)
       .toEqual(value);
   });
 
@@ -42,7 +42,7 @@ describe('<MessageForm />', () => {
     const value = 'My new value';
     const { props, component } = setup();
     const wrapper = mount(component);
-    wrapper.find('input').simulate('change', {target: {value}});
+    wrapper.find('textarea').simulate('change', {target: {value}});
     wrapper.find('form').simulate('submit');
     expect(props.onMessageSubmit)
       .toHaveBeenCalledTimes(1);
