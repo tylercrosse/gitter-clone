@@ -4,9 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'babel-polyfill',
-    'webpack-hot-middleware/client',
-    './src/client/index'
+    'babel-polyfill', 'webpack-hot-middleware/client', './src/client/index'
   ],
   output: {
     path: path.resolve(__dirname, './static/dist'),
@@ -31,23 +29,27 @@ module.exports = {
           plugins: [
             [
               'react-transform', {
-                transforms: [{
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module']
-                }, {
-                  transform: 'react-transform-catch-errors',
-                  imports: ['react', 'redbox-react']
-                }]
+                transforms: [
+                  {
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module']
+                  }, {
+                    transform: 'react-transform-catch-errors',
+                    imports: ['react', 'redbox-react']
+                  }
+                ]
               }
             ]
           ]
         },
         include: [path.resolve(__dirname, 'src')]
-      },
-      {
+      }, {
         test: /\.css?$/,
         loaders: ['style', 'raw']
+      }, {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   }

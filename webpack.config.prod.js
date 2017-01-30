@@ -5,9 +5,7 @@ const StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    './src/client/index'
-  ],
+  entry: ['./src/client/index'],
   output: {
     path: path.resolve(__dirname, './static/dist'),
     filename: 'bundle.js',
@@ -33,14 +31,15 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.(js|jsx)$/,
-      loader: 'babel',
-      include: [path.resolve(__dirname, 'src')]
-    },
-    {
-      test: /\.css?$/,
-      loaders: ['style', 'raw']
-    }]
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel',
+        include: [path.resolve(__dirname, 'src')]
+      }, {
+        test: /\.css?$/,
+        loaders: ['style', 'raw']
+      }
+    ]
   }
 };
