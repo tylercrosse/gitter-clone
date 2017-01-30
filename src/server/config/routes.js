@@ -14,6 +14,7 @@ function renderFullPage(req, res) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <title>Gitter Clone</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="/dist/style.min.css" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
