@@ -46,14 +46,14 @@ describe('<ChatInput />', () => {
         .toEqual(value);
     });
 
-    it('should call submit action on submit', () => {
+    it('should call submit action on submit with text', () => {
       const value = 'My new value';
       const { props, component } = setup();
       const wrapper = mount(component);
       wrapper.find('textarea').simulate('change', {target: {value}});
       wrapper.find('form').simulate('submit');
       expect(props.onMessageSubmit)
-        .toHaveBeenCalledTimes(1);
+        .toHaveBeenCalledWith({text: value, username: props.user.username});
     });
   });
 
@@ -72,5 +72,4 @@ describe('<ChatInput />', () => {
         .toHaveLength(0);
     });
   });
-
 });
