@@ -25,18 +25,26 @@ class ChatInput extends React.Component {
   render() {
     return (
       <footer className="chat-input">
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <textarea
-            onChange={(e) => this.updateDraft(e)}
-            value={this.state.draft}
-            placeholder="Click here to type a chat message."
-            name="chat"
-            type="text"
-            autoFocus
-            autoComplete="off"
-          />
-          <button type="submit">Send</button>
-        </form>
+        <div className="chat-input-container">
+          <div className="chat-input-avatar">
+            <img
+              className="avatar"
+              src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
+            />
+          </div>
+          <form onSubmit={(e) => this.handleSubmit(e)}>
+            <textarea
+              onChange={(e) => this.updateDraft(e)}
+              value={this.state.draft}
+              placeholder="Click here to type a chat message."
+              name="chat"
+              type="text"
+              autoFocus
+              autoComplete="off"
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
       </footer>
     );
   }

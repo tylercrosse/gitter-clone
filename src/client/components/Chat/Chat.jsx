@@ -21,7 +21,9 @@ export class Chat extends React.Component {
       />
     ) : (
       <div className="chat-input">
-        <Link to="/">Sign In</Link>
+        <div className="chat-input-container">
+          <Link className="chat-input-btn" to="/">Sign in to start talking</Link>
+        </div>
       </div>
     );
     return (
