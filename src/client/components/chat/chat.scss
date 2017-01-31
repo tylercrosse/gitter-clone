@@ -187,22 +187,66 @@
   background-color: #fdfdfd;
   flex-shrink: 0;
   width: 100%;
-  border-top: {
-    color: rgba(0, 0, 0, 0.05);
-    width: 1px;
-    style: solid;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chat-input-container {
+  margin: 10px 0 10px 34px;
+  position: relative;
+
+  .chat-input-avatar {
+    float: left;
+  }
+
+  form {
+    margin-left: 52px;
+    margin-right: 52px;
+    margin-bottom: 0;
+    vertical-align: top;
   }
 
   textarea {
-    min-height: 44px;
+    display: block;
     width: 100%;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: none;
+    border: 0;
+    outline: none;
     color: black;
     font-size: 1em;
     line-height: 1.38em;
-    margin: 10px 0 10px 34px;
-    outline: none;
-    border: 0;
-    background-color: #fff;
     resize: none;
   }
+
+  button[type=submit] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    background-color: $maroon;
+    color: white;
+    border-radius: 4px;
+    border: 0;
+  }
+}
+
+.chat-input-btn {
+  font-size: 12px;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  padding: 1.1em 3em;
+  margin-top: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  background: #ea9448;
+  color: #fff;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
