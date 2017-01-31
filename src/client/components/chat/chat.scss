@@ -108,10 +108,41 @@
   width: 100%;
   position: absolute;
   background-image: linear-gradient(to left, $maroon, $violet);
+  padding-left: 26px;
+  display: flex;
+  align-items: center;
+
+  .chat-header-avatar {
+    align-items: center;
+    flex-shrink: 0;
+    padding-right: 18px;
+
+    img {
+      border: 3px solid white;
+      border-radius: 4px;
+    }
+  }
+
+  .chat-header-title {
+    flex-grow: 1;
+    text-decoration: none;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+    color: white;
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+  }
+
+  .chat-user-avatar {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 0 8px 19px;
+    margin-right: 19px;
+  }
 
   .avatar {
-    padding-top: 17px;
-    margin: 0 17px 0 6px;
     float: right;
   }
 }
