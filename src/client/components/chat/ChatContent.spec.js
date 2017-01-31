@@ -1,7 +1,7 @@
-import React from 'react';
+import React       from 'react';
 import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
-import ChatItem from './ChatItem.jsx';
+import renderer    from 'react-test-renderer';
+import ChatItem    from './ChatItem.jsx';
 import ChatContent from './ChatContent.jsx';
 
 const setup = () => {

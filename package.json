@@ -38,6 +38,7 @@
     "react-redux": "^5.0.2",
     "react-router": "^3.0.1",
     "react-router-redux": "^4.0.7",
+    "react-scroll": "^1.4.5",
     "redux": "^3.6.0",
     "redux-socket.io": "^1.3.1",
     "redux-thunk": "^2.1.0",
@@ -99,6 +100,14 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/config/styleMock.js"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
     }
   }
 }
