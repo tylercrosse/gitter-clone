@@ -1,7 +1,7 @@
 import React       from 'react';
-import { Link }    from 'react-router';
 import { connect } from 'react-redux';
-import { fetchMessages, addMessage } from '../../actions/';
+import { fetchMessages,
+  addMessage }     from '../../actions/';
 import ChatMenu    from './ChatMenu.jsx';
 import ChatHeader  from './ChatHeader.jsx';
 import ChatToolbar from './ChatToolbar.jsx';
@@ -14,18 +14,6 @@ export class Chat extends React.Component {
     this.props.fetchMessages();
   }
   render() {
-    const form = this.props.user.loggedIn ? (
-      <ChatInput
-        user={this.props.user}
-        onMessageSubmit={this.props.addMessage}
-      />
-    ) : (
-      <div className="chat-input">
-        <div className="chat-input-container">
-          <Link className="chat-input-btn" to="/">Sign in to start talking</Link>
-        </div>
-      </div>
-    );
     return (
       <div className="chat-container">
         <ChatMenu />
@@ -34,8 +22,14 @@ export class Chat extends React.Component {
           <div className="chat-and-toolbar-wrapper">
             <ChatToolbar />
             <div className="chat-wrapper">
-              <ChatContent messages={this.props.messages} />
-              {form}
+              <ChatContent
+                containerId="chat-content"
+                messages={this.props.messages}
+              />
+              <ChatInput
+                user={this.props.user}
+                onMessageSubmit={this.props.addMessage}
+              />
             </div>
           </div>
         </main>

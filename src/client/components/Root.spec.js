@@ -1,10 +1,10 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Route } from 'react-router';
+import React           from 'react';
+import { shallow }     from 'enzyme';
+import { Route }       from 'react-router';
 import { createStore } from 'redux';
-import rootReducer from '../reducers/';
-import Root from './Root.jsx';
-import App from './App.jsx';
+import rootReducer     from '../reducers/';
+import Root            from './Root.jsx';
+import App             from './App.jsx';
 
 const setup = () => {
   const store = createStore(rootReducer);

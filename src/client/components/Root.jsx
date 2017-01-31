@@ -1,9 +1,12 @@
-import React, { PropTypes } from 'react';
-import { Provider }    from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import React, { PropTypes }     from 'react';
+import { Provider }             from 'react-redux';
+import { Router,
+  Route,
+  IndexRoute,
+  browserHistory }              from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import App from './App.jsx';
-import Chat from './chat/Chat.jsx';
+import App     from './App.jsx';
+import Chat    from './chat/Chat.jsx';
 import Welcome from './Welcome.jsx';
 
 const Root = ({ store }) => {

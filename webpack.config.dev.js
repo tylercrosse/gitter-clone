@@ -4,7 +4,9 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'babel-polyfill', 'webpack-hot-middleware/client', './src/client/index'
+    'babel-polyfill',
+    'webpack-hot-middleware/client',
+    './src/client/index'
   ],
   output: {
     path: path.resolve(__dirname, './static/dist'),
