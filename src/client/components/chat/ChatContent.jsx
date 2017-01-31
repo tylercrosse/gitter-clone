@@ -1,15 +1,26 @@
 import React from 'react';
+import { animateScroll } from 'react-scroll';
 import ChatItem from './ChatItem.jsx';
 
-const ChatContent = ({ messages }) => (
-  <section className="chat-content scroller">
-    {Object.values(messages).map((message) =>
-      <ChatItem
-        key={message._id}
-        {...message}
-      />
-    )}
-  </section>
-);
+class ChatContent extends React.Component {
+  componentDidUpdate() {
+    animateScroll.scrollToBottom({containerId: 'chat-content'});
+  }
+  render() {
+    return (
+      <section
+        id="chat-content"
+        className="chat-content scroller"
+      >
+        {Object.values(this.props.messages).map((message) =>
+          <ChatItem
+            key={message._id}
+            {...message}
+          />
+        )}
+      </section>
+    );
+  }
+}
 
 export default ChatContent;
