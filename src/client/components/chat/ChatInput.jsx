@@ -1,4 +1,5 @@
-import React from 'react';
+import React    from 'react';
+import { Link } from 'react-router';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -23,28 +24,35 @@ class ChatInput extends React.Component {
     });
   }
   render() {
+    const chatAuth = this.props.user.loggedIn ? (
+      <div className="chat-input-container">
+        <div className="chat-input-avatar">
+          <img
+            className="avatar"
+            src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
+          />
+        </div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <textarea
+            onChange={(e) => this.updateDraft(e)}
+            value={this.state.draft}
+            placeholder="Click here to type a chat message."
+            name="chat"
+            type="text"
+            autoFocus
+            autoComplete="off"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    ) : (
+      <div className="chat-input-container">
+        <Link className="chat-input-btn" to="/">Sign in to start talking</Link>
+      </div>
+    );
     return (
       <footer className="chat-input">
-        <div className="chat-input-container">
-          <div className="chat-input-avatar">
-            <img
-              className="avatar"
-              src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
-            />
-          </div>
-          <form onSubmit={(e) => this.handleSubmit(e)}>
-            <textarea
-              onChange={(e) => this.updateDraft(e)}
-              value={this.state.draft}
-              placeholder="Click here to type a chat message."
-              name="chat"
-              type="text"
-              autoFocus
-              autoComplete="off"
-            />
-            <button type="submit">Send</button>
-          </form>
-        </div>
+        {chatAuth}
       </footer>
     );
   }

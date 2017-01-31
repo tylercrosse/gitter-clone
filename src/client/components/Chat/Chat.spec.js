@@ -1,8 +1,8 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Chat, mapStateToProps } from './Chat';
-import ChatContent from './ChatContent.jsx';
-import ChatInput from './ChatInput.jsx';
+import React        from 'react';
+import renderer     from 'react-test-renderer';
+import { shallow }  from 'enzyme';
+import { Chat,
+  mapStateToProps } from './Chat';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -12,40 +12,27 @@ const setup = (propOverrides) => {
     user: {
       loggedIn: true
     },
-    actions: {
-      addMessage: jest.fn()
-    }
+    fetchMessages: jest.fn(),
+    addMessage: jest.fn()
   }, propOverrides);
 
-  const wrapper = shallow(<Chat {...props} />);
+  const component = <Chat {...props} />;
+  const wrapper = shallow(component);
 
   return {
     props,
+    component,
     wrapper
   };
 };
 
 describe('<Chat />', () => {
-  it('should contain <ChatContent />', () => {
-    const { wrapper } = setup();
-    expect(wrapper.find(ChatContent))
-      .toHaveLength(1);
-  });
-
-  describe('logged in', () => {
-    it('should contain <ChatInput />', () => {
-      const { wrapper } = setup();
-      expect(wrapper.find(ChatInput))
-        .toHaveLength(1);
-    });
-  });
-
-  describe('logged out', () => {
-    it('should not contain <ChatInput />', () => {
-      const { wrapper } = setup({user: {loggedIn: false}});
-      expect(wrapper.find(ChatInput))
-        .toHaveLength(0);
-    });
+  it('should render correctly', () => {
+    const { component } = setup();
+    const renderedComponent = renderer.create(component);
+    const tree = renderedComponent.toJSON();
+    expect(tree)
+      .toMatchSnapshot();
   });
 
   it('should recieve the correct props from state', () => {
