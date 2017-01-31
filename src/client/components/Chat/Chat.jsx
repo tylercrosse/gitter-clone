@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { connect }            from 'react-redux';
-import MessageList from './MessageList.jsx';
-import MessageForm from './MessageForm.jsx';
+import React       from 'react';
+import { Link }    from 'react-router';
+import { connect } from 'react-redux';
 import { fetchMessages, addMessage } from '../../actions/';
+import ChatMenu    from './ChatMenu.jsx';
+import ChatHeader  from './ChatHeader.jsx';
+import ChatToolbar from './ChatToolbar.jsx';
+import ChatContent from './ChatContent.jsx';
+import ChatInput   from './ChatInput.jsx';
 import                  './chat.scss';
 
 export class Chat extends React.Component {
@@ -12,7 +15,7 @@ export class Chat extends React.Component {
   }
   render() {
     const form = this.props.user.loggedIn ? (
-      <MessageForm
+      <ChatInput
         user={this.props.user}
         onMessageSubmit={this.props.addMessage}
       />
@@ -22,9 +25,18 @@ export class Chat extends React.Component {
       </div>
     );
     return (
-      <div className="chat">
-        <MessageList messages={this.props.messages} />
-        {form}
+      <div className="chat-container">
+        <ChatMenu />
+        <main className="chat-header-wrapper">
+          <ChatHeader user={this.props.user} />
+          <div className="chat-and-toolbar-wrapper">
+            <ChatToolbar />
+            <div className="chat-wrapper">
+              <ChatContent messages={this.props.messages} />
+              {form}
+            </div>
+          </div>
+        </main>
       </div>
     );
   }

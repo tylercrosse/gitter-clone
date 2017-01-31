@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Chat, mapStateToProps } from './Chat';
-import MessageList from './MessageList.jsx';
-import MessageForm from './MessageForm.jsx';
+import ChatContent from './ChatContent.jsx';
+import ChatInput from './ChatInput.jsx';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -26,24 +26,24 @@ const setup = (propOverrides) => {
 };
 
 describe('<Chat />', () => {
-  it('should contain <MessageList />', () => {
+  it('should contain <ChatContent />', () => {
     const { wrapper } = setup();
-    expect(wrapper.find(MessageList))
+    expect(wrapper.find(ChatContent))
       .toHaveLength(1);
   });
 
   describe('logged in', () => {
-    it('should contain <MessageForm />', () => {
+    it('should contain <ChatInput />', () => {
       const { wrapper } = setup();
-      expect(wrapper.find(MessageForm))
+      expect(wrapper.find(ChatInput))
         .toHaveLength(1);
     });
   });
 
   describe('logged out', () => {
-    it('should not contain <MessageForm />', () => {
+    it('should not contain <ChatInput />', () => {
       const { wrapper } = setup({user: {loggedIn: false}});
-      expect(wrapper.find(MessageForm))
+      expect(wrapper.find(ChatInput))
         .toHaveLength(0);
     });
   });

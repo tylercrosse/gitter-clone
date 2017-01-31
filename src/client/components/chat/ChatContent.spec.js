@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Message from './Message.jsx';
-import MessageList from './MessageList.jsx';
+import ChatItem from './ChatItem.jsx';
+import ChatContent from './ChatContent.jsx';
 
 const setup = () => {
   const props = {
@@ -15,7 +15,7 @@ const setup = () => {
       }
     ]
   };
-  const component = <MessageList {...props} />;
+  const component = <ChatContent {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -25,7 +25,7 @@ const setup = () => {
   };
 };
 
-describe('<MessageList />', () => {
+describe('<ChatContent />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const renderedComponent = renderer.create(component);
@@ -33,9 +33,9 @@ describe('<MessageList />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render a <Message /> for each message', () => {
+  it('should render a <ChatItem /> for each message', () => {
     const { props, wrapper } = setup();
-    expect(wrapper.find(Message))
+    expect(wrapper.find(ChatItem))
       .toHaveLength(props.messages.length);
   });
 });

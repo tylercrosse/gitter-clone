@@ -9,4 +9,6 @@
 
 body {
   font-family: $primary-font;
+  max-width: 100vw;
+  overflow: hidden;
 }
