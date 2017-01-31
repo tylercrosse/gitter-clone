@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
-import MessageForm from './MessageForm.jsx';
+import ChatInput from './ChatInput.jsx';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -11,7 +11,7 @@ const setup = (propOverrides) => {
     onMessageSubmit: jest.fn()
   }, propOverrides);
 
-  const component = <MessageForm {...props} />;
+  const component = <ChatInput {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -21,7 +21,7 @@ const setup = (propOverrides) => {
   };
 };
 
-describe('<MessageForm />', () => {
+describe('<ChatInput />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const renderedComponent = renderer.create(component);

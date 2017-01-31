@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MessageForm extends React.Component {
+class ChatInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,4 +42,4 @@ class MessageForm extends React.Component {
   }
 }
 
-export default MessageForm;
+export default ChatInput;

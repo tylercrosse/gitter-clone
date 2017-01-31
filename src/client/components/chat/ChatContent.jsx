@@ -1,10 +1,10 @@
 import React from 'react';
-import Message from './Message.jsx';
+import ChatItem from './ChatItem.jsx';
 
-const MessageList = ({ messages }) => (
+const ChatContent = ({ messages }) => (
   <section className="chat-content">
     {Object.values(messages).map((message) =>
-      <Message
+      <ChatItem
         key={message._id}
         {...message}
       />
@@ -12,4 +12,4 @@ const MessageList = ({ messages }) => (
   </section>
 );
 
-export default MessageList;
+export default ChatContent;
