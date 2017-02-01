@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { animateScroll } from 'react-scroll';
 import ChatItem from './ChatItem.jsx';
 
@@ -22,5 +22,9 @@ class ChatContent extends React.Component {
     );
   }
 }
+
+ChatContent.propTypes = {
+  messages: PropTypes.object.isRequired
+};
 
 export default ChatContent;

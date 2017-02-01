@@ -1,4 +1,4 @@
-import React       from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 export const App = ({ children }) => {
@@ -7,6 +7,10 @@ export const App = ({ children }) => {
       {children}
     </div>
   );
+};
+
+App.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export const mapStateToProps = (state) => ({

@@ -1,4 +1,5 @@
-import React       from 'react';
+import React,
+  { PropTypes }    from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages,
   addMessage }     from '../../actions/';
@@ -24,7 +25,6 @@ export class Chat extends React.Component {
             <div className="chat-wrapper">
               <ChatContent
                 containerId="chat-content"
-                bursts={this.props.bursts}
                 messages={this.props.messages}
               />
               <ChatInput
@@ -38,6 +38,13 @@ export class Chat extends React.Component {
     );
   }
 }
+
+Chat.propTypes = {
+  messages: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  fetchMessages: PropTypes.func.isRequired,
+  addMessage: PropTypes.func.isRequired
+};
 
 export const mapStateToProps = (state) => ({
   messages: state.messages,

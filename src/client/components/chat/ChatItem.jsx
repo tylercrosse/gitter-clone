@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
 
 export const ChatItem = ({ username, text, createdAt, burstStart }) => {
@@ -33,6 +33,13 @@ export const ChatItem = ({ username, text, createdAt, burstStart }) => {
       </div>
     </article>
   );
+};
+
+ChatItem.propTypes = {
+  username: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  burstStart: PropTypes.bool.isRequired,
 };
 
 export default ChatItem;
