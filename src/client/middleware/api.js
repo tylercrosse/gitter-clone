@@ -17,7 +17,7 @@ const callApi = (endpoint, schema) => {
 };
 
 const messageSchema = new schema.Entity('messages', {}, {
-  idAttribute: '_id'
+  idAttribute: 'createdAt'
 });
 
 export const Schemas = {

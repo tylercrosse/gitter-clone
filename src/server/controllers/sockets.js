@@ -1,4 +1,3 @@
-// import { v4 } from 'node-uuid';
 import Message from '../models/Message';
 
 const socketActions = (io) => {

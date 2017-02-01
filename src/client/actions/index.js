@@ -1,3 +1,4 @@
+import { v4 } from 'node-uuid';
 import { push } from 'react-router-redux';
 import { CALL_API, Schemas } from '../middleware/api';
 
@@ -29,6 +30,7 @@ export const SIGN_IN = 'SIGN_IN';
 export const signIn = (username) => (dispatch) => {
   dispatch({
     type: SIGN_IN,
+    id: v4(),
     username,
   });
   dispatch(push('/chat'));
