@@ -6,14 +6,33 @@ import ChatContent from './ChatContent.jsx';
 
 const setup = () => {
   const props = {
-    messages: [
-      {
-        _id: 0,
-        text: 'Use Redux',
-        updatedAt: '2017-01-25T00:58:33.702Z',
-        createdAt: '2017-01-25T00:58:33.702Z'
-      }
-    ]
+    bursts: {
+      'liz:2017-01-31T23:22:38.808Z': [
+        {
+          _id: '58911c3e871fdf24f2079782',
+          createdAt: '2017-01-31T23:22:38.808Z',
+          username: 'liz',
+          text: 'sweet',
+          burstStart: true
+        }
+      ],
+      'dan:2017-02-01T05:34:40.591Z': [
+        {
+          _id: '58917370eb323841b839f583',
+          createdAt: '2017-02-01T05:34:40.591Z',
+          username: 'dan',
+          text: 'cool',
+          burstStart: true
+        },
+        {
+          _id: '5891737ceb323841b839f584',
+          createdAt: '2017-02-01T05:34:52.011Z',
+          username: 'dan',
+          text: 'damn it',
+          burstStart: false
+        }
+      ]
+    }
   };
   const component = <ChatContent {...props} />;
   const wrapper = shallow(component);
@@ -34,8 +53,9 @@ describe('<ChatContent />', () => {
   });
 
   it('should render a <ChatItem /> for each message', () => {
-    const { props, wrapper } = setup();
+    const { wrapper } = setup();
     expect(wrapper.find(ChatItem))
-      .toHaveLength(props.messages.length);
+      .toHaveLength(3);
   });
 });
+
