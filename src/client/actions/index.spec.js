@@ -1,5 +1,6 @@
 // import configureMockStore from 'redux-mock-store';
 // import thunk from 'redux-thunk';
+import { v4 } from 'node-uuid';
 import * as actions from './index';
 
 // const setup = () => {
@@ -30,11 +31,14 @@ describe('actions', () => {
     it('should create SIGN_IN action', () => {
       const getState = () => ('Bob');
       const dispatch = jest.fn();
-      actions.signIn()(dispatch, getState);
+      const name = 'Dan';
+      const id = v4();
+      actions.signIn(name, id)(dispatch, getState);
       expect(dispatch)
         .toHaveBeenCalledWith({
           type: 'SIGN_IN',
-          username: undefined
+          username: name,
+          id
         });
     });
 

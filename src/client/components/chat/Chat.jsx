@@ -24,6 +24,7 @@ export class Chat extends React.Component {
             <div className="chat-wrapper">
               <ChatContent
                 containerId="chat-content"
+                bursts={this.props.bursts}
                 messages={this.props.messages}
               />
               <ChatInput
@@ -40,6 +41,7 @@ export class Chat extends React.Component {
 
 
 export const mapStateToProps = (state) => ({
+  bursts: state.bursts,
   messages: state.messages,
   user: state.user
 });

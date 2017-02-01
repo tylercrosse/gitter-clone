@@ -1,16 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 
-class ChatItem extends React.Component {
-  checkBursts() {
-    //
-    console.log(this);
-  }
-  render() {
-    const { username, text, createdAt } = this.props;
-    const dateString = moment(createdAt).format('MMM MM HH:mm');
+export const ChatItem = ({ username, text, createdAt, burstStart }) => {
+  const dateString = moment(createdAt).format('MMM MM HH:mm');
+  if (burstStart) {
     return (
-      <article className="chat-item">
+      <article className="chat-item burst-start">
         <div className="chat-item-container">
           <div className="chat-item-aside">
             <img
@@ -29,6 +24,15 @@ class ChatItem extends React.Component {
       </article>
     );
   }
-}
+  return (
+    <article className="chat-item burst-continued">
+      <div className="chat-item-container">
+        <div className="chat-item-content">
+          <div className="chat-item-text">{text}</div>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 export default ChatItem;

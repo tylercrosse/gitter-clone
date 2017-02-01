@@ -27,10 +27,10 @@ export const fetchMessages = () => ({
 
 export const SIGN_IN = 'SIGN_IN';
 
-export const signIn = (username) => (dispatch) => {
+export const signIn = (username, id) => (dispatch) => {
   dispatch({
     type: SIGN_IN,
-    id: v4(),
+    id: id || v4(),
     username,
   });
   dispatch(push('/chat'));

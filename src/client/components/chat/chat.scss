@@ -107,6 +107,7 @@
   height: 65px;
   width: 100%;
   position: absolute;
+  top: 0;
   background-image: linear-gradient(to left, $maroon, $violet);
   padding-left: 26px;
   display: flex;
@@ -164,7 +165,21 @@
   background-color: #fdfdfd;
 
   .chat-item {
-    padding: 0.2em 0;
+    transition: background-color 0.2s linear;
+    background-color: transparent;
+
+    &:hover {
+      background-color: rgba(240, 240, 240, 0.3);
+    }
+  }
+
+  .chat-item.burst-start {
+    padding-bottom: 0.2em;
+  }
+
+  .chat-item.burst-continued {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
   }
 
   .chat-item-container {
