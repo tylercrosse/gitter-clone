@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 export const ChatHeader = ({ user }) => {
@@ -27,6 +27,10 @@ export const ChatHeader = ({ user }) => {
       {userInfo}
     </header>
   );
+};
+
+ChatHeader.propTypes = {
+  user: PropTypes.object.isRequired
 };
 
 export default ChatHeader;

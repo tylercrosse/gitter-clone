@@ -5,7 +5,7 @@ export const ChatMenu = () => (
     <nav>
       <ul>
         <li>G</li>
-        <li>-</li>
+        <li>Q</li>
       </ul>
     </nav>
   </aside>
