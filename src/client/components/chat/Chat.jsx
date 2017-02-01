@@ -39,9 +39,7 @@ export class Chat extends React.Component {
   }
 }
 
-
 export const mapStateToProps = (state) => ({
-  bursts: state.bursts,
   messages: state.messages,
   user: state.user
 });

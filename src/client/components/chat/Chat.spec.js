@@ -6,7 +6,7 @@ import { Chat,
 
 const setup = (propOverrides) => {
   const props = Object.assign({
-    bursts: {},
+    messages: {},
     user: {
       loggedIn: true
     },
@@ -37,12 +37,12 @@ describe('<Chat />', () => {
     const { props } = setup();
     console.log(expect(mapStateToProps(props))
           .toEqual({
-            bursts: props.bursts,
+            messages: props.messages,
             user: props.user
           }));
     expect(mapStateToProps(props))
       .toEqual({
-        bursts: props.bursts,
+        messages: props.messages,
         user: props.user
       });
   });
