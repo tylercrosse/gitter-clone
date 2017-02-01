@@ -9,6 +9,7 @@ const user = (state = initialState, action) => {
     case SIGN_IN:
       return {
         ...state,
+        id: action.id,
         username: action.username,
         loggedIn: true
       };
