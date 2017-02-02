@@ -1,11 +1,13 @@
 import React       from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { animateScroll }  from 'react-scroll';
+import sinon       from 'sinon';
 import renderer    from 'react-test-renderer';
 import ChatItem    from './ChatItem.jsx';
 import ChatContent from './ChatContent.jsx';
 
-const setup = () => {
-  const props = {
+const setup = (propOverrides) => {
+  const props = Object.assign({
     messages: {
       '58911c3e871fdf24f2079782': {
         _id: '58911c3e871fdf24f2079782',
@@ -30,7 +32,7 @@ const setup = () => {
         burstStart: false
       }
     }
-  };
+  }, propOverrides);
   const component = <ChatContent {...props} />;
   const wrapper = shallow(component);
 
@@ -53,6 +55,18 @@ describe('<ChatContent />', () => {
     const { wrapper } = setup();
     expect(wrapper.find(ChatItem))
       .toHaveLength(3);
+  });
+
+  describe('componentDidUpdate', () => {
+    it('calls animateScroll.scrollToBottom() on update', () => {
+      const { props } = setup();
+      const wrapper = mount(<ChatContent {...props} />);
+      const updateSpy = sinon.spy(ChatContent.prototype, 'componentDidUpdate');
+      const scrollSpy = sinon.spy(animateScroll, 'scrollToBottom');
+      wrapper.update();
+      expect(updateSpy.calledOnce).toEqual(true);
+      expect(scrollSpy.calledOnce).toEqual(true);
+    });
   });
 });
 

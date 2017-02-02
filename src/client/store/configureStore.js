@@ -4,13 +4,13 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
-import api from './middleware/api';
-import rootReducer from './reducers/';
+import api from '../middleware/api';
+import rootReducer from '../reducers/';
 
 const socket = io('');
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'server.');
 
-export default function configureStore() {
+const configureStore = () => {
   const middlewares = [
     thunk,
     api,
@@ -25,4 +25,6 @@ export default function configureStore() {
       window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
     )
   );
-}
+};
+
+export default configureStore;

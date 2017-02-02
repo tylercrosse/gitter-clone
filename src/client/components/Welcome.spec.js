@@ -5,7 +5,7 @@ import { Welcome } from './Welcome';
 
 const setup = () => {
   const props = {
-    signIn: jest.fn()
+    dispatch: jest.fn()
   };
 
   const component = <Welcome {...props} />;
@@ -26,13 +26,31 @@ describe('<Welcome />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should allow users to sign-in', () => {
-    // const value = 'My new value';
-    // const { props, wrapper } = setup();
-    // wrapper.find('input').simulate('change', {target: {value}});
-    // expect(wrapper).toHaveRef(value);
-    // wrapper.find('form').simulate('submit');
-    // expect(props.signIn)
-    //   .toHaveBeenCalledTimes(1);
+  it('should simulate input field', () => {
+    const value = 'Dan';
+    const { wrapper } = setup();
+    wrapper.find('input').simulate('change', {target: {value}});
+    expect(wrapper.find('input').props().value)
+      .toEqual(value);
+  });
+
+  it('should not call submit action on submit with no text', () => {
+    const value = '';
+    const { props, component } = setup();
+    const wrapper = mount(component);
+    wrapper.find('input').simulate('change', {target: {value}});
+    wrapper.find('form').simulate('submit');
+    expect(props.dispatch)
+      .not.toHaveBeenCalled();
+  });
+
+  it('should call submit action on submit with text', () => {
+    const value = 'Dan';
+    const { props, component } = setup();
+    const wrapper = mount(component);
+    wrapper.find('input').simulate('change', {target: {value}});
+    wrapper.find('form').simulate('submit');
+    expect(props.dispatch)
+      .toHaveBeenCalled();
   });
 });
