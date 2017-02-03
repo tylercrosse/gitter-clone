@@ -32,9 +32,9 @@ describe('<ChatInput />', () => {
         .toMatchSnapshot();
     });
 
-    it('should contain <textarea />', () => {
+    it('should contain <form />', () => {
       const { wrapper } = setup();
-      expect(wrapper.find('textarea'))
+      expect(wrapper.find('form'))
         .toHaveLength(1);
     });
 
@@ -66,9 +66,9 @@ describe('<ChatInput />', () => {
         .toMatchSnapshot();
     });
 
-    it('should not contain <textarea />', () => {
+    it('should not contain <form />', () => {
       const { wrapper } = setup({user: {loggedIn: false}});
-      expect(wrapper.find('textarea'))
+      expect(wrapper.find('form'))
         .toHaveLength(0);
     });
   });

@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose   from 'mongoose';
 import Promise    from 'bluebird';
 import SocketIo   from 'socket.io';
-import socketActions from './controllers/sockets';
+import socketCtlr from './controllers/sockets';
 import routes        from './config/routes';
 
 const app = express();
@@ -46,6 +46,6 @@ export const server = app.listen(port, (err) => {
 
 // socket.io config
 export const io = new SocketIo(server);
-socketActions(io);
+socketCtlr(io);
 
 export default app;

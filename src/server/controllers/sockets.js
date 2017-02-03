@@ -1,23 +1,22 @@
-import Message from '../models/Message';
+import * as messageCtlr from './messages';
 
-const socketActions = (io) => {
+export const socketActions = (io, action) => {
+  switch (action.type) {
+    case 'server.ADD_MESSAGE': messageCtlr.addMessage(io, action);
+      break;
+    default:
+      throw new Error('Unknown action'); // TODO better error handling
+  }
+};
+
+const socketCtlr = (io) => {
+  /* istanbul ignore next: module functionality */
   io.on('connection', (socket) => {
+    /* istanbul ignore next: module functionality */
     socket.on('action', (action) => {
-      if (action.type === 'server.ADD_MESSAGE') {
-        console.log('🐕 action: ', action);
-        Message.create({
-          username: action.username,
-          text: action.text
-        }).then((message) => {
-          console.log('🍕 message: ', message);
-          io.emit('action', {
-            type: 'ADD_MESSAGE',
-            message
-          });
-        });
-      }
+      socketActions(io, action);
     });
   });
 };
 
-export default socketActions;
+export default socketCtlr;
