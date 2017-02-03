@@ -35,7 +35,8 @@ describe('<ChatMenu />', () => {
     expect(wrapper.state().active).toBeFalsy();
     wrapper.find('.chat-menu button').simulate('click');
     expect(wrapper.state().active).toBeTruthy();
-    wrapper.find('.chat-menu').simulate('mouseleave');
+    // trouble simulating clientX on synthetic mouseLeave event
+    wrapper.instance().handleMouseLeave({clientX: 400});
     expect(wrapper.state().active).toBeFalsy();
   });
 
