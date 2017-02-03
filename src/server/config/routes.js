@@ -1,12 +1,12 @@
 // import fs from 'fs';
 import express from 'express';
 import * as messageCtlr from '../controllers/messages';
-import * as staticCtlr from '../controllers/statics';
+import * as universalCtlr from '../controllers/universal';
 
 const router = express.Router();
 
 router.get('/api/messages', messageCtlr.getMessages);
-router.get('/index.html', staticCtlr.renderFullPage);
-router.get('/*', staticCtlr.renderFullPage);
+router.get('/index.html', universalCtlr.renderFullPage);
+router.get('/*', universalCtlr.renderFullPage);
 
 export default router;
