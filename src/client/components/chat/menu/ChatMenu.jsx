@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateRoomModal from './CreateRoomModal';
 import            './menu.scss';
 
 export class ChatMenu extends React.Component {
@@ -7,20 +8,24 @@ export class ChatMenu extends React.Component {
     this.state = {
       active: false
     };
-    this.handleClick = this.handleClick.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMinibarButtonClick = this.handleMinibarButtonClick.bind(this);
+    this.handleAddRoomClick = this.handleAddRoomClick.bind(this);
   }
   toggleActive() {
     this.setState((prevState) => ({
       active: !prevState.active
     }));
   }
-  handleClick() {
-    this.toggleActive();
-  }
   handleMouseLeave(e) {
     if (e.clientX < 74) return; // ignore leaving to minibar
     this.toggleActive();
+  }
+  handleMinibarButtonClick() {
+    this.toggleActive();
+  }
+  handleAddRoomClick() {
+    console.log('💬 add a room clicked');
   }
   render() {
     const active = this.state.active ? 'active' : '';
@@ -32,7 +37,7 @@ export class ChatMenu extends React.Component {
               <ul>
                 <li className="minibar-convos">G</li>
                 <li className="minibar-search">
-                  <button className="minibar-button" onClick={this.handleClick}>
+                  <button className="minibar-button" onClick={this.handleMinibarButtonClick}>
                     Q
                   </button>
                 </li>
@@ -53,7 +58,13 @@ export class ChatMenu extends React.Component {
             <div className="panel-inner">
               <footer className="panel-footer">
                 <div className="panel-footer-convos">
-                  <a className="create-rooom-button">Add a room</a>
+                  <button
+                    onClick={this.handleAddRoomClick}
+                    className="create-rooom-button"
+                  >
+                    Add a room
+                  </button>
+                  <CreateRoomModal modalIsOpen={false} />
                 </div>
               </footer>
               <div className="panel-content scroller">

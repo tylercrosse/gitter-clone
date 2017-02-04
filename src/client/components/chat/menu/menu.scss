@@ -214,7 +214,6 @@
   }
 
   .panel-footer-convos {
-    z-index: 9999;
     position: absolute;
     // bottom: 0;
     width: 100%;
@@ -271,4 +270,19 @@
 
   .primary-collection {
   }
+}
+
+.create-room-modal {
+  // border: 1px solid #ccc;
+  // background: #fff;
+  // overflow: auto;
+  // -webkit-overflow-scrolling: touch;
+  // border-radius: 4px;
+  // outline: none;
+  // padding: 20px;
+  // left: 50%;
+  // position: absolute;
+  // text-align: center;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
 }
