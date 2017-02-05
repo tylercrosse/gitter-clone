@@ -26,6 +26,7 @@ export class CreateRoomModal extends React.Component {
     this.setState({
       name: ''
     });
+    this.props.onRequestClose();
   }
   render() {
     return (
