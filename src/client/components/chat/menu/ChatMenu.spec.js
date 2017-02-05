@@ -1,12 +1,19 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import ChatMenu from './ChatMenu.jsx';
+import { ChatMenu, mapStateToProps } from './ChatMenu.jsx';
 
 const setup = () => {
-  const component = <ChatMenu />;
+  const props = {
+    modalIsOpen: false,
+    openModal: jest.fn(),
+    closeModal: jest.fn()
+  };
+
+  const component = <ChatMenu {...props} />;
 
   return {
+    props,
     component
   };
 };
@@ -50,5 +57,13 @@ describe('<ChatMenu />', () => {
     expect(wrapper.state().active).toBeTruthy();
     expect(wrapper.find('.chat-menu-panel').hasClass('active'))
       .toBeTruthy();
+  });
+
+  it('should recieve the correct props from state', () => {
+    const { props } = setup();
+    expect(mapStateToProps({ui: {...props}}))
+      .toEqual({
+        modalIsOpen: props.modalIsOpen,
+      });
   });
 });

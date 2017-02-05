@@ -1,6 +1,8 @@
-import React from 'react';
-import CreateRoomModal from './CreateRoomModal';
-import            './menu.scss';
+import React, { PropTypes } from 'react';
+import { connect }          from 'react-redux';
+import { openModal, closeModal } from '../../../actions';
+import CreateRoomModal      from './CreateRoomModal';
+import                           './menu.scss';
 
 export class ChatMenu extends React.Component {
   constructor(props) {
@@ -10,7 +12,6 @@ export class ChatMenu extends React.Component {
     };
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMinibarButtonClick = this.handleMinibarButtonClick.bind(this);
-    this.handleAddRoomClick = this.handleAddRoomClick.bind(this);
   }
   toggleActive() {
     this.setState((prevState) => ({
@@ -23,9 +24,6 @@ export class ChatMenu extends React.Component {
   }
   handleMinibarButtonClick() {
     this.toggleActive();
-  }
-  handleAddRoomClick() {
-    console.log('💬 add a room clicked');
   }
   render() {
     const active = this.state.active ? 'active' : '';
@@ -59,12 +57,15 @@ export class ChatMenu extends React.Component {
               <footer className="panel-footer">
                 <div className="panel-footer-convos">
                   <button
-                    onClick={this.handleAddRoomClick}
+                    onClick={this.props.openModal}
                     className="create-rooom-button"
                   >
                     Add a room
                   </button>
-                  <CreateRoomModal modalIsOpen={false} />
+                  <CreateRoomModal
+                    modalIsOpen={this.props.modalIsOpen}
+                    onRequestClose={this.props.closeModal}
+                  />
                 </div>
               </footer>
               <div className="panel-content scroller">
@@ -80,4 +81,17 @@ export class ChatMenu extends React.Component {
   }
 }
 
-export default ChatMenu;
+ChatMenu.propTypes = {
+  openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired
+};
+
+export const mapStateToProps = (state) => ({
+  modalIsOpen: state.ui.modalIsOpen
+});
+
+export default connect(
+  mapStateToProps,
+  { openModal, closeModal }
+)(ChatMenu);

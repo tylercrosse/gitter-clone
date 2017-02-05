@@ -1,17 +1,24 @@
-import React from 'react';
-import Modal from 'react-modal';
+import React,
+  { PropTypes } from 'react';
+import Modal    from 'react-modal';
 
 export const CreateRoomModal = (props) => {
   return (
     <Modal
       contentLabel="Create Room Modal"
       isOpen={props.modalIsOpen}
+      onRequestClose={props.onRequestClose}
       className="modal-content create-room-modal"
       overlayClassName="modal-overlay"
     >
       <header className="modal-header">
         <h1 className="modal-title">Hello modal!</h1>
-        <span className="modal-close">x</span>
+        <button
+          className="modal-close"
+          onClick={props.onRequestClose}
+        >
+          x
+        </button>
       </header>
       <section className="modal-body">
         Body
@@ -21,6 +28,12 @@ export const CreateRoomModal = (props) => {
       </footer>
     </Modal>
   );
-}
+};
+
+CreateRoomModal.PropTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func.isRequired
+};
 
 export default CreateRoomModal;
+

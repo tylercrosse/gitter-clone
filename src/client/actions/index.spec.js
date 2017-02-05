@@ -56,4 +56,18 @@ describe('actions', () => {
         });
     });
   });
+
+  it('openModal should create OPEN_MODAL action', () => {
+    expect(actions.openModal())
+      .toEqual({
+        type: 'OPEN_MODAL',
+      });
+  });
+
+  it('closeModal should create CLOSE_MODAL action', () => {
+    expect(actions.closeModal())
+      .toEqual({
+        type: 'CLOSE_MODAL',
+      });
+  });
 });
