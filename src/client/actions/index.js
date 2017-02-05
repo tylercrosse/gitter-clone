@@ -36,7 +36,9 @@ export const fetchMessages = () => ({
       MESSAGES_REQUEST,
       {
         type: MESSAGES_SUCCESS,
+        /* istanbul ignore next: boilerplate from redux-api-middleware */
         payload: (action, state, res) => {
+        /* istanbul ignore next */
           return getJSON(res)
             .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
         }
@@ -56,3 +58,15 @@ export const signIn = (username, id) => (dispatch) => {
   });
   dispatch(push('/chat'));
 };
+
+export const OPEN_MODAL = 'OPEN_MODAL';
+
+export const openModal = () => ({
+  type: OPEN_MODAL
+});
+
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const closeModal = () => ({
+  type: CLOSE_MODAL
+});

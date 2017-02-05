@@ -1,4 +1,7 @@
+/* istanbul ignore next:
+enables ES6 ('import'.. etc) in Node */
 require('babel-register')({
   presets: ['latest']
-}); // enables ES6 ('import'.. etc) in Node
+});
+/* istanbul ignore next */
 require('./server');
