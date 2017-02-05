@@ -36,7 +36,9 @@ export const fetchMessages = () => ({
       MESSAGES_REQUEST,
       {
         type: MESSAGES_SUCCESS,
+        /* istanbul ignore next: boilerplate from redux-api-middleware */
         payload: (action, state, res) => {
+        /* istanbul ignore next */
           return getJSON(res)
             .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
         }

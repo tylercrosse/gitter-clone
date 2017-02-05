@@ -19,7 +19,7 @@ mongoose.connection.once('open', () => {
   console.log('==> 🛢 MongoDB connected!');
 });
 
-// webpack middleware for dev
+/* istanbul ignore next: webpack middleware for dev */
 if (process.env.NODE_ENV === 'development') {
   const webpackDevMiddlewareInstance = require('./config/devConfig.js').webpackDevMiddlewareInstance;
   const webpackHotMiddlewareInstance = require('./config/devConfig.js').webpackHotMiddlewareInstance;
@@ -34,8 +34,9 @@ app.use('/', express.static(path.join(__dirname, '../..', 'static')));
 app.use('/', routes);
 
 export const server = app.listen(port, (err) => {
+  /* istanbul ignore next: obvious when fails, hard to test */
   if (err) {
-    console.log(err);
+    console.log(err); // TODO better error handling
   }
   let host = server.address().address;
   if (host === '::') {
