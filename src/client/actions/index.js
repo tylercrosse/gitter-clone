@@ -1,13 +1,14 @@
-import { v4 } from 'node-uuid';
-import { push } from 'react-router-redux';
-import { normalize, schema } from 'normalizr';
-import { CALL_API, getJSON } from 'redux-api-middleware';
+import { v4 }        from 'node-uuid';
+import { normalize } from 'normalizr';
+import { push }      from 'react-router-redux';
+import { CALL_API,
+  getJSON }          from 'redux-api-middleware';
+import Schemas       from './schemas';
 
 const API_ROOT = window.location.origin + '/api/';
+
 let nextMessageId = 0;
-
 export const ADD_MESSAGE = 'ADD_MESSAGE';
-
 export const addMessage = ({ text, username }) => ({
   type: 'server.' + ADD_MESSAGE,
   id: nextMessageId++,
@@ -18,16 +19,6 @@ export const addMessage = ({ text, username }) => ({
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
 export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
 export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
-
-const messageSchema = new schema.Entity('messages', {}, {
-  idAttribute: 'createdAt'
-});
-
-const Schemas = {
-  MESSAGE: messageSchema,
-  MESSAGE_ARRAY: [messageSchema]
-};
-
 export const fetchMessages = () => ({
   [CALL_API]: {
     endpoint: API_ROOT + 'messages',
@@ -48,8 +39,13 @@ export const fetchMessages = () => ({
   }
 });
 
-export const SIGN_IN = 'SIGN_IN';
+export const ADD_CONVO = 'ADD_CONVO';
+export const addConvo = ({ name }) => ({
+  type: 'server.' + ADD_CONVO,
+  name
+});
 
+export const SIGN_IN = 'SIGN_IN';
 export const signIn = (username, id) => (dispatch) => {
   dispatch({
     type: SIGN_IN,
@@ -60,13 +56,11 @@ export const signIn = (username, id) => (dispatch) => {
 };
 
 export const OPEN_MODAL = 'OPEN_MODAL';
-
 export const openModal = () => ({
   type: OPEN_MODAL
 });
 
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-
 export const closeModal = () => ({
   type: CLOSE_MODAL
 });
