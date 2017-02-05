@@ -7,7 +7,10 @@ const setup = () => {
   const props = {
     modalIsOpen: false,
     openModal: jest.fn(),
-    closeModal: jest.fn()
+    closeModal: jest.fn(),
+    user: {
+      loggedIn: true
+    }
   };
 
   const component = <ChatMenu {...props} />;
@@ -64,6 +67,7 @@ describe('<ChatMenu />', () => {
     expect(mapStateToProps({ui: {...props}}))
       .toEqual({
         modalIsOpen: props.modalIsOpen,
+        user: props.user
       });
   });
 });

@@ -15,6 +15,7 @@ class ChatInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    // TODO input validation
     this.props.onMessageSubmit({
       text: this.state.draft,
       username: this.props.user.username

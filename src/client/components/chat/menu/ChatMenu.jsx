@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect }          from 'react-redux';
-import { openModal, closeModal } from '../../../actions';
+import { openModal,
+  closeModal,
+  addConvo }                from '../../../actions';
 import CreateRoomModal      from './CreateRoomModal';
 import                           './menu.scss';
 
@@ -63,8 +65,10 @@ export class ChatMenu extends React.Component {
                     Add a room
                   </button>
                   <CreateRoomModal
+                    user={this.props.user}
                     modalIsOpen={this.props.modalIsOpen}
                     onRequestClose={this.props.closeModal}
+                    onFormSubmit={this.props.addConvo}
                   />
                 </div>
               </footer>
@@ -84,14 +88,17 @@ export class ChatMenu extends React.Component {
 ChatMenu.propTypes = {
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  modalIsOpen: PropTypes.bool.isRequired
+  addConvo: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export const mapStateToProps = (state) => ({
-  modalIsOpen: state.ui.modalIsOpen
+  modalIsOpen: state.ui.modalIsOpen,
+  user: state.user
 });
 
 export default connect(
   mapStateToProps,
-  { openModal, closeModal }
+  { openModal, closeModal, addConvo }
 )(ChatMenu);
