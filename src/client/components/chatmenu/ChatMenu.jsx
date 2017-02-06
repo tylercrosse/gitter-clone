@@ -4,7 +4,7 @@ import {
   openModal,
   closeModal,
   addConvo,
-  fetchConvos }       from '../../../actions';
+  fetchConvos }       from '../../actions';
 import Panel       from './Panel';
 import                  './menu.scss';
 
