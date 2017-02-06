@@ -15,11 +15,12 @@ const convo = (state, action) => {
 };
 
 const convos = (state = {}, action) => {
-  // if (action.payload && action.payload.entities && action.payload.entities.convos) {
-  //   return {
-  //     ...state,
-  //   };
-  // }
+  if (action.payload && action.payload.entities && action.payload.entities.convos) {
+    return {
+      ...state,
+      ...action.payload.entities.convos
+    };
+  }
   switch (action.type) {
     case ADD_CONVO: {
       return {

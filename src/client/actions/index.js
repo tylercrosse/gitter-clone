@@ -45,6 +45,29 @@ export const addConvo = ({ name }) => ({
   name
 });
 
+export const CONVOS_REQUEST = 'CONVOS_REQUEST';
+export const CONVOS_SUCCESS = 'CONVOS_SUCCESS';
+export const CONVOS_FAILURE = 'CONVOS_FAILURE';
+export const fetchConvos = () => ({
+  [CALL_API]: {
+    endpoint: API_ROOT + 'convos',
+    method: 'GET',
+    types: [
+      CONVOS_REQUEST,
+      {
+        type: CONVOS_SUCCESS,
+        /* istanbul ignore next: boilerplate from redux-api-middleware */
+        payload: (action, state, res) => {
+        /* istanbul ignore next */
+          return getJSON(res)
+            .then((json) => normalize(json, Schemas.CONVO_ARRAY));
+        }
+      },
+      CONVOS_FAILURE
+    ]
+  }
+});
+
 export const SIGN_IN = 'SIGN_IN';
 export const signIn = (username, id) => (dispatch) => {
   dispatch({

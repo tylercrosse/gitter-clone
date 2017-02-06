@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import {
   openModal,
   closeModal,
-  addConvo }       from '../../../actions';
+  addConvo,
+  fetchConvos }       from '../../../actions';
 import Panel       from './Panel';
 import                  './menu.scss';
 
@@ -15,6 +16,9 @@ export class ChatMenu extends React.Component {
     };
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMinibarButtonClick = this.handleMinibarButtonClick.bind(this);
+  }
+  componentDidMount() {
+    this.props.fetchConvos();
   }
   toggleActive() {
     this.setState((prevState) => ({
@@ -63,5 +67,5 @@ export const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { openModal, closeModal, addConvo }
+  { openModal, closeModal, addConvo, fetchConvos }
 )(ChatMenu);
