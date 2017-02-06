@@ -7,8 +7,8 @@ const Panel = (props) => {
   return (
     <section
       onMouseLeave={props.onMouseLeave}
-      className="chat-menu-panel active"
-      // className={'chat-menu-panel ' + active}
+      // className="chat-menu-panel active"
+      className={'chat-menu-panel ' + active}
     >
       <div className="brand-container">Gitter Clone</div>
       <header className="panel-header">
