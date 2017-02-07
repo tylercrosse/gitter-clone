@@ -1,7 +1,6 @@
 import { ADD_CONVO } from '../actions';
 
-const convo = (state, action) => {
-  console.log('🍯', action);
+export const convo = (state, action) => {
   switch (action.type) {
     case ADD_CONVO:
       return {

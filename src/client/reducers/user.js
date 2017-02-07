@@ -13,11 +13,11 @@ const user = (state = initialState, action) => {
         username: action.username,
         loggedIn: true
       };
-    case 'SIGN_OUT':
-      return {
-        ...state,
-        loggedIn: false
-      };
+    // case 'SIGN_OUT':
+    //   return {
+    //     ...state,
+    //     loggedIn: false
+    //   };
     default:
       return state;
   }
