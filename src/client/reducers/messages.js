@@ -41,7 +41,7 @@ const message = (state, action) => {
 };
 
 const messages = (state = {}, action) => {
-  if (action.payload && action.payload.entities) {
+  if (action.payload && action.payload.entities && action.payload.entities.messages) {
     const burstifiedMessages = burstify(action.payload.entities.messages);
     return {
       ...state,

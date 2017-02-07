@@ -3,7 +3,7 @@ import React,
 import { connect } from 'react-redux';
 import { fetchMessages,
   addMessage }     from '../../actions/';
-import ChatMenu    from './menu/ChatMenu.jsx';
+import ChatMenu    from '../chatmenu/ChatMenu.jsx';
 import ChatHeader  from './ChatHeader.jsx';
 import ChatToolbar from './ChatToolbar.jsx';
 import ChatContent from './ChatContent.jsx';

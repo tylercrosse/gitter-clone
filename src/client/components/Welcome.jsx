@@ -19,6 +19,7 @@ export class Welcome extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    // TODO better input validation
     if (!this.state.username.trim()) {
       return;
     }

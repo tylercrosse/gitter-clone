@@ -1,8 +1,11 @@
 import * as messageCtlr from './messages';
+import * as convoCtlr from './convos';
 
 export const socketActions = (io, action) => {
   switch (action.type) {
     case 'server.ADD_MESSAGE': messageCtlr.addMessage(io, action);
+      break;
+    case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
     default:
       throw new Error('Unknown action'); // TODO better error handling

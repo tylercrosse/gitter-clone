@@ -1,12 +1,17 @@
 import React from 'react';
 // import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import CreateRoomModal from './CreateRoomModal.jsx';
+import ConvoItem from './ConvoItem.jsx';
 
 const setup = () => {
   const props = {
+    _id: '5898b15d6047fd8db8b4e3bb',
+    updatedAt: '2017-02-06T17:24:45.657Z',
+    createdAt: '2017-02-06T17:24:45.657Z',
+    name: 'chat2',
+    __v: 0
   };
-  const component = <CreateRoomModal {...props} />;
+  const component = <ConvoItem {...props} />;
 
   return {
     props,
@@ -14,14 +19,11 @@ const setup = () => {
   };
 };
 
-describe('<CreateRoomModal />', () => {
+describe('<ConvoItem />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const renderedComponent = renderer.create(component);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  // close modal by clicking cancel
-  // close modal by clicking outside of modal
 });

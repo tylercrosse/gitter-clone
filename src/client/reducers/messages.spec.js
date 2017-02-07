@@ -7,6 +7,14 @@ describe('messages reducer', () => {
     ).toEqual({});
   });
 
+  it('should return state for default switch case', () => {
+    expect(
+      messages({}, {
+        type: 'fooBar'
+      })
+    ).toMatchSnapshot('default');
+  });
+
   it('should handle ADD_MESSAGE', () => {
     expect(
       messages({}, {

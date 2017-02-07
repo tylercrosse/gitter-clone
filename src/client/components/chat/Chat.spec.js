@@ -1,6 +1,6 @@
 import React        from 'react';
-import renderer     from 'react-test-renderer';
 import { shallow }  from 'enzyme';
+import toJson from 'enzyme-to-json';
 import { Chat,
   mapStateToProps } from './Chat';
 
@@ -15,28 +15,22 @@ const setup = (propOverrides) => {
   }, propOverrides);
 
   const component = <Chat {...props} />;
-  const wrapper = shallow(component);
 
   return {
     props,
-    component,
-    wrapper
+    component
   };
 };
 
 describe('<Chat />', () => {
-  xit('should render correctly', () => {
+  it('should render correctly', () => {
     const { component } = setup();
-    const renderedComponent = renderer.create(component);
-    const tree = renderedComponent.toJSON();
-    expect(tree)
-      .toMatchSnapshot();
+    const wrapper = shallow(component);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   xit('should call fetchMessages() at componentDidMount', () => {
-    const { props, component } = setup();
-    renderer.create(component);
-    expect(props.fetchMessages).toHaveBeenCalledTimes(1);
+    // FIXME TODO need store to render nested connected component
   });
 
   it('should recieve the correct props from state', () => {

@@ -1,4 +1,4 @@
-@import '../../../mixins/_variables.scss';
+@import '../../mixins/_variables.scss';
 
 .chat-menu {
   position: relative;
@@ -269,6 +269,64 @@
   }
 
   .primary-collection {
+  }
+
+  .convo-item {
+    overflow: hidden;
+    height: 38px;
+    max-height: 38px;
+    // opacity: 0;
+    color: #fff;
+    transition: height 0.2s ease-in, max-height 0.2s ease-in, opacity 0.2s ease-in;
+  }
+
+  .convo-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 26px;
+    padding-left: 13px;
+    transition: background-color 0.2s ease-out;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f1f2f2;
+      color: black;
+      outline: none;
+    }
+  }
+
+  .convo-item-avatar {
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-left: 13px;
+    z-index: 0;
+  }
+
+  .convo-item-title {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    height: 38px;
+    max-height: 38px;
+    overflow: hidden;
+    color: #646565;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 38px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    display: flex;
+    margin: 0;
+
+    &:hover {
+      color: black;
+      font-weight: 500;
+    }
   }
 }
 
