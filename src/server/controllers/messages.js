@@ -11,7 +11,8 @@ export const addMessage = (io, action) => {
   // console.log('🍕', action);
   Message.create({
     username: action.username,
-    text: action.text
+    text: action.text,
+    rawMarkup: action.rawMarkup
   }).then((message) => {
     io.emit('action', { // FIXME better decouple db & socket interactions
       type: 'ADD_MESSAGE',

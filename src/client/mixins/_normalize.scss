@@ -1,6 +1,7 @@
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
+
 /**
  * Includes legacy browser support IE6/7
  *
@@ -117,9 +118,10 @@ a {
  */
 
 a {
-  &:active, &:hover {
+  &:active,
+  &:hover {
     outline: 0;
-  };
+  }
 }
 
 /* Text-level semantics
@@ -162,7 +164,7 @@ dfn {
  */
 
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   margin: 0.67em 0;
 }
 
@@ -203,7 +205,6 @@ mark {
 }
 
 @if $legacy_browser_support {
-
   /**
    * Addresses margins set differently in IE 6/7.
    */
@@ -225,8 +226,8 @@ mark {
    * Addresses `quotes` property not supported in Safari 4.
    */
 
-  q:before,
-  q:after {
+  q::before,
+  q::after {
     content: '';
     content: none;
   }
@@ -261,7 +262,6 @@ sub {
 }
 
 @if $legacy_browser_support {
-
   /* ==========================================================================
      Lists
      ========================================================================== */
@@ -313,6 +313,7 @@ sub {
 
 img {
   border: 0;
+
   @if $legacy_browser_support {
     *-ms-interpolation-mode: bicubic; /* 2 */
   }
@@ -363,11 +364,12 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace;
+  font-size: 1em;
+
   @if $legacy_browser_support {
     _font-family: 'courier new', monospace;
   }
-  font-size: 1em;
 }
 
 /* Forms

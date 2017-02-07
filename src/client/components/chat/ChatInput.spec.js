@@ -53,7 +53,11 @@ describe('<ChatInput />', () => {
       wrapper.find('textarea').simulate('change', {target: {value}});
       wrapper.find('form').simulate('submit');
       expect(props.onMessageSubmit)
-        .toHaveBeenCalledWith({text: value, username: props.user.username});
+        .toHaveBeenCalledWith({
+          rawMarkup: '<p>My new value</p>\n',
+          text: 'My new value',
+          username: 'Bob'
+        });
     });
   });
 

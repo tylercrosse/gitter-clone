@@ -1,7 +1,13 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 
-export const ChatItem = ({ username, text, createdAt, burstStart }) => {
+export const ChatItem = ({
+  username,
+  text,
+  rawMarkup,
+  createdAt,
+  burstStart
+}) => {
   const dateString = moment(createdAt).format('MMM MM HH:mm');
   if (burstStart) {
     return (
@@ -9,8 +15,8 @@ export const ChatItem = ({ username, text, createdAt, burstStart }) => {
         <div className="chat-item-container">
           <div className="chat-item-aside">
             <img
-              className="avatar"
-              src={'http://i.pravatar.cc/30?u=' + username} alt={username}
+            className="avatar"
+            src={'http://i.pravatar.cc/30?u=' + username} alt={username}
             />
           </div>
           <div className="chat-item-content">
@@ -18,7 +24,13 @@ export const ChatItem = ({ username, text, createdAt, burstStart }) => {
               <div className="chat-item-user">{username}</div>
               <div className="chat-item-time">{dateString}</div>
             </div>
-            <div className="chat-item-text">{text}</div>
+            {rawMarkup ?
+              <div
+              className="chat-item-text"
+              dangerouslySetInnerHTML={{__html: rawMarkup}}
+              /> :
+              <div className="chat-item-text">{text}</div>
+            }
           </div>
         </div>
       </article>
@@ -28,7 +40,13 @@ export const ChatItem = ({ username, text, createdAt, burstStart }) => {
     <article className="chat-item burst-continued">
       <div className="chat-item-container">
         <div className="chat-item-content">
-          <div className="chat-item-text">{text}</div>
+          {rawMarkup ?
+            <div
+            className="chat-item-text"
+            dangerouslySetInnerHTML={{__html: rawMarkup}}
+            /> :
+            <div className="chat-item-text">{text}</div>
+          }
         </div>
       </div>
     </article>

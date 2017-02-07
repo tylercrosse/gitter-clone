@@ -7,7 +7,7 @@ describe('messages controller', () => {
     const res = {
       json: jest.fn()
     };
-    Message.find = jest.fn(function() { return this; });
+    Message.find = jest.fn(function find() { return this; });
     Message.then = jest.fn((callback) => callback('dummy message'));
     messagesCtlr.getMessages(req, res);
     expect(Message.find).toHaveBeenCalledTimes(1);
@@ -22,7 +22,7 @@ describe('messages controller', () => {
     const action = {
       name: 'chat'
     };
-    Message.create = jest.fn(function() { return this; });
+    Message.create = jest.fn(function create() { return this; });
     Message.then = jest.fn((callback) => callback('dummy message'));
     messagesCtlr.addMessage(io, action);
     expect(Message.create).toHaveBeenCalledTimes(1);
