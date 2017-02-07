@@ -47,9 +47,9 @@ export class CreateRoomModal extends React.Component {
           </button>
         </header>
         <section className="modal-body">
-          <form onSubmit={(e) => this.handleSubmit(e)}>
+          <form onSubmit={this.handleSubmit}>
             <input
-              onChange={(e) => this.handleChange(e)}
+              onChange={this.handleChange}
               value={this.state.name}
               placeholder="Converation Name"
               type="text"
