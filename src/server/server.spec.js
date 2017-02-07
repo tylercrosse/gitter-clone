@@ -23,6 +23,13 @@ describe('express serving', () => {
         .expect('Content-Type', /json/);
     });
 
+    it('should respond to /api/convos with json', () => {
+      return request(server)
+        .get('/api/messages')
+        .expect(200)
+        .expect('Content-Type', /json/);
+    });
+
     it('should respond to /* with the index.html', () => {
       return request(server)
         .get('/foo/bar')
