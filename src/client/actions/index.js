@@ -9,11 +9,12 @@ const API_ROOT = window.location.origin + '/api/';
 
 let nextMessageId = 0;
 export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const addMessage = ({ text, username }) => ({
+export const addMessage = ({ username, text, rawMarkup }) => ({
   type: 'server.' + ADD_MESSAGE,
   id: nextMessageId++,
   username,
-  text
+  text,
+  rawMarkup
 });
 
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';

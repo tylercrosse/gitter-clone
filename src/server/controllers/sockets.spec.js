@@ -1,5 +1,6 @@
 import { socketActions } from './sockets';
 import * as messageCtlr from './messages';
+import * as convosCtlr from './convos';
 
 describe('sockets controller', () => {
   it('should handle server.ADD_MESSAGE', () => {
@@ -12,6 +13,18 @@ describe('sockets controller', () => {
     messageCtlr.addMessage = jest.fn();
     socketActions({}, action);
     expect(messageCtlr.addMessage)
+      .toHaveBeenCalledWith({}, action);
+  });
+
+  it('should handle server.ADD_CONVO', () => {
+    const action = {
+      type: 'server.ADD_CONVO',
+      id: 0,
+      name: 'redux'
+    };
+    convosCtlr.addConvo = jest.fn();
+    socketActions({}, action);
+    expect(convosCtlr.addConvo)
       .toHaveBeenCalledWith({}, action);
   });
 

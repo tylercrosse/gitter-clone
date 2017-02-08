@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import marked from 'marked';
+import Prism from 'prismjs';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -8,6 +10,14 @@ class ChatInput extends React.Component {
       draft: ''
     };
   }
+  componentWillMount() {
+    marked.setOptions({
+      sanitize: true,
+      highlight: (code, language) => (
+        Prism.highlight(code, Prism.languages[language])
+      )
+    });
+  }
   updateDraft(e) {
     this.setState({
       draft: e.target.value
@@ -15,10 +25,11 @@ class ChatInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // TODO input validation
+    const rawMarkup = marked(this.state.draft);
     this.props.onMessageSubmit({
+      username: this.props.user.username,
       text: this.state.draft,
-      username: this.props.user.username
+      rawMarkup
     });
     this.setState({
       draft: ''

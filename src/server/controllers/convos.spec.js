@@ -7,7 +7,7 @@ describe('convos controller', () => {
     const res = {
       json: jest.fn()
     };
-    Convo.find = jest.fn(function() { return this; });
+    Convo.find = jest.fn(function find() { return this; });
     Convo.then = jest.fn((callback) => callback('dummy convo'));
     convosCtlr.getConvos(req, res);
     expect(Convo.find).toHaveBeenCalledTimes(1);
@@ -22,7 +22,7 @@ describe('convos controller', () => {
     const action = {
       name: 'chat'
     };
-    Convo.create = jest.fn(function() { return this; });
+    Convo.create = jest.fn(function create() { return this; });
     Convo.then = jest.fn((callback) => callback('dummy convo'));
     convosCtlr.addConvo(io, action);
     expect(Convo.create).toHaveBeenCalledTimes(1);
