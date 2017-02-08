@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
+import marked from 'marked';
 import ChatInput from './ChatInput.jsx';
 
 const setup = (propOverrides) => {
@@ -53,11 +54,15 @@ describe('<ChatInput />', () => {
       wrapper.find('textarea').simulate('change', {target: {value}});
       wrapper.find('form').simulate('submit');
       expect(props.onMessageSubmit)
-        .toHaveBeenCalledWith({
-          rawMarkup: '<p>My new value</p>\n',
-          text: 'My new value',
-          username: 'Bob'
-        });
+        .toHaveBeenCalledWith(expect.objectContaining({text: value}));
+    });
+
+    it('should initialize marked with options on mount', () => {
+      marked.setOptions = jest.fn();
+      const { component } = setup();
+      shallow(component);
+      expect(marked.setOptions)
+        .toHaveBeenCalledWith(expect.objectContaining({sanitize: true}));
     });
   });
 

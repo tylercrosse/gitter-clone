@@ -10,7 +10,7 @@ class ChatInput extends React.Component {
       draft: ''
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     marked.setOptions({
       sanitize: true,
       highlight: (code, language) => (
