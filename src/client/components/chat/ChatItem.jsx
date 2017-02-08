@@ -8,7 +8,7 @@ export const ChatItem = ({
   createdAt,
   burstStart
 }) => {
-  const dateString = moment(createdAt).format('MMM MM HH:mm');
+  const dateString = moment(createdAt).format('MMM DD HH:mm');
   if (burstStart) {
     return (
       <article className="chat-item burst-start">
