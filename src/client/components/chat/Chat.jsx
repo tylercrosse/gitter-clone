@@ -12,7 +12,8 @@ import                  './chat.scss';
 
 export class Chat extends React.Component {
   componentDidMount() {
-    this.props.fetchMessages();
+    const convo = this.props.routeParams.convo;
+    this.props.fetchMessages(convo);
   }
   render() {
     return (
@@ -24,12 +25,12 @@ export class Chat extends React.Component {
             <ChatToolbar />
             <div className="chat-wrapper">
               <ChatContent
-                containerId="chat-content"
-                messages={this.props.messages}
+              containerId="chat-content"
+              messages={this.props.messages}
               />
               <ChatInput
-                user={this.props.user}
-                onMessageSubmit={this.props.addMessage}
+              {...this.props}
+              onMessageSubmit={this.props.addMessage}
               />
             </div>
           </div>
@@ -42,13 +43,16 @@ export class Chat extends React.Component {
 Chat.propTypes = {
   messages: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  convos: PropTypes.object.isRequired,
+  routeParams: PropTypes.object.isRequired,
   fetchMessages: PropTypes.func.isRequired,
   addMessage: PropTypes.func.isRequired
 };
 
 export const mapStateToProps = (state) => ({
   messages: state.messages,
-  user: state.user
+  user: state.user,
+  convos: state.convos
 });
 
 export default connect(

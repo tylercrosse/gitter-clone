@@ -16,7 +16,7 @@ const Root = ({ store }) => {
       <Router history={history}>
         <Route path="/" component={App} >
           <IndexRoute component={Welcome} />
-          <Route path="/(:chat)" component={Chat} />
+          <Route path="/(:convo)" component={Chat} />
         </Route>
       </Router>
     </Provider>
