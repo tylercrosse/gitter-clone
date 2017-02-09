@@ -1,8 +1,8 @@
 import React        from 'react';
 import { shallow }  from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Chat,
-  mapStateToProps } from './Chat';
+import { ChatMain,
+  mapStateToProps } from './ChatMain';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -14,7 +14,7 @@ const setup = (propOverrides) => {
     addMessage: jest.fn()
   }, propOverrides);
 
-  const component = <Chat {...props} />;
+  const component = <ChatMain {...props} />;
 
   return {
     props,
@@ -22,7 +22,7 @@ const setup = (propOverrides) => {
   };
 };
 
-describe('<Chat />', () => {
+describe('<ChatMain />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const wrapper = shallow(component);

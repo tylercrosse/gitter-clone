@@ -4,7 +4,7 @@ import { Route }       from 'react-router';
 import { createStore } from 'redux';
 import rootReducer     from '../reducers/';
 import Root            from './Root.jsx';
-import App             from './App.jsx';
+import Chat            from './Chat.jsx';
 
 const setup = () => {
   const store = createStore(rootReducer);
@@ -23,6 +23,6 @@ describe('<Root />', () => {
       pathMap[routeProps.path] = routeProps.component;
       return pathMap;
     }, {});
-    expect(pathMap['/']).toBe(App);
+    expect(pathMap['/']).toBe(Chat);
   });
 });

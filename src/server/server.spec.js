@@ -18,14 +18,14 @@ describe('express serving', () => {
 
     it('should respond to /api/messages with json', () => {
       return request(server)
-        .get('/api/messages')
+        .get('/api/messages/chat')
         .expect(200)
         .expect('Content-Type', /json/);
     });
 
     it('should respond to /api/convos with json', () => {
       return request(server)
-        .get('/api/messages')
+        .get('/api/convos')
         .expect(200)
         .expect('Content-Type', /json/);
     });
