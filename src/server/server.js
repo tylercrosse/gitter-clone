@@ -1,11 +1,11 @@
-import path from 'path';
+import path       from 'path';
 import express    from 'express';
 import bodyParser from 'body-parser';
 import mongoose   from 'mongoose';
 import Promise    from 'bluebird';
 import SocketIo   from 'socket.io';
 import socketCtlr from './controllers/sockets';
-import routes        from './config/routes';
+import routes     from './config/routes';
 
 const app = express();
 const port = process.env.PORT || 3333;

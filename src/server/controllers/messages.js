@@ -1,4 +1,5 @@
 import Message from '../models/Message';
+import Convo   from '../models/Convo';
 
 export const getMessages = (req, res) => {
   // console.log('💬 convo:', req.params.convo);
@@ -12,16 +13,37 @@ export const getMessages = (req, res) => {
 
 export const addMessage = (io, action) => {
   // console.log('🍕 action:', action);
-  Message.create({
+  const doc = {
     username: action.username,
     text: action.text,
     rawMarkup: action.rawMarkup,
     convo: action.convo
-  }).then((message) => {
-    // console.log('✨ new message:', message);
-    io.emit('action', { // FIXME better decouple db & socket interactions
-      type: 'ADD_MESSAGE',
-      message
+  };
+
+  Convo.findOne({name: action.convo}, (err, convo) => {
+    if (err) console.log(err); // TODO error handling
+    // console.log('💬 original convo:', convo);
+
+    Message.create(doc, (err, message) => {
+      if (err) console.log(err); // TODO error handling
+
+      convo.messages.addToSet(message._id);
+      convo.save((err) => {
+        if (err) console.log(err); // TODO error handling
+        // console.log('💬 updated convo:', convo, convo.messages);
+        // console.log('✨ new message:', message);
+        io.emit('action', { // FIXME better decouple db & socket interactions
+          type: 'ADD_MESSAGE',
+          message
+        });
+      });
     });
-  }); // TODO error handling
+  });
 };
+
+// error handling
+// - Convo find
+// - message create
+// - convo update
+// - io?
+
