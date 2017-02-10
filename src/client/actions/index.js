@@ -26,28 +26,23 @@ export const addMessage = ({
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
 export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
 export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
-export const fetchMessages = (convo) => {
-  console.log('👁', convo);
-  return {
-    [CALL_API]: {
-      endpoint: API_ROOT + 'messages/' + convo,
-      method: 'GET',
-      types: [
-        MESSAGES_REQUEST,
-        {
-          type: MESSAGES_SUCCESS,
-        /* istanbul ignore next: boilerplate from redux-api-middleware */
-          payload: (action, state, res) => {
-        /* istanbul ignore next */
-            return getJSON(res)
-            .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
-          }
-        },
-        MESSAGES_FAILURE
-      ]
-    }
-  };
-};
+export const fetchMessages =  (convo) => ({
+  [CALL_API]: {
+    endpoint: API_ROOT + 'messages/' + convo,
+    method: 'GET',
+    types: [
+      MESSAGES_REQUEST,
+      {
+        type: MESSAGES_SUCCESS,
+        payload: /* istanbul ignore next */ (action, state, res) => {
+          return getJSON(res)
+          .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
+        }
+      },
+      MESSAGES_FAILURE
+    ]
+  }
+});
 
 export const ADD_CONVO = 'ADD_CONVO';
 export const addConvo = ({ name }) => ({
@@ -66,9 +61,7 @@ export const fetchConvos = () => ({
       CONVOS_REQUEST,
       {
         type: CONVOS_SUCCESS,
-        /* istanbul ignore next: boilerplate from redux-api-middleware */
-        payload: (action, state, res) => {
-        /* istanbul ignore next */
+        payload: /* istanbul ignore next */ (action, state, res) => {
           return getJSON(res)
             .then((json) => normalize(json, Schemas.CONVO_ARRAY));
         }
