@@ -18,9 +18,9 @@ const setup = () => {
 describe('<Root />', () => {
   it('should render correct routes', () => {
     const { wrapper } = setup();
-    const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
+    const pathMap = wrapper.find(Route).reduce((pathMap, route) => { // eslint-disable-line no-shadow
       const routeProps = route.props();
-      pathMap[routeProps.path] = routeProps.component;
+      pathMap[routeProps.path] = routeProps.component; // eslint-disable-line no-param-reassign
       return pathMap;
     }, {});
     expect(pathMap['/']).toBe(Chat);
