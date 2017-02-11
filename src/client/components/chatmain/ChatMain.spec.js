@@ -6,10 +6,14 @@ import { ChatMain,
 
 const setup = (propOverrides) => {
   const props = Object.assign({
-    messages: {},
+    messages: [],
     user: {
       loggedIn: true
     },
+    routeParams: {
+      convo: 'chat'
+    },
+    convoName: 'chat',
     fetchMessages: jest.fn(),
     addMessage: jest.fn()
   }, propOverrides);
@@ -35,10 +39,11 @@ describe('<ChatMain />', () => {
 
   it('should recieve the correct props from state', () => {
     const { props } = setup();
-    expect(mapStateToProps(props))
-      .toEqual({
-        messages: props.messages,
-        user: props.user
-      });
+    let state = {convos: {}};
+    expect(mapStateToProps(state, props))
+      .toMatchSnapshot();
+    state = {convos: {chat: []}};
+    expect(mapStateToProps(state, props))
+      .toMatchSnapshot();
   });
 });
