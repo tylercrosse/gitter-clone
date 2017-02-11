@@ -10,6 +10,9 @@ const setup = (propOverrides) => {
       username: 'Bob',
       loggedIn: true
     },
+    routeParams: {
+      convo: 'redux'
+    },
     onMessageSubmit: jest.fn()
   }, propOverrides);
 

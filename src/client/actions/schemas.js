@@ -5,7 +5,7 @@ const messageSchema = new schema.Entity('messages', {}, {
 });
 
 const convoSchema = new schema.Entity('convos', {}, {
-  idAttribute: '_id'
+  idAttribute: 'name'
 });
 
 const Schemas = {

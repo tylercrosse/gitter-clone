@@ -1,6 +1,12 @@
 import moment from 'moment';
-import { ADD_MESSAGE } from '../actions';
+import * as ActionTypes from '../actions';
 
+/**
+ * Groups sequential messages within 15 minutes by the same user.
+ * Grouping is done by adding burstStart property to messages.
+ * @param  {Object} messages keyed by id from a single convo
+ * @return {Object}          same as input, object keyed by id
+ */
 const burstify = (messages) => {
   const msgA = Object.values(messages);
   const bursts = {};
@@ -24,12 +30,17 @@ const burstify = (messages) => {
       prev = curr;
     }
   }
-  return Object.values(bursts).reduce((acc, cur) => acc.concat(cur));
+  const flat = Object.values(bursts).reduce((acc, cur) => acc.concat(cur));
+  const keyedMessages = flat.reduce((obj, item) => {
+    obj[item._id] = item; // eslint-disable-line no-param-reassign
+    return obj;
+  }, {});
+  return keyedMessages;
 };
 
 const message = (state, action) => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ActionTypes.ADD_MESSAGE:
       return {
         [action.message._id]: {
           ...action.message
@@ -49,7 +60,8 @@ const messages = (state = {}, action) => {
     };
   }
   switch (action.type) {
-    case ADD_MESSAGE: {
+    case ActionTypes.ADD_MESSAGE: {
+      // NOTE this currently runs burstify against all messages
       const burstifiedMessages = burstify({
         ...state,
         ...message(undefined, action)

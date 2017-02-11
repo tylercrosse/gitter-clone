@@ -1,4 +1,4 @@
-export const renderFullPage = (req, res) => {
+export const renderFullPage = (req, res) => { // eslint-disable-line import/prefer-default-export
   // res.sendfile() ?? https://expressjs.com/en/api.html#res.sendFile
   res.status(200).end(
 `<!DOCTYPE html>

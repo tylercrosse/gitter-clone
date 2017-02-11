@@ -1,20 +1,24 @@
 import React        from 'react';
 import { shallow }  from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Chat,
-  mapStateToProps } from './Chat';
+import { ChatMain,
+  mapStateToProps } from './ChatMain';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
-    messages: {},
+    messages: [],
     user: {
       loggedIn: true
     },
+    routeParams: {
+      convo: 'chat'
+    },
+    convoName: 'chat',
     fetchMessages: jest.fn(),
     addMessage: jest.fn()
   }, propOverrides);
 
-  const component = <Chat {...props} />;
+  const component = <ChatMain {...props} />;
 
   return {
     props,
@@ -22,7 +26,7 @@ const setup = (propOverrides) => {
   };
 };
 
-describe('<Chat />', () => {
+describe('<ChatMain />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const wrapper = shallow(component);
@@ -35,10 +39,11 @@ describe('<Chat />', () => {
 
   it('should recieve the correct props from state', () => {
     const { props } = setup();
-    expect(mapStateToProps(props))
-      .toEqual({
-        messages: props.messages,
-        user: props.user
-      });
+    let state = {convos: {}};
+    expect(mapStateToProps(state, props))
+      .toMatchSnapshot();
+    state = {convos: {chat: []}};
+    expect(mapStateToProps(state, props))
+      .toMatchSnapshot();
   });
 });

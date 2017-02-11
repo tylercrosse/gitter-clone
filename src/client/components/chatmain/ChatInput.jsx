@@ -26,10 +26,12 @@ class ChatInput extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const rawMarkup = marked(this.state.draft);
+    const convo = this.props.routeParams.convo;
     this.props.onMessageSubmit({
       username: this.props.user.username,
       text: this.state.draft,
-      rawMarkup
+      rawMarkup,
+      convo
     });
     this.setState({
       draft: ''
@@ -72,7 +74,8 @@ class ChatInput extends React.Component {
 
 ChatInput.propTypes = {
   onMessageSubmit: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  routeParams: PropTypes.object.isRequired
 };
 
 export default ChatInput;

@@ -9,10 +9,10 @@ class ChatContent extends React.Component {
   render() {
     return (
       <section
-        id="chat-content"
-        className="chat-content scroller"
+      id="chat-content"
+      className="chat-content scroller"
       >
-        {Object.values(this.props.messages).map((message) =>
+        {this.props.messages.map((message) =>
           <ChatItem
             key={message._id}
             {...message}
@@ -24,7 +24,7 @@ class ChatContent extends React.Component {
 }
 
 ChatContent.propTypes = {
-  messages: PropTypes.object.isRequired
+  messages: PropTypes.array.isRequired
 };
 
 export default ChatContent;

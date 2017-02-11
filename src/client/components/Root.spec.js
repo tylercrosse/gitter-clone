@@ -4,7 +4,7 @@ import { Route }       from 'react-router';
 import { createStore } from 'redux';
 import rootReducer     from '../reducers/';
 import Root            from './Root.jsx';
-import App             from './App.jsx';
+import Chat            from './Chat.jsx';
 
 const setup = () => {
   const store = createStore(rootReducer);
@@ -18,11 +18,11 @@ const setup = () => {
 describe('<Root />', () => {
   it('should render correct routes', () => {
     const { wrapper } = setup();
-    const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
+    const pathMap = wrapper.find(Route).reduce((pathMap, route) => { // eslint-disable-line no-shadow
       const routeProps = route.props();
-      pathMap[routeProps.path] = routeProps.component;
+      pathMap[routeProps.path] = routeProps.component; // eslint-disable-line no-param-reassign
       return pathMap;
     }, {});
-    expect(pathMap['/']).toBe(App);
+    expect(pathMap['/']).toBe(Chat);
   });
 });

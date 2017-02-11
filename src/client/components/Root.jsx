@@ -5,18 +5,23 @@ import { Router,
   IndexRoute,
   browserHistory }              from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import App     from './App.jsx';
-import Chat    from './chat/Chat.jsx';
-import Welcome from './Welcome.jsx';
+// import App      from './App.jsx';
+import Welcome  from './Welcome.jsx';
+import Chat     from './Chat.jsx';
+import ChatMain from './chatmain/ChatMain.jsx';
+import ChatMenu from './chatmenu/ChatMenu.jsx';
 
 const Root = ({ store }) => {
   const history = syncHistoryWithStore(browserHistory, store);
   return (
     <Provider store={store}>
       <Router history={history}>
-        <Route path="/" component={App} >
-          <IndexRoute component={Welcome} />
-          <Route path="/(:chat)" component={Chat} />
+        <Route path="/" component={Chat} >
+          <IndexRoute components={{main: Welcome, menu: ChatMenu}} />
+          <Route
+          path="/:convo"
+          components={{main: ChatMain, menu: ChatMenu}}
+          />
         </Route>
       </Router>
     </Provider>

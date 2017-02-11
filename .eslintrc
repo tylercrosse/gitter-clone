@@ -20,7 +20,7 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "camelcase": 0,
     "react/prop-types": 1,
-    "react/forbid-prop-types": [2, { "forbid": ['any', 'array'] }],
+    "react/forbid-prop-types": [2, { "forbid": ['any'] }],
     "react/jsx-indent-props": 0,
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-filename-extension": 0,

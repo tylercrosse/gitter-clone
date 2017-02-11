@@ -4,7 +4,7 @@ export const convo = (state, action) => {
   switch (action.type) {
     case ADD_CONVO:
       return {
-        [action.convo._id]: {
+        [action.convo.name]: {
           ...action.convo
         }
       };
