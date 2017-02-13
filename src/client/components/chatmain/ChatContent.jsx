@@ -7,12 +7,13 @@ class ChatContent extends React.Component {
     animateScroll.scrollToBottom({containerId: 'chat-content'});
   }
   render() {
+    const { messages } = this.props;
     return (
       <section
       id="chat-content"
       className="chat-content scroller"
       >
-        {this.props.messages.map((message) =>
+        {messages.length && messages.map((message) =>
           <ChatItem
             key={message._id}
             {...message}

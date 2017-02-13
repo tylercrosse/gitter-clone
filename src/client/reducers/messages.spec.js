@@ -26,15 +26,7 @@ describe('messages reducer', () => {
           _id: 0
         }
       })
-    ).toEqual({
-      0: {
-        burstStart: true,
-        createdAt: '2017-02-01T09:00:00-08:00',
-        username: 'dan',
-        text: 'Run the tests',
-        _id: 0
-      }
-    });
+    ).toMatchSnapshot('-> 1 message');
 
     expect(
       messages({
@@ -54,22 +46,7 @@ describe('messages reducer', () => {
           _id: 1
         }
       })
-    ).toEqual({
-      0: {
-        createdAt: '2017-02-01T09:00:00-08:00',
-        username: 'dan',
-        burstStart: true,
-        text: 'Run the tests',
-        _id: 0
-      },
-      1: {
-        createdAt: '2017-02-01T09:01:00-08:00',
-        username: 'dan',
-        burstStart: false,
-        text: 'Use Redux',
-        _id: 1
-      }
-    });
+    ).toMatchSnapshot('-> 2 messages');
 
     expect(
       messages({
@@ -96,28 +73,6 @@ describe('messages reducer', () => {
           _id: 2
         }
       })
-    ).toEqual({
-      0: {
-        createdAt: '2017-02-01T09:00:00-08:00',
-        username: 'dan',
-        burstStart: true,
-        text: 'Run the tests',
-        _id: 0
-      },
-      1: {
-        createdAt: '2017-02-01T09:01:00-08:00',
-        username: 'dan',
-        burstStart: false,
-        text: 'Use Redux',
-        _id: 1
-      },
-      2: {
-        createdAt: '2017-02-01T09:20:00-08:00',
-        username: 'dan',
-        burstStart: true,
-        text: 'Fix the tests',
-        _id: 2
-      }
-    });
+    ).toMatchSnapshot('-> 3 messages');
   });
 });
