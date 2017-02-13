@@ -12,7 +12,7 @@ describe('convo reucer', () => {
           __v: 0
         }
       })
-    ).toMatchSnapshot('-> 1 message');
+    ).toMatchSnapshot('-> 1 convo');
   });
 
   it('should return state for default switch case', () => {
@@ -42,7 +42,7 @@ describe('convos reducer', () => {
           __v: 0
         }
       })
-    ).toMatchSnapshot('-> 1 message');
+    ).toMatchSnapshot('-> 1 convo');
 
     expect(
       convos({
@@ -61,7 +61,7 @@ describe('convos reducer', () => {
           __v: 0
         }
       })
-    ).toMatchSnapshot('-> 2 messages');
+    ).toMatchSnapshot('-> 2 convos');
 
     expect(
       convos({
@@ -86,6 +86,6 @@ describe('convos reducer', () => {
           __v: 0
         }
       })
-    ).toMatchSnapshot('-> 3 messages');
+    ).toMatchSnapshot('-> 3 convos');
   });
 });

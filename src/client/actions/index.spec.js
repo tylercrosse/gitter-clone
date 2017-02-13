@@ -1,16 +1,5 @@
-// import configureMockStore from 'redux-mock-store';
-// import thunk from 'redux-thunk';
 import { v4 } from 'node-uuid';
 import * as actions from './index';
-
-// const setup = () => {
-//   const middlewares = [thunk];
-//   const mockStore = configureMockStore(middlewares);
-//
-//   return {
-//     mockStore
-//   };
-// };
 
 describe('actions', () => {
   it('addMessage should create ADD_MESSAGE action', () => {
@@ -25,6 +14,23 @@ describe('actions', () => {
         username: 'Bob',
         text: 'Use Redux'
       });
+  });
+
+  it('fetchMessages should create [CALL_API] action', () => {
+    const convo = 'chat';
+    expect(actions.fetchMessages(convo))
+    .toMatchSnapshot();
+  });
+
+  it('addConvo should create ADD_CONVO action', () => {
+    const convo = {name: 'chat'};
+    expect(actions.addConvo(convo))
+      .toMatchSnapshot();
+  });
+
+  it('fetchConvos should create [CALL_API] action', () => {
+    expect(actions.fetchConvos())
+      .toMatchSnapshot();
   });
 
   describe('signIn action creator', () => {

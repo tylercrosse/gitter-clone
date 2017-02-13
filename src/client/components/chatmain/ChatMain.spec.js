@@ -2,7 +2,7 @@ import React        from 'react';
 import { shallow }  from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { ChatMain,
-  mapStateToProps } from './ChatMain';
+  makeMapStateToProps } from './ChatMain';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -40,6 +40,7 @@ describe('<ChatMain />', () => {
   it('should recieve the correct props from state', () => {
     const { props } = setup();
     let state = {convos: {}};
+    const mapStateToProps = makeMapStateToProps();
     expect(mapStateToProps(state, props))
       .toMatchSnapshot();
     state = {convos: {chat: []}};

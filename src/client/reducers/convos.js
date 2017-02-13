@@ -1,8 +1,8 @@
-import { ADD_CONVO } from '../actions';
+import * as ActionTypes from '../actions';
 
 export const convo = (state, action) => {
   switch (action.type) {
-    case ADD_CONVO:
+    case ActionTypes.ADD_CONVO:
       return {
         [action.convo.name]: {
           ...action.convo
@@ -21,7 +21,7 @@ const convos = (state = {}, action) => {
     };
   }
   switch (action.type) {
-    case ADD_CONVO: {
+    case ActionTypes.ADD_CONVO: {
       return {
         ...state,
         ...convo(undefined, action)

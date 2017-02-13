@@ -4,7 +4,7 @@ import { connect }     from 'react-redux';
 import { withRouter }  from 'react-router';
 import { fetchMessages,
   addMessage }         from '../../actions/';
-import messagesByConvo from '../../selectors/messagesByConvo';
+import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
 import ChatHeader      from './ChatHeader.jsx';
 import ChatToolbar     from './ChatToolbar.jsx';
 import ChatContent     from './ChatContent.jsx';
@@ -55,20 +55,24 @@ ChatMain.propTypes = {
   convoName: PropTypes.string.isRequired
 };
 
-export const mapStateToProps = (state, props) => {
-  const convoName = props.routeParams.convo;
-  const messages = state.convos[convoName] ?
-    messagesByConvo(state, convoName) :
+export const makeMapStateToProps = () => {
+  const getMessagesByConvo = makeGetMessagesByConvo();
+  const mapStateToProps = (state, props) => {
+    const convoName = props.routeParams.convo;
+    const messages = state.convos[convoName] ?
+    getMessagesByConvo(state, convoName) :
     [];
-  return {
-    messages,
-    user: state.user,
-    convos: state.convos,
-    convoName
+    return {
+      messages,
+      user: state.user,
+      convos: state.convos,
+      convoName
+    };
   };
+  return mapStateToProps;
 };
 
 export default withRouter(connect(
-  mapStateToProps,
+  makeMapStateToProps,
   { fetchMessages, addMessage }
 )(ChatMain));
