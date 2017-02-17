@@ -12,7 +12,7 @@ const port = process.env.PORT || 3333;
 
 // db config
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/gitter-clone');
+mongoose.connect('mongodb://localhost:27017/gitter-clone');
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', () => {
