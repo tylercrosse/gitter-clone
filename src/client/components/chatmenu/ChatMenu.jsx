@@ -1,10 +1,10 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 import {
-  openModal,
+  openCreateRoomModal,
   closeModal,
   addConvo,
-  fetchConvos }       from '../../actions';
+  fetchConvos }    from '../../actions';
 import Panel       from './Panel';
 import                  './chatmenu.scss';
 
@@ -60,12 +60,12 @@ export class ChatMenu extends React.Component {
 }
 
 export const mapStateToProps = (state) => ({
-  modalIsOpen: state.ui.modalIsOpen,
+  modalIsOpen: state.ui.modalIsOpen.createRoom,
   user: state.user,
   convos: state.convos
 });
 
 export default connect(
   mapStateToProps,
-  { openModal, closeModal, addConvo, fetchConvos }
+  { openCreateRoomModal, closeModal, addConvo, fetchConvos }
 )(ChatMenu);

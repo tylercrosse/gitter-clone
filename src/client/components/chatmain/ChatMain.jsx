@@ -2,13 +2,18 @@ import React,
   { PropTypes }        from 'react';
 import { connect }     from 'react-redux';
 import { withRouter }  from 'react-router';
-import { fetchMessages,
+import {
+  signIn,
+  openSignInModal,
+  closeModal,
+  fetchMessages,
   addMessage }         from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
 import ChatHeader      from './ChatHeader.jsx';
 import ChatToolbar     from './ChatToolbar.jsx';
 import ChatContent     from './ChatContent.jsx';
 import ChatInput       from './ChatInput.jsx';
+import SignInModal     from './SignInModal.jsx';
 import                      './chatmain.scss';
 
 export class ChatMain extends React.Component {
@@ -29,7 +34,7 @@ export class ChatMain extends React.Component {
       <main className="chat-header-wrapper">
         { this.props.isFetching &&
           <div className="loading-container">
-            <div className="loading-spinner"></div>
+            <div className="loading-spinner" />
           </div>
         }
         <ChatHeader user={this.props.user} />
@@ -46,6 +51,12 @@ export class ChatMain extends React.Component {
             />
           </div>
         </div>
+        <SignInModal
+        user={this.props.user}
+        modalIsOpen={this.props.modalIsOpen.signIn}
+        onRequestClose={this.props.closeModal}
+        onFormSubmit={this.props.signIn}
+        />
       </main>
     );
   }
@@ -73,7 +84,8 @@ export const makeMapStateToProps = () => {
       user: state.user,
       convos: state.convos,
       convoName,
-      isFetching: state.ui.isFetching
+      isFetching: state.ui.isFetching,
+      modalIsOpen: state.ui.modalIsOpen
     };
   };
   return mapStateToProps;
@@ -81,5 +93,5 @@ export const makeMapStateToProps = () => {
 
 export default withRouter(connect(
   makeMapStateToProps,
-  { fetchMessages, addMessage }
+  { signIn, openSignInModal, closeModal, fetchMessages, addMessage }
 )(ChatMain));

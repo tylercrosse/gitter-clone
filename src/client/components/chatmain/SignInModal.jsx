@@ -2,7 +2,7 @@ import React,
   { PropTypes } from 'react';
 import Modal    from 'react-modal';
 
-export class CreateRoomModal extends React.Component {
+export class SignInModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +19,7 @@ export class CreateRoomModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // TODO input validation
-    this.props.onFormSubmit({
-      name: this.state.name,
-      username: this.props.user.username
-    });
+    this.props.onFormSubmit(this.state.name);
     this.setState({
       name: ''
     });
@@ -38,7 +35,7 @@ export class CreateRoomModal extends React.Component {
       overlayClassName="modal-overlay"
       >
         <header className="modal-header">
-          <h1 className="modal-title">Create Room</h1>
+          <h1 className="modal-title">Sign In</h1>
           <button
           className="modal-close"
           onClick={this.props.onRequestClose}
@@ -65,12 +62,10 @@ export class CreateRoomModal extends React.Component {
   }
 }
 
-CreateRoomModal.PropTypes = {
+SignInModal.PropTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
 };
 
-export default CreateRoomModal;
-
+export default SignInModal;

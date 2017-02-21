@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import marked from 'marked';
-import Prism from 'prismjs';
+import React,
+  { PropTypes } from 'react';
+import marked   from 'marked';
+import Prism    from 'prismjs';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -42,26 +42,31 @@ class ChatInput extends React.Component {
       <div className="chat-input-container">
         <div className="chat-input-avatar">
           <img
-            className="avatar"
-            src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
+          className="avatar"
+          src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
           />
         </div>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <textarea
-            onChange={(e) => this.updateDraft(e)}
-            value={this.state.draft}
-            placeholder="Click here to type a chat message."
-            name="chat"
-            type="text"
-            autoFocus
-            autoComplete="off"
+          onChange={(e) => this.updateDraft(e)}
+          value={this.state.draft}
+          placeholder="Click here to type a chat message. Supports Github flavoured markdown."
+          name="chat"
+          type="text"
+          autoFocus
+          autoComplete="off"
           />
           <button type="submit">Send</button>
         </form>
       </div>
     ) : (
       <div className="chat-input-container">
-        <Link className="chat-input-btn" to="/">Sign in to start talking</Link>
+        <button
+        onClick={this.props.openSignInModal}
+        className="chat-input-btn"
+        >
+          Sign in to start talking
+        </button>
       </div>
     );
     return (
