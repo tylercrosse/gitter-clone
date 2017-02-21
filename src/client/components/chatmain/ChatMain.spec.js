@@ -14,6 +14,7 @@ const setup = (propOverrides) => {
       convo: 'chat'
     },
     convoName: 'chat',
+    isFetching: false,
     fetchMessages: jest.fn(),
     addMessage: jest.fn()
   }, propOverrides);
@@ -33,17 +34,29 @@ describe('<ChatMain />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('should render correctly when fetching', () => {
+    const { props } = setup({isFetching: true});
+    const wrapper = shallow(<ChatMain {...props} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   xit('should call fetchMessages() at componentDidMount', () => {
     // FIXME TODO need store to render nested connected component
   });
 
   it('should recieve the correct props from state', () => {
     const { props } = setup();
-    let state = {convos: {}};
+    let state = {
+      convos: {},
+      ui: {isFetching: false}
+    };
     const mapStateToProps = makeMapStateToProps();
     expect(mapStateToProps(state, props))
       .toMatchSnapshot();
-    state = {convos: {chat: []}};
+    state = {
+      convos: {chat: []},
+      ui: {isFetching: false}
+    };
     expect(mapStateToProps(state, props))
       .toMatchSnapshot();
   });

@@ -27,6 +27,11 @@ export class ChatMain extends React.Component {
   render() {
     return (
       <main className="chat-header-wrapper">
+        { this.props.isFetching &&
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+          </div>
+        }
         <ChatHeader user={this.props.user} />
         <div className="chat-and-toolbar-wrapper">
           <ChatToolbar />
@@ -52,7 +57,8 @@ ChatMain.propTypes = {
   routeParams: PropTypes.object.isRequired,
   fetchMessages: PropTypes.func.isRequired,
   addMessage: PropTypes.func.isRequired,
-  convoName: PropTypes.string.isRequired
+  convoName: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export const makeMapStateToProps = () => {
@@ -66,7 +72,8 @@ export const makeMapStateToProps = () => {
       messages,
       user: state.user,
       convos: state.convos,
-      convoName
+      convoName,
+      isFetching: state.ui.isFetching
     };
   };
   return mapStateToProps;

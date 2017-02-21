@@ -1,24 +1,32 @@
-import { OPEN_MODAL, CLOSE_MODAL } from '../actions/';
+import { combineReducers } from 'redux';
+import * as ActionTypes from '../actions';
 
-const initialState = {
-  modalIsOpen: false
-};
-
-const ui = (state = initialState, action) => {
+export const modalIsOpen = (state = false, action) => {
   switch (action.type) {
-    case OPEN_MODAL:
-      return {
-        ...state,
-        modalIsOpen: true
-      };
-    case CLOSE_MODAL:
-      return {
-        ...state,
-        modalIsOpen: false
-      };
+    case ActionTypes.OPEN_MODAL:
+      return true;
+    case ActionTypes.CLOSE_MODAL:
+      return false;
     default:
       return state;
   }
 };
+
+export const isFetching = (state = false, action) => {
+  switch (action.type) {
+    case ActionTypes.MESSAGES_REQUEST:
+      return true;
+    case ActionTypes.MESSAGES_SUCCESS:
+    case ActionTypes.MESSAGES_FAILURE:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const ui = combineReducers({
+  modalIsOpen,
+  isFetching
+});
 
 export default ui;
