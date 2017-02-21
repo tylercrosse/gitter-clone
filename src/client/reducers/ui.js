@@ -1,12 +1,28 @@
 import { combineReducers } from 'redux';
 import * as ActionTypes from '../actions';
 
-export const modalIsOpen = (state = false, action) => {
+const initialModalState = {
+  createRoom: false,
+  signIn: false
+};
+
+export const modalIsOpen = (state = initialModalState, action) => {
   switch (action.type) {
-    case ActionTypes.OPEN_MODAL:
-      return true;
+    case ActionTypes.OPEN_CREATE_ROOM_MODAL:
+      return {
+        createRoom: true,
+        signIn: false
+      };
+    case ActionTypes.OPEN_SIGN_IN_MODAL:
+      return {
+        createRoom: false,
+        signIn: true,
+      };
     case ActionTypes.CLOSE_MODAL:
-      return false;
+      return {
+        createRoom: false,
+        signIn: false
+      };
     default:
       return state;
   }

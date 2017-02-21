@@ -81,9 +81,14 @@ export const signIn = (username, id) => (dispatch) => {
   dispatch(push('/chat'));
 };
 
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const openModal = () => ({
-  type: OPEN_MODAL
+export const OPEN_CREATE_ROOM_MODAL = 'OPEN_CREATE_ROOM_MODAL';
+export const openCreateRoomModal = () => ({
+  type: OPEN_CREATE_ROOM_MODAL
+});
+
+export const OPEN_SIGN_IN_MODAL = 'OPEN_SIGN_IN_MODAL';
+export const openSignInModal = () => ({
+  type: OPEN_SIGN_IN_MODAL
 });
 
 export const CLOSE_MODAL = 'CLOSE_MODAL';
