@@ -3,3 +3,14 @@
 [![codecov](https://codecov.io/gh/tylercrosse/gitter-clone/branch/master/graph/badge.svg)](https://codecov.io/gh/tylercrosse/gitter-clone)
 
 Portfolio Project clone of gitter.im -- Hire me!
+
+Built with:
+- react
+- redux
+- jest
+- webpack
+- babel
+- express
+- mongodb
+- semaphore
+- digital ocean
