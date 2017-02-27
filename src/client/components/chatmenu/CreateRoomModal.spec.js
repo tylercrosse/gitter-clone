@@ -33,9 +33,9 @@ describe('<CreateRoomModal />', () => {
   // close modal by clicking cancel
   // close modal by clicking outside of modal
 
-  it('should contain <form />', () => {
+  it('should contain <input />', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('form'))
+    expect(wrapper.find('input'))
       .toHaveLength(1);
   });
 

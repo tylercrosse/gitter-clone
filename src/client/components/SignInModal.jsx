@@ -44,19 +44,23 @@ export class SignInModal extends React.Component {
           </button>
         </header>
         <section className="modal-body">
-          <form onSubmit={this.handleSubmit}>
-            <input
-            onChange={this.handleChange}
-            value={this.state.name}
-            placeholder="Converation Name"
-            type="text"
-            autoFocus
-            autoComplete="off"
-            />
-            <button type="submit">Send</button>
-          </form>
+          <input
+          onChange={this.handleChange}
+          value={this.state.name}
+          placeholder="User Name"
+          type="text"
+          autoFocus
+          autoComplete="off"
+          />
         </section>
-        <footer className="modal-footer" />
+        <footer className="modal-footer">
+          <button
+          className="modal-footer-btn"
+          onClick={this.handleSubmit}
+          >
+            Sign in
+          </button>
+        </footer>
       </Modal>
     );
   }

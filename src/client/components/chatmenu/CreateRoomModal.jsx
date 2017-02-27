@@ -38,7 +38,7 @@ export class CreateRoomModal extends React.Component {
       overlayClassName="modal-overlay"
       >
         <header className="modal-header">
-          <h1 className="modal-title">Create Room</h1>
+          <h1 className="modal-title">Create a room</h1>
           <button
           className="modal-close"
           onClick={this.props.onRequestClose}
@@ -47,19 +47,23 @@ export class CreateRoomModal extends React.Component {
           </button>
         </header>
         <section className="modal-body">
-          <form onSubmit={this.handleSubmit}>
-            <input
-            onChange={this.handleChange}
-            value={this.state.name}
-            placeholder="Converation Name"
-            type="text"
-            autoFocus
-            autoComplete="off"
-            />
-            <button type="submit">Send</button>
-          </form>
+          <input
+          onChange={this.handleChange}
+          value={this.state.name}
+          placeholder="Room name"
+          type="text"
+          autoFocus
+          autoComplete="off"
+          />
         </section>
-        <footer className="modal-footer" />
+        <footer className="modal-footer">
+          <button
+          className="modal-footer-btn"
+          onClick={this.handleSubmit}
+          >
+            Create
+          </button>
+        </footer>
       </Modal>
     );
   }
