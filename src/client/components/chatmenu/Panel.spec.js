@@ -8,7 +8,7 @@ const setup = () => {
   const props = {
     modalIsOpen: false,
     onMouseLeave: jest.fn(),
-    openModal: jest.fn(),
+    openCreateRoomModal: jest.fn(),
     closeModal: jest.fn(),
     addConvo: jest.fn(),
     fetchConvos: jest.fn(),

@@ -1,18 +1,14 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import CreateRoomModal from './CreateRoomModal.jsx';
+import SignInModal from './SignInModal.jsx';
 
 const setup = () => {
   const props = {
-    user: {
-      username: 'Dan',
-      loggedIn: true
-    },
     onFormSubmit: jest.fn(),
     onRequestClose: jest.fn()
   };
-  const component = <CreateRoomModal {...props} />;
+  const component = <SignInModal {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -22,7 +18,7 @@ const setup = () => {
   };
 };
 
-describe('<CreateRoomModal />', () => {
+describe('<SignInModal />', () => {
   it('should render correctly', () => {
     const { component } = setup();
     const renderedComponent = renderer.create(component);

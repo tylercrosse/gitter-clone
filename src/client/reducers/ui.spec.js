@@ -1,15 +1,5 @@
 import ui, { modalIsOpen, isFetching } from './ui';
 
-// const setup = (overrides) => {
-//   const initialState = Object.assign({
-//     modalIsOpen: false
-//   }, overrides);
-//
-//   return {
-//     initialState
-//   };
-// };
-
 describe('ui reducer', () => {
   it('should handle initial state', () => {
     expect(
@@ -18,13 +8,22 @@ describe('ui reducer', () => {
   });
 
   describe('modalIsOpen', () => {
-    it('should handle OPEN_MODAL', () => {
+    it('should handle OPEN_CREATE_ROOM_MODAL', () => {
       const initialState = false;
       expect(
         modalIsOpen(initialState, {
-          type: 'OPEN_MODAL',
+          type: 'OPEN_CREATE_ROOM_MODAL',
         })
-      ).toEqual(true);
+      ).toMatchSnapshot();
+    });
+
+    it('should handle OPEN_CREATE_ROOM_MODAL', () => {
+      const initialState = false;
+      expect(
+        modalIsOpen(initialState, {
+          type: 'OPEN_CREATE_ROOM_MODAL',
+        })
+      ).toMatchSnapshot();
     });
 
     it('should handle CLOSE_MODAL', () => {
@@ -33,7 +32,7 @@ describe('ui reducer', () => {
         modalIsOpen(state, {
           type: 'CLOSE_MODAL',
         })
-      ).toEqual(false);
+      ).toMatchSnapshot();
     });
   });
 

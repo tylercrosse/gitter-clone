@@ -15,8 +15,10 @@ const setup = (propOverrides) => {
     },
     convoName: 'chat',
     isFetching: false,
+    modalIsOpen: {signIn: false},
     fetchMessages: jest.fn(),
-    addMessage: jest.fn()
+    addMessage: jest.fn(),
+    signIN: jest.fn()
   }, propOverrides);
 
   const component = <ChatMain {...props} />;

@@ -5,8 +5,8 @@ import { ChatMenu, mapStateToProps } from './ChatMenu.jsx';
 
 const setup = () => {
   const props = {
-    modalIsOpen: false,
-    openModal: jest.fn(),
+    modalIsOpen: {createRoom: false},
+    openCreateRoomModal: jest.fn(),
     closeModal: jest.fn(),
     addConvo: jest.fn(),
     fetchConvos: jest.fn(),
@@ -77,7 +77,7 @@ describe('<ChatMenu />', () => {
     const { props } = setup();
     expect(mapStateToProps({...props, ui: {...props}}))
       .toEqual({
-        modalIsOpen: props.modalIsOpen,
+        modalIsOpen: props.modalIsOpen.createRoom,
         user: props.user,
         convos: props.convos
       });
