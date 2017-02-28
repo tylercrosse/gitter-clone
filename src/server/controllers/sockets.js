@@ -1,5 +1,6 @@
+import logger from '../config/logger';
 import * as messageCtlr from './messages';
-import * as convoCtlr from './convos';
+import * as convoCtlr   from './convos';
 
 export const socketActions = (io, action) => {
   switch (action.type) {
@@ -8,7 +9,7 @@ export const socketActions = (io, action) => {
     case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
     default:
-      throw new Error('Unknown action'); // TODO better error handling
+      logger.log('error', 'Unknown action ', action);
   }
 };
 

@@ -2,13 +2,21 @@ import Convo from '../models/Convo';
 import * as convosCtlr from './convos';
 
 describe('convos controller', () => {
+  beforeEach(() => {
+    Convo.find = jest.fn().mockReturnThis();
+    Convo.create = jest.fn().mockReturnThis();
+    Convo.then = jest.fn(function cb(callback) {
+      callback('dummy convo');
+      return this;
+    });
+    Convo.catch = jest.fn().mockReturnThis();
+  });
+
   it('should get convos', () => {
     const req = { params: { } };
     const res = {
       json: jest.fn()
     };
-    Convo.find = jest.fn().mockReturnThis();
-    Convo.then = jest.fn((callback) => callback('dummy convo'));
     convosCtlr.getConvos(req, res);
     expect(Convo.find).toHaveBeenCalledTimes(1);
     expect(Convo.then).toHaveBeenCalledTimes(1);
@@ -22,8 +30,6 @@ describe('convos controller', () => {
     const action = {
       name: 'chat'
     };
-    Convo.create = jest.fn().mockReturnThis();
-    Convo.then = jest.fn((callback) => callback('dummy convo'));
     convosCtlr.addConvo(io, action);
     expect(Convo.create).toHaveBeenCalledTimes(1);
     expect(Convo.then).toHaveBeenCalledTimes(1);
