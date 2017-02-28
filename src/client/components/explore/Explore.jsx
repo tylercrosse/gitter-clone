@@ -31,7 +31,7 @@ export const ConvoCards = (props) => {
         <h3>{convo.name}</h3>
       </header>
       <footer className="convo-card-footer">
-        <div className="convo-card-info">X msgs</div>
+        <div className="convo-card-info">{convo.messages.length} msgs</div>
         <div className="convo-card-action">
           <button>view</button>
         </div>
