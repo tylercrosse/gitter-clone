@@ -1,4 +1,5 @@
 import { socketActions } from './sockets';
+import logger from '../config/logger';
 import * as messageCtlr from './messages';
 import * as convosCtlr from './convos';
 
@@ -30,8 +31,9 @@ describe('sockets controller', () => {
 
   it('should handle unknown actions', () => {
     const action = {type: 'FooBar'};
-    const foobarAction = () => { socketActions({}, action); };
-    expect(foobarAction)
-      .toThrow('Unknown action');
+    logger.log = jest.fn();
+    socketActions({}, action);
+    expect(logger.log)
+      .toHaveBeenCalledWith('error', 'Unknown action ', action);
   });
 });

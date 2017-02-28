@@ -1,6 +1,8 @@
-import request from 'supertest';
-import mongoose from 'mongoose';
+import request    from 'supertest';
+import mongoose   from 'mongoose';
 import { server } from './server';
+
+jest.mock('./config/logger');
 
 describe('express serving', () => {
   afterAll(() => {
