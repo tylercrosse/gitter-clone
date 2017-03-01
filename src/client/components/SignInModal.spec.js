@@ -1,7 +1,8 @@
-import React from 'react';
+import React              from 'react';
 import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
-import SignInModal from './SignInModal.jsx';
+import renderer           from 'react-test-renderer';
+import SignInModal,
+ { validateInput }        from './SignInModal.jsx';
 
 const setup = () => {
   const props = {
@@ -43,10 +44,58 @@ describe('<SignInModal />', () => {
       .toEqual(value);
   });
 
-  it('should call submit action on submit with text', () => {
+  it('should call submit action on submit with valid input', () => {
     const { props, component } = setup();
     const wrapper = mount(component);
+    wrapper.setState({name: 'Dan'});
     wrapper.instance().handleSubmit({preventDefault: jest.fn()});
     expect(props.onFormSubmit).toHaveBeenCalled();
+  });
+
+  it('should not call submit action on submit with invalid input', () => {
+    const { props, component } = setup();
+    const wrapper = mount(component);
+    wrapper.setState({name: 'D   an'});
+    wrapper.instance().handleSubmit({preventDefault: jest.fn()});
+    expect(props.onFormSubmit).not.toHaveBeenCalled();
+  });
+
+  it('should validate input', () => {
+    // alphanumeric + underscore, single internal space, & hyphen Ok
+    expect(validateInput('Dan_1-23')).toEqual(true);
+    expect(validateInput('Da n1-23')).toEqual(true);
+    // multiple spaces
+    expect(validateInput('Da  n1-23')).toEqual(false);
+    // leading space
+    expect(validateInput(' Dan1-23')).toEqual(false);
+    // trailing space
+    expect(validateInput('Dan1-23 ')).toEqual(false);
+    // forbidden characters
+    expect(validateInput('Dan`1-23')).toEqual(false);
+    expect(validateInput('Dan1-~23')).toEqual(false);
+    expect(validateInput('Dan1-23!')).toEqual(false);
+    expect(validateInput('Dan@1-23')).toEqual(false);
+    expect(validateInput('Dan$1-23')).toEqual(false);
+    expect(validateInput('Dan%1-23')).toEqual(false);
+    expect(validateInput('Dan^1-23')).toEqual(false);
+    expect(validateInput('Da&n1-23')).toEqual(false);
+    expect(validateInput('Dan*1-23')).toEqual(false);
+    expect(validateInput('Dan(1-23')).toEqual(false);
+    expect(validateInput('Dan)1-23')).toEqual(false);
+    expect(validateInput('Dan[1-23')).toEqual(false);
+    expect(validateInput('Dan]1-23')).toEqual(false);
+    expect(validateInput('Dan{1-23')).toEqual(false);
+    expect(validateInput('Dan}1-23')).toEqual(false);
+    expect(validateInput('Da?n1-23')).toEqual(false);
+    expect(validateInput('Da/n1-23')).toEqual(false);
+    expect(validateInput('Dan1-2<3')).toEqual(false);
+    expect(validateInput('Dan1-2>3')).toEqual(false);
+    expect(validateInput('Dan|1-23')).toEqual(false);
+    expect(validateInput('Dan1\\23')).toEqual(false);
+    expect(validateInput('Dan1\n23')).toEqual(false);
+    expect(validateInput('Dan1:23')).toEqual(false);
+    expect(validateInput('Dan1;23')).toEqual(false);
+    expect(validateInput('Dan1"23')).toEqual(false);
+    expect(validateInput("Dan1'23")).toEqual(false);
   });
 });

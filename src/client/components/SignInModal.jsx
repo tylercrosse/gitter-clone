@@ -2,6 +2,16 @@ import React,
   { PropTypes } from 'react';
 import Modal    from 'react-modal';
 
+/**
+ * Checks if input is valid:
+ * - only alphanumeric characters plus single spaces & dashes
+ * @param  {Object} input
+ * @return {Boolean}      if input is valid or not
+ */
+export const validateInput = (input) => (
+  input && /(^\w+[-]?\w*)[ ]?(\w*[-]?\w+$)/g.test(input)
+);
+
 export class SignInModal extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +28,18 @@ export class SignInModal extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // TODO input validation
-    this.props.onFormSubmit(this.state.name);
-    this.setState({
-      name: ''
-    });
-    this.props.onRequestClose();
+    const input = this.state.name;
+    const validInput = validateInput(input);
+    if (validInput) {
+      this.props.onFormSubmit(input);
+      this.setState({
+        name: ''
+      });
+      this.props.onRequestClose();
+    } else {
+      // invalid input, TODO notify user
+      alert('Invalid Input :(');
+    }
   }
   render() {
     return (

@@ -46,7 +46,7 @@ describe('<ChatMain />', () => {
     // FIXME TODO need store to render nested connected component
   });
 
-  it('should recieve the correct props from state', () => {
+  it('should receive the correct props from state', () => {
     const { props } = setup();
     let state = {
       convos: {},

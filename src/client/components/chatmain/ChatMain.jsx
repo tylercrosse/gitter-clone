@@ -1,20 +1,20 @@
 import React,
-  { PropTypes }        from 'react';
-import { connect }     from 'react-redux';
-import { withRouter }  from 'react-router';
+  { PropTypes }       from 'react';
+import { connect }    from 'react-redux';
+import { withRouter } from 'react-router';
 import {
   signIn,
   openSignInModal,
   closeModal,
   fetchMessages,
-  addMessage }         from '../../actions/';
+  addMessage }        from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
-import ChatHeader      from './ChatHeader.jsx';
-import ChatToolbar     from './ChatToolbar.jsx';
-import ChatContent     from './ChatContent.jsx';
-import ChatInput       from './ChatInput.jsx';
-import SignInModal     from '../SignInModal.jsx';
-import                      './chatmain.scss';
+import ChatHeader     from './ChatHeader.jsx';
+import ChatToolbar    from './ChatToolbar.jsx';
+import ChatContent    from './ChatContent.jsx';
+import ChatInput      from './ChatInput.jsx';
+import SignInModal    from '../SignInModal.jsx';
+import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
   componentDidMount() {

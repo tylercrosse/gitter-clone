@@ -2,6 +2,17 @@ import React,
   { PropTypes } from 'react';
 import Modal    from 'react-modal';
 
+/**
+ * Checks if input is valid:
+ * - only alphanumeric characters plus dashes
+ * @param  {Object} input
+ * @return {Boolean}      if input is valid or not
+ */
+export const validateInput = (input) => {
+  const alphanumeric = /^\w+(\w+|[-])\w+$/g.test(input.name);
+  return input.name && input.username && alphanumeric;
+};
+
 export class CreateRoomModal extends React.Component {
   constructor(props) {
     super(props);
@@ -18,15 +29,21 @@ export class CreateRoomModal extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // TODO input validation
-    this.props.onFormSubmit({
+    const input = {
       name: this.state.name,
       username: this.props.user.username
-    });
-    this.setState({
-      name: ''
-    });
-    this.props.onRequestClose();
+    };
+    const validInput = validateInput(input);
+    if (validInput) {
+      this.props.onFormSubmit(input);
+      this.setState({
+        name: ''
+      });
+      this.props.onRequestClose();
+    } else {
+      // invalid input, TODO notify user
+      alert('Invalid Input :(');
+    }
   }
   render() {
     return (
@@ -77,4 +94,3 @@ CreateRoomModal.PropTypes = {
 };
 
 export default CreateRoomModal;
-
