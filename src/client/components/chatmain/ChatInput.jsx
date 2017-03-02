@@ -1,7 +1,8 @@
 import React,
-  { PropTypes } from 'react';
-import marked   from 'marked';
-import Prism    from 'prismjs';
+  { PropTypes }  from 'react';
+import marked    from 'marked';
+import Prism     from 'prismjs';
+import languages from './languages.json';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -13,9 +14,14 @@ class ChatInput extends React.Component {
   componentWillMount() {
     marked.setOptions({
       sanitize: true,
-      highlight: (code, language) => (
-        Prism.highlight(code, Prism.languages[language])
-      )
+      highlight: (code, language) => {
+        if (!languages.includes(language)) {
+          language = 'markup';
+        }
+        return (
+          Prism.highlight(code, Prism.languages[language])
+        );
+      }
     });
   }
   updateDraft(e) {
