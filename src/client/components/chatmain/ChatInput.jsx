@@ -1,8 +1,5 @@
 import React,
   { PropTypes }  from 'react';
-import marked    from 'marked';
-import Prism     from 'prismjs';
-import languages from './languages.json';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -11,19 +8,6 @@ class ChatInput extends React.Component {
       draft: ''
     };
   }
-  componentWillMount() {
-    marked.setOptions({
-      sanitize: true,
-      highlight: (code, language) => {
-        if (!languages.includes(language)) {
-          language = 'markup';
-        }
-        return (
-          Prism.highlight(code, Prism.languages[language])
-        );
-      }
-    });
-  }
   updateDraft(e) {
     this.setState({
       draft: e.target.value
@@ -31,12 +15,10 @@ class ChatInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const rawMarkup = marked(this.state.draft);
     const convo = this.props.routeParams.convo;
     this.props.onMessageSubmit({
       username: this.props.user.username,
       text: this.state.draft,
-      rawMarkup,
       convo
     });
     this.setState({
