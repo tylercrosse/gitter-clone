@@ -73,7 +73,7 @@ describe('<ChatMenu />', () => {
       .toBeTruthy();
   });
 
-  it('should recieve the correct props from state', () => {
+  it('should receive the correct props from state', () => {
     const { props } = setup();
     expect(mapStateToProps({...props, ui: {...props}}))
       .toEqual({

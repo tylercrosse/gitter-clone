@@ -2,31 +2,62 @@ import React,
   { PropTypes } from 'react';
 import Modal    from 'react-modal';
 
+/**
+ * Checks if input is valid:
+ * - only alphanumeric characters plus dashes
+ * @param  {Object} input
+ * @return {Boolean}      if input is valid or not
+ */
+export const validateInput = (input) => {
+  const alphanumeric = /^\w+(\w+|[-])\w+$/g.test(input.name);
+  return input.name && input.username && alphanumeric;
+};
+
 export class CreateRoomModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      validInput: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
-    this.setState({
-      name: e.target.value
-    });
+    const input = {
+      name: e.target.value,
+      username: this.props.user.username
+    };
+    if (!this.state.validInput && validateInput(input)) {
+      this.setState({
+        name: input.name,
+        validInput: true
+      });
+    } else {
+      this.setState({
+        name: input.name
+      });
+    }
   }
   handleSubmit(e) {
     e.preventDefault();
-    // TODO input validation
-    this.props.onFormSubmit({
+    const input = {
       name: this.state.name,
       username: this.props.user.username
-    });
-    this.setState({
-      name: ''
-    });
-    this.props.onRequestClose();
+    };
+    const validInput = validateInput(input);
+    if (validInput) {
+      this.props.onFormSubmit(input);
+      this.setState({
+        name: '',
+        validInput: true
+      });
+      this.props.onRequestClose();
+    } else {
+      this.setState({
+        validInput: false
+      });
+    }
   }
   render() {
     return (
@@ -55,6 +86,8 @@ export class CreateRoomModal extends React.Component {
           autoFocus
           autoComplete="off"
           />
+          {!this.state.validInput &&
+            <div className="validation-error">Something went wrong! Sign in and check your input.</div>}
         </section>
         <footer className="modal-footer">
           <button
@@ -77,4 +110,3 @@ CreateRoomModal.PropTypes = {
 };
 
 export default CreateRoomModal;
-

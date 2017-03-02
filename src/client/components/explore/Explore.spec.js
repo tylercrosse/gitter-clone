@@ -10,6 +10,7 @@ const setup = (propOverrides) => {
         updatedAt: '2017-02-06T17:24:31.593Z',
         createdAt: '2017-02-06T17:24:31.593Z',
         name: 'chat',
+        messages: ['1'],
         __v: 0
       },
       '5898b15d6047fd8db8b4e3bb': {
@@ -17,6 +18,7 @@ const setup = (propOverrides) => {
         updatedAt: '2017-02-06T17:24:45.657Z',
         createdAt: '2017-02-06T17:24:45.657Z',
         name: 'chat2',
+        messages: ['1', '2', '3'],
         __v: 0
       }
     }

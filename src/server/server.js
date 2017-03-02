@@ -49,6 +49,7 @@ export const server = app.listen(port, (err) => {
     logger.log('error', err);
   }
   let host = server.address().address;
+  /* istanbul ignore next: very hard to test */
   if (host === '::') {
     host = '127.0.0.1';
   }

@@ -1,6 +1,10 @@
-import logger  from '../config/logger';
-import Message from '../models/Message';
-import Convo   from '../models/Convo';
+import marked       from 'marked';
+import markedConfig from '../config/markedConfig';
+import logger       from '../config/logger';
+import Message      from '../models/Message';
+import Convo        from '../models/Convo';
+
+marked.setOptions(markedConfig);
 
 export const getMessages = (req, res) => {
   Message.find({convo: req.params.convo})
@@ -13,10 +17,11 @@ export const getMessages = (req, res) => {
 };
 
 export const addMessage = (io, action) => {
+  const rawMarkup = marked(action.text);
   const doc = {
     username: action.username,
     text: action.text,
-    rawMarkup: action.rawMarkup,
+    rawMarkup,
     convo: action.convo
   };
 

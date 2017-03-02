@@ -67,8 +67,8 @@
     "babel-register": "^6.18.0",
     "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
-    "enzyme": "^2.7.0",
-    "enzyme-to-json": "^1.4.5",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -76,8 +76,9 @@
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.26.0",
-    "jest": "^18.1.0",
+    "jest": "^19.0.2",
     "jest-enzyme": "^2.1.0",
+    "json-loader": "^0.5.4",
     "node-sass": "^4.4.0",
     "pre-commit": "^1.2.2",
     "raw-loader": "^0.5.1",
@@ -116,6 +117,7 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/config/styleMock.js"
     },
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}"
     ],
