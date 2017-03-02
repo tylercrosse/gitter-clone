@@ -1,141 +1,19 @@
-import Prism     from 'prismjs';
-
-const languages = [
-  'markup',
-  'css',
-  'clike',
-  'javascript',
-  'abap',
-  'actionscript',
-  'ada',
-  'apacheconf',
-  'apl',
-  'applescript',
-  'asciidoc',
-  'aspnet',
-  'autoit',
-  'autohotkey',
-  'bash',
-  'basic',
-  'batch',
-  'bison',
-  'brainfuck',
-  'bro',
-  'c',
-  'csharp',
-  'cpp',
-  'coffeescript',
-  'crystal',
-  'css-extras',
-  'd',
-  'dart',
-  'django',
-  'diff',
-  'docker',
-  'eiffel',
-  'elixir',
-  'erlang',
-  'fsharp',
-  'fortran',
-  'gherkin',
-  'git',
-  'glsl',
-  'go',
-  'graphql',
-  'groovy',
-  'haml',
-  'handlebars',
-  'haskell',
-  'haxe',
-  'http',
-  'icon',
-  'inform7',
-  'ini',
-  'j',
-  'jade',
-  'java',
-  'jolie',
-  'json',
-  'julia',
-  'keyman',
-  'kotlin',
-  'latex',
-  'less',
-  'livescript',
-  'lolcode',
-  'lua',
-  'makefile',
-  'markdown',
-  'matlab',
-  'mel',
-  'mizar',
-  'monkey',
-  'nasm',
-  'nginx',
-  'nim',
-  'nix',
-  'nsis',
-  'objectivec',
-  'ocaml',
-  'oz',
-  'parigp',
-  'parser',
-  'pascal',
-  'perl',
-  'php',
-  'php-extras',
-  'powershell',
-  'processing',
-  'prolog',
-  'properties',
-  'protobuf',
-  'puppet',
-  'pure',
-  'python',
-  'q',
-  'qore',
-  'r',
-  'jsx',
-  'reason',
-  'rest',
-  'rip',
-  'roboconf',
-  'ruby',
-  'rust',
-  'sas',
-  'sass',
-  'scss',
-  'scala',
-  'scheme',
-  'smalltalk',
-  'smarty',
-  'sql',
-  'stylus',
-  'swift',
-  'tcl',
-  'textile',
-  'twig',
-  'typescript',
-  'verilog',
-  'vhdl',
-  'vim',
-  'wiki',
-  'xojo',
-  'yaml'
-];
+import Prism from 'prismjs';
 
 const markedConfig = {
   sanitize: true,
   highlight: highlightMethod
 };
 
-export const highlightMethod = (code, language) => {
-  if (!languages.includes(language)) {
+export function highlightMethod(code, language) {
+  let markup;
+  try {
+    markup = Prism.highlight(code, Prism.languages[language]);
+  } catch (e) {
     language = 'markup'; // eslint-disable-line no-param-reassign
+    markup = Prism.highlight(code, Prism.languages[language]);
   }
-  return (
-    Prism.highlight(code, Prism.languages[language])
-  );
-};
+  return markup;
+}
 
 export default markedConfig;
