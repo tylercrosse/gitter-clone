@@ -16,15 +16,24 @@ export class SignInModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      validInput: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
-    this.setState({
-      name: e.target.value
-    });
+    const input = e.target.value;
+    if (!this.state.validInput && validateInput(input)) {
+      this.setState({
+        name: input,
+        validInput: true
+      });
+    } else {
+      this.setState({
+        name: input
+      });
+    }
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -33,12 +42,14 @@ export class SignInModal extends React.Component {
     if (validInput) {
       this.props.onFormSubmit(input);
       this.setState({
-        name: ''
+        name: '',
+        validInput: true
       });
       this.props.onRequestClose();
     } else {
-      // invalid input, TODO notify user
-      alert('Invalid Input :(');
+      this.setState({
+        validInput: false
+      });
     }
   }
   render() {
@@ -68,6 +79,8 @@ export class SignInModal extends React.Component {
           autoFocus
           autoComplete="off"
           />
+          {!this.state.validInput &&
+            <div className="validation-error">Invalid input! Please try Again.</div>}
         </section>
         <footer className="modal-footer">
           <button

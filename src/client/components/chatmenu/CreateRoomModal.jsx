@@ -17,15 +17,27 @@ export class CreateRoomModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      validInput: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
-    this.setState({
-      name: e.target.value
-    });
+    const input = {
+      name: e.target.value,
+      username: this.props.user.username
+    };
+    if (!this.state.validInput && validateInput(input)) {
+      this.setState({
+        name: input.name,
+        validInput: true
+      });
+    } else {
+      this.setState({
+        name: input.name
+      });
+    }
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -37,12 +49,14 @@ export class CreateRoomModal extends React.Component {
     if (validInput) {
       this.props.onFormSubmit(input);
       this.setState({
-        name: ''
+        name: '',
+        validInput: true
       });
       this.props.onRequestClose();
     } else {
-      // invalid input, TODO notify user
-      alert('Invalid Input :(');
+      this.setState({
+        validInput: false
+      });
     }
   }
   render() {
@@ -72,6 +86,8 @@ export class CreateRoomModal extends React.Component {
           autoFocus
           autoComplete="off"
           />
+          {!this.state.validInput &&
+            <div className="validation-error">Something went wrong! Sign in and check your input.</div>}
         </section>
         <footer className="modal-footer">
           <button
