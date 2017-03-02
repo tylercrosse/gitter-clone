@@ -1,16 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const CleanPlugin = require('clean-webpack-plugin');
+const path              = require('path');
+const webpack           = require('webpack');
+const merge             = require('webpack-merge');
+const CleanPlugin       = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const config            = require('./webpack.config.base');
 
-module.exports = {
+module.exports = merge(config, {
   devtool: 'source-map',
   entry: ['./src/client/index'],
-  output: {
-    path: path.resolve(__dirname, './static/dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
-  },
   plugins: [
     new CleanPlugin(['./static/dist'], {verbose: true}),
     new webpack.DefinePlugin({
@@ -30,9 +27,9 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)?$/,
         loader: 'babel',
-        include: [path.resolve(__dirname, 'src')]
+        include: [path.resolve(__dirname, '../src')]
       }, {
         test: /\.json$/, loader: 'json'
       }, {
@@ -43,8 +40,5 @@ module.exports = {
         loader: ExtractTextPlugin.extract('css-loader!sass-loader')
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
   }
-};
+});

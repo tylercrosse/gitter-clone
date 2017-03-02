@@ -1,7 +1,7 @@
 import webpack    from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfig from '../../../webpack.config.dev';
+import webpackConfig from '../../../config/webpack.config.dev';
 
 const compiler = webpack(webpackConfig);
 export const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
@@ -16,4 +16,3 @@ export const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
   }
 });
 export const webpackHotMiddlewareInstance = webpackHotMiddleware(compiler);
-

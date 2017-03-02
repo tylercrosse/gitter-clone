@@ -9,7 +9,7 @@
     "test": "jest --silent --coverage --runInBand",
     "lint": "eslint .",
     "build": "rimraf ./static/compiled && npm run build:node && npm run build:dist",
-    "build:dist": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
+    "build:dist": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
     "build:node": "npm run babel -- ./src/server/ -d ./static/compiled",
     "babel": "babel --presets es2015,stage-0 --ignore node_modules,static,*.spec.js"
   },
@@ -99,7 +99,8 @@
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.15.0",
-    "webpack-isomorphic-tools": "^2.6.6"
+    "webpack-isomorphic-tools": "^2.6.6",
+    "webpack-merge": "^3.0.0"
   },
   "pre-commit": [
     "lint",

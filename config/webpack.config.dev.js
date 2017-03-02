@@ -1,18 +1,15 @@
-const path = require('path');
+const path    = require('path');
 const webpack = require('webpack');
+const merge   = require('webpack-merge');
+const config  = require('./webpack.config.base');
 
-module.exports = {
+module.exports = merge(config, {
   devtool: 'inline-source-map',
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
     './src/client/index'
   ],
-  output: {
-    path: path.resolve(__dirname, './static/dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
@@ -45,7 +42,7 @@ module.exports = {
             ]
           ]
         },
-        include: [path.resolve(__dirname, 'src')]
+        include: [path.resolve(__dirname, '../src')]
       }, {
         test: /\.json$/, loader: 'json'
       }, {
@@ -56,8 +53,5 @@ module.exports = {
         loaders: ["style", "css", "sass"]
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
   }
-};
+});
