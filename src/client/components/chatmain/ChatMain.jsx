@@ -1,15 +1,20 @@
 import React,
-  { PropTypes }        from 'react';
-import { connect }     from 'react-redux';
-import { withRouter }  from 'react-router';
-import { fetchMessages,
-  addMessage }         from '../../actions/';
+  { PropTypes }       from 'react';
+import { connect }    from 'react-redux';
+import { withRouter } from 'react-router';
+import {
+  signIn,
+  openSignInModal,
+  closeModal,
+  fetchMessages,
+  addMessage }        from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
-import ChatHeader      from './ChatHeader.jsx';
-import ChatToolbar     from './ChatToolbar.jsx';
-import ChatContent     from './ChatContent.jsx';
-import ChatInput       from './ChatInput.jsx';
-import                      './chatmain.scss';
+import ChatHeader     from './ChatHeader.jsx';
+import ChatToolbar    from './ChatToolbar.jsx';
+import ChatContent    from './ChatContent.jsx';
+import ChatInput      from './ChatInput.jsx';
+import SignInModal    from '../SignInModal.jsx';
+import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
   componentDidMount() {
@@ -27,6 +32,11 @@ export class ChatMain extends React.Component {
   render() {
     return (
       <main className="chat-header-wrapper">
+        { this.props.isFetching &&
+          <div className="loading-container">
+            <div className="loading-spinner" />
+          </div>
+        }
         <ChatHeader user={this.props.user} />
         <div className="chat-and-toolbar-wrapper">
           <ChatToolbar />
@@ -41,6 +51,12 @@ export class ChatMain extends React.Component {
             />
           </div>
         </div>
+        <SignInModal
+        user={this.props.user}
+        modalIsOpen={this.props.modalIsOpen.signIn}
+        onRequestClose={this.props.closeModal}
+        onFormSubmit={this.props.signIn}
+        />
       </main>
     );
   }
@@ -52,7 +68,8 @@ ChatMain.propTypes = {
   routeParams: PropTypes.object.isRequired,
   fetchMessages: PropTypes.func.isRequired,
   addMessage: PropTypes.func.isRequired,
-  convoName: PropTypes.string.isRequired
+  convoName: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export const makeMapStateToProps = () => {
@@ -66,7 +83,9 @@ export const makeMapStateToProps = () => {
       messages,
       user: state.user,
       convos: state.convos,
-      convoName
+      convoName,
+      isFetching: state.ui.isFetching,
+      modalIsOpen: state.ui.modalIsOpen
     };
   };
   return mapStateToProps;
@@ -74,5 +93,5 @@ export const makeMapStateToProps = () => {
 
 export default withRouter(connect(
   makeMapStateToProps,
-  { fetchMessages, addMessage }
+  { signIn, openSignInModal, closeModal, fetchMessages, addMessage }
 )(ChatMain));

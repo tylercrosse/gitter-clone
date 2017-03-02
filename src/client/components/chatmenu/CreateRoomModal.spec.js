@@ -1,7 +1,8 @@
-import React from 'react';
+import React              from 'react';
 import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
-import CreateRoomModal from './CreateRoomModal.jsx';
+import renderer           from 'react-test-renderer';
+import CreateRoomModal,
+ { validateInput }        from './CreateRoomModal.jsx';
 
 const setup = () => {
   const props = {
@@ -33,9 +34,9 @@ describe('<CreateRoomModal />', () => {
   // close modal by clicking cancel
   // close modal by clicking outside of modal
 
-  it('should contain <form />', () => {
+  it('should contain <input />', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('form'))
+    expect(wrapper.find('input'))
       .toHaveLength(1);
   });
 
@@ -47,10 +48,56 @@ describe('<CreateRoomModal />', () => {
       .toEqual(value);
   });
 
-  it('should call submit action on submit with text', () => {
+  it('should call submit action on submit with valid input', () => {
     const { props, component } = setup();
     const wrapper = mount(component);
+    wrapper.setState({name: 'React'});
     wrapper.instance().handleSubmit({preventDefault: jest.fn()});
     expect(props.onFormSubmit).toHaveBeenCalled();
+  });
+
+  it('should not call submit action on submit with invalid input', () => {
+    const { props, component } = setup();
+    const wrapper = mount(component);
+    wrapper.setState({name: 'Re  act'});
+    wrapper.instance().handleSubmit({preventDefault: jest.fn()});
+    expect(props.onFormSubmit).not.toHaveBeenCalled();
+  });
+
+  it('should validate input', () => {
+    // alphanumeric + underscore & hyphen Ok
+    expect(validateInput({username: 'dan', name: 'Dan_1-23'})).toEqual(true);
+    // leading hyphen
+    expect(validateInput({username: 'dan', name: '-Dan1-23'})).toEqual(false);
+    // trailing hyphen
+    expect(validateInput({username: 'dan', name: 'Dan1-23-'})).toEqual(false);
+    // forbidden characters
+    expect(validateInput({username: 'dan', name: 'Da n1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan`1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1-~23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1-23!'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan@1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan$1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan%1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan^1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Da&n1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan*1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan(1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan)1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan[1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan]1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan{1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan}1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Da?n1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Da/n1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1-2<3'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1-2>3'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan|1-23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1\\23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1\n23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1:23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1;23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: 'Dan1"23'})).toEqual(false);
+    expect(validateInput({username: 'dan', name: "Dan1'23"})).toEqual(false);
   });
 });

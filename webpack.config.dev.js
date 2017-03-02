@@ -47,6 +47,8 @@ module.exports = {
         },
         include: [path.resolve(__dirname, 'src')]
       }, {
+        test: /\.json$/, loader: 'json'
+      }, {
         test: /\.css?$/,
         loaders: ['style', 'raw']
       }, {

@@ -1,10 +1,26 @@
-// import rewire  from 'rewire';
-// import Promise from 'bluebird';
 import Message from '../models/Message';
 import Convo   from '../models/Convo';
 import * as messageCtlr from './messages';
 
-// const messageCtlr = rewire('./messages');
+const setup = () => {
+  const io = {
+    emit: jest.fn()
+  };
+  const action = {
+    username: 'amy',
+    text: 'hey',
+    rawMarkup: '<p>hey</p>\n',
+    convo: 'chat',
+  };
+  Convo.findOne = jest.fn().mockReturnThis();
+  Convo.then = jest.fn().mockReturnThis();
+  Convo.catch = jest.fn().mockReturnThis();
+
+  return {
+    io,
+    action
+  };
+};
 
 describe('messages controller', () => {
   it('should get messages', () => {
@@ -27,18 +43,7 @@ describe('messages controller', () => {
 
   describe('addMessage', () => {
     it('should find a convo', () => {
-      const io = {
-        emit: jest.fn()
-      };
-      const action = {
-        username: 'amy',
-        text: 'hey',
-        rawMarkup: '<p>hey</p>\n',
-        convo: 'chat',
-      };
-      Convo.findOne = jest.fn().mockReturnThis();
-      Convo.then = jest.fn().mockReturnThis();
-      Convo.catch = jest.fn().mockReturnThis();
+      const { io, action } = setup();
 
       messageCtlr.addMessage(io, action);
       expect(Convo.findOne).toHaveBeenCalledWith({name: action.convo});
@@ -72,9 +77,7 @@ describe('messages controller', () => {
       expect(returnVal).toEqual(Object.assign(result, 'test'));
     });
     it('should call io.emit with type: ADD_MESSAGE', () => {
-      const io = {
-        emit: jest.fn()
-      };
+      const { io } = setup();
       const result = {message: 'test'};
 
       messageCtlr.pvt._emitAddMessage(io, result);

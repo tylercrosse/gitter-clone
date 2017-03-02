@@ -13,7 +13,7 @@ body {
   color: #333;
   line-height: 1.4;
   max-width: 100vw;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .scroller::-webkit-scrollbar {
@@ -128,4 +128,8 @@ body {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
   }
+}
+
+.validation-error {
+  color: red;
 }

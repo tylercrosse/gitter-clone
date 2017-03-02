@@ -63,10 +63,10 @@ describe('actions', () => {
     });
   });
 
-  it('openModal should create OPEN_MODAL action', () => {
-    expect(actions.openModal())
+  it('openCreateRoomModal should create OPEN_CREATE_ROOM_MODAL action', () => {
+    expect(actions.openCreateRoomModal())
       .toEqual({
-        type: 'OPEN_MODAL',
+        type: 'OPEN_CREATE_ROOM_MODAL',
       });
   });
 

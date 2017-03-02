@@ -1,22 +1,27 @@
-import Message from '../models/Message';
-import Convo   from '../models/Convo';
+import marked       from 'marked';
+import markedConfig from '../config/markedConfig';
+import logger       from '../config/logger';
+import Message      from '../models/Message';
+import Convo        from '../models/Convo';
+
+marked.setOptions(markedConfig);
 
 export const getMessages = (req, res) => {
-  // TODO error handling, bad request
   Message.find({convo: req.params.convo})
     .then((messages) => {
       res.json(messages);
     })
     .catch(/* istanbul ignore next */(err) => {
-      console.log('❌', err); // TODO error handling, db error
+      logger.log('error', err);
     });
 };
 
 export const addMessage = (io, action) => {
+  const rawMarkup = marked(action.text);
   const doc = {
     username: action.username,
     text: action.text,
-    rawMarkup: action.rawMarkup,
+    rawMarkup,
     convo: action.convo
   };
 
@@ -25,7 +30,7 @@ export const addMessage = (io, action) => {
     .then(_saveConvo)
     .then(/* istanbul ignore next */(result) => (_emitAddMessage(io, result)))
     .catch(/* istanbul ignore next */(err) => {
-      console.log('❌', err); // TODO error handling, db error
+      logger.log('error', err);
     });
 };
 

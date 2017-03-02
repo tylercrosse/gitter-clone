@@ -1,5 +1,31 @@
 @import '../../mixins/_variables.scss';
 
+.loading-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: fixed;
+
+  .loading-spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: 10px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #FFF;
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 .avatar {
   width: 30px;
   max-width: 30px;
@@ -10,6 +36,7 @@
 .chat-container {
   display: flex;
   flex-direction: row;
+  overflow: hidden;
 }
 
 .chat-header-wrapper {
@@ -38,7 +65,7 @@
   flex-shrink: 0;
   display: flex;
   width: 70px;
-  // 
+  //
   border-left: 1px solid #f1f1f1;
 }
 
@@ -141,7 +168,7 @@
   }
 
   .chat-item-details {
-    // 
+    //
   }
 
   .chat-item-user {
@@ -199,8 +226,7 @@
       green     #859900
     */
 
-    code[class*="lang-"],
-    pre[class*="lang-"] {
+    code {
       color: #657b83; /* base00 */
       // font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       text-align: left;
@@ -391,4 +417,23 @@
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+}
+
+.modal-footer-btn {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 9.6px 42px;
+  background-color: #46bc99;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: background-color 0.1s ease, border-color 0.1s ease;
 }

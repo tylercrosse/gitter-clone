@@ -4,16 +4,15 @@ import Modal    from 'react-modal';
 
 /**
  * Checks if input is valid:
- * - only alphanumeric characters plus dashes
+ * - only alphanumeric characters plus single spaces & dashes
  * @param  {Object} input
  * @return {Boolean}      if input is valid or not
  */
-export const validateInput = (input) => {
-  const alphanumeric = /^\w+(\w+|[-])\w+$/g.test(input.name);
-  return input.name && input.username && alphanumeric;
-};
+export const validateInput = (input) => (
+  input && /(^\w+[-]?\w*)[ ]?(\w*[-]?\w+$)/g.test(input)
+);
 
-export class CreateRoomModal extends React.Component {
+export class SignInModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,27 +23,21 @@ export class CreateRoomModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
-    const input = {
-      name: e.target.value,
-      username: this.props.user.username
-    };
+    const input = e.target.value;
     if (!this.state.validInput && validateInput(input)) {
       this.setState({
-        name: input.name,
+        name: input,
         validInput: true
       });
     } else {
       this.setState({
-        name: input.name
+        name: input
       });
     }
   }
   handleSubmit(e) {
     e.preventDefault();
-    const input = {
-      name: this.state.name,
-      username: this.props.user.username
-    };
+    const input = this.state.name;
     const validInput = validateInput(input);
     if (validInput) {
       this.props.onFormSubmit(input);
@@ -69,7 +62,7 @@ export class CreateRoomModal extends React.Component {
       overlayClassName="modal-overlay"
       >
         <header className="modal-header">
-          <h1 className="modal-title">Create a room</h1>
+          <h1 className="modal-title">Sign In</h1>
           <button
           className="modal-close"
           onClick={this.props.onRequestClose}
@@ -81,20 +74,20 @@ export class CreateRoomModal extends React.Component {
           <input
           onChange={this.handleChange}
           value={this.state.name}
-          placeholder="Room name"
+          placeholder="User Name"
           type="text"
           autoFocus
           autoComplete="off"
           />
           {!this.state.validInput &&
-            <div className="validation-error">Something went wrong! Sign in and check your input.</div>}
+            <div className="validation-error">Invalid input! Please try Again.</div>}
         </section>
         <footer className="modal-footer">
           <button
           className="modal-footer-btn"
           onClick={this.handleSubmit}
           >
-            Create
+            Sign in
           </button>
         </footer>
       </Modal>
@@ -102,11 +95,10 @@ export class CreateRoomModal extends React.Component {
   }
 }
 
-CreateRoomModal.PropTypes = {
+SignInModal.PropTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
 };
 
-export default CreateRoomModal;
+export default SignInModal;

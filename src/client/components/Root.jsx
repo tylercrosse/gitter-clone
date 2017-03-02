@@ -5,8 +5,8 @@ import { Router,
   IndexRoute,
   browserHistory }              from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-// import App      from './App.jsx';
-import Welcome  from './Welcome.jsx';
+import Welcome  from './welcome/Welcome.jsx';
+import Explore  from './explore/Explore.jsx';
 import Chat     from './Chat.jsx';
 import ChatMain from './chatmain/ChatMain.jsx';
 import ChatMenu from './chatmenu/ChatMenu.jsx';
@@ -16,8 +16,13 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <Router history={history}>
+        <Route path="/" component={Welcome} />
         <Route path="/" component={Chat} >
-          <IndexRoute components={{main: Welcome, menu: ChatMenu}} />
+          <IndexRoute components={{main: Explore, menu: ChatMenu}} />
+          <Route
+          path="/explore"
+          components={{main: Explore, menu: ChatMenu}}
+          />
           <Route
           path="/:convo"
           components={{main: ChatMain, menu: ChatMenu}}

@@ -20,7 +20,7 @@ const Panel = (props) => {
         <footer className="panel-footer">
           <div className="panel-footer-convos">
             <button
-              onClick={props.openModal}
+              onClick={props.openCreateRoomModal}
               className="create-rooom-button"
             >
               Add a room
@@ -50,7 +50,7 @@ const Panel = (props) => {
 
 Panel.propTypes = {
   onMouseLeave: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
+  openCreateRoomModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   addConvo: PropTypes.func.isRequired,
   modalIsOpen: PropTypes.bool.isRequired,
