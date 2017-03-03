@@ -12,7 +12,9 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
   </head>
   <body>
     <div id="root"></div>
-    <script src="/dist/bundle.js"></script>
+    <script src="/dist/manifest.js"></script>
+    <script src="/dist/vendor.js"></script>
+    <script src="/dist/application.js"></script>
   </body>
 </html>`);
 };

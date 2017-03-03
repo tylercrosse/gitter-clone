@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config            = require('./webpack.config.base');
 
 module.exports = merge(config, {
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   entry: ['./src/client/index'],
   plugins: [
     new CleanPlugin(['./static/dist'], {verbose: true}),
@@ -16,8 +16,6 @@ module.exports = merge(config, {
       }
     }),
     new ExtractTextPlugin('style.min.css'),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
@@ -28,13 +26,11 @@ module.exports = merge(config, {
     loaders: [
       {
         test: /\.(js|jsx)?$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         include: [path.resolve(__dirname, '../src')]
       }, {
-        test: /\.json$/, loader: 'json'
-      }, {
         test: /\.css?$/,
-        loaders: ['style', 'raw']
+        loaders: ['style-loader', 'raw-loader']
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css-loader!sass-loader')

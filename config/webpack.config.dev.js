@@ -4,15 +4,33 @@ const merge   = require('webpack-merge');
 const config  = require('./webpack.config.base');
 
 module.exports = merge(config, {
-  devtool: 'inline-source-map',
-  entry: [
-    'babel-polyfill',
-    'webpack-hot-middleware/client',
-    './src/client/index'
-  ],
+  devtool: 'source-map',
+  entry: {
+    application: [
+      'babel-polyfill',
+      'webpack-hot-middleware/client',
+      './src/client/index.js'
+    ],
+    vendor: [
+      'moment',
+      'normalizr',
+      'react',
+      'react-modal',
+      'react-router',
+      'react-scroll',
+      'react-redux',
+      'react-router-redux',
+      'redux',
+      'redux-thunk',
+      'redux-api-middleware',
+      'redux-socket.io',
+      'reselect',
+      'socket.io-client',
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
@@ -23,7 +41,7 @@ module.exports = merge(config, {
     loaders: [
       {
         test: /\.(js|jsx)?$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           plugins: [
             [
@@ -44,13 +62,11 @@ module.exports = merge(config, {
         },
         include: [path.resolve(__dirname, '../src')]
       }, {
-        test: /\.json$/, loader: 'json'
-      }, {
         test: /\.css?$/,
-        loaders: ['style', 'raw']
+        loaders: ['style-loader', 'raw-loader']
       }, {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }
