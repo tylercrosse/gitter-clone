@@ -15,6 +15,7 @@ module.exports = merge(config, {
       'moment',
       'normalizr',
       'react',
+      'react-dom',
       'react-modal',
       'react-router',
       'react-scroll',
