@@ -3,18 +3,31 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import ChatToolbar from './ChatToolbar.jsx';
 
-const setup = () => {
-  const component = <ChatToolbar />;
+const setup = (propOverrides) => {
+  const props = Object.assign({
+    messages: [
+      {username: 'Joe'},
+      {username: 'Josh'},
+    ],
+    user: {username: 'Liz'}
+  }, propOverrides);
 
   return {
-    component
+    props
   };
 };
 
 describe('<ChatToolbar />', () => {
-  it('should render correctly', () => {
-    const { component } = setup();
-    const renderedComponent = renderer.create(component);
+  it('should render correctly when logged in', () => {
+    const { props } = setup();
+    const renderedComponent = renderer.create(<ChatToolbar {...props} />);
+    const tree = renderedComponent.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render correctly when not logged in', () => {
+    const { props } = setup({user: {}});
+    const renderedComponent = renderer.create(<ChatToolbar {...props} />);
     const tree = renderedComponent.toJSON();
     expect(tree).toMatchSnapshot();
   });

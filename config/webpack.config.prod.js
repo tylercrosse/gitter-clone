@@ -2,6 +2,7 @@ const path              = require('path');
 const webpack           = require('webpack');
 const merge             = require('webpack-merge');
 const CleanPlugin       = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config            = require('./webpack.config.base');
 
@@ -28,7 +29,13 @@ module.exports = merge(config, {
     ]
   },
   plugins: [
-    new CleanPlugin(['./static/dist'], {verbose: true}),
+    new CleanPlugin(['../static/dist'], {verbose: true}),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/client/manifest.json'),
+        to: 'manifest.json'
+      }
+    ]),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
@@ -66,7 +73,7 @@ module.exports = merge(config, {
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
-          loader: ['css-loader', 'sass-loader'] 
+          loader: ['css-loader', 'sass-loader']
         })
       }
     ]

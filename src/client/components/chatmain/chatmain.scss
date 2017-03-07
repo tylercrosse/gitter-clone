@@ -58,6 +58,7 @@
 
 .chat-toolbar {
   position: relative;
+  padding: 20px;
   top: 0;
   bottom: 0;
   right: 0;
@@ -65,8 +66,42 @@
   flex-shrink: 0;
   display: flex;
   width: 70px;
-  //
   border-left: 1px solid #f1f1f1;
+
+  .roster {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .avatar {
+    display: inline-block;
+    position: relative;
+    background-size: cover;
+
+    img {
+      height: 30px;
+      width: 30px;
+      border-radius: 4px;
+    }
+  }
+
+  .status {
+    background-color: #fff;
+    box-shadow: inset 0 0 0 2px #fcb316;
+    position: absolute;
+    top: 5px;
+    left: -6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 7px;
+    height: 7px;
+    border: 2px solid white;
+    border-radius: 80px;
+    box-sizing: content-box;
+  }
 }
 
 .chat-header {

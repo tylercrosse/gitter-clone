@@ -39,7 +39,10 @@ export class ChatMain extends React.Component {
         }
         <ChatHeader user={this.props.user} />
         <div className="chat-and-toolbar-wrapper">
-          <ChatToolbar />
+          <ChatToolbar
+          messages={this.props.messages}
+          user={this.props.user}
+          />
           <div className="chat-wrapper">
             <ChatContent
             containerId="chat-content"
