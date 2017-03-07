@@ -6,6 +6,14 @@ import {
   closeModal }     from '../../actions/';
 import SignInModal from '../SignInModal.jsx';
 import                  './welcome.scss';
+import reactLogoSrc        from '../../assets/react.svg';
+import reduxLogoSrc        from '../../assets/redux.svg';
+import jestLogoSrc         from '../../assets/jest.svg';
+import webpackLogoSrc      from '../../assets/webpack.svg';
+import expressLogoSrc      from '../../assets/express.svg';
+import mongodbLogoSrc      from '../../assets/mongodb.svg';
+import semaphorLogoSrc     from '../../assets/semaphor.svg';
+import digitaloceanLogoSrc from '../../assets/digitalocean.svg';
 
 export const Welcome = (props) => (
   <div className="welcome">
@@ -49,13 +57,49 @@ export const Welcome = (props) => (
         </ul>
       </div>
     </header>
-    <section>
+    <section className="tech-panel">
       <h1>Check out the real Gitter.im</h1>
       <p>This is just a fan application. For the real Gitter messaging applcation go to
         <a
         href="https://gitter.im/"
         target="_blank"
         rel="noreferrer noopener"> gitter.im</a>.</p>
+      <div className="wrap">
+        <ul className="tech-icons">
+          <li>
+            <img className="react-logo"src={reactLogoSrc} alt="react logo" />
+            <figcaption>React</figcaption>
+          </li>
+          <li>
+            <img className="redux-logo"src={reduxLogoSrc} alt="redux logo" />
+            <figcaption>Redux</figcaption>
+          </li>
+          <li>
+            <img className="webpack-logo"src={webpackLogoSrc} alt="webpack logo" />
+            <figcaption>Webpack</figcaption>
+          </li>
+          <li>
+            <img className="express-logo"src={expressLogoSrc} alt="express logo" />
+            <figcaption>Express</figcaption>
+          </li>
+          <li>
+            <img className="mongodb-logo"src={mongodbLogoSrc} alt="mongodb logo" />
+            <figcaption>MongoDB</figcaption>
+          </li>
+          <li>
+            <img className="jest-logo"src={jestLogoSrc} alt="jest logo" />
+            <figcaption>Jest</figcaption>
+          </li>
+          <li>
+            <img className="semaphor-logo"src={semaphorLogoSrc} alt="semaphor logo" />
+            <figcaption>SemaphorCI</figcaption>
+          </li>
+          <li>
+            <img className="digitalocean-logo"src={digitaloceanLogoSrc} alt="digitalocean logo" />
+            <figcaption>Digital Ocean</figcaption>
+          </li>
+        </ul>
+      </div>
     </section>
     <footer className="bottom-panel">
       Built with <span className="heart">&lt;3</span> by
