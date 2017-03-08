@@ -6,14 +6,14 @@ import {
   closeModal }     from '../../actions/';
 import SignInModal from '../SignInModal.jsx';
 import                  './welcome.scss';
-import reactLogoSrc        from '../../assets/react.svg';
-import reduxLogoSrc        from '../../assets/redux.svg';
-import jestLogoSrc         from '../../assets/jest.svg';
-import webpackLogoSrc      from '../../assets/webpack.svg';
-import expressLogoSrc      from '../../assets/express.svg';
-import mongodbLogoSrc      from '../../assets/mongodb.svg';
-import semaphorLogoSrc     from '../../assets/semaphor.svg';
-import digitaloceanLogoSrc from '../../assets/digitalocean.svg';
+import reactLogoSrc        from '../../assets/img/react.svg';
+import reduxLogoSrc        from '../../assets/img/redux.svg';
+import jestLogoSrc         from '../../assets/img/jest.svg';
+import webpackLogoSrc      from '../../assets/img/webpack.svg';
+import expressLogoSrc      from '../../assets/img/express.svg';
+import mongodbLogoSrc      from '../../assets/img/mongodb.svg';
+import semaphorLogoSrc     from '../../assets/img/semaphor.svg';
+import digitaloceanLogoSrc from '../../assets/img/digitalocean.svg';
 
 export const Welcome = (props) => (
   <div className="welcome">

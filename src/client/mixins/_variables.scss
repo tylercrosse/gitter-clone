@@ -1,6 +1,27 @@
-$primary-font: 'Source Sans Pro', sans-serif;
-
 $london: #ba9cc3;
 $violet: #753a88;
 $maroon: #cc2b5e;
 $razz: #ed1965;
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../assets/font/SourceSansPro-Light.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../assets/font/SourceSansPro-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../assets/font/SourceSansPro-Semibold.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+$primary-font: 'Source Sans Pro', sans-serif;

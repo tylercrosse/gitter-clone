@@ -67,7 +67,18 @@ module.exports = merge(config, {
         loaders: ['style-loader', 'raw-loader']
       }, {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use : [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+          }, {
+            loader: 'resolve-url-loader'
+          }, {
+            loader: 'sass-loader',
+            options: {sourceMap: true}
+          }
+        ]
       }
     ]
   }
