@@ -8,7 +8,7 @@ module.exports = {
     publicPath: '/dist/'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.scss', '.ttf']
+    extensions: ['.js', '.jsx', '.json', '.scss']
   },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -26,7 +26,6 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 8192,
-          // name: 'images/[name].[ext]?[hash]'
         }
       },
       // Fonts
@@ -35,7 +34,6 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 8192,
-          // name: 'fonts/[name].[ext]?[hash]'
         }
       }
     ]

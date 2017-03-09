@@ -14,3 +14,8 @@ Built with:
 - mongodb
 - semaphore
 - digital ocean
+
+<div align="center">
+    <img height="80" src="./src/assets/img/react.svg">
+    <img height="80" src="./src/assets/img/redux.svg">
+</div>
