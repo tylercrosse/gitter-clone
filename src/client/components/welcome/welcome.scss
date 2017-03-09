@@ -22,7 +22,7 @@
   }
 
   .intro-panel {
-    background: url(https://lh3.googleusercontent.com/HKa3ttDzIX5JJp7YGmEaD4pu3ptVGcfJqV6iNejj_GJ6d3w0VH3Td1GWnz__bVJQCKVveFr-JBTqYaZ25Zs-_b8ya_zEjBCpMAHzZWP2INEwqNCzUCC83TopLxzsEqx-cqNDF6VDKPa_LXSDZz0UM3BiJ-ZRJ7yB-L6B18jW5cVWJ9CBi0or1DxasAxm1AiSnlAl7N21Ybiu7S-HGbv7J3zM328jHOlBtaoFSZaeUDRsLUDkCGK5xxSR-6_Cn-hleN8qUmMGsGr8RC0utGuR5z5vLlZ4LiltBAPUPqpjr_pRIxutX9fS61ZgO6C2ChpV4mA-wuqL0YVrYTgMIZM0r_AT-Khijaq75csGf7OzFyL7lF1z2NCp3a5R-qEstCZZNF_k2HQJOc-ZrjZKLJbVuXKHp6sShs5jekSX3d9uBzpCUTF6CYr83aWSS4-Vqiqmd3Q8Z6Rr_mRcetnzY_3C-W-gIcB9Vrt3TKJ1xB4ANdNe9Qy2r1TKzaDh3VSKpJ5HzPqctJl5rw1mm1uHKfXat8qTWtoG9FL0uhB0R3t3divpmmYBJqmLyBvrOD30uVsfu8v_LuwBbqBs8vwNVLhVC_2Uvnw-dVRiXbST5whhjt7H_ib1infrGw=w2000-h1339-no) no-repeat center center;
+    background: url('../../assets/img/cloneBanner.jpg') no-repeat center center;
     background-size: cover;
     background-color: #512e92;
     position: relative;
@@ -81,7 +81,6 @@
 
     .intro-panel-button {
       width: 300px;
-      box-sizing: border-box;
       margin-bottom: 20px;
       margin-right: 24px;
       text-decoration: none;
@@ -123,10 +122,44 @@
     background: rgba(0, 0, 0, 0.2);
   }
 
+  .tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    li {
+      text-align: center;
+    }
+
+    img {
+      max-width: 60px;
+      height: 60px;
+      // #888888
+    }
+
+    .react-logo {
+      fill: #61dafb;
+    }
+
+    .redux-logo {
+      fill: #764abc;
+    }
+
+    .mongodb-logo {
+      fill: #69b23f;
+    }
+
+    .jest-logo {
+      fill: #c53c14;
+    }
+  }
+
   .bottom-panel {
-    padding-bottom: 40px;
     height: auto;
-    padding: 100px 0;
+    padding: 100px 0 40px;
     font-size: 16px;
     line-height: 26px;
     color: #918b80;

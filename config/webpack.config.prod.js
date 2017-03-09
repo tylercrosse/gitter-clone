@@ -73,7 +73,17 @@ module.exports = merge(config, {
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
-          loader: ['css-loader', 'sass-loader']
+          fallbackLoader: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+            }, {
+              loader: 'resolve-url-loader'
+            }, {
+              loader: 'sass-loader',
+              options: {sourceMap: true}
+            }
+          ]
         })
       }
     ]

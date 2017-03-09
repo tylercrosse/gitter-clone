@@ -8,7 +8,6 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <meta name="theme-color" content="#753a88">
     <title>Gitter Clone</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
     <link href="/dist/style.min.css" rel="stylesheet">
     <link href="/dist/manifest.json" rel="manifest">
   </head>
@@ -27,3 +26,5 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
   </body>
 </html>`);
 };
+
+// <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
