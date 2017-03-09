@@ -16,6 +16,6 @@ Built with:
 - digital ocean
 
 <div align="center">
-    <img height="80" src="./src/assets/img/react.svg">
-    <img height="80" src="./src/assets/img/redux.svg">
+    <img height="80" src="https://raw.githubusercontent.com/tylercrosse/gitter-clone/assets/src/client/assets/img/react.svg">
+    <img height="80" src="https://raw.githubusercontent.com/tylercrosse/gitter-clone/assets/src/client/assets/img/redux.svg">
 </div>
