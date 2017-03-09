@@ -9,43 +9,18 @@ Built with:
 - redux
 - jest
 - webpack
-- babel
 - express
 - mongodb
 - semaphore
 - digital ocean
 
 <div align="center">
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/react.svg">
-      <figcaption>React</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/redux.svg">
-      <figcaption>Redux</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/webpack.svg">
-      <figcaption>Webpack</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/express.svg">
-      <figcaption>Express</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/mongodb.svg">
-      <figcaption>MongoDB</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/jest.svg">
-      <figcaption>Jest</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/semaphore.svg">
-      <figcaption>SemaphorCI</figcaption>
-    </div>
-    <div display="inline-block">
-      <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/digitalocean.svg">
-      <figcaption>Digital Ocean</figcaption>
-    </div>
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/react.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/redux.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/webpack.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/express.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/mongodb.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/jest.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/semaphor.svg">
+  <img height="80" src="https://cdn.rawgit.com/tylercrosse/gitter-clone/assets/src/client/assets/img/digitalocean.svg">
 </div>
