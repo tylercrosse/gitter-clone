@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actions';
 
-const message = (state, action) => {
+export const message = (state, action) => {
   switch (action.type) {
     case ActionTypes.ADD_MESSAGE:
       return {
