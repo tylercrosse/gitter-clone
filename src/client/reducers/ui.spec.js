@@ -17,11 +17,11 @@ describe('ui reducer', () => {
       ).toMatchSnapshot();
     });
 
-    it('should handle OPEN_CREATE_ROOM_MODAL', () => {
+    it('should handle OPEN_SIGN_IN_MODAL', () => {
       const initialState = false;
       expect(
         modalIsOpen(initialState, {
-          type: 'OPEN_CREATE_ROOM_MODAL',
+          type: 'OPEN_SIGN_IN_MODAL',
         })
       ).toMatchSnapshot();
     });

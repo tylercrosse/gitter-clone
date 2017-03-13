@@ -1,4 +1,4 @@
-import { v4 } from 'node-uuid';
+import shortid      from 'shortid';
 import * as actions from './index';
 
 describe('actions', () => {
@@ -38,7 +38,7 @@ describe('actions', () => {
       const getState = () => ('Bob');
       const dispatch = jest.fn();
       const name = 'Dan';
-      const id = v4();
+      const id = shortid.generate();
       actions.signIn(name, id)(dispatch, getState);
       expect(dispatch)
         .toHaveBeenCalledWith({

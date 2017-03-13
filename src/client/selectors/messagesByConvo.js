@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _filter from 'lodash/filter';
 import moment from 'moment';
 import { createSelector } from 'reselect';
 
@@ -6,7 +6,7 @@ export const getMessages = (state) => (state.messages);
 export const getConvoName = (state, convoName) => (convoName);
 
 export const getMessagesByConvo = (messages, convoName) => (
-  _.filter(messages, (message) => (
+  _filter(messages, (message) => (
     message.convo === convoName
   )));
 

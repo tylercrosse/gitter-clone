@@ -1,3 +1,4 @@
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path              = require('path');
 const webpack           = require('webpack');
 const merge             = require('webpack-merge');
@@ -58,7 +59,8 @@ module.exports = merge(config, {
     new ExtractTextPlugin({
       filename: 'style.min.css',
       allChunks: true
-    })
+    }),
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     noParse: /\.min\.js$/,
