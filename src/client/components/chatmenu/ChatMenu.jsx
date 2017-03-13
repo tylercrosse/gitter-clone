@@ -26,7 +26,8 @@ export class ChatMenu extends React.Component {
     }));
   }
   handleMouseLeave(e) {
-    if (e.clientX < 74) return; // ignore leaving to minibar
+    /* istanbul ignore next: ignore leaving to minibar */
+    if (e.clientX < 74) return;
     this.toggleActive();
   }
   handleMinibarButtonClick() {
