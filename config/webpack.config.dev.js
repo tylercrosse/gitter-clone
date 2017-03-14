@@ -63,15 +63,24 @@ module.exports = merge(config, {
         },
         include: [path.resolve(__dirname, '../src')]
       }, {
-        test: /\.css?$/,
-        loaders: ['style-loader', 'raw-loader']
-      }, {
+      //   test: /\.css?$/,
+      //   loaders: ['style-loader', 'raw-loader']
+      // }, {
         test: /\.scss$/,
-        use : [
+        loaders : [
           {
             loader: 'style-loader'
           }, {
             loader: 'css-loader',
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [
+                  require('autoprefixer')
+                ]
+              }
+            }
           }, {
             loader: 'resolve-url-loader'
           }, {
