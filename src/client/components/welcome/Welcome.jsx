@@ -1,5 +1,6 @@
 import React       from 'react';
 import { connect } from 'react-redux';
+import { Link }    from 'react-router';
 import {
   signIn,
   openSignInModal,
@@ -37,9 +38,9 @@ export const Welcome = (props) => (
           href="https://gitter.im/"
           target="_blank"
           rel="noreferrer noopener">Go to real Gitter.im</a>
-          <a
+          <Link
           className="intro-panel-button button-subdued"
-          href="/explore">Explore the clone</a>
+          to="/explore">Explore the clone</Link>
         </div>
         <ul className="mini-features-list">
           <li>
@@ -58,13 +59,8 @@ export const Welcome = (props) => (
       </div>
     </header>
     <section className="tech-panel">
-      <h1>Check out the real Gitter.im</h1>
-      <p>This is just a fan application. For the real Gitter messaging applcation go to
-        <a
-        href="https://gitter.im/"
-        target="_blank"
-        rel="noreferrer noopener"> gitter.im</a>.</p>
       <div className="wrap">
+        <h1>Built with</h1>
         <ul className="tech-icons">
           <li>
             <img className="react-logo"src={reactLogoSrc} alt="react logo" />
@@ -92,13 +88,23 @@ export const Welcome = (props) => (
           </li>
           <li>
             <img className="semaphor-logo"src={semaphorLogoSrc} alt="semaphor logo" />
-            <figcaption>SemaphorCI</figcaption>
+            <figcaption>SemaphoreCI</figcaption>
           </li>
           <li>
             <img className="digitalocean-logo"src={digitaloceanLogoSrc} alt="digitalocean logo" />
             <figcaption>Digital Ocean</figcaption>
           </li>
         </ul>
+      </div>
+    </section>
+    <section className="endoresment-panel">
+      <div className="wrap">
+        <h1>Check out the real Gitter.im</h1>
+        <p>This is just a fan application. For the real Gitter messaging applcation go to
+          <a
+          href="https://gitter.im/"
+          target="_blank"
+          rel="noreferrer noopener"> gitter.im</a></p>
       </div>
     </section>
     <footer className="bottom-panel">

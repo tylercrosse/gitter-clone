@@ -62,7 +62,10 @@
     }
 
     .minibar-button {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       width: 100%;
       height: 100%;
       padding: 0;

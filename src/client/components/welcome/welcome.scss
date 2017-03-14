@@ -17,6 +17,22 @@
   margin: 0;
   text-align: center;
 
+  h1 {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: currentColor;
+      opacity: 0.1;
+    }
+  }
+
   .wrap {
     margin: 0 auto;
     text-align: left;
@@ -41,6 +57,7 @@
       line-height: 72px;
       letter-spacing: -1px;
       color: $white;
+      position: relative;
     }
 
     h2 {
@@ -124,6 +141,17 @@
     background: $trans-black2;
   }
 
+  .tech-panel {
+    color: $flint;
+    padding: 50px 0;
+
+    h1 {
+      margin: 32px 0 25px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+  }
+
   .tech-icons {
     display: flex;
     flex-wrap: wrap;
@@ -155,6 +183,25 @@
 
     .jest-logo {
       fill: $jest;
+    }
+  }
+
+  .endoresment-panel {
+    background: $sea-buckthorn;
+    color: $white;
+    padding: 50px 0;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    a {
+      color: $white;
+    }
+
+    p {
+      font-size: 21px;
+      font-weight: 300;
     }
   }
 
