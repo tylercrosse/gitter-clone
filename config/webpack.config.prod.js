@@ -80,6 +80,15 @@ module.exports = merge(config, {
             {
               loader: 'css-loader',
             }, {
+              loader: 'postcss-loader',
+              options: {
+                plugins() {
+                  return [
+                    require('autoprefixer')
+                  ]
+                }
+              }
+            }, {
               loader: 'resolve-url-loader'
             }, {
               loader: 'sass-loader',
