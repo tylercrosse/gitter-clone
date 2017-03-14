@@ -1,11 +1,13 @@
+@import '../../mixins/_variables.scss';
+
 .button-caribbean {
-  background-color: #46bc99;
+  background-color: $puerto-rico;
   border: none;
 }
 
 .button-subdued {
   background-color: transparent;
-  border: 1px solid #fffefe;
+  border: 1px solid $romance;
 }
 
 .welcome {
@@ -24,21 +26,21 @@
   .intro-panel {
     background: url('../../assets/img/cloneBanner.jpg') no-repeat center center;
     background-size: cover;
-    background-color: #512e92;
+    background-color: $gigas;
     position: relative;
     overflow: hidden;
     padding: 50px 0;
-    color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    color: $trans-white75;
+    text-shadow: 0 0 4px $trans-black2;
 
     h1 {
-      // text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      // text-shadow: 0 0 8px $trans-black2;
       margin-top: 100px;
       margin-bottom: 60px;
       font-size: 60px;
       line-height: 72px;
       letter-spacing: -1px;
-      color: #fff;
+      color: $white;
     }
 
     h2 {
@@ -46,7 +48,7 @@
       font-size: 24px;
       line-height: 28px;
       letter-spacing: normal;
-      color: #fff;
+      color: $white;
       font-weight: 400;
     }
 
@@ -96,7 +98,7 @@
       border-radius: 8px;
       transition: background-color 0.1s ease, border-color 0.1s ease;
       text-align: center;
-      color: #fff;
+      color: $white;
     }
   }
 
@@ -119,7 +121,7 @@
     float: right;
     margin: -7px 0 0;
     line-height: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: $trans-black2;
   }
 
   .tech-icons {
@@ -137,23 +139,22 @@
     img {
       max-width: 60px;
       height: 60px;
-      // #888888
     }
 
     .react-logo {
-      fill: #61dafb;
+      fill: $react;
     }
 
     .redux-logo {
-      fill: #764abc;
+      fill: $redux;
     }
 
     .mongodb-logo {
-      fill: #69b23f;
+      fill: $mongodb;
     }
 
     .jest-logo {
-      fill: #c53c14;
+      fill: $jest;
     }
   }
 
@@ -162,8 +163,8 @@
     padding: 100px 0 40px;
     font-size: 16px;
     line-height: 26px;
-    color: #918b80;
-    background: #f1f0ed;
+    color: $heathered-grey;
+    background: $gallery;
     text-align: center;
 
     .heart {
@@ -181,7 +182,7 @@
       transition: color 0.2s ease-in;
 
       &:hover {
-        color: #ea9448;
+        color: $sea-buckthorn;
       }
     }
 
@@ -190,11 +191,11 @@
       float: none;
       margin: 0 15px;
       text-align: center;
-      color: #aeaca5;
+      color: $silver-chalice;
     }
   }
 
   a {
-    color: #aeaca5;
+    color: $silver-chalice;
   }
 }
