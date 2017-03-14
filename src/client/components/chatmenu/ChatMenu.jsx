@@ -1,5 +1,6 @@
 import React       from 'react';
 import { connect } from 'react-redux';
+import { Link }    from 'react-router';
 import {
   openCreateRoomModal,
   closeModal,
@@ -26,7 +27,8 @@ export class ChatMenu extends React.Component {
     }));
   }
   handleMouseLeave(e) {
-    if (e.clientX < 74) return; // ignore leaving to minibar
+    /* istanbul ignore next: ignore leaving to minibar */
+    if (e.clientX < 74) return;
     this.toggleActive();
   }
   handleMinibarButtonClick() {
@@ -39,9 +41,14 @@ export class ChatMenu extends React.Component {
           <nav className="minibar">
             <div className="minibar-inner">
               <ul>
-                <li className="minibar-convos">G</li>
+                <li className="minibar-convos">
+                  <Link
+                  to={'/'}
+                  className="minibar-button"
+                  >G</Link>
+                </li>
                 <li className="minibar-search">
-                  <button className="minibar-button" onClick={this.handleMinibarButtonClick}>
+                  <button className="minibar-button minibar-button-search" onClick={this.handleMinibarButtonClick}>
                     Q
                   </button>
                 </li>

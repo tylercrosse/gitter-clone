@@ -31,6 +31,17 @@ describe('convos reducer', () => {
     ).toEqual({});
   });
 
+  it('should handle fetch payload', () => {
+    let action = {};
+    expect(convos({}, action)).toMatchSnapshot('no payload');
+    action = {
+      payload: {
+        entities: { convos: {}}
+      }
+    };
+    expect(convos({}, action)).toMatchSnapshot('with payload');
+  });
+
   it('convos should handle ADD_CONVO', () => {
     expect(
       convos({}, {

@@ -13,10 +13,10 @@ class ChatContent extends React.Component {
       id="chat-content"
       className="chat-content scroller"
       >
-        {messages.length && messages.map((message) =>
+        {messages.length > 0 && messages.map((message) =>
           <ChatItem
-            key={message._id}
-            {...message}
+          key={message._id}
+          {...message}
           />
         )}
       </section>

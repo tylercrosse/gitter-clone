@@ -44,9 +44,9 @@ describe('<ChatMenu />', () => {
     const { component } = setup();
     const wrapper = mount(component);
     expect(wrapper.state().active).toBeFalsy();
-    wrapper.find('.minibar-button').simulate('click');
+    wrapper.find('.minibar-button-search').simulate('click');
     expect(wrapper.state().active).toBeTruthy();
-    wrapper.find('.minibar-button').simulate('click');
+    wrapper.find('.minibar-button-search').simulate('click');
     expect(wrapper.state().active).toBeFalsy();
   });
 
@@ -54,7 +54,7 @@ describe('<ChatMenu />', () => {
     const { component } = setup();
     const wrapper = mount(component);
     expect(wrapper.state().active).toBeFalsy();
-    wrapper.find('.minibar-button').simulate('click');
+    wrapper.find('.minibar-button-search').simulate('click');
     expect(wrapper.state().active).toBeTruthy();
     // trouble simulating clientX on synthetic mouseLeave event
     wrapper.instance().handleMouseLeave({clientX: 400});
@@ -67,7 +67,7 @@ describe('<ChatMenu />', () => {
     expect(wrapper.state().active).toBeFalsy();
     expect(wrapper.find('.chat-menu-panel').hasClass('active'))
       .toBeFalsy();
-    wrapper.find('.minibar-button').simulate('click');
+    wrapper.find('.minibar-button-search').simulate('click');
     expect(wrapper.state().active).toBeTruthy();
     expect(wrapper.find('.chat-menu-panel').hasClass('active'))
       .toBeTruthy();

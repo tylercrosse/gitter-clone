@@ -1,4 +1,28 @@
-import messages from './messages';
+import messages, { message } from './messages';
+
+describe('message reucer', () => {
+  it('should handle ADD_MESSAGE', () => {
+    expect(
+      message({}, {
+        type: 'ADD_MESSAGE',
+        message: {
+          createdAt: '2017-02-01T09:00:00-08:00',
+          username: 'dan',
+          text: 'Run the tests',
+          _id: 0
+        }
+      })
+    ).toMatchSnapshot('-> 1 message');
+  });
+
+  it('should return state for default switch case', () => {
+    expect(
+      message({}, {
+        type: 'fooBar'
+      })
+    ).toMatchSnapshot('default');
+  });
+});
 
 describe('messages reducer', () => {
   it('should handle initial state', () => {
@@ -13,6 +37,17 @@ describe('messages reducer', () => {
         type: 'fooBar'
       })
     ).toMatchSnapshot('default');
+  });
+
+  it('should handle fetch payload', () => {
+    let action = {};
+    expect(messages({}, action)).toMatchSnapshot('no payload');
+    action = {
+      payload: {
+        entities: { messages: {}}
+      }
+    };
+    expect(messages({}, action)).toMatchSnapshot('with payload');
   });
 
   it('should handle ADD_MESSAGE', () => {

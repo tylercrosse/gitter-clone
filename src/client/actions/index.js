@@ -1,4 +1,4 @@
-import { v4 }        from 'node-uuid';
+import shortid       from 'shortid';
 import { normalize } from 'normalizr';
 import { push }      from 'react-router-redux';
 import { CALL_API,
@@ -75,7 +75,7 @@ export const SIGN_IN = 'SIGN_IN';
 export const signIn = (username, id) => (dispatch) => {
   dispatch({
     type: SIGN_IN,
-    id: id || v4(),
+    id: id || shortid.generate(),
     username,
   });
   dispatch(push('/chat'));

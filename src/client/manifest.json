@@ -1,0 +1,10 @@
+{
+  "short_name": "gitter-clone",
+  "name": "Gitter clone",
+  "background_color": "#753a88",
+  "theme_color": "#753a88",
+  "icons": [
+  ],
+  "start_url": "./",
+  "display": "standalone"
+}

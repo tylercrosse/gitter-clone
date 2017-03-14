@@ -1,5 +1,5 @@
 import React        from 'react';
-import { shallow }  from 'enzyme';
+import { shallow, mount }  from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { ChatMain,
   makeMapStateToProps } from './ChatMain';
@@ -42,8 +42,18 @@ describe('<ChatMain />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  xit('should call fetchMessages() at componentDidMount', () => {
-    // FIXME TODO need store to render nested connected component
+  it('should call fetchData() at lifecycle changes', () => {
+    const { props, component } = setup();
+    const newProps = setup({convoName: 'react'}).props;
+    const wrapper = mount(component);
+    // fetchMessages called once on mount
+    expect(props.fetchMessages).toHaveBeenCalledTimes(1);
+    // fetchMessages not called, no change in props
+    wrapper.instance().componentDidUpdate(props);
+    expect(props.fetchMessages).toHaveBeenCalledTimes(1);
+    // fetchMessages called again on update
+    wrapper.instance().componentDidUpdate(newProps);
+    expect(props.fetchMessages).toHaveBeenCalledTimes(2);
   });
 
   it('should receive the correct props from state', () => {

@@ -1,11 +1,20 @@
 import React       from 'react';
 import { connect } from 'react-redux';
+import { Link }    from 'react-router';
 import {
   signIn,
   openSignInModal,
   closeModal }     from '../../actions/';
 import SignInModal from '../SignInModal.jsx';
-import                  './welcome.scss';
+import reactLogoSrc        from '../../assets/img/react.svg';
+import reduxLogoSrc        from '../../assets/img/redux.svg';
+import jestLogoSrc         from '../../assets/img/jest.svg';
+import webpackLogoSrc      from '../../assets/img/webpack.svg';
+import expressLogoSrc      from '../../assets/img/express.svg';
+import mongodbLogoSrc      from '../../assets/img/mongodb.svg';
+import semaphorLogoSrc     from '../../assets/img/semaphor.svg';
+import digitaloceanLogoSrc from '../../assets/img/digitalocean.svg';
+import                          './welcome.scss';
 
 export const Welcome = (props) => (
   <div className="welcome">
@@ -29,9 +38,9 @@ export const Welcome = (props) => (
           href="https://gitter.im/"
           target="_blank"
           rel="noreferrer noopener">Go to real Gitter.im</a>
-          <a
+          <Link
           className="intro-panel-button button-subdued"
-          href="/explore">Explore the clone</a>
+          to="/explore">Explore the clone</Link>
         </div>
         <ul className="mini-features-list">
           <li>
@@ -49,13 +58,54 @@ export const Welcome = (props) => (
         </ul>
       </div>
     </header>
-    <section>
-      <h1>Check out the real Gitter.im</h1>
-      <p>This is just a fan application. For the real Gitter messaging applcation go to
-        <a
-        href="https://gitter.im/"
-        target="_blank"
-        rel="noreferrer noopener"> gitter.im</a>.</p>
+    <section className="tech-panel">
+      <div className="wrap">
+        <h1>Built with</h1>
+        <ul className="tech-icons">
+          <li>
+            <img className="react-logo"src={reactLogoSrc} alt="react logo" />
+            <figcaption>React</figcaption>
+          </li>
+          <li>
+            <img className="redux-logo"src={reduxLogoSrc} alt="redux logo" />
+            <figcaption>Redux</figcaption>
+          </li>
+          <li>
+            <img className="webpack-logo"src={webpackLogoSrc} alt="webpack logo" />
+            <figcaption>Webpack</figcaption>
+          </li>
+          <li>
+            <img className="express-logo"src={expressLogoSrc} alt="express logo" />
+            <figcaption>Express</figcaption>
+          </li>
+          <li>
+            <img className="mongodb-logo"src={mongodbLogoSrc} alt="mongodb logo" />
+            <figcaption>MongoDB</figcaption>
+          </li>
+          <li>
+            <img className="jest-logo"src={jestLogoSrc} alt="jest logo" />
+            <figcaption>Jest</figcaption>
+          </li>
+          <li>
+            <img className="semaphor-logo"src={semaphorLogoSrc} alt="semaphor logo" />
+            <figcaption>SemaphoreCI</figcaption>
+          </li>
+          <li>
+            <img className="digitalocean-logo"src={digitaloceanLogoSrc} alt="digitalocean logo" />
+            <figcaption>Digital Ocean</figcaption>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section className="endoresment-panel">
+      <div className="wrap">
+        <h1>Check out the real Gitter.im</h1>
+        <p>This is just a fan application. For the real Gitter messaging applcation go to
+          <a
+          href="https://gitter.im/"
+          target="_blank"
+          rel="noreferrer noopener"> gitter.im</a></p>
+      </div>
     </section>
     <footer className="bottom-panel">
       Built with <span className="heart">&lt;3</span> by

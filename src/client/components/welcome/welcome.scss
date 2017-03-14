@@ -1,11 +1,13 @@
+@import '../../mixins/_variables.scss';
+
 .button-caribbean {
-  background-color: #46bc99;
+  background-color: $puerto-rico;
   border: none;
 }
 
 .button-subdued {
   background-color: transparent;
-  border: 1px solid #fffefe;
+  border: 1px solid $romance;
 }
 
 .welcome {
@@ -15,6 +17,22 @@
   margin: 0;
   text-align: center;
 
+  h1 {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: currentColor;
+      opacity: 0.1;
+    }
+  }
+
   .wrap {
     margin: 0 auto;
     text-align: left;
@@ -22,23 +40,24 @@
   }
 
   .intro-panel {
-    background: url(https://lh3.googleusercontent.com/HKa3ttDzIX5JJp7YGmEaD4pu3ptVGcfJqV6iNejj_GJ6d3w0VH3Td1GWnz__bVJQCKVveFr-JBTqYaZ25Zs-_b8ya_zEjBCpMAHzZWP2INEwqNCzUCC83TopLxzsEqx-cqNDF6VDKPa_LXSDZz0UM3BiJ-ZRJ7yB-L6B18jW5cVWJ9CBi0or1DxasAxm1AiSnlAl7N21Ybiu7S-HGbv7J3zM328jHOlBtaoFSZaeUDRsLUDkCGK5xxSR-6_Cn-hleN8qUmMGsGr8RC0utGuR5z5vLlZ4LiltBAPUPqpjr_pRIxutX9fS61ZgO6C2ChpV4mA-wuqL0YVrYTgMIZM0r_AT-Khijaq75csGf7OzFyL7lF1z2NCp3a5R-qEstCZZNF_k2HQJOc-ZrjZKLJbVuXKHp6sShs5jekSX3d9uBzpCUTF6CYr83aWSS4-Vqiqmd3Q8Z6Rr_mRcetnzY_3C-W-gIcB9Vrt3TKJ1xB4ANdNe9Qy2r1TKzaDh3VSKpJ5HzPqctJl5rw1mm1uHKfXat8qTWtoG9FL0uhB0R3t3divpmmYBJqmLyBvrOD30uVsfu8v_LuwBbqBs8vwNVLhVC_2Uvnw-dVRiXbST5whhjt7H_ib1infrGw=w2000-h1339-no) no-repeat center center;
+    background: url('../../assets/img/cloneBanner.jpg') no-repeat center center;
     background-size: cover;
-    background-color: #512e92;
+    background-color: $gigas;
     position: relative;
     overflow: hidden;
     padding: 50px 0;
-    color: rgba(255, 255, 255, 0.75);
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    color: $trans-white75;
+    text-shadow: 0 0 4px $trans-black2;
 
     h1 {
-      // text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      // text-shadow: 0 0 8px $trans-black2;
       margin-top: 100px;
       margin-bottom: 60px;
       font-size: 60px;
       line-height: 72px;
       letter-spacing: -1px;
-      color: #fff;
+      color: $white;
+      position: relative;
     }
 
     h2 {
@@ -46,7 +65,7 @@
       font-size: 24px;
       line-height: 28px;
       letter-spacing: normal;
-      color: #fff;
+      color: $white;
       font-weight: 400;
     }
 
@@ -81,7 +100,6 @@
 
     .intro-panel-button {
       width: 300px;
-      box-sizing: border-box;
       margin-bottom: 20px;
       margin-right: 24px;
       text-decoration: none;
@@ -97,7 +115,7 @@
       border-radius: 8px;
       transition: background-color 0.1s ease, border-color 0.1s ease;
       text-align: center;
-      color: #fff;
+      color: $white;
     }
   }
 
@@ -120,17 +138,80 @@
     float: right;
     margin: -7px 0 0;
     line-height: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: $trans-black2;
+  }
+
+  .tech-panel {
+    color: $flint;
+    padding: 50px 0;
+
+    h1 {
+      margin: 32px 0 25px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+  }
+
+  .tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    li {
+      text-align: center;
+    }
+
+    img {
+      max-width: 60px;
+      height: 60px;
+    }
+
+    .react-logo {
+      fill: $react;
+    }
+
+    .redux-logo {
+      fill: $redux;
+    }
+
+    .mongodb-logo {
+      fill: $mongodb;
+    }
+
+    .jest-logo {
+      fill: $jest;
+    }
+  }
+
+  .endoresment-panel {
+    background: $sea-buckthorn;
+    color: $white;
+    padding: 50px 0;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    a {
+      color: $white;
+    }
+
+    p {
+      font-size: 21px;
+      font-weight: 300;
+    }
   }
 
   .bottom-panel {
-    padding-bottom: 40px;
     height: auto;
-    padding: 100px 0;
+    padding: 100px 0 40px;
     font-size: 16px;
     line-height: 26px;
-    color: #918b80;
-    background: #f1f0ed;
+    color: $heathered-grey;
+    background: $gallery;
     text-align: center;
 
     .heart {
@@ -148,7 +229,7 @@
       transition: color 0.2s ease-in;
 
       &:hover {
-        color: #ea9448;
+        color: $sea-buckthorn;
       }
     }
 
@@ -157,11 +238,11 @@
       float: none;
       margin: 0 15px;
       text-align: center;
-      color: #aeaca5;
+      color: $silver-chalice;
     }
   }
 
   a {
-    color: #aeaca5;
+    color: $silver-chalice;
   }
 }

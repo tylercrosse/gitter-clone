@@ -1,5 +1,6 @@
 import path           from 'path';
 import express        from 'express';
+import compression    from 'compression';
 import bodyParser     from 'body-parser';
 import mongoose       from 'mongoose';
 import Promise        from 'bluebird';
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // other middleware
+app.use(compression());
 app.use(bodyParser.json());
 app.use(expressWinston.logger({
   winstonInstance: reqLogger
