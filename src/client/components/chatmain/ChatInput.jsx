@@ -7,14 +7,23 @@ class ChatInput extends React.Component {
     this.state = {
       draft: ''
     };
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  updateDraft(e) {
+  handleKeyPress(e) {
+    if (e.key === 'Enter' && !e.nativeEvent.shiftKey) {
+      this.handleSubmit(e);
+    }
+  }
+  handleChange(e) {
     this.setState({
       draft: e.target.value
     });
   }
   handleSubmit(e) {
     e.preventDefault();
+    if (!this.state.draft.trim()) return;
     const convo = this.props.routeParams.convo;
     this.props.onMessageSubmit({
       username: this.props.user.username,
@@ -34,9 +43,10 @@ class ChatInput extends React.Component {
           src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
           />
         </div>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
+        <form onSubmit={this.handleSubmit}>
           <textarea
-          onChange={(e) => this.updateDraft(e)}
+          onKeyPress={this.handleKeyPress}
+          onChange={this.handleChange}
           value={this.state.draft}
           placeholder="Click here to type a chat message. Supports Github flavoured markdown."
           name="chat"

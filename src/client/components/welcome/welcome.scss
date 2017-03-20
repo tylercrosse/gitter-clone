@@ -3,11 +3,21 @@
 .button-caribbean {
   background-color: $puerto-rico;
   border: none;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $gossamer;
+  }
 }
 
 .button-subdued {
   background-color: transparent;
   border: 1px solid $romance;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $trans-white1;
+  }
 }
 
 .welcome {
@@ -139,6 +149,11 @@
     margin: -7px 0 0;
     line-height: 1;
     background: $trans-black2;
+    transition: background 0.1s ease;
+
+    &:hover {
+      background: $trans-black3;
+    }
   }
 
   .tech-panel {

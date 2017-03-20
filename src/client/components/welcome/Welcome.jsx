@@ -33,14 +33,14 @@ export const Welcome = (props) => (
         <h1>Welcome to Gitter Clone</h1>
         <p>This is app was built as portfolio piece representing a subset of the features of Troupe Technology&apos;s wonderful chat app, Gitter.</p>
         <div className="intro-panel-button-block">
-          <a
+          <Link
           className="intro-panel-button button-caribbean"
+          to="/explore">Explore the clone</Link>
+          <a
+          className="intro-panel-button button-subdued"
           href="https://gitter.im/"
           target="_blank"
           rel="noreferrer noopener">Go to real Gitter.im</a>
-          <Link
-          className="intro-panel-button button-subdued"
-          to="/explore">Explore the clone</Link>
         </div>
         <ul className="mini-features-list">
           <li>
