@@ -10,7 +10,7 @@ This is app was built as portfolio piece representing a subset of the features o
 ---
 ### Demo
 
-You can test a fully working live demo at  http://138.68.24.248:3333/
+You can test a fully working live demo at https://gitter-clone.tk/
 
 ---
 ### Major features
