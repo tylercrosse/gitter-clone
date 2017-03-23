@@ -1,7 +1,7 @@
 import express from 'express';
 import * as messageCtlr   from '../controllers/messages';
 import * as convoCtlr     from '../controllers/convos';
-import * as assetCtlr    from '../controllers/assets';
+import * as assetCtlr     from '../controllers/assets';
 import * as universalCtlr from '../controllers/universal';
 
 const router = express.Router();
