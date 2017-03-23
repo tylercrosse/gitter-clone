@@ -18,7 +18,10 @@ const setup = (propOverrides) => {
     modalIsOpen: {signIn: false},
     fetchMessages: jest.fn(),
     addMessage: jest.fn(),
-    signIN: jest.fn()
+    signIN: jest.fn(),
+    error: {
+      messages: false
+    }
   }, propOverrides);
 
   const component = <ChatMain {...props} />;
@@ -41,6 +44,16 @@ describe('<ChatMain />', () => {
     const wrapper = shallow(<ChatMain {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+  it('should render correctly when 404 error', () => {
+    const errorOverride = {
+      error: {
+        status: 404
+      }
+    };
+    const { props } = setup(errorOverride);
+    const wrapper = shallow(<ChatMain {...props} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
   it('should call fetchData() at lifecycle changes', () => {
     const { props, component } = setup();
@@ -60,14 +73,16 @@ describe('<ChatMain />', () => {
     const { props } = setup();
     let state = {
       convos: {},
-      ui: {isFetching: false}
+      ui: {isFetching: false},
+      error: {messages: false}
     };
     const mapStateToProps = makeMapStateToProps();
     expect(mapStateToProps(state, props))
       .toMatchSnapshot();
     state = {
       convos: {chat: []},
-      ui: {isFetching: false}
+      ui: {isFetching: false},
+      error: {messages: false}
     };
     expect(mapStateToProps(state, props))
       .toMatchSnapshot();
