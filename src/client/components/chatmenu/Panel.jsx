@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CreateRoomModal      from './CreateRoomModal';
+import CreateRoomModal      from '../modals/CreateRoomModal';
 import ConvoItem            from './ConvoItem';
 
 const Panel = (props) => {

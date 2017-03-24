@@ -9,11 +9,12 @@ import {
   fetchMessages,
   addMessage }        from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
+import Generic404     from '../errors/Generic404.jsx';
+import SignInModal    from '../modals/SignInModal.jsx';
 import ChatHeader     from './ChatHeader.jsx';
 import ChatToolbar    from './ChatToolbar.jsx';
 import ChatContent    from './ChatContent.jsx';
 import ChatInput      from './ChatInput.jsx';
-import SignInModal    from '../SignInModal.jsx';
 import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
@@ -30,6 +31,9 @@ export class ChatMain extends React.Component {
     this.props.fetchMessages(convo);
   }
   render() {
+    if (this.props.error && this.props.error.status === 404) {
+      return <Generic404 />;
+    }
     return (
       <main className="chat-header-wrapper">
         { this.props.isFetching &&
@@ -88,7 +92,8 @@ export const makeMapStateToProps = () => {
       convos: state.convos,
       convoName,
       isFetching: state.ui.isFetching,
-      modalIsOpen: state.ui.modalIsOpen
+      modalIsOpen: state.ui.modalIsOpen,
+      error: state.error.messages
     };
   };
   return mapStateToProps;

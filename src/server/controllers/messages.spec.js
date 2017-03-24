@@ -13,6 +13,7 @@ const setup = () => {
     convo: 'chat',
   };
   Convo.findOne = jest.fn().mockReturnThis();
+  Convo.populate = jest.fn().mockReturnThis();
   Convo.then = jest.fn().mockReturnThis();
   Convo.catch = jest.fn().mockReturnThis();
 
@@ -23,22 +24,51 @@ const setup = () => {
 };
 
 describe('messages controller', () => {
-  it('should get messages', () => {
-    const req = { params: {convo: 'chat'} };
-    const res = {
-      json: jest.fn()
-    };
-    Message.find = jest.fn().mockReturnThis();
-    Message.then = jest.fn(function cb(callback) {
-      callback('dummy message');
-      return this;
-    });
-    Message.catch = jest.fn().mockReturnThis();
+  describe('getMessages', () => {
+    it('should res with json messages when chat exists', () => {
+      const req = { params: {convo: 'chat'} };
+      const res = {
+        json: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn()
+      };
+      setup();
+      Convo.then = jest.fn(function cb(callback) {
+        callback({messages: {text: 'dummy message'}});
+        return this;
+      });
 
-    messageCtlr.getMessages(req, res);
-    expect(Message.find).toHaveBeenCalledWith({convo: req.params.convo});
-    expect(Message.then).toHaveBeenCalledTimes(1);
-    expect(res.json).toHaveBeenCalledWith('dummy message');
+      messageCtlr.getMessages(req, res);
+
+      expect(Convo.findOne).toHaveBeenCalledWith({name: req.params.convo});
+      expect(Convo.populate).toHaveBeenCalledTimes(1);
+      expect(Convo.then).toHaveBeenCalledTimes(1);
+      expect(res.json).toHaveBeenCalledWith({text: 'dummy message'});
+      expect(res.status).toHaveBeenCalledTimes(0);
+      expect(res.send).toHaveBeenCalledTimes(0);
+    });
+    it('should res with 404 when chat does not exist', () => {
+      const req = { params: {convo: 'chat'} };
+      const res = {
+        json: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn()
+      };
+      setup();
+      Convo.then = jest.fn(function cb(callback) {
+        callback(null);
+        return this;
+      });
+
+      messageCtlr.getMessages(req, res);
+
+      expect(Convo.findOne).toHaveBeenCalledWith({name: req.params.convo});
+      expect(Convo.populate).toHaveBeenCalledTimes(1);
+      expect(Convo.then).toHaveBeenCalledTimes(1);
+      expect(res.json).toHaveBeenCalledTimes(0);
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.send).toHaveBeenCalledWith('Chat not found');
+    });
   });
 
   describe('addMessage', () => {
