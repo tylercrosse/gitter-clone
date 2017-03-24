@@ -7,9 +7,11 @@ import Convo        from '../models/Convo';
 marked.setOptions(markedConfig);
 
 export const getMessages = (req, res) => {
-  Message.find({convo: req.params.convo})
-    .then((messages) => {
-      res.json(messages);
+  Convo.findOne({name: req.params.convo})
+    .populate('messages')
+    .then((convo) => {
+      if (convo === null) res.status(404).send('Chat not found');
+      else res.json(convo.messages);
     })
     .catch(/* istanbul ignore next */(err) => {
       logger.log('error', err);

@@ -49,10 +49,35 @@ describe('<ChatInput />', () => {
         .toEqual(value);
     });
 
+    it('should submit on enter, but not shift+enter', () => {
+      const shiftEnterEvent = {
+        key: 'Enter',
+        nativeEvent: {shiftKey: true}
+      };
+      const enterEvent = {
+        key: 'Enter',
+        nativeEvent: {shiftKey: false}
+      };
+      const { component } = setup();
+      const wrapper = mount(component);
+      wrapper.instance().handleSubmit = jest.fn();
+      wrapper.instance().handleKeyPress(shiftEnterEvent);
+      expect(wrapper.instance().handleSubmit)
+        .toHaveBeenCalledTimes(0);
+      wrapper.instance().handleKeyPress(enterEvent);
+      expect(wrapper.instance().handleSubmit)
+        .toHaveBeenCalledTimes(1);
+    });
+
     it('should call submit action on submit with text', () => {
       const value = 'My new value';
       const { props, component } = setup();
       const wrapper = mount(component);
+      // no message (trim conditional)
+      wrapper.find('form').simulate('submit');
+      expect(props.onMessageSubmit)
+        .toHaveBeenCalledTimes(0);
+      // with message
       wrapper.find('textarea').simulate('change', {target: {value}});
       wrapper.find('form').simulate('submit');
       expect(props.onMessageSubmit)
