@@ -5,7 +5,7 @@ import {
   signIn,
   openSignInModal,
   closeModal }     from '../../actions/';
-import SignInModal from '../SignInModal.jsx';
+import SignInModal from '../modals/SignInModal.jsx';
 import reactLogoSrc        from '../../assets/img/react.svg';
 import reduxLogoSrc        from '../../assets/img/redux.svg';
 import jestLogoSrc         from '../../assets/img/jest.svg';

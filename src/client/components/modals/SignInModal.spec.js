@@ -37,11 +37,21 @@ describe('<SignInModal />', () => {
   });
 
   it('should simulate input field', () => {
-    const value = 'My new value';
+    const validInput = 'Dan';
+    const invalidInput = '*_Dan_*';
     const { wrapper } = setup();
-    wrapper.find('input').simulate('change', {target: {value}});
+    wrapper.state().validInput = false;
+    expect(wrapper.state().validInput).toBe(false);
+
+    wrapper.find('input').simulate('change', {target: {value: invalidInput}});
     expect(wrapper.find('input').props().value)
-      .toEqual(value);
+    .toEqual(invalidInput);
+    expect(wrapper.state().validInput).toBe(false);
+
+    wrapper.find('input').simulate('change', {target: {value: validInput}});
+    expect(wrapper.find('input').props().value)
+      .toEqual(validInput);
+    expect(wrapper.state().validInput).toBe(true);
   });
 
   it('should call submit action on submit with valid input', () => {

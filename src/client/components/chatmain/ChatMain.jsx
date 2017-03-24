@@ -10,11 +10,11 @@ import {
   addMessage }        from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
 import Generic404     from '../errors/Generic404.jsx';
+import SignInModal    from '../modals/SignInModal.jsx';
 import ChatHeader     from './ChatHeader.jsx';
 import ChatToolbar    from './ChatToolbar.jsx';
 import ChatContent    from './ChatContent.jsx';
 import ChatInput      from './ChatInput.jsx';
-import SignInModal    from '../SignInModal.jsx';
 import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
