@@ -39,7 +39,8 @@ app.use(bodyParser.json());
 app.use(expressWinston.logger({
   winstonInstance: reqLogger
 }));
-app.use('/', express.static(path.join(__dirname, '../..', 'static')));
+// serve static files
+app.use(express.static('static'));
 app.use('/', router);
 app.use(expressWinston.errorLogger({
   winstonInstance: errLogger

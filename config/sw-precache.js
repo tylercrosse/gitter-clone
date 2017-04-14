@@ -1,10 +1,10 @@
 module.exports = {
-  stirpPrefix: '/static/dist/',
+  stirpPrefix: '/static/',
   // replacePrefix: '/dist/',
   staticFileGlobs: [
-    'static/dist/manifest.json',
-    'static/dist/**.js',
-    'static/dist/**.min.css',
+    'static/manifest.json',
+    'static/js/**.js',
+    'static/css/**.min.css',
   ],
-  swFilePath: 'static/dist/serviceWorker.js'
+  swFilePath: 'static/js/serviceWorker.js'
 };

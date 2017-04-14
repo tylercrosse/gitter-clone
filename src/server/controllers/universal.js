@@ -8,18 +8,18 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <meta name="theme-color" content="#753a88">
     <title>Gitter Clone</title>
-    <link href="/dist/style.min.css" rel="stylesheet">
-    <link href="/dist/manifest.json" rel="manifest">
+    <link href="/css/style.min.css" rel="stylesheet">
+    <link href="/manifest.json" rel="manifest">
   </head>
   <body>
     <div id="root"></div>
-    <script src="/dist/manifest.js"></script>
-    <script src="/dist/vendor.js"></script>
-    <script src="/dist/application.js"></script>
+    <script src="/js/manifest.js"></script>
+    <script src="/js/vendor.js"></script>
+    <script src="/js/app.js"></script>
     <script type="text/javascript">
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/dist/serviceWorker.js');
+          navigator.serviceWorker.register('/js/serviceWorker.js');
         });
       }
     </script>

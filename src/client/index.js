@@ -3,7 +3,7 @@ import React    from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from '../common/store/configureStore';
 import Root from '../common/components/Root.jsx';
-import           '../common/global.scss';
+// import           '../common/global.scss';
 
 /* istanbul ignore next: tested elsewhere */
 const store = configureStore();

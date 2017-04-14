@@ -1,6 +1,6 @@
 import React    from 'react';
 import { Link } from 'react-router';
-import               './errors.scss';
+// import               './errors.scss';
 
 const Generic404 = () => (
   <div className="generic404">

@@ -7,7 +7,7 @@ import {
   addConvo,
   fetchConvos }    from '../../actions';
 import Panel       from './Panel';
-import                  './chatmenu.scss';
+// import                  './chatmenu.scss';
 
 export class ChatMenu extends React.Component {
   constructor(props) {

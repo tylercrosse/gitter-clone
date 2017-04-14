@@ -1,7 +1,7 @@
 import React       from 'react';
 import { Link }    from 'react-router';
 import { connect } from 'react-redux';
-import                  './explore.scss';
+// import                  './explore.scss';
 
 export const Explore = (props) => (
   <div className="explore">
