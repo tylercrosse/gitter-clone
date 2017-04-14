@@ -2,7 +2,11 @@
   "name": "gitter-clone",
   "version": "0.0.1",
   "description": "Gitter Clone",
-  "main": "index.js",
+  "main": "./compiled/server/",
+  "engines": {
+    "node": "7.6.0",
+    "npm": "4.1.2"
+  },
   "scripts": {
     "start": "NODE_ENV=production node ./compiled/server",
     "dev": "NODE_ENV=development nodemon ./src/server/",

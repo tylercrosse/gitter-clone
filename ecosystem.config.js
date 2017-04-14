@@ -8,7 +8,7 @@ module.exports = {
     // First application
     {
       name: 'Gitter-clone',
-      script: './static/compiled/',
+      script: './compiled/server/server.js',
       env: {
         COMMON_VARIABLE: 'true'
       },
