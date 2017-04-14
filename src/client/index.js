@@ -1,12 +1,12 @@
-/* istanbul ignore next: hard to isolate */
 import React          from 'react';
 import ReactDOM       from 'react-dom';
+import { Provider }   from 'react-redux';
 import configureStore from '../common/store/configureStore';
-import Root           from '../common/components/Root.jsx';
+import Routes         from '../common/Routes';
 import                     './styles/global.scss';
 
-/* istanbul ignore next: tested elsewhere */
-const store = configureStore();
+const preloadedState = window.__PRELOADED_STATE__;
+const store = configureStore(preloadedState);
 
 if (module.hot) {
   module.hot.accept('../common/reducers/', () => {
@@ -16,6 +16,8 @@ if (module.hot) {
 }
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
   document.getElementById('root')
 );

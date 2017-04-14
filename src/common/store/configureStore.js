@@ -1,11 +1,13 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk  from 'redux-thunk';
-import { browserHistory } from 'react-router';
-import { routerMiddleware } from 'react-router-redux';
+import { createStore,
+  applyMiddleware }             from 'redux';
+import thunk                    from 'redux-thunk';
+import { browserHistory }       from 'react-router';
+import { routerMiddleware }     from 'react-router-redux';
+import { composeWithDevTools }  from 'redux-devtools-extension/developmentOnly';
 import createSocketIoMiddleware from 'redux-socket.io';
-import io from 'socket.io-client';
-import { apiMiddleware } from 'redux-api-middleware';
-import rootReducer from '../reducers/';
+import io                       from 'socket.io-client';
+import { apiMiddleware }        from 'redux-api-middleware';
+import rootReducer              from '../reducers/';
 
 const socket = io('');
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'server.');
@@ -17,13 +19,22 @@ const middlewares = [
   routerMiddleware(browserHistory)
 ];
 
-const createStoreWithMiddleWare = compose(
-  applyMiddleware(...middlewares),
-  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
-)(createStore);
+const configureStore = (preloadedState) => {
+  const store = createStore(
+    rootReducer,
+    preloadedState,
+    composeWithDevTools(applyMiddleware(...middlewares))
+  );
 
-const configureStore = (initialState) => (
-  createStoreWithMiddleWare(rootReducer, initialState)
-);
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers/', () => {
+      const nextRootReducer = require('../reducers/').default;
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
+};
 
 export default configureStore;
