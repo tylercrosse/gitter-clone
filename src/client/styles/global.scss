@@ -1,5 +1,11 @@
-@import './mixins/_normalize.scss';
-@import './mixins/_variables.scss';
+@import '_normalize.scss';
+@import '_variables.scss';
+// @import 'global.scss';
+@import 'welcome.scss';
+@import 'errors.scss';
+@import 'explore.scss';
+@import 'chatmenu.scss';
+@import 'chatmain.scss';
 
 *,
 *::after,

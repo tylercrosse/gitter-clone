@@ -1,5 +1,3 @@
-@import '../../mixins/_variables.scss';
-
 .button-caribbean {
   background-color: $puerto-rico;
   border: none;
@@ -50,7 +48,7 @@
   }
 
   .intro-panel {
-    background: url('../../assets/img/cloneBanner.jpg') no-repeat center center;
+    background: url('/img/cloneBanner.jpg') no-repeat center center;
     background-size: cover;
     background-color: $gigas;
     position: relative;

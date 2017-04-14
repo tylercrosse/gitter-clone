@@ -77,6 +77,15 @@ const webpackConfig = {
         query: {
           presets: ['react-hmre']
         }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        loader: 'file-loader'
+      },
+      // Fonts
+      {
+        test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
       }
     ]
   }
@@ -109,7 +118,7 @@ if (isProd) {
       debug: false
     }),
     new ExtractTextPlugin({
-      filename: 'style.min.css',
+      filename: 'css/style.min.css',
       allChunks: true
     })
   );
@@ -137,19 +146,17 @@ if (isProd) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+        NODE_ENV: JSON.stringify('development')
       }
     })
   );
   webpackConfig.module.loaders.push(
     {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          ...sharedSassLoaders
-        ]
-      })
+      use: [
+        { loader: 'style-loader' },
+        ...sharedSassLoaders
+      ]
     }
   );
 }
