@@ -5,7 +5,7 @@ import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
 
-const API_ROOT = 'http://127.0.0.1:3333/api/';
+// const API_ROOT = 'http://127.0.0.1:3333/api/';
 // FIXME XXX this will break on deployment
 // Need to implement a more robust method of getting host
 // that also works on the server
@@ -32,7 +32,7 @@ export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
 export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
 export const fetchMessages =  (convo) => ({
   [CALL_API]: {
-    endpoint: API_ROOT + 'messages/' + convo,
+    endpoint: window.location.origin + '/api/messages/' + convo,
     method: 'GET',
     types: [
       MESSAGES_REQUEST,
@@ -59,7 +59,7 @@ export const CONVOS_SUCCESS = 'CONVOS_SUCCESS';
 export const CONVOS_FAILURE = 'CONVOS_FAILURE';
 export const fetchConvos = () => ({
   [CALL_API]: {
-    endpoint: API_ROOT + 'convos',
+    endpoint: window.location.origin + '/api/convos',
     method: 'GET',
     types: [
       CONVOS_REQUEST,
