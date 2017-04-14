@@ -5,16 +5,7 @@ import {
   signIn,
   openSignInModal,
   closeModal }     from '../../actions/';
-import SignInModal from '../modals/SignInModal.jsx';
-// import reactLogoSrc        from '../../assets/img/react.svg';
-// import reduxLogoSrc        from '../../assets/img/redux.svg';
-// import jestLogoSrc         from '../../assets/img/jest.svg';
-// import webpackLogoSrc      from '../../assets/img/webpack.svg';
-// import expressLogoSrc      from '../../assets/img/express.svg';
-// import mongodbLogoSrc      from '../../assets/img/mongodb.svg';
-// import semaphorLogoSrc     from '../../assets/img/semaphor.svg';
-// import digitaloceanLogoSrc from '../../assets/img/digitalocean.svg';
-// import                          './welcome.scss';
+import SignInModal from '../modals/SignInModal';
 
 export const Welcome = (props) => (
   <div className="welcome">

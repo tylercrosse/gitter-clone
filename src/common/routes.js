@@ -3,12 +3,12 @@ import { Router,
   Route,
   browserHistory,
   IndexRoute }    from 'react-router';
-import Welcome    from './components/welcome/Welcome.jsx';
-import Explore    from './components/explore/Explore.jsx';
-import Chat       from './components/Chat.jsx';
-import ChatMain   from './components/chatmain/ChatMain.jsx';
-import ChatMenu   from './components/chatmenu/ChatMenu.jsx';
-import Generic404 from './components/errors/Generic404.jsx';
+import Welcome    from './components/welcome/Welcome';
+import Explore    from './components/explore/Explore';
+import Chat       from './components/Chat';
+import ChatMain   from './components/chatmain/ChatMain';
+import ChatMenu   from './components/chatmenu/ChatMenu';
+import Generic404 from './components/errors/Generic404';
 
 export const routes = (
   <Router history={browserHistory}>

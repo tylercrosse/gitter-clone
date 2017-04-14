@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { ChatMenu, mapStateToProps } from './ChatMenu.jsx';
+import { ChatMenu, mapStateToProps } from './ChatMenu';
 
 const setup = () => {
   const props = {

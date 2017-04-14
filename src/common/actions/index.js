@@ -5,7 +5,11 @@ import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
 
-const API_ROOT = window.location.origin + '/api/';
+const API_ROOT = 'http://127.0.0.1:3333/api/';
+// FIXME XXX this will break on deployment
+// Need to implement a more robust method of getting host
+// that also works on the server
+// const API_ROOT = window.location.origin + '/api/';
 
 let nextMessageId = 0;
 export const ADD_MESSAGE = 'ADD_MESSAGE';

@@ -1,7 +1,7 @@
 import React from 'react';
 // import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import ConvoItem from './ConvoItem.jsx';
+import ConvoItem from './ConvoItem';
 
 const setup = () => {
   const props = {

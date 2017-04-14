@@ -1,7 +1,7 @@
 import React from 'react';
 // import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import ChatToolbar from './ChatToolbar.jsx';
+import ChatToolbar from './ChatToolbar';
 
 const setup = (propOverrides) => {
   const props = Object.assign({

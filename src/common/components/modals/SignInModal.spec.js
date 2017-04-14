@@ -2,7 +2,7 @@ import React              from 'react';
 import { shallow, mount } from 'enzyme';
 import renderer           from 'react-test-renderer';
 import SignInModal,
- { validateInput }        from './SignInModal.jsx';
+ { validateInput }        from './SignInModal';
 
 const setup = () => {
   const props = {

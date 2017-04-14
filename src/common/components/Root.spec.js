@@ -3,8 +3,8 @@ import { shallow }     from 'enzyme';
 import { Route }       from 'react-router';
 import { createStore } from 'redux';
 import rootReducer     from '../reducers/';
-import Root            from './Root.jsx';
-import Chat            from './Chat.jsx';
+import Root            from './Root';
+import Chat            from './Chat';
 
 const setup = () => {
   const store = createStore(rootReducer);

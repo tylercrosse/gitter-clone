@@ -1,7 +1,7 @@
 import React from 'react';
 // import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import ChatHeader from './ChatHeader.jsx';
+import ChatHeader from './ChatHeader';
 
 const setup = (propOverrides) => {
   const props = Object.assign({

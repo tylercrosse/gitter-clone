@@ -131,6 +131,11 @@ if (isProd) {
           ...sharedSassLoaders
         ]
       })
+    },
+    {
+      test: /\.(js|jsx)?$/,
+      use: 'babel-loader',
+      include: [path.resolve(__dirname, './src')]
     }
   );
 } else {

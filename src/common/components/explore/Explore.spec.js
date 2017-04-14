@@ -1,6 +1,6 @@
 import React       from 'react';
 import renderer    from 'react-test-renderer';
-import { Explore } from './Explore.jsx';
+import { Explore } from './Explore';
 
 const setup = (propOverrides) => {
   const props = Object.assign({

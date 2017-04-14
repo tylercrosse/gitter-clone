@@ -6,7 +6,7 @@
     "jest": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
       "forOf": true,
@@ -23,7 +23,7 @@
     "react/forbid-prop-types": [2, { "forbid": ['any'] }],
     "react/jsx-indent-props": 0,
     "react/jsx-closing-bracket-location": 0,
-    "react/jsx-filename-extension": 0,
+    "react/jsx-filename-extension": 1,
     "react/no-find-dom-node": 1,
     "object-curly-spacing": 0,
     "arrow-body-style": 0,

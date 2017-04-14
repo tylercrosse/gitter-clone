@@ -2,7 +2,7 @@ import React              from 'react';
 import { shallow, mount } from 'enzyme';
 import renderer           from 'react-test-renderer';
 import CreateRoomModal,
- { validateInput }        from './CreateRoomModal.jsx';
+ { validateInput }        from './CreateRoomModal';
 
 const setup = () => {
   const props = {

@@ -3,8 +3,8 @@ import { shallow, mount } from 'enzyme';
 import { animateScroll }  from 'react-scroll';
 import sinon       from 'sinon';
 import renderer    from 'react-test-renderer';
-import ChatItem    from './ChatItem.jsx';
-import ChatContent from './ChatContent.jsx';
+import ChatItem    from './ChatItem';
+import ChatContent from './ChatContent';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -66,4 +66,3 @@ describe('<ChatContent />', () => {
     });
   });
 });
-

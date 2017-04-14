@@ -9,12 +9,12 @@ import {
   fetchMessages,
   addMessage }        from '../../actions/';
 import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
-import Generic404     from '../errors/Generic404.jsx';
-import SignInModal    from '../modals/SignInModal.jsx';
-import ChatHeader     from './ChatHeader.jsx';
-import ChatToolbar    from './ChatToolbar.jsx';
-import ChatContent    from './ChatContent.jsx';
-import ChatInput      from './ChatInput.jsx';
+import Generic404     from '../errors/Generic404';
+import SignInModal    from '../modals/SignInModal';
+import ChatHeader     from './ChatHeader';
+import ChatToolbar    from './ChatToolbar';
+import ChatContent    from './ChatContent';
+import ChatInput      from './ChatInput';
 // import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
@@ -41,7 +41,10 @@ export class ChatMain extends React.Component {
             <div className="loading-spinner" />
           </div>
         }
-        <ChatHeader user={this.props.user} />
+        <ChatHeader
+        user={this.props.user}
+        pathname={this.props.routeParams.path}
+        />
         <div className="chat-and-toolbar-wrapper">
           <ChatToolbar
           messages={this.props.messages}

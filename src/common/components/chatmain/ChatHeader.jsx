@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-export const ChatHeader = ({ user }) => {
-  const pathname = window.location.pathname.replace(/\//, '');
+export const ChatHeader = ({ user, pathname }) => {
   const userInfo = user.loggedIn && (
     <div className="chat-user-avatar">
       <img
-        className="avatar"
-        src={'http://i.pravatar.cc/30?u=' + user.username} alt={user.username}
+      className="avatar"
+      src={'http://i.pravatar.cc/30?u=' + user.username} alt={user.username}
       />
     </div>
   );

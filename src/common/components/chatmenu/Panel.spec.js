@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Panel from './Panel.jsx';
-import ConvoItem from './ConvoItem.jsx';
+import Panel from './Panel';
+import ConvoItem from './ConvoItem';
 
 const setup = () => {
   const props = {

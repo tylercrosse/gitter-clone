@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { animateScroll } from 'react-scroll';
-import ChatItem from './ChatItem.jsx';
+import ChatItem from './ChatItem';
 
 class ChatContent extends React.Component {
   componentDidUpdate() {
