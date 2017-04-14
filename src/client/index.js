@@ -1,21 +1,16 @@
-/* istanbul ignore next: hard to isolate */
-import React    from 'react';
-import ReactDOM from 'react-dom';
-import configureStore from './store/configureStore';
-import Root from './components/Root.jsx';
-import           './global.scss';
+import React          from 'react';
+import ReactDOM       from 'react-dom';
+import { Provider }   from 'react-redux';
+import configureStore from '../common/store/configureStore';
+import Routes         from '../common/Routes';
+import                     './styles/global.scss';
 
-/* istanbul ignore next: tested elsewhere */
-const store = configureStore();
-
-if (module.hot) {
-  module.hot.accept('./reducers/', () => {
-    const nextRootReducer = require('./reducers/index').default;
-    store.replaceReducer(nextRootReducer);
-  });
-}
+const preloadedState = window.__PRELOADED_STATE__;
+const store = configureStore(preloadedState);
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
   document.getElementById('root')
 );

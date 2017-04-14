@@ -16,7 +16,7 @@ describe('express serving', () => {
       return request(server)
         .get('/')
         .expect(200)
-        .expect((res) => expect(res.text).toContain('<div id="root"></div>'));
+        .expect((res) => expect(res.text).toMatchSnapshot());
     });
 
     it('should respond to /api/messages with json', () => {
@@ -42,7 +42,7 @@ describe('express serving', () => {
       return request(server)
         .get('/foo/bar')
         .expect(200)
-        .expect((res) => expect(res.text).toContain('<div id="root"></div>'));
+        .expect((res) => expect(res.text).toMatchSnapshot());
     });
   });
 

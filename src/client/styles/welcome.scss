@@ -1,0 +1,261 @@
+.button-caribbean {
+  background-color: $puerto-rico;
+  border: none;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $gossamer;
+  }
+}
+
+.button-subdued {
+  background-color: transparent;
+  border: 1px solid $romance;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $trans-white1;
+  }
+}
+
+.welcome {
+  overflow: auto;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  h1 {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: currentColor;
+      opacity: 0.1;
+    }
+  }
+
+  .wrap {
+    margin: 0 auto;
+    text-align: left;
+    width: 90%;
+  }
+
+  .intro-panel {
+    background: url('/img/cloneBanner.jpg') no-repeat center center;
+    background-size: cover;
+    background-color: $gigas;
+    position: relative;
+    overflow: hidden;
+    padding: 50px 0;
+    color: $trans-white75;
+    text-shadow: 0 0 4px $trans-black2;
+
+    h1 {
+      // text-shadow: 0 0 8px $trans-black2;
+      margin-top: 100px;
+      margin-bottom: 60px;
+      font-size: 60px;
+      line-height: 72px;
+      letter-spacing: -1px;
+      color: $white;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: normal;
+      color: $white;
+      font-weight: 400;
+    }
+
+    p {
+      font-weight: 300;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      font-size: 21px;
+      line-height: 30px;
+    }
+
+    ul {
+      padding: 0;
+      display: block;
+      // display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 0;
+    }
+
+    li {
+      margin-bottom: 50px;
+      position: relative;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      padding-right: 55px;
+      list-style: none;
+    }
+
+    .intro-panel-button {
+      width: 300px;
+      margin-bottom: 20px;
+      margin-right: 24px;
+      text-decoration: none;
+      padding: 12.8px 56px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      box-sizing: border-box;
+      display: inline-block;
+      text-transform: uppercase;
+      outline: none;
+      letter-spacing: 1.6px;
+      border-radius: 8px;
+      transition: background-color 0.1s ease, border-color 0.1s ease;
+      text-align: center;
+      color: $white;
+    }
+  }
+
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 60px;
+  }
+
+  .sign-in-btn {
+    position: relative;
+    display: inline-block;
+    padding: 16px 25px 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    float: right;
+    margin: -7px 0 0;
+    line-height: 1;
+    background: $trans-black2;
+    transition: background 0.1s ease;
+
+    &:hover {
+      background: $trans-black3;
+    }
+  }
+
+  .tech-panel {
+    color: $flint;
+    padding: 50px 0;
+
+    h1 {
+      margin: 32px 0 25px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+  }
+
+  .tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    li {
+      text-align: center;
+    }
+
+    img {
+      max-width: 60px;
+      height: 60px;
+    }
+
+    .react-logo {
+      fill: $react;
+    }
+
+    .redux-logo {
+      fill: $redux;
+    }
+
+    .mongodb-logo {
+      fill: $mongodb;
+    }
+
+    .jest-logo {
+      fill: $jest;
+    }
+  }
+
+  .endoresment-panel {
+    background: $sea-buckthorn;
+    color: $white;
+    padding: 50px 0;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    a {
+      color: $white;
+    }
+
+    p {
+      font-size: 21px;
+      font-weight: 300;
+    }
+  }
+
+  .bottom-panel {
+    height: auto;
+    padding: 100px 0 40px;
+    font-size: 16px;
+    line-height: 26px;
+    color: $heathered-grey;
+    background: $gallery;
+    text-align: center;
+
+    .heart {
+      color: rgb(164, 0, 0);
+    }
+
+    .links a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 25px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $sea-buckthorn;
+      }
+    }
+
+    a {
+      display: inline-block;
+      float: none;
+      margin: 0 15px;
+      text-align: center;
+      color: $silver-chalice;
+    }
+  }
+
+  a {
+    color: $silver-chalice;
+  }
+}
