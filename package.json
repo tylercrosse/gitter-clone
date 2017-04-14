@@ -135,8 +135,10 @@
     "coveragePathIgnorePatterns": [
       "/config/",
       "/static/",
+      "/compiled/",
       "/coverage/",
       "/webpack*",
+      "/ecosystem*",
       "/*store/"
     ],
     "coverageThreshold": {

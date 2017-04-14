@@ -15,7 +15,6 @@ import ChatHeader     from './ChatHeader';
 import ChatToolbar    from './ChatToolbar';
 import ChatContent    from './ChatContent';
 import ChatInput      from './ChatInput';
-// import                     './chatmain.scss';
 
 export class ChatMain extends React.Component {
   componentDidMount() {

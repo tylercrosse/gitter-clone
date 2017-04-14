@@ -1,8 +1,38 @@
-export const renderFullPage = (req, res) => { // eslint-disable-line import/prefer-default-export
-  // res.sendfile() ?? https://expressjs.com/en/api.html#res.sendFile
-  res.status(200).end(
-`<!DOCTYPE html>
-<html lang="en">
+import qs                 from 'qs';
+import React              from 'react';
+import { renderToString } from 'react-dom/server';
+import { Provider }       from 'react-redux';
+import { match,
+  RouterContext }         from 'react-router';
+import logger             from '../config/logger';
+import { routes }         from '../../common/routes';
+import configureStore     from '../../common/store/configureStore';
+
+function getReactString(req, res, store) {
+  return new Promise((resolve, reject) => {
+    match({ routes, location: req.url }, (err, redirect, props) => {
+      if (err) {
+        reject();
+      } else if (redirect) {
+        res.redirect(302, redirect.pathname + redirect.search);
+      } else if (props) {
+        resolve(
+          renderToString(
+            <Provider store={store}>
+              <RouterContext {...props} />
+            </Provider>
+          )
+        );
+      } else {
+        reject();
+      }
+    });
+  });
+}
+
+function renderFullPage(html, preloadedState) {
+  return `<!doctype html>
+<html>
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
@@ -15,7 +45,10 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
     <link href="/font/SourceSansPro-Semibold.ttf" rel="stylesheet" type="application/x-font-ttf">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">${html}</div>
+    <script>
+      window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
+    </script>
     <script src="/js/manifest.js"></script>
     <script src="/js/vendor.js"></script>
     <script src="/js/app.js"></script>
@@ -27,7 +60,25 @@ export const renderFullPage = (req, res) => { // eslint-disable-line import/pref
       }
     </script>
   </body>
-</html>`);
-};
+</html>`;
+}
 
-// <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+async function universalCtlr(req, res) {
+  try {
+    // const apiResult = await fetchCounter();
+    // const params = qs.parse(req.query)
+    // const counter = parseInt(params.counter, 10) || apiResult || 0
+    // const preloadedState = { counter }
+    logger.debug('req.query:', qs.parse(req.query));
+    const preloadedState = {};
+    const store = configureStore(preloadedState);
+    const ReactString = await getReactString(req, res, store);
+    const finalState = store.getState();
+    res.send(renderFullPage(ReactString, finalState));
+  } catch (err) {
+    logger.error(err);
+    res.send('Error');
+  }
+}
+
+export default universalCtlr;
