@@ -29,6 +29,38 @@ describe('sockets controller', () => {
       .toHaveBeenCalledWith({}, action);
   });
 
+  it('should handle server.START_TYPING', () => {
+    const io = {
+      emit: jest.fn()
+    };
+    const action = {
+      type: 'server.START_TYPING',
+      payload: 'redux'
+    };
+    socketActions(io, action);
+    expect(io.emit)
+      .toHaveBeenCalledWith('action', {
+        type: 'START_TYPING',
+        payload: action.payload
+      });
+  });
+
+  it('should handle server.STOP_TYPING', () => {
+    const io = {
+      emit: jest.fn()
+    };
+    const action = {
+      type: 'server.STOP_TYPING',
+      payload: 'redux'
+    };
+    socketActions(io, action);
+    expect(io.emit)
+      .toHaveBeenCalledWith('action', {
+        type: 'STOP_TYPING',
+        payload: action.payload
+      });
+  });
+
   it('should handle unknown actions', () => {
     const action = {type: 'FooBar'};
     logger.log = jest.fn();

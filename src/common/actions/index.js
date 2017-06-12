@@ -11,6 +11,22 @@ import Schemas       from './schemas';
 // that also works on the server
 // const API_ROOT = window.location.origin + '/api/';
 
+export const START_TYPING = 'START_TYPING';
+export const startTyping = ({ username }) => ({
+  type: 'server.' + START_TYPING,
+  payload: {
+    username
+  }
+});
+
+export const STOP_TYPING = 'STOP_TYPING';
+export const stopTyping = ({ username }) => ({
+  type: 'server.' + STOP_TYPING,
+  payload: {
+    username
+  }
+});
+
 let nextMessageId = 0;
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const addMessage = ({

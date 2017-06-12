@@ -8,6 +8,22 @@ export const socketActions = (io, action) => {
       break;
     case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
+    case 'server.START_TYPING':
+      // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
+      logger.debug('Start 🔫');
+      io.emit('action', {
+        type: 'START_TYPING',
+        payload: action.payload
+      });
+      break;
+    case 'server.STOP_TYPING':
+      // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
+      logger.debug('Stop 🏁');
+      io.emit('action', {
+        type: 'STOP_TYPING',
+        payload: action.payload
+      });
+      break;
     default:
       logger.log('error', 'Unknown action ', action);
   }

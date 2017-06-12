@@ -21,7 +21,9 @@ const setup = (propOverrides) => {
     signIN: jest.fn(),
     error: {
       messages: false
-    }
+    },
+    startTyping: jest.fn(),
+    stopTyping: jest.fn()
   }, propOverrides);
 
   const component = <ChatMain {...props} />;

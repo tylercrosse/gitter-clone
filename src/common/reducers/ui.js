@@ -40,9 +40,21 @@ export const isFetching = (state = false, action) => {
   }
 };
 
+const isTyping = (state = 'Dan', action) => {
+  switch (action.type) {
+    case ActionTypes.START_TYPING:
+      return action.payload.username;
+    case ActionTypes.STOP_TYPING:
+      return '';
+    default:
+      return state;
+  }
+};
+
 const ui = combineReducers({
   modalIsOpen,
-  isFetching
+  isFetching,
+  isTyping
 });
 
 export default ui;
