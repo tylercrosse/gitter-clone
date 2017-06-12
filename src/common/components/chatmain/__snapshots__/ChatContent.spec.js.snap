@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatContent /> should render correctly 1`] = `
+<section
+  className="chat-content scroller"
+  id="chat-content"
+>
+  <article
+    className="chat-item burst-start"
+  >
+    <div
+      className="chat-item-container"
+    >
+      <div
+        className="chat-item-aside"
+      >
+        <img
+          alt="liz"
+          className="avatar"
+          src="http://i.pravatar.cc/30?u=liz"
+        />
+      </div>
+      <div
+        className="chat-item-content"
+      >
+        <div
+          className="chat-item-details"
+        >
+          <div
+            className="chat-item-user"
+          >
+            liz
+          </div>
+          <div
+            className="chat-item-time"
+          >
+            Jan 31 15:22
+          </div>
+        </div>
+        <div
+          className="chat-item-text"
+        >
+          sweet
+        </div>
+      </div>
+    </div>
+  </article>
+  <article
+    className="chat-item burst-start"
+  >
+    <div
+      className="chat-item-container"
+    >
+      <div
+        className="chat-item-aside"
+      >
+        <img
+          alt="dan"
+          className="avatar"
+          src="http://i.pravatar.cc/30?u=dan"
+        />
+      </div>
+      <div
+        className="chat-item-content"
+      >
+        <div
+          className="chat-item-details"
+        >
+          <div
+            className="chat-item-user"
+          >
+            dan
+          </div>
+          <div
+            className="chat-item-time"
+          >
+            Jan 31 21:34
+          </div>
+        </div>
+        <div
+          className="chat-item-text"
+        >
+          cool
+        </div>
+      </div>
+    </div>
+  </article>
+  <article
+    className="chat-item burst-continued"
+  >
+    <div
+      className="chat-item-container"
+    >
+      <div
+        className="chat-item-content"
+      >
+        <div
+          className="chat-item-text"
+        >
+          damn it
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+`;

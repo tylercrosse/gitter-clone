@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatItem /> burstStart == false should render correctly with markup 1`] = `
+<article
+  className="chat-item burst-continued"
+>
+  <div
+    className="chat-item-container"
+  >
+    <div
+      className="chat-item-content"
+    >
+      <div
+        className="chat-item-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>woohoo!</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+</article>
+`;
+
+exports[`<ChatItem /> burstStart == false should render correctly without markup 1`] = `
+<article
+  className="chat-item burst-continued"
+>
+  <div
+    className="chat-item-container"
+  >
+    <div
+      className="chat-item-content"
+    >
+      <div
+        className="chat-item-text"
+      >
+        Use Redux
+      </div>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`<ChatItem /> burstStart == true should render correctly with markup 1`] = `
+<article
+  className="chat-item burst-start"
+>
+  <div
+    className="chat-item-container"
+  >
+    <div
+      className="chat-item-aside"
+    >
+      <img
+        alt="Dan"
+        className="avatar"
+        src="http://i.pravatar.cc/30?u=Dan"
+      />
+    </div>
+    <div
+      className="chat-item-content"
+    >
+      <div
+        className="chat-item-details"
+      >
+        <div
+          className="chat-item-user"
+        >
+          Dan
+        </div>
+        <div
+          className="chat-item-time"
+        >
+          Jan 24 16:58
+        </div>
+      </div>
+      <div
+        className="chat-item-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>woohoo!</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+</article>
+`;
+
+exports[`<ChatItem /> burstStart == true should render correctly without markup 1`] = `
+<article
+  className="chat-item burst-start"
+>
+  <div
+    className="chat-item-container"
+  >
+    <div
+      className="chat-item-aside"
+    >
+      <img
+        alt="Dan"
+        className="avatar"
+        src="http://i.pravatar.cc/30?u=Dan"
+      />
+    </div>
+    <div
+      className="chat-item-content"
+    >
+      <div
+        className="chat-item-details"
+      >
+        <div
+          className="chat-item-user"
+        >
+          Dan
+        </div>
+        <div
+          className="chat-item-time"
+        >
+          Jan 24 16:58
+        </div>
+      </div>
+      <div
+        className="chat-item-text"
+      >
+        Use Redux
+      </div>
+    </div>
+  </div>
+</article>
+`;

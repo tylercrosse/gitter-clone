@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Routes /> should render correctly 1`] = `
+<Router
+  history={
+    Object {
+      "createHref": [Function],
+      "createKey": [Function],
+      "createLocation": [Function],
+      "createPath": [Function],
+      "getCurrentLocation": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "listen": [Function],
+      "listenBefore": [Function],
+      "push": [Function],
+      "replace": [Function],
+      "transitionTo": [Function],
+    }
+  }
+  render={[Function]}
+>
+  <Route
+    component={[Function]}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/"
+  >
+    <IndexRoute
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+    />
+    <Route
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+      path="/explore"
+    />
+    <Route
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+      path="/:convo"
+    />
+  </Route>
+  <Route
+    component={[Function]}
+    path="*"
+  />
+</Router>
+`;
+
+exports[`routes should match snapshot 1`] = `
+<Router
+  history={
+    Object {
+      "createHref": [Function],
+      "createKey": [Function],
+      "createLocation": [Function],
+      "createPath": [Function],
+      "getCurrentLocation": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "listen": [Function],
+      "listenBefore": [Function],
+      "push": [Function],
+      "replace": [Function],
+      "transitionTo": [Function],
+    }
+  }
+  render={[Function]}
+>
+  <Route
+    component={[Function]}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/"
+  >
+    <IndexRoute
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+    />
+    <Route
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+      path="/explore"
+    />
+    <Route
+      components={
+        Object {
+          "main": [Function],
+          "menu": [Function],
+        }
+      }
+      path="/:convo"
+    />
+  </Route>
+  <Route
+    component={[Function]}
+    path="*"
+  />
+</Router>
+`;

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`error reducer 404 ApiError should add error to state on CONVOS_FAILURE 1`] = `
+Object {
+  "convos": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
+exports[`error reducer 404 ApiError should add error to state on MESSAGES_FAILURE 1`] = `
+Object {
+  "messages": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
+exports[`error reducer 404 ApiError should return state for default switch case 1`] = `Object {}`;
+
+exports[`error reducer SUCCESS should reset convos error on CONVOS_SUCCESS 1`] = `
+Object {
+  "convos": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
+exports[`error reducer SUCCESS should reset convos error on CONVOS_SUCCESS 2`] = `
+Object {
+  "convos": false,
+}
+`;
+
+exports[`error reducer SUCCESS should reset messages error on MESSAGES_SUCCESS 1`] = `
+Object {
+  "messages": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
+exports[`error reducer SUCCESS should reset messages error on MESSAGES_SUCCESS 2`] = `
+Object {
+  "messages": false,
+}
+`;

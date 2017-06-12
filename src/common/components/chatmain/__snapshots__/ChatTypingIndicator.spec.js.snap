@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatTypingIndicator /> should render correctly with >3 users typing 1`] = `
+<div>
+  4 users are typing
+</div>
+`;
+
+exports[`<ChatTypingIndicator /> should render correctly with 1 user typing 1`] = `
+<div>
+  Dan is typing
+</div>
+`;
+
+exports[`<ChatTypingIndicator /> should render correctly with 2 users typing 1`] = `
+<div>
+  Dan and Liz are typing
+</div>
+`;
+
+exports[`<ChatTypingIndicator /> should render correctly with 3 users typing 1`] = `
+<div>
+  Dan and Liz and Joe are typing
+</div>
+`;

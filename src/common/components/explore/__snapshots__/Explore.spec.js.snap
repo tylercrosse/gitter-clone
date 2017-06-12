@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConvoItem /> should render correctly 1`] = `
+<div
+  className="explore"
+>
+  <header
+    className="explore-header"
+  >
+    <div
+      className="explore-header-logo"
+    >
+      Gitter-clone
+    </div>
+    <nav
+      className="explore-header-nav"
+    />
+    <h1>
+      Explore
+    </h1>
+  </header>
+  <section
+    className="explore-page-description"
+  >
+    <h3>
+      Take a peak at some of the conversations
+    </h3>
+  </section>
+  <section
+    className="convo-card-list-section"
+  >
+    <div
+      className="convo-card-list"
+    >
+      <a
+        className="convo-card"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <header
+          className="convo-card-header"
+        >
+          <img
+            alt="chat"
+            className="convo-card-avatar"
+            src="http://i.pravatar.cc/30?u=chat"
+          />
+          <h3>
+            chat
+          </h3>
+        </header>
+        <footer
+          className="convo-card-footer"
+        >
+          <div
+            className="convo-card-info"
+          >
+            1
+             msgs
+          </div>
+          <div
+            className="convo-card-action"
+          >
+            <button>
+              view
+            </button>
+          </div>
+        </footer>
+      </a>
+      <a
+        className="convo-card"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <header
+          className="convo-card-header"
+        >
+          <img
+            alt="chat2"
+            className="convo-card-avatar"
+            src="http://i.pravatar.cc/30?u=chat2"
+          />
+          <h3>
+            chat2
+          </h3>
+        </header>
+        <footer
+          className="convo-card-footer"
+        >
+          <div
+            className="convo-card-info"
+          >
+            3
+             msgs
+          </div>
+          <div
+            className="convo-card-action"
+          >
+            <button>
+              view
+            </button>
+          </div>
+        </footer>
+      </a>
+    </div>
+  </section>
+</div>
+`;

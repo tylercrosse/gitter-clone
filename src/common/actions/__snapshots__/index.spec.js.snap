@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions addConvo should create ADD_CONVO action 1`] = `
+Object {
+  "name": "chat",
+  "type": "server.ADD_CONVO",
+}
+`;
+
+exports[`actions fetchConvos should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "endpoint": "null/api/convos",
+    "method": "GET",
+    "types": Array [
+      "CONVOS_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "CONVOS_SUCCESS",
+      },
+      "CONVOS_FAILURE",
+    ],
+  },
+}
+`;
+
+exports[`actions fetchMessages should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "endpoint": "null/api/messages/chat",
+    "method": "GET",
+    "types": Array [
+      "MESSAGES_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "MESSAGES_SUCCESS",
+      },
+      "MESSAGES_FAILURE",
+    ],
+  },
+}
+`;
