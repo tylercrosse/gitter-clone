@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConvoItem /> should render correctly 1`] = `
+<div
+  className="convo-item"
+>
+  <a
+    className="convo-item-container"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <img
+      alt="chat2"
+      className="convo-item-avatar"
+      src="http://i.pravatar.cc/22?u=chat2"
+    />
+    <h2
+      className="convo-item-title"
+    >
+      chat2
+    </h2>
+  </a>
+</div>
+`;

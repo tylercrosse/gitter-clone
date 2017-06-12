@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui reducer modalIsOpen should handle CLOSE_MODAL 1`] = `
+Object {
+  "createRoom": false,
+  "signIn": false,
+}
+`;
+
+exports[`ui reducer modalIsOpen should handle OPEN_CREATE_ROOM_MODAL 1`] = `
+Object {
+  "createRoom": true,
+  "signIn": false,
+}
+`;
+
+exports[`ui reducer modalIsOpen should handle OPEN_SIGN_IN_MODAL 1`] = `
+Object {
+  "createRoom": false,
+  "signIn": true,
+}
+`;
+
+exports[`ui reducer should handle initial state 1`] = `
+Object {
+  "isFetching": false,
+  "modalIsOpen": Object {
+    "createRoom": false,
+    "signIn": false,
+  },
+  "usersTyping": Array [],
+}
+`;

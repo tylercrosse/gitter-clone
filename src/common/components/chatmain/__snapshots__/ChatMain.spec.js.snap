@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatMain /> should receive the correct props from state 1`] = `
+Object {
+  "convoName": "chat",
+  "convos": Object {},
+  "error": false,
+  "isFetching": false,
+  "messages": Array [],
+  "modalIsOpen": undefined,
+  "user": undefined,
+  "usersTyping": undefined,
+}
+`;
+
+exports[`<ChatMain /> should receive the correct props from state 2`] = `
+Object {
+  "convoName": "chat",
+  "convos": Object {
+    "chat": Array [],
+  },
+  "error": false,
+  "isFetching": false,
+  "messages": Array [],
+  "modalIsOpen": undefined,
+  "user": undefined,
+  "usersTyping": undefined,
+}
+`;
+
+exports[`<ChatMain /> should render correctly 1`] = `
+<main
+  className="chat-header-wrapper"
+>
+  <Component
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+  <div
+    className="chat-and-toolbar-wrapper"
+  >
+    <Component
+      messages={Array []}
+      user={
+        Object {
+          "loggedIn": true,
+        }
+      }
+    />
+    <div
+      className="chat-wrapper"
+    >
+      <ChatContent
+        containerId="chat-content"
+        messages={Array []}
+      />
+      <ChatInput
+        addMessage={[Function]}
+        addTypingUser={[Function]}
+        convoName="chat"
+        error={
+          Object {
+            "messages": false,
+          }
+        }
+        fetchMessages={[Function]}
+        isFetching={false}
+        messages={Array []}
+        modalIsOpen={
+          Object {
+            "signIn": false,
+          }
+        }
+        onMessageSubmit={[Function]}
+        removeTypingUser={[Function]}
+        routeParams={
+          Object {
+            "convo": "chat",
+          }
+        }
+        signIN={[Function]}
+        user={
+          Object {
+            "loggedIn": true,
+          }
+        }
+        usersTyping={Array []}
+      />
+    </div>
+  </div>
+  <SignInModal
+    modalIsOpen={false}
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+</main>
+`;
+
+exports[`<ChatMain /> should render correctly when 404 error 1`] = `<Generic404 />`;
+
+exports[`<ChatMain /> should render correctly when fetching 1`] = `
+<main
+  className="chat-header-wrapper"
+>
+  <div
+    className="loading-container"
+  >
+    <div
+      className="loading-spinner"
+    />
+  </div>
+  <Component
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+  <div
+    className="chat-and-toolbar-wrapper"
+  >
+    <Component
+      messages={Array []}
+      user={
+        Object {
+          "loggedIn": true,
+        }
+      }
+    />
+    <div
+      className="chat-wrapper"
+    >
+      <ChatContent
+        containerId="chat-content"
+        messages={Array []}
+      />
+      <ChatInput
+        addMessage={[Function]}
+        addTypingUser={[Function]}
+        convoName="chat"
+        error={
+          Object {
+            "messages": false,
+          }
+        }
+        fetchMessages={[Function]}
+        isFetching={true}
+        messages={Array []}
+        modalIsOpen={
+          Object {
+            "signIn": false,
+          }
+        }
+        onMessageSubmit={[Function]}
+        removeTypingUser={[Function]}
+        routeParams={
+          Object {
+            "convo": "chat",
+          }
+        }
+        signIN={[Function]}
+        user={
+          Object {
+            "loggedIn": true,
+          }
+        }
+        usersTyping={Array []}
+      />
+    </div>
+  </div>
+  <SignInModal
+    modalIsOpen={false}
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+</main>
+`;

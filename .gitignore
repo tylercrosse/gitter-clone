@@ -2,5 +2,4 @@ compiled/
 static/js
 static/css
 coverage/
-__snapshots__/
 npm-debug.log

@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Welcome /> should render correctly 1`] = `
+<div
+  className="welcome"
+>
+  <header
+    className="intro-panel"
+  >
+    <nav
+      className="site-nav"
+    >
+      <div
+        className="wrap"
+      >
+        <button
+          className="sign-in-btn"
+          onClick={[Function]}
+        >
+          Sign in to start talking
+        </button>
+      </div>
+    </nav>
+    <div
+      className="wrap"
+    >
+      <h1>
+        Welcome to Gitter Clone
+      </h1>
+      <p>
+        This is app was built as portfolio piece representing a subset of the features of Troupe Technology's wonderful chat app, Gitter.
+      </p>
+      <div
+        className="intro-panel-button-block"
+      >
+        <a
+          className="intro-panel-button button-caribbean"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Explore the clone
+        </a>
+        <a
+          className="intro-panel-button button-subdued"
+          href="https://gitter.im/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Go to real Gitter.im
+        </a>
+      </div>
+      <ul
+        className="mini-features-list"
+      >
+        <li>
+          <h2>
+            Built in React
+          </h2>
+          <span>
+            Full stack chat app with React powered views.
+          </span>
+        </li>
+        <li>
+          <h2>
+            Redux
+          </h2>
+          <span>
+            The app state is controlled by Redux.
+          </span>
+        </li>
+        <li>
+          <h2>
+            Markdown Support
+          </h2>
+          <span>
+            Messages support bursts and git flavoured markdown.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <section
+    className="tech-panel"
+  >
+    <div
+      className="wrap"
+    >
+      <h1>
+        Built with
+      </h1>
+      <ul
+        className="tech-icons"
+      >
+        <li>
+          <img
+            alt="react logo"
+            className="react-logo"
+            src="./img/react.svg"
+          />
+          <figcaption>
+            React
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="redux logo"
+            className="redux-logo"
+            src="./img/redux.svg"
+          />
+          <figcaption>
+            Redux
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="webpack logo"
+            className="webpack-logo"
+            src="./img/webpack.svg"
+          />
+          <figcaption>
+            Webpack
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="express logo"
+            className="express-logo"
+            src="./img/express.svg"
+          />
+          <figcaption>
+            Express
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="mongodb logo"
+            className="mongodb-logo"
+            src="./img/mongodb.svg"
+          />
+          <figcaption>
+            MongoDB
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="jest logo"
+            className="jest-logo"
+            src="./img/jest.svg"
+          />
+          <figcaption>
+            Jest
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="semaphor logo"
+            className="semaphor-logo"
+            src="./img/semaphor.svg"
+          />
+          <figcaption>
+            SemaphoreCI
+          </figcaption>
+        </li>
+        <li>
+          <img
+            alt="digitalocean logo"
+            className="digitalocean-logo"
+            src="./img/digitalocean.svg"
+          />
+          <figcaption>
+            Digital Ocean
+          </figcaption>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section
+    className="endoresment-panel"
+  >
+    <div
+      className="wrap"
+    >
+      <h1>
+        Check out the real Gitter.im
+      </h1>
+      <p>
+        This is just a fan application. For the real Gitter messaging applcation go to
+        <a
+          href="https://gitter.im/"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+           gitter.im
+        </a>
+      </p>
+    </div>
+  </section>
+  <footer
+    className="bottom-panel"
+  >
+    Built with 
+    <span
+      className="heart"
+    >
+      &lt;3
+    </span>
+     by
+    <a
+      href="http://tylercrosse.com/"
+      rel="noreferrer noopener"
+      target="_blank"
+    >
+      Tyler Crosse
+    </a>
+    <div
+      className="links"
+    >
+      <a
+        href="https://github.com/tylercrosse/gitter-clone"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        Github
+      </a>
+      <a
+        href="https://www.linkedin.com/in/tylercrosse"
+        rel="noreferrer noopener"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </footer>
+  <noscript />
+</div>
+`;

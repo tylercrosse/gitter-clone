@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Generic404 /> should render correctly 1`] = `
+<div
+  className="generic404"
+>
+  <h1>
+    404
+  </h1>
+  <p>
+    This is not the chat you are looking for,
+  </p>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    try exploring existing chats.
+  </a>
+  <p>
+    Or create a new chat
+  </p>
+</div>
+`;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatHeader /> logged in should render correctly 1`] = `
+<header
+  className="chat-header"
+>
+  <div
+    className="chat-header-avatar"
+  >
+    <img
+      alt={undefined}
+      src="http://i.pravatar.cc/32?u=undefined"
+    />
+  </div>
+  <a
+    className="chat-header-title"
+    onClick={[Function]}
+    style={Object {}}
+  />
+  <div
+    className="chat-user-avatar"
+  >
+    <img
+      alt="dan"
+      className="avatar"
+      src="http://i.pravatar.cc/30?u=dan"
+    />
+  </div>
+</header>
+`;
+
+exports[`<ChatHeader /> logged out should render correctly 1`] = `
+<header
+  className="chat-header"
+>
+  <div
+    className="chat-header-avatar"
+  >
+    <img
+      alt={undefined}
+      src="http://i.pravatar.cc/32?u=undefined"
+    />
+  </div>
+  <a
+    className="chat-header-title"
+    onClick={[Function]}
+    style={Object {}}
+  />
+</header>
+`;

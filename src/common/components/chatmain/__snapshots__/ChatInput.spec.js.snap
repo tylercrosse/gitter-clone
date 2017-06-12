@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatInput /> logged in should render correctly 1`] = `
+<footer
+  className="chat-input"
+>
+  <div
+    className="chat-input-container"
+  >
+    <div
+      className="chat-input-avatar"
+    >
+      <img
+        alt="Bob"
+        className="avatar"
+        src="http://i.pravatar.cc/30?u=Bob"
+      />
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <textarea
+        autoComplete="off"
+        autoFocus={true}
+        name="chat"
+        onChange={[Function]}
+        onKeyPress={[Function]}
+        placeholder="Click here to type a chat message. Supports Github flavoured markdown."
+        type="text"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</footer>
+`;
+
+exports[`<ChatInput /> logged out should render correctly 1`] = `
+<footer
+  className="chat-input"
+>
+  <div
+    className="chat-input-container"
+  >
+    <button
+      className="chat-input-btn"
+      onClick={undefined}
+    >
+      Sign in to start talking
+    </button>
+  </div>
+</footer>
+`;

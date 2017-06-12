@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatToolbar /> should render correctly when logged in 1`] = `
+<aside
+  className="chat-toolbar"
+>
+  <ul
+    className="roster"
+  >
+    <li
+      className="avatar"
+    >
+      <img
+        alt="Joe"
+        src="http://i.pravatar.cc/30?u=Joe"
+      />
+    </li>
+    <li
+      className="avatar"
+    >
+      <img
+        alt="Josh"
+        src="http://i.pravatar.cc/30?u=Josh"
+      />
+    </li>
+    <li
+      className="avatar"
+    >
+      <img
+        alt="Liz"
+        src="http://i.pravatar.cc/30?u=Liz"
+      />
+    </li>
+  </ul>
+</aside>
+`;
+
+exports[`<ChatToolbar /> should render correctly when not logged in 1`] = `
+<aside
+  className="chat-toolbar"
+>
+  <ul
+    className="roster"
+  >
+    <li
+      className="avatar"
+    >
+      <img
+        alt="Joe"
+        src="http://i.pravatar.cc/30?u=Joe"
+      />
+    </li>
+    <li
+      className="avatar"
+    >
+      <img
+        alt="Josh"
+        src="http://i.pravatar.cc/30?u=Josh"
+      />
+    </li>
+  </ul>
+</aside>
+`;
