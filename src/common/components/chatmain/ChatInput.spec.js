@@ -12,7 +12,9 @@ const setup = (propOverrides) => {
     routeParams: {
       convo: 'redux'
     },
-    onMessageSubmit: jest.fn()
+    onMessageSubmit: jest.fn(),
+    addTypingUser: jest.fn(),
+    removeTypingUser: jest.fn()
   }, propOverrides);
 
   const component = <ChatInput {...props} />;

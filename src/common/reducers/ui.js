@@ -16,7 +16,7 @@ export const modalIsOpen = (state = initialModalState, action) => {
     case ActionTypes.OPEN_SIGN_IN_MODAL:
       return {
         createRoom: false,
-        signIn: true,
+        signIn: true
       };
     case ActionTypes.CLOSE_MODAL:
       return {
@@ -40,9 +40,31 @@ export const isFetching = (state = false, action) => {
   }
 };
 
+export const addTypingUserHelper = (usersTyping, action) => (
+  usersTyping.indexOf(action.payload.username) >= 0
+    ? usersTyping
+    : usersTyping.concat(action.payload.username));
+
+
+export const removeTypingUserHelper = (usersTyping, action) => (
+  usersTyping.filter((username) => username !== action.payload.username)
+);
+
+export const usersTyping = (state = [], action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_TYPING_USER:
+      return addTypingUserHelper(state, action);
+    case ActionTypes.REMOVE_TYPING_USER:
+      return removeTypingUserHelper(state, action);
+    default:
+      return state;
+  }
+};
+
 const ui = combineReducers({
   modalIsOpen,
-  isFetching
+  isFetching,
+  usersTyping
 });
 
 export default ui;

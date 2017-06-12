@@ -3,6 +3,8 @@ import React,
 import { connect }    from 'react-redux';
 import { withRouter } from 'react-router';
 import {
+  addTypingUser,
+  removeTypingUser,
   signIn,
   openSignInModal,
   closeModal,
@@ -15,6 +17,7 @@ import ChatHeader     from './ChatHeader';
 import ChatToolbar    from './ChatToolbar';
 import ChatContent    from './ChatContent';
 import ChatInput      from './ChatInput';
+import ChatTypingIndicator from './ChatTypingIndicator';
 
 export class ChatMain extends React.Component {
   componentDidMount() {
@@ -54,8 +57,13 @@ export class ChatMain extends React.Component {
             containerId="chat-content"
             messages={this.props.messages}
             />
+            {this.props.usersTyping.length > 0 &&
+              <ChatTypingIndicator usersTyping={this.props.usersTyping} />
+            }
             <ChatInput
             {...this.props}
+            addTypingUser={this.props.addTypingUser}
+            removeTypingUser={this.props.removeTypingUser}
             onMessageSubmit={this.props.addMessage}
             />
           </div>
@@ -78,7 +86,8 @@ ChatMain.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
   addMessage: PropTypes.func.isRequired,
   convoName: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  usersTyping: PropTypes.array.isRequired
 };
 
 export const makeMapStateToProps = () => {
@@ -94,6 +103,7 @@ export const makeMapStateToProps = () => {
       convos: state.convos,
       convoName,
       isFetching: state.ui.isFetching,
+      usersTyping: state.ui.usersTyping,
       modalIsOpen: state.ui.modalIsOpen,
       error: state.error.messages
     };
@@ -103,5 +113,5 @@ export const makeMapStateToProps = () => {
 
 export default withRouter(connect(
   makeMapStateToProps,
-  { signIn, openSignInModal, closeModal, fetchMessages, addMessage }
+  { addTypingUser, removeTypingUser, signIn, openSignInModal, closeModal, fetchMessages, addMessage }
 )(ChatMain));

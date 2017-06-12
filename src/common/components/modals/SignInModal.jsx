@@ -76,14 +76,16 @@ export class SignInModal extends React.Component {
           </button>
         </header>
         <section className="modal-body">
-          <input
-          onChange={this.handleChange}
-          value={this.state.name}
-          placeholder="User Name"
-          type="text"
-          autoFocus
-          autoComplete="off"
-          />
+          <form onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.handleChange}
+              value={this.state.name}
+              placeholder="User Name"
+              type="text"
+              autoFocus
+              autoComplete="off"
+            />
+          </form>
           {!this.state.validInput &&
             <div className="validation-error">Invalid input! Please try Again.</div>}
         </section>
