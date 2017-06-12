@@ -1,4 +1,3 @@
-import qs                 from 'qs';
 import React              from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider }       from 'react-redux';
@@ -69,7 +68,7 @@ async function universalCtlr(req, res) {
     // const params = qs.parse(req.query)
     // const counter = parseInt(params.counter, 10) || apiResult || 0
     // const preloadedState = { counter }
-    logger.debug('req.query:', qs.parse(req.query));
+    // logger.debug('req.query:', qs.parse(req.query));
     const preloadedState = {};
     const store = configureStore(preloadedState);
     const ReactString = await getReactString(req, res, store);

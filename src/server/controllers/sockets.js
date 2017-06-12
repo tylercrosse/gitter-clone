@@ -8,19 +8,19 @@ export const socketActions = (io, action) => {
       break;
     case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
-    case 'server.START_TYPING':
+    case 'server.ADD_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
-      logger.debug('Start 🔫');
+      // logger.debug('add 🔫', action.payload);
       io.emit('action', {
-        type: 'START_TYPING',
+        type: 'ADD_TYPING_USER',
         payload: action.payload
       });
       break;
-    case 'server.STOP_TYPING':
+    case 'server.REMOVE_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
-      logger.debug('Stop 🏁');
+      // logger.debug('remove 🏁', action.payload);
       io.emit('action', {
-        type: 'STOP_TYPING',
+        type: 'REMOVE_TYPING_USER',
         payload: action.payload
       });
       break;

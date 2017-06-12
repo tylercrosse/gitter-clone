@@ -11,17 +11,17 @@ import Schemas       from './schemas';
 // that also works on the server
 // const API_ROOT = window.location.origin + '/api/';
 
-export const START_TYPING = 'START_TYPING';
-export const startTyping = ({ username }) => ({
-  type: 'server.' + START_TYPING,
+export const ADD_TYPING_USER = 'ADD_TYPING_USER';
+export const addTypingUser = ({ username }) => ({
+  type: 'server.' + ADD_TYPING_USER,
   payload: {
     username
   }
 });
 
-export const STOP_TYPING = 'STOP_TYPING';
-export const stopTyping = ({ username }) => ({
-  type: 'server.' + STOP_TYPING,
+export const REMOVE_TYPING_USER = 'REMOVE_TYPING_USER';
+export const removeTypingUser = ({ username }) => ({
+  type: 'server.' + REMOVE_TYPING_USER,
   payload: {
     username
   }

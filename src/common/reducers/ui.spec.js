@@ -1,10 +1,12 @@
-import ui, { modalIsOpen, isFetching } from './ui';
+import ui, {
+  modalIsOpen,
+  isFetching,
+  usersTyping,
+} from './ui';
 
 describe('ui reducer', () => {
   it('should handle initial state', () => {
-    expect(
-      ui(undefined, {})
-    ).toMatchSnapshot();
+    expect(ui(undefined, {})).toMatchSnapshot();
   });
 
   describe('modalIsOpen', () => {
@@ -12,7 +14,7 @@ describe('ui reducer', () => {
       const initialState = false;
       expect(
         modalIsOpen(initialState, {
-          type: 'OPEN_CREATE_ROOM_MODAL',
+          type: 'OPEN_CREATE_ROOM_MODAL'
         })
       ).toMatchSnapshot();
     });
@@ -21,7 +23,7 @@ describe('ui reducer', () => {
       const initialState = false;
       expect(
         modalIsOpen(initialState, {
-          type: 'OPEN_SIGN_IN_MODAL',
+          type: 'OPEN_SIGN_IN_MODAL'
         })
       ).toMatchSnapshot();
     });
@@ -30,7 +32,7 @@ describe('ui reducer', () => {
       const state = true;
       expect(
         modalIsOpen(state, {
-          type: 'CLOSE_MODAL',
+          type: 'CLOSE_MODAL'
         })
       ).toMatchSnapshot();
     });
@@ -41,7 +43,7 @@ describe('ui reducer', () => {
       const initialState = false;
       expect(
         isFetching(initialState, {
-          type: 'MESSAGES_REQUEST',
+          type: 'MESSAGES_REQUEST'
         })
       ).toEqual(true);
     });
@@ -50,7 +52,7 @@ describe('ui reducer', () => {
       const state = true;
       expect(
         isFetching(state, {
-          type: 'MESSAGES_SUCCESS',
+          type: 'MESSAGES_SUCCESS'
         })
       ).toEqual(false);
     });
@@ -59,9 +61,47 @@ describe('ui reducer', () => {
       const state = true;
       expect(
         isFetching(state, {
-          type: 'MESSAGES_FAILURE',
+          type: 'MESSAGES_FAILURE'
         })
       ).toEqual(false);
+    });
+  });
+
+  describe('usersTyping', () => {
+    it('should handle ADD_TYPING_USER', () => {
+      expect(
+        usersTyping(undefined, {
+          type: 'ADD_TYPING_USER',
+          payload: { username: 'Dan' }
+        })
+      ).toEqual(['Dan']);
+      expect(
+        usersTyping(['Dan'], {
+          type: 'ADD_TYPING_USER',
+          payload: { username: 'Dan' }
+        })
+      ).toEqual(['Dan']);
+    });
+
+    it('should handle REMOVE_TYPING_USER', () => {
+      expect(
+        usersTyping(undefined, {
+          type: 'REMOVE_TYPING_USER',
+          payload: { username: 'Dan' }
+        })
+      ).toEqual([]);
+      expect(
+        usersTyping(['Dan'], {
+          type: 'REMOVE_TYPING_USER',
+          payload: { username: 'Dan' }
+        })
+      ).toEqual([]);
+      expect(
+        usersTyping(['Dan', 'Liz'], {
+          type: 'REMOVE_TYPING_USER',
+          payload: { username: 'Dan' }
+        })
+      ).toEqual(['Liz']);
     });
   });
 });

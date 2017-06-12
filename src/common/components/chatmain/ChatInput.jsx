@@ -1,8 +1,8 @@
-import React,
-  { PropTypes }  from 'react';
+import React, { PropTypes } from 'react';
 import debounce from 'lodash/debounce';
 
-const DEBOUNCE_TIME = 4000;
+const DEBOUNCE_TIME = 3000;
+const TIME_CUSHION = 200;
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -13,8 +13,13 @@ class ChatInput extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.startTyping = debounce(this.props.startTyping, DEBOUNCE_TIME, {leading: true});
-    this.stopTyping = debounce(this.props.stopTyping, DEBOUNCE_TIME);
+    // NOTE the debounce time for addTypingUser needs to be slightly less to avoid race condition-esque situation with the server socket responses in the wrong order
+    this.addTypingUser = debounce(
+      this.props.addTypingUser,
+      DEBOUNCE_TIME - TIME_CUSHION,
+      { leading: true }
+    );
+    this.removeTypingUser = debounce(this.props.removeTypingUser, DEBOUNCE_TIME);
   }
   handleKeyPress(e) {
     if (e.key === 'Enter' && !e.nativeEvent.shiftKey) {
@@ -25,10 +30,10 @@ class ChatInput extends React.Component {
     this.setState({
       draft: e.target.value
     });
-    this.startTyping({
+    this.addTypingUser({
       username: this.props.user.username
     });
-    this.stopTyping({
+    this.removeTypingUser({
       username: this.props.user.username
     });
   }
@@ -41,7 +46,7 @@ class ChatInput extends React.Component {
       text: this.state.draft,
       convo
     });
-    this.props.stopTyping({
+    this.props.removeTypingUser({
       username: this.props.user.username
     });
     this.setState({
@@ -55,20 +60,21 @@ class ChatInput extends React.Component {
         <div className="chat-input-container">
           <div className="chat-input-avatar">
             <img
-            className="avatar"
-            src={'http://i.pravatar.cc/30?u=' + this.props.user.username} alt={this.props.user.username}
+              className="avatar"
+              src={'http://i.pravatar.cc/30?u=' + this.props.user.username}
+              alt={this.props.user.username}
             />
           </div>
           <form onSubmit={this.handleSubmit}>
             <textarea
-            onKeyPress={this.handleKeyPress}
-            onChange={this.handleChange}
-            value={this.state.draft}
-            placeholder="Click here to type a chat message. Supports Github flavoured markdown."
-            name="chat"
-            type="text"
-            autoFocus
-            autoComplete="off"
+              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
+              value={this.state.draft}
+              placeholder="Click here to type a chat message. Supports Github flavoured markdown."
+              name="chat"
+              type="text"
+              autoFocus
+              autoComplete="off"
             />
             <button type="submit">Send</button>
           </form>
@@ -78,8 +84,8 @@ class ChatInput extends React.Component {
       inputContent = (
         <div className="chat-input-container">
           <button
-          onClick={this.props.openSignInModal}
-          className="chat-input-btn"
+            onClick={this.props.openSignInModal}
+            className="chat-input-btn"
           >
             Sign in to start talking
           </button>
@@ -95,8 +101,8 @@ class ChatInput extends React.Component {
 }
 
 ChatInput.propTypes = {
-  startTyping: PropTypes.func.isRequired,
-  stopTyping: PropTypes.func.isRequired,
+  addTypingUser: PropTypes.func.isRequired,
+  removeTypingUser: PropTypes.func.isRequired,
   onMessageSubmit: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   routeParams: PropTypes.object.isRequired

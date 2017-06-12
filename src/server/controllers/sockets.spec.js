@@ -29,34 +29,34 @@ describe('sockets controller', () => {
       .toHaveBeenCalledWith({}, action);
   });
 
-  it('should handle server.START_TYPING', () => {
+  it('should handle server.ADD_TYPING_USER', () => {
     const io = {
       emit: jest.fn()
     };
     const action = {
-      type: 'server.START_TYPING',
+      type: 'server.ADD_TYPING_USER',
       payload: 'redux'
     };
     socketActions(io, action);
     expect(io.emit)
       .toHaveBeenCalledWith('action', {
-        type: 'START_TYPING',
+        type: 'ADD_TYPING_USER',
         payload: action.payload
       });
   });
 
-  it('should handle server.STOP_TYPING', () => {
+  it('should handle server.REMOVE_TYPING_USER', () => {
     const io = {
       emit: jest.fn()
     };
     const action = {
-      type: 'server.STOP_TYPING',
+      type: 'server.REMOVE_TYPING_USER',
       payload: 'redux'
     };
     socketActions(io, action);
     expect(io.emit)
       .toHaveBeenCalledWith('action', {
-        type: 'STOP_TYPING',
+        type: 'REMOVE_TYPING_USER',
         payload: action.payload
       });
   });
