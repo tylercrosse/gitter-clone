@@ -25,7 +25,7 @@ if (config.use_env_variable) {
 sequelize
   .authenticate()
   .then(() => {
-    logger.log('info', '==> 🛢 Postgres connected!');
+    logger.log('info', `==> 🛢 Postgres connected to ${config.database}!`);
   })
   .catch((err) => {
     logger.error('Unable to connect to the database:', err);

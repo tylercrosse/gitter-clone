@@ -1,39 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getMessagesByConvo selector should burstify messages 1`] = `
+exports[`getMessagesByConvoId selector should burstify messages 1`] = `
 Array [
   Object {
-    "id": 0,
     "burstStart": true,
     "convo": "chat",
     "createdAt": "2017-02-01T09:00:00-08:00",
+    "id": 0,
     "text": "Run the tests",
   },
   Object {
-    "id": 1,
     "burstStart": false,
     "convo": "chat",
     "createdAt": "2017-02-01T09:01:00-08:00",
+    "id": 1,
     "text": "Use Redux",
   },
   Object {
-    "id": 2,
     "burstStart": false,
     "convo": "react",
     "createdAt": "2017-02-01T09:10:00-08:00",
+    "id": 2,
     "text": "Fix the tests",
   },
   Object {
-    "id": 2,
     "burstStart": true,
     "convo": "chat",
     "createdAt": "2017-02-01T09:20:00-08:00",
+    "id": 2,
     "text": "Fix the tests",
   },
 ]
 `;
 
-exports[`getMessagesByConvo selector should select desired messages from state 1`] = `
+exports[`getMessagesByConvoId selector should select desired messages from state 1`] = `
 Array [
   Object {
     "id": 0,
@@ -59,7 +59,7 @@ Array [
 ]
 `;
 
-exports[`getMessagesByConvo selector should select desired messages from state 2`] = `
+exports[`getMessagesByConvoId selector should select desired messages from state 2`] = `
 Array [
   Object {
     "id": 2,

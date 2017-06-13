@@ -3,26 +3,26 @@ import moment from 'moment';
 import { createSelector } from 'reselect';
 
 export const getMessages = (state) => (state.messages);
-export const getConvoName = (state, convoName) => (convoName);
+export const getConvoId = (state, convoName) => (state.convos[convoName].id);
 
-export const getMessagesByConvo = (messages, convoName) => (
+export const getMessagesByConvoId = (messages, convoId) => (
   _filter(messages, (message) => (
-    message.convo === convoName
+    message.convoId === convoId
   )));
 
-export const getMessagesByConvoSelector = createSelector(
-  [getMessages, getConvoName],
-  getMessagesByConvo
+export const getMessagesByConvoIdSelector = createSelector(
+  [getMessages, getConvoId],
+  getMessagesByConvoId
 );
 
-const makeGetMessagesByConvo = () => (
+const makeGetMessagesByConvoId = () => (
   createSelector(
-    getMessagesByConvoSelector,
+    getMessagesByConvoIdSelector,
     burstify
   )
 );
 
-export default makeGetMessagesByConvo;
+export default makeGetMessagesByConvoId;
 
 /**
  * Groups sequential messages within 15 minutes by the same user.

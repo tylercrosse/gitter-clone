@@ -15,7 +15,6 @@ export const getConvos = (req, res) => {
 export const addConvo = (io, action) => {
   Convo.create({ name: action.name })
     .then((convo) => {
-      logger.debug('💬', convo);
       io.emit('action', { // FIXME better decouple db & socket interactions
         type: 'ADD_CONVO',
         convo

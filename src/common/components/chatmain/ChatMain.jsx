@@ -10,7 +10,7 @@ import {
   closeModal,
   fetchMessages,
   addMessage }        from '../../actions/';
-import makeGetMessagesByConvo from '../../selectors/messagesByConvo';
+import makeGetMessagesByConvoId from '../../selectors/messagesByConvo';
 import Generic404     from '../errors/Generic404';
 import SignInModal    from '../modals/SignInModal';
 import ChatHeader     from './ChatHeader';
@@ -91,11 +91,11 @@ ChatMain.propTypes = {
 };
 
 export const makeMapStateToProps = () => {
-  const getMessagesByConvo = makeGetMessagesByConvo();
+  const getMessagesByConvoId = makeGetMessagesByConvoId();
   const mapStateToProps = (state, props) => {
     const convoName = props.routeParams.convo;
     const messages = state.convos[convoName] ?
-    getMessagesByConvo(state, convoName) :
+    getMessagesByConvoId(state, convoName) :
     [];
     return {
       messages,

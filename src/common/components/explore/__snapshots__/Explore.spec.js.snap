@@ -55,7 +55,7 @@ exports[`<ConvoItem /> should render correctly 1`] = `
           <div
             className="convo-card-info"
           >
-            1
+            X
              msgs
           </div>
           <div
@@ -90,7 +90,7 @@ exports[`<ConvoItem /> should render correctly 1`] = `
           <div
             className="convo-card-info"
           >
-            3
+            X
              msgs
           </div>
           <div

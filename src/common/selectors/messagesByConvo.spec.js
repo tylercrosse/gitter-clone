@@ -1,4 +1,4 @@
-import makeGetMessagesByConvo, {
+import makeGetMessagesByConvoId, {
   burstify } from './messagesByConvo';
 
 const setup = (overrides) => (
@@ -31,12 +31,12 @@ const setup = (overrides) => (
     }
   }, overrides));
 
-describe('getMessagesByConvo selector', () => {
+describe('getMessagesByConvoId selector', () => {
   it('should select desired messages from state', () => {
-    const getMessagesByConvo = makeGetMessagesByConvo();
-    expect(getMessagesByConvo(setup(), 'chat'))
+    const getMessagesByConvoId = makeGetMessagesByConvoId();
+    expect(getMessagesByConvoId(setup(), 'chat'))
       .toMatchSnapshot();
-    expect(getMessagesByConvo(setup(), 'react'))
+    expect(getMessagesByConvoId(setup(), 'react'))
       .toMatchSnapshot();
   });
 
