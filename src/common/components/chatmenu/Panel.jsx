@@ -37,7 +37,7 @@ const Panel = (props) => {
           <section className="primary-collection">
             {props.convos && Object.values(props.convos).map((convo) =>
               <ConvoItem
-                key={convo._id}
+                key={convo.id}
                 {...convo}
               />
             )}

@@ -4,7 +4,7 @@ exports[`-> 1 convo 1`] = `
 Object {
   "chat": Object {
     "__v": 0,
-    "_id": 0,
+    "id": 0,
     "createdAt": "2017-02-01T09:00:00-08:00",
     "name": "chat",
   },
@@ -15,7 +15,7 @@ exports[`-> 1 convo 2`] = `
 Object {
   "chat": Object {
     "__v": 0,
-    "_id": 0,
+    "id": 0,
     "createdAt": "2017-02-01T09:00:00-08:00",
     "name": "chat",
   },
@@ -26,13 +26,13 @@ exports[`-> 2 convos 1`] = `
 Object {
   "0": Object {
     "__v": 0,
-    "_id": 0,
+    "id": 0,
     "createdAt": "2017-02-01T09:00:00-08:00",
     "name": "chat",
   },
   "chat2": Object {
     "__v": 0,
-    "_id": 1,
+    "id": 1,
     "createdAt": "2017-02-01T09:01:00-08:00",
     "name": "chat2",
   },
@@ -43,19 +43,19 @@ exports[`-> 3 convos 1`] = `
 Object {
   "0": Object {
     "__v": 0,
-    "_id": 0,
+    "id": 0,
     "createdAt": "2017-02-01T09:00:00-08:00",
     "name": "chat",
   },
   "1": Object {
     "__v": 0,
-    "_id": 1,
+    "id": 1,
     "createdAt": "2017-02-01T09:01:00-08:00",
     "name": "chat2",
   },
   "chat3": Object {
     "__v": 0,
-    "_id": 2,
+    "id": 2,
     "createdAt": "2017-02-01T09:02:00-08:00",
     "name": "chat3",
   },

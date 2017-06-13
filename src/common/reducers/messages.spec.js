@@ -9,7 +9,7 @@ describe('message reucer', () => {
           createdAt: '2017-02-01T09:00:00-08:00',
           username: 'dan',
           text: 'Run the tests',
-          _id: 0
+          id: 0
         }
       })
     ).toMatchSnapshot('-> 1 message');
@@ -58,7 +58,7 @@ describe('messages reducer', () => {
           createdAt: '2017-02-01T09:00:00-08:00',
           username: 'dan',
           text: 'Run the tests',
-          _id: 0
+          id: 0
         }
       })
     ).toMatchSnapshot('-> 1 message');
@@ -69,7 +69,7 @@ describe('messages reducer', () => {
           createdAt: '2017-02-01T09:00:00-08:00',
           username: 'dan',
           text: 'Run the tests',
-          _id: 0
+          id: 0
         }
       }, {
         type: 'ADD_MESSAGE',
@@ -78,7 +78,7 @@ describe('messages reducer', () => {
           createdAt: '2017-02-01T09:01:00-08:00',
           username: 'dan',
           text: 'Use Redux',
-          _id: 1
+          id: 1
         }
       })
     ).toMatchSnapshot('-> 2 messages');
@@ -89,14 +89,14 @@ describe('messages reducer', () => {
           createdAt: '2017-02-01T09:00:00-08:00',
           username: 'dan',
           text: 'Run the tests',
-          _id: 0
+          id: 0
         },
         1: {
           // 1 min later, same burst
           createdAt: '2017-02-01T09:01:00-08:00',
           username: 'dan',
           text: 'Use Redux',
-          _id: 1
+          id: 1
         }
       }, {
         type: 'ADD_MESSAGE',
@@ -105,7 +105,7 @@ describe('messages reducer', () => {
           createdAt: '2017-02-01T09:20:00-08:00',
           username: 'dan',
           text: 'Fix the tests',
-          _id: 2
+          id: 2
         }
       })
     ).toMatchSnapshot('-> 3 messages');

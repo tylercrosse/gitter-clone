@@ -1,8 +1,7 @@
 import express        from 'express';
 import compression    from 'compression';
 import bodyParser     from 'body-parser';
-import mongoose       from 'mongoose';
-import Promise        from 'bluebird';
+// import Sequelize      from 'sequelize';
 import SocketIo       from 'socket.io';
 import expressWinston from 'express-winston';
 import logger, {
@@ -15,13 +14,24 @@ const app = express();
 const port = process.env.PORT || 3333;
 
 // db config
-mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost:27017/gitter-clone');
-
-mongoose.connection.on('error', logger.error.bind(console, 'connection error:'));
-mongoose.connection.once('open', () => {
-  logger.log('info', '==> 🛢 MongoDB connected!');
-});
+// const sequelize = new Sequelize('gitter-dev', 'tcrosse', null, {
+//   host: 'localhost',
+//   dialect: 'postgres',
+//
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     idle: 10000
+//   }
+// });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     logger.log('info', '==> 🛢 Postgres connected!');
+//   })
+//   .catch((err) => {
+//     logger.error('Unable to connect to the database:', err);
+//   });
 
 /* istanbul ignore next: webpack middleware for dev */
 if (process.env.NODE_ENV === 'development') {

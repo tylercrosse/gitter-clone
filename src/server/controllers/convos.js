@@ -1,8 +1,9 @@
 import logger from '../config/logger';
-import Convo  from '../models/Convo';
+
+const Convo = require('../models').Convo;
 
 export const getConvos = (req, res) => {
-  Convo.find({})
+  Convo.findAll()
     .then((convos) => {
       res.json(convos);
     })
@@ -14,6 +15,7 @@ export const getConvos = (req, res) => {
 export const addConvo = (io, action) => {
   Convo.create({ name: action.name })
     .then((convo) => {
+      logger.debug('💬', convo);
       io.emit('action', { // FIXME better decouple db & socket interactions
         type: 'ADD_CONVO',
         convo

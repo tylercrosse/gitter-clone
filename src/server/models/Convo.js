@@ -1,15 +1,16 @@
-import mongoose from 'mongoose';
-
-const { Schema } = mongoose;
-const convoSchema = Schema({
-  name: {
-    type: String,
-    unique: true,
-  },
-  messages: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Message'
-  }]
-}, {timestamps: true});
-
-export default mongoose.model('Convo', convoSchema);
+module.exports = (sequelize, DataTypes) => {
+  const Convo = sequelize.define('Convo', {
+    name: DataTypes.STRING,
+    direct: DataTypes.BOOLEAN
+  }, {
+    classMethods: {
+      associate: (models) => {
+        Convo.hasMany(models.Message, {
+          foreignKey: 'convoId',
+          as: 'messages'
+        });
+      }
+    }
+  });
+  return Convo;
+};

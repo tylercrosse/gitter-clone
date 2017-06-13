@@ -15,7 +15,7 @@ class ChatContent extends React.Component {
       >
         {messages.length > 0 && messages.map((message) =>
           <ChatItem
-          key={message._id}
+          key={message.id}
           {...message}
           />
         )}

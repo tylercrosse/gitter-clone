@@ -22,7 +22,7 @@ export const Explore = (props) => (
 export const ConvoCards = (props) => {
   const renderConvoCard = (convo) => (
     <Link
-    key={convo._id}
+    key={convo.id}
     className="convo-card"
     to={'/' + convo.name}
     >
@@ -31,7 +31,7 @@ export const ConvoCards = (props) => {
         <h3>{convo.name}</h3>
       </header>
       <footer className="convo-card-footer">
-        <div className="convo-card-info">{convo.messages.length} msgs</div>
+        <div className="convo-card-info">X{/* convo.messages.length */} msgs</div>
         <div className="convo-card-action">
           <button>view</button>
         </div>

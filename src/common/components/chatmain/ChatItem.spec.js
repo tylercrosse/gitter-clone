@@ -5,7 +5,7 @@ import ChatItem from './ChatItem';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
-    _id: 0,
+    id: 0,
     burstStart: true,
     text: 'Use Redux',
     username: 'Dan',

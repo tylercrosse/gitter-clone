@@ -85,14 +85,14 @@ describe('messages controller', () => {
       const convo = {messages: {
         addToSet: jest.fn()
       }};
-      const message = {_id: 1};
+      const message = {id: 1};
       Message.create = jest.fn().mockReturnThis();
       Message.then = jest.fn((callback) => callback(message));
 
       const returnVal = messageCtlr.pvt._createMessage(doc, convo);
       expect(Message.create).toHaveBeenCalledWith(doc);
       expect(Message.then).toHaveBeenCalledTimes(1);
-      expect(convo.messages.addToSet).toHaveBeenCalledWith(message._id);
+      expect(convo.messages.addToSet).toHaveBeenCalledWith(message.id);
       expect(returnVal).toEqual({convo, message});
     });
     it('should update convo with message ref', () => {

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "tcrosse",
+    "password": null,
+    "database": "gitter_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "tcrosse",
+    "password": null,
+    "database": "gitter_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "tcrosse",
+    "password": null,
+    "database": "gitter_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

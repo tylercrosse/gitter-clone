@@ -38,7 +38,7 @@ export const addMessage = (io, action) => {
 
 const _createMessage = (doc, convo) => (
   Message.create(doc).then((message) => {
-    convo.messages.addToSet(message._id);
+    convo.messages.addToSet(message.id);
     return {convo, message};
   }));
 const _saveConvo = (result) => (

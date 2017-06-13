@@ -15,7 +15,7 @@ const setup = () => {
     },
     convos: {
       '5898b15d6047fd8db8b4e3bb': {
-        _id: '5898b15d6047fd8db8b4e3bb',
+        id: '5898b15d6047fd8db8b4e3bb',
         updatedAt: '2017-02-06T17:24:45.657Z',
         createdAt: '2017-02-06T17:24:45.657Z',
         name: 'chat2',

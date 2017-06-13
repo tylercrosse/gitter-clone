@@ -1,13 +1,19 @@
-import mongoose from 'mongoose';
-
-const messageSchema = mongoose.Schema({
-  username: String,
-  text: String,
-  rawMarkup: String,
-  convo: {
-    type: String,
-    ref: 'Convo'
-  }
-}, {timestamps: true});
-
-export default mongoose.model('Message', messageSchema);
+module.exports = (sequelize, DataTypes) => {
+  const Message = sequelize.define('Message', {
+    text: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    rawMarkup: DataTypes.STRING
+  }, {
+    classMethods: {
+      associate: (models) => {
+        Message.belongsTo(models.Convo, {
+          foreignKey: 'convoId',
+          onDelete: 'CASCADE'
+        });
+      }
+    }
+  });
+  return Message;
+};
