@@ -36,7 +36,7 @@ export const addMessage = (io, action) => {
     rawMarkup
   };
 
-  Convo.findOne({ name: action.convo })
+  Convo.findOne({ where: { name: action.convo } })
     .then(/* istanbul ignore next */ (convo) => _createMessage(content, convo))
     .then(/* istanbul ignore next */ (result) => _emitAddMessage(io, result))
     .catch(

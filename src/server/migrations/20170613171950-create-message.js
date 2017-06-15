@@ -3,9 +3,8 @@ module.exports = {
     return queryInterface.createTable('Messages', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       text: {
         allowNull: false,
@@ -26,7 +25,8 @@ module.exports = {
         type: Sequelize.DATE
       },
       convoId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'Convos',

@@ -1,32 +1,37 @@
 import makeGetMessagesByConvoId, {
   burstify } from './messagesByConvo';
 
+// setup makes state object
 const setup = (overrides) => (
   Object.assign({
+    convos: {
+      chat: { id: 1 },
+      react: { id: 2 }
+    },
     messages: {
       0: {
         id: 0,
         createdAt: '2017-02-01T09:00:00-08:00',
         text: 'Run the tests',
-        convo: 'chat',
+        convoId: 1,
       },
       1: {
         id: 1,
         createdAt: '2017-02-01T09:01:00-08:00',
         text: 'Use Redux',
-        convo: 'chat',
+        convoId: 1,
       },
       2: {
         id: 2,
         createdAt: '2017-02-01T09:10:00-08:00',
         text: 'Fix the tests',
-        convo: 'react',
+        convoId: 2,
       },
       3: {
         id: 2,
         createdAt: '2017-02-01T09:20:00-08:00',
         text: 'Fix the tests',
-        convo: 'chat',
+        convoId: 1,
       }
     }
   }, overrides));
