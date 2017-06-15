@@ -9,14 +9,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    rawMarkup: DataTypes.STRING,
-    username: DataTypes.STRING
+    rawMarkup: DataTypes.STRING
   });
 
   Message.associate = (models) => {
     Message.belongsTo(models.Convo, {
       foreignKey: 'convoId',
       onDelete: 'CASCADE'
+    });
+    Message.belongsTo(models.User, {
+      foreignKey: 'userId'
     });
   };
   return Message;
