@@ -1,6 +1,5 @@
-import shortid       from 'shortid';
+// import shortid       from 'shortid';
 import { normalize } from 'normalizr';
-import { push }      from 'react-router-redux';
 import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
@@ -91,15 +90,26 @@ export const fetchConvos = () => ({
   }
 });
 
-export const SIGN_IN = 'SIGN_IN';
-export const signIn = (username, id) => (dispatch) => {
-  dispatch({
-    type: SIGN_IN,
-    id: id || shortid.generate(),
-    username,
-  });
-  dispatch(push('/chat'));
-};
+export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
+// FIXME change to something my expressive like 'postSignIn'
+export const signIn = (username) => ({
+  [CALL_API]: {
+    endpoint: window.location.origin + '/api/signIn',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username }),
+    types: [
+      SIGN_IN_REQUEST,
+      {
+        type: SIGN_IN_SUCCESS,
+        payload: /* istanbul ignore next */ (action, state, res) => getJSON(res)
+      },
+      SIGN_IN_FAILURE
+    ]
+  }
+});
 
 export const OPEN_CREATE_ROOM_MODAL = 'OPEN_CREATE_ROOM_MODAL';
 export const openCreateRoomModal = () => ({

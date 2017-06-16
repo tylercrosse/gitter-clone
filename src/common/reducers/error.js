@@ -3,6 +3,7 @@ import * as ActionTypes from '../actions';
 const initialState = {
   messages: false,
   convos: false,
+  signIn: false,
 };
 
 const error = (state = initialState, action) => {
@@ -22,6 +23,12 @@ const error = (state = initialState, action) => {
           convos: action.payload
         };
       }
+      case ActionTypes.SIGN_IN_FAILURE: {
+        return {
+          ...state,
+          singIn: action.payload
+        };
+      }
       default: {
         return state;
       }
@@ -39,6 +46,12 @@ const error = (state = initialState, action) => {
       return {
         ...state,
         convos: false
+      };
+    }
+    case ActionTypes.SIGN_IN_SUCCESS: {
+      return {
+        ...state,
+        signIn: false
       };
     }
     default: {

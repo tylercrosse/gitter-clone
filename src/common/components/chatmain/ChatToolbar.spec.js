@@ -9,7 +9,7 @@ const setup = (propOverrides) => {
       {username: 'Joe'},
       {username: 'Josh'},
     ],
-    user: {username: 'Liz'}
+    user: {name: 'Liz'}
   }, propOverrides);
 
   return {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const ChatToolbar = ({ messages, user }) => {
-  const currentUser = user.username ? [{...user}] : [];
+  const currentUser = user.name ? [{...user}] : [];
   const users = messages
     .concat(currentUser)
     .map((message) => message.username)

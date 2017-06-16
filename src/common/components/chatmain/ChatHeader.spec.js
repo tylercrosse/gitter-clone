@@ -7,7 +7,7 @@ const setup = (propOverrides) => {
   const props = Object.assign({
     user: {
       loggedIn: true,
-      username: 'dan'
+      name: 'dan'
     }
   }, propOverrides);
 

@@ -6,7 +6,7 @@ export const ChatHeader = ({ user, pathname }) => {
     <div className="chat-user-avatar">
       <img
       className="avatar"
-      src={'http://i.pravatar.cc/30?u=' + user.username} alt={user.username}
+      src={'http://i.pravatar.cc/30?u=' + user.name} alt={user.name}
       />
     </div>
   );

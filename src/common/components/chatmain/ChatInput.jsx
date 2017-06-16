@@ -31,10 +31,10 @@ class ChatInput extends React.Component {
       draft: e.target.value
     });
     this.addTypingUser({
-      username: this.props.user.username
+      username: this.props.user.name
     });
     this.removeTypingUser({
-      username: this.props.user.username
+      username: this.props.user.name
     });
   }
   handleSubmit(e) {
@@ -42,12 +42,12 @@ class ChatInput extends React.Component {
     if (!this.state.draft.trim()) return;
     const convo = this.props.routeParams.convo;
     this.props.onMessageSubmit({
-      username: this.props.user.username,
+      username: this.props.user.name,
       text: this.state.draft,
       convo
     });
     this.props.removeTypingUser({
-      username: this.props.user.username
+      username: this.props.user.name
     });
     this.setState({
       draft: ''
@@ -61,8 +61,8 @@ class ChatInput extends React.Component {
           <div className="chat-input-avatar">
             <img
               className="avatar"
-              src={'http://i.pravatar.cc/30?u=' + this.props.user.username}
-              alt={this.props.user.username}
+              src={'http://i.pravatar.cc/30?u=' + this.props.user.name}
+              alt={this.props.user.name}
             />
           </div>
           <form onSubmit={this.handleSubmit}>

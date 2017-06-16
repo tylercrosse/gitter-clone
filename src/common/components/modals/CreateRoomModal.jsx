@@ -26,7 +26,7 @@ export class CreateRoomModal extends React.Component {
   handleChange(e) {
     const input = {
       name: e.target.value,
-      username: this.props.user.username
+      username: this.props.user.name
     };
     const validInput = validateInput(input);
     if (!this.state.validInput && validInput) {
@@ -46,7 +46,7 @@ export class CreateRoomModal extends React.Component {
     e.preventDefault();
     const input = {
       name: this.state.name,
-      username: this.props.user.username
+      username: this.props.user.name
     };
     const validInput = validateInput(input);
     if (validInput) {

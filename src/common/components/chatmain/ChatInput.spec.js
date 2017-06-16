@@ -6,7 +6,7 @@ import ChatInput from './ChatInput';
 const setup = (propOverrides) => {
   const props = Object.assign({
     user: {
-      username: 'Bob',
+      name: 'Bob',
       loggedIn: true
     },
     routeParams: {
