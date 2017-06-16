@@ -6,10 +6,10 @@ import ChatToolbar from './ChatToolbar';
 const setup = (propOverrides) => {
   const props = Object.assign({
     messages: [
-      {username: 'Joe'},
-      {username: 'Josh'},
+      {User: {name: 'Joe', id: 123}},
+      {User: {name: 'Josh', id: 654}},
     ],
-    user: {name: 'Liz'}
+    user: {name: 'Liz', id: 323}
   }, propOverrides);
 
   return {

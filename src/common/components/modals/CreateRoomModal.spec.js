@@ -7,7 +7,7 @@ import CreateRoomModal,
 const setup = () => {
   const props = {
     user: {
-      username: 'Dan',
+      name: 'Dan',
       loggedIn: true
     },
     onFormSubmit: jest.fn(),

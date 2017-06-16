@@ -42,7 +42,7 @@ class ChatInput extends React.Component {
     if (!this.state.draft.trim()) return;
     const convo = this.props.routeParams.convo;
     this.props.onMessageSubmit({
-      username: this.props.user.name,
+      userId: this.props.user.id,
       text: this.state.draft,
       convo
     });

@@ -39,9 +39,12 @@ exports[`<ChatContent /> should render correctly 1`] = `
         </div>
         <div
           className="chat-item-text"
-        >
-          sweet
-        </div>
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>sweet</p>",
+            }
+          }
+        />
       </div>
     </div>
   </article>
@@ -79,9 +82,12 @@ exports[`<ChatContent /> should render correctly 1`] = `
         </div>
         <div
           className="chat-item-text"
-        >
-          cool
-        </div>
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>cool</p>",
+            }
+          }
+        />
       </div>
     </div>
   </article>
@@ -96,9 +102,12 @@ exports[`<ChatContent /> should render correctly 1`] = `
       >
         <div
           className="chat-item-text"
-        >
-          damn it
-        </div>
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>damn it</p>",
+            }
+          }
+        />
       </div>
     </div>
   </article>

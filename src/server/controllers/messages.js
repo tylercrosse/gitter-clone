@@ -4,6 +4,7 @@ import logger from '../config/logger';
 
 const Message = require('../models').Message;
 const Convo = require('../models').Convo;
+const User = require('../models').User;
 
 marked.setOptions(markedConfig);
 
@@ -13,7 +14,10 @@ export const getMessages = (req, res) => {
     include: [
       {
         model: Message,
-        as: 'messages'
+        as: 'messages',
+        include: [
+          User
+        ]
       }
     ]
   })
@@ -32,7 +36,7 @@ export const getMessages = (req, res) => {
 export const addMessage = (io, action) => {
   const rawMarkup = marked(action.text);
   const content = {
-    username: action.username,
+    userId: action.userId,
     text: action.text,
     rawMarkup
   };

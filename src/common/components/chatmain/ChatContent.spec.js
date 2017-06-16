@@ -12,20 +12,23 @@ const setup = (propOverrides) => {
       {
         id: '58911c3e871fdf24f2079782',
         createdAt: '2017-01-31T23:22:38.808Z',
-        username: 'liz',
+        User: {name: 'liz'},
         text: 'sweet',
+        rawMarkup: '<p>sweet</p>',
         burstStart: true
       }, {
         id: '58917370eb323841b839f583',
         createdAt: '2017-02-01T05:34:40.591Z',
-        username: 'dan',
+        User: {name: 'dan'},
         text: 'cool',
+        rawMarkup: '<p>cool</p>',
         burstStart: true
       }, {
         id: '5891737ceb323841b839f584',
         createdAt: '2017-02-01T05:34:52.011Z',
-        username: 'dan',
+        User: {name: 'dan'},
         text: 'damn it',
+        rawMarkup: '<p>damn it</p>',
         burstStart: false
       }
     ]

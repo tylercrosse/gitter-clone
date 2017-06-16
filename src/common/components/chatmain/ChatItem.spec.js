@@ -8,7 +8,10 @@ const setup = (propOverrides) => {
     id: 0,
     burstStart: true,
     text: 'Use Redux',
-    username: 'Dan',
+    rawMarkup: '<p>Use Redux</p>',
+    User: {
+      name: 'Dan'
+    },
     updatedAt: '2017-01-25T00:58:33.702Z',
     createdAt: '2017-01-25T00:58:33.702Z'
   }, propOverrides);

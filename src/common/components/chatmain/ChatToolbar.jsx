@@ -1,16 +1,17 @@
 import React from 'react';
+import _uniqBy from 'lodash/uniqBy';
 
 export const ChatToolbar = ({ messages, user }) => {
   const currentUser = user.name ? [{...user}] : [];
-  const users = messages
-    .concat(currentUser)
-    .map((message) => message.username)
-    .filter((username, i, arr) => arr.indexOf(username) === i)
-    .map((username) => (
-      <li className="avatar" key={username}>
+  const allUsers = messages
+    .map((message) => message.User)
+    .concat(currentUser);
+  const uniqueUsers = _uniqBy(allUsers, 'id');
+  const avatars = uniqueUsers
+    .map((user) => (
+      <li className="avatar" key={user.id}>
         <img
-
-        src={'http://i.pravatar.cc/30?u=' + username} alt={username}
+        src={'http://i.pravatar.cc/30?u=' + user.name} alt={user.name}
         />
         {/* <div className="status" /> */}
       </li>
@@ -18,7 +19,7 @@ export const ChatToolbar = ({ messages, user }) => {
   return (
     <aside className="chat-toolbar">
       <ul className="roster">
-        {users}
+        {avatars}
       </ul>
     </aside>
   );

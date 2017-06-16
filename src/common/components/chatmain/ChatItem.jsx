@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import moment from 'moment';
 
 export const ChatItem = ({
-  username,
+  User,
   text,
   rawMarkup,
   createdAt,
@@ -16,12 +16,12 @@ export const ChatItem = ({
           <div className="chat-item-aside">
             <img
             className="avatar"
-            src={'http://i.pravatar.cc/30?u=' + username} alt={username}
+            src={'http://i.pravatar.cc/30?u=' + User.name} alt={User.name}
             />
           </div>
           <div className="chat-item-content">
             <div className="chat-item-details">
-              <div className="chat-item-user">{username}</div>
+              <div className="chat-item-user">{User.name}</div>
               <div className="chat-item-time">{dateString}</div>
             </div>
             {rawMarkup ?
@@ -54,8 +54,9 @@ export const ChatItem = ({
 };
 
 ChatItem.propTypes = {
-  username: PropTypes.string.isRequired,
+  User: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
+  rawMarkup: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   burstStart: PropTypes.bool.isRequired,
 };

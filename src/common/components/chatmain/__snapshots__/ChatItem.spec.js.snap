@@ -35,9 +35,12 @@ exports[`<ChatItem /> burstStart == false should render correctly without markup
     >
       <div
         className="chat-item-text"
-      >
-        Use Redux
-      </div>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Use Redux</p>",
+          }
+        }
+      />
     </div>
   </div>
 </article>
@@ -124,9 +127,12 @@ exports[`<ChatItem /> burstStart == true should render correctly without markup 
       </div>
       <div
         className="chat-item-text"
-      >
-        Use Redux
-      </div>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Use Redux</p>",
+          }
+        }
+      />
     </div>
   </div>
 </article>

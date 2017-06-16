@@ -29,14 +29,14 @@ export const removeTypingUser = ({ username }) => ({
 let nextMessageId = 0;
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const addMessage = ({
-  username,
+  userId,
   text,
   rawMarkup,
   convo
 }) => ({
   type: 'server.' + ADD_MESSAGE,
   id: nextMessageId++,
-  username,
+  userId,
   text,
   rawMarkup,
   convo
