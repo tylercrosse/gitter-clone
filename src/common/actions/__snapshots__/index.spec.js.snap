@@ -7,6 +7,16 @@ Object {
 }
 `;
 
+exports[`actions addMessage should create ADD_MESSAGE action 1`] = `
+Object {
+  "convo": "react",
+  "rawMarkup": "<p>Use Redux</p>",
+  "text": "Use Redux",
+  "type": "server.ADD_MESSAGE",
+  "userId": "1231231",
+}
+`;
+
 exports[`actions fetchConvos should create [CALL_API] action 1`] = `
 Object {
   Symbol(Call API): Object {
@@ -36,6 +46,27 @@ Object {
         "type": "MESSAGES_SUCCESS",
       },
       "MESSAGES_FAILURE",
+    ],
+  },
+}
+`;
+
+exports[`actions signIn should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "body": "{\\"username\\":{\\"username\\":\\"Dan\\"}}",
+    "endpoint": "null/api/signIn",
+    "headers": Object {
+      "Content-Type": "application/json",
+    },
+    "method": "POST",
+    "types": Array [
+      "SIGN_IN_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "SIGN_IN_SUCCESS",
+      },
+      "SIGN_IN_FAILURE",
     ],
   },
 }

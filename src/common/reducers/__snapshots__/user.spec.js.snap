@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user reducer should handle SIGN_IN 1`] = `
+Object {
+  "loggedIn": false,
+}
+`;

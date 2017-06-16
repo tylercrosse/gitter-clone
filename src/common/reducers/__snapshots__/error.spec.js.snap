@@ -18,6 +18,15 @@ Object {
 }
 `;
 
+exports[`error reducer 404 ApiError should add error to state on SIGN_IN_FAILURE 1`] = `
+Object {
+  "singIn": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
 exports[`error reducer 404 ApiError should return state for default switch case 1`] = `Object {}`;
 
 exports[`error reducer SUCCESS should reset convos error on CONVOS_SUCCESS 1`] = `
@@ -47,5 +56,24 @@ Object {
 exports[`error reducer SUCCESS should reset messages error on MESSAGES_SUCCESS 2`] = `
 Object {
   "messages": false,
+}
+`;
+
+exports[`error reducer SUCCESS should reset signIn error on SIGN_IN_SUCCESS 1`] = `
+Object {
+  "singIn": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
+}
+`;
+
+exports[`error reducer SUCCESS should reset signIn error on SIGN_IN_SUCCESS 2`] = `
+Object {
+  "signIn": false,
+  "singIn": Object {
+    "name": "ApiError",
+    "status": 404,
+  },
 }
 `;

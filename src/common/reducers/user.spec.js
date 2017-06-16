@@ -5,8 +5,14 @@ const setup = () => {
     loggedIn: false
   };
 
+  const payload = {
+    name: 'Dan',
+    id: '123145'
+  };
+
   return {
-    initialState
+    initialState,
+    payload
   };
 };
 
@@ -19,15 +25,12 @@ describe('user reducer', () => {
   });
 
   it('should handle SIGN_IN', () => {
-    const { initialState } = setup();
+    const { initialState, payload } = setup();
     expect(
       user(initialState, {
         type: 'SIGN_IN',
-        username: 'bill'
+        payload
       })
-    ).toEqual({
-      username: 'bill',
-      loggedIn: true
-    });
+    ).toMatchSnapshot();
   });
 });

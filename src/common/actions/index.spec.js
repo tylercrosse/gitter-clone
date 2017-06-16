@@ -4,16 +4,13 @@ import * as actions from './index';
 describe('actions', () => {
   it('addMessage should create ADD_MESSAGE action', () => {
     const message = {
-      username: 'Bob',
-      text: 'Use Redux'
+      userId: '1231231',
+      text: 'Use Redux',
+      rawMarkup: '<p>Use Redux</p>',
+      convo: 'react'
     };
     expect(actions.addMessage(message))
-      .toEqual({
-        type: 'server.ADD_MESSAGE',
-        id: 0,
-        username: 'Bob',
-        text: 'Use Redux'
-      });
+      .toMatchSnapshot();
   });
 
   it('fetchMessages should create [CALL_API] action', () => {
@@ -33,34 +30,9 @@ describe('actions', () => {
       .toMatchSnapshot();
   });
 
-  describe('signIn action creator', () => {
-    it('should create SIGN_IN action', () => {
-      const getState = () => ('Bob');
-      const dispatch = jest.fn();
-      const name = 'Dan';
-      const id = shortid.generate();
-      actions.signIn(name, id)(dispatch, getState);
-      expect(dispatch)
-        .toHaveBeenCalledWith({
-          type: 'SIGN_IN',
-          username: name,
-          id
-        });
-    });
-
-    it('should create @@router/CALL_HISTORY_METHOD action', () => {
-      const getState = () => ('Bob');
-      const dispatch = jest.fn();
-      actions.signIn()(dispatch, getState);
-      expect(dispatch)
-        .toHaveBeenCalledWith({
-          payload: {
-            args: ['/chat'],
-            method: 'push'
-          },
-          type: '@@router/CALL_HISTORY_METHOD'
-        });
-    });
+  it('signIn should create [CALL_API] action', () => {
+    expect(actions.signIn({username: 'Dan'}))
+      .toMatchSnapshot();
   });
 
   it('openCreateRoomModal should create OPEN_CREATE_ROOM_MODAL action', () => {

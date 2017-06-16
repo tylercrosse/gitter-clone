@@ -9,7 +9,8 @@ const setup = (actionOverride) => {
   }, actionOverride);
   const initialState = {
     messages: false,
-    convos: false
+    convos: false,
+    signIn: false
   };
 
   return {
@@ -35,6 +36,10 @@ describe('error reducer', () => {
       const { action } = setup({type: 'CONVOS_FAILURE'});
       expect(error({}, action)).toMatchSnapshot();
     });
+    it('should add error to state on SIGN_IN_FAILURE', () => {
+      const { action } = setup({type: 'SIGN_IN_FAILURE'});
+      expect(error({}, action)).toMatchSnapshot();
+    });
     it('should return state for default switch case', () => {
       const { action } = setup();
       expect(error({}, action)).toMatchSnapshot();
@@ -54,6 +59,13 @@ describe('error reducer', () => {
       const state = error({}, action);
       expect(state).toMatchSnapshot();
       const newAction = {type: 'CONVOS_SUCCESS'};
+      expect(error(state, newAction)).toMatchSnapshot();
+    });
+    it('should reset signIn error on SIGN_IN_SUCCESS', () => {
+      const { action } = setup({type: 'SIGN_IN_FAILURE'});
+      const state = error({}, action);
+      expect(state).toMatchSnapshot();
+      const newAction = {type: 'SIGN_IN_SUCCESS'};
       expect(error(state, newAction)).toMatchSnapshot();
     });
   });
