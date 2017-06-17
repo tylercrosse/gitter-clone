@@ -1,5 +1,6 @@
-// import shortid       from 'shortid';
+import shortid       from 'shortid';
 import { normalize } from 'normalizr';
+import { push }      from 'react-router-redux';
 import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
@@ -39,6 +40,20 @@ export const addMessage = ({
   rawMarkup,
   convo
 });
+
+export const ADD_DIRECT_MESSAGE = 'ADD_DIRECT_MESSAGE';
+export const addDirectMessage = ({ creatorId, targetIds}) => (dispatch) => {
+  const name = shortid.generate();
+  dispatch({
+    type: 'server.' + ADD_DIRECT_MESSAGE,
+    payload: {
+      creatorId,
+      targetIds,
+      name
+    }
+  });
+  dispatch(push('/' + name));
+};
 
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
 export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';

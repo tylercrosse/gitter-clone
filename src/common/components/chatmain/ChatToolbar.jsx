@@ -1,5 +1,6 @@
 import React from 'react';
 import _uniqBy from 'lodash/uniqBy';
+import Avatar from '../Avatar';
 
 export const ChatToolbar = ({ messages, user }) => {
   const currentUser = user.name ? [{...user}] : [];
@@ -10,9 +11,7 @@ export const ChatToolbar = ({ messages, user }) => {
   const avatars = uniqueUsers
     .map((user) => (
       <li className="avatar" key={user.id}>
-        <img
-        src={'http://i.pravatar.cc/30?u=' + user.name} alt={user.name}
-        />
+        <Avatar user={user} />
         {/* <div className="status" /> */}
       </li>
     ));

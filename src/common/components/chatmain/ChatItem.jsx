@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
+import Avatar from '../Avatar';
 
 export const ChatItem = ({
   User,
@@ -14,10 +15,7 @@ export const ChatItem = ({
       <article className="chat-item burst-start">
         <div className="chat-item-container">
           <div className="chat-item-aside">
-            <img
-            className="avatar"
-            src={'http://i.pravatar.cc/30?u=' + User.name} alt={User.name}
-            />
+            <Avatar user={User} />
           </div>
           <div className="chat-item-content">
             <div className="chat-item-details">
