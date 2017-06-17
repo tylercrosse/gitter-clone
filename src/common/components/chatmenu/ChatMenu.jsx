@@ -6,6 +6,8 @@ import {
   closeModal,
   addConvo,
   fetchConvos }    from '../../actions';
+import convosSelector from '../../selectors/convosSelector';
+import directConvosSelector from '../../selectors/directConvosSelector';
 import Panel       from './Panel';
 // import                  './chatmenu.scss';
 
@@ -69,7 +71,8 @@ export class ChatMenu extends React.Component {
 export const mapStateToProps = (state) => ({
   modalIsOpen: state.ui.modalIsOpen.createRoom,
   user: state.user,
-  convos: state.convos
+  convos: convosSelector(state),
+  directConvos: directConvosSelector(state)
 });
 
 export default connect(

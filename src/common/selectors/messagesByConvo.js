@@ -27,7 +27,7 @@ export default makeGetMessagesByConvoId;
 /**
  * Groups sequential messages within 15 minutes by the same user.
  * Grouping is done by adding burstStart property to messages.
- * @param  {Array} messages from current chat
+ * @param  {Array} messages from current chat sorted by time
  * @return {Array}          same as input + burstStart property
  */
 export const burstify = (msgA) => {
@@ -35,21 +35,22 @@ export const burstify = (msgA) => {
   const bursts = {};
   let prev = msgA[0];
   prev.burstStart = true;
-  bursts[prev.username + ':' + prev.createdAt] = [prev];
+  bursts[prev.User.name + ':' + prev.createdAt] = [prev];
   for (let i = 1; i < msgA.length; i++) {
     const curr = msgA[i];
     const currTime = moment(curr.createdAt);
     const prevTime = moment(prev.createdAt);
-    const rangeEnd = prevTime.clone().add(15, 'minutes');
+    const BURST_LENGTH = 15;
+    const rangeEnd = prevTime.clone().add(BURST_LENGTH, 'minutes');
     if (
-      prev.username === curr.username &&
+      prev.User.name === curr.User.name &&
       currTime.isBetween(prevTime, rangeEnd, null, '[]')
     ) {
       curr.burstStart = false;
-      bursts[prev.username + ':' + prev.createdAt].push(curr);
+      bursts[prev.User.name + ':' + prev.createdAt].push(curr);
     } else {
       curr.burstStart = true;
-      bursts[curr.username + ':' + curr.createdAt] = [curr];
+      bursts[curr.User.name + ':' + curr.createdAt] = [curr];
       prev = curr;
     }
   }
