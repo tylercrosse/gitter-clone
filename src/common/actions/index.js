@@ -1,4 +1,3 @@
-import shortid       from 'shortid';
 import { normalize } from 'normalizr';
 // import { push }      from 'react-router-redux';
 import { CALL_API,
@@ -43,13 +42,11 @@ export const addMessage = ({
 
 export const ADD_DIRECT_MESSAGE = 'ADD_DIRECT_MESSAGE';
 export const addDirectMessage = ({ creatorId, targetIds}) => (dispatch) => {
-  const name = shortid.generate();
   dispatch({
     type: 'server.' + ADD_DIRECT_MESSAGE,
     payload: {
       creatorId,
-      targetIds,
-      name
+      targetIds
     }
   });
   // dispatch(push('/' + name));

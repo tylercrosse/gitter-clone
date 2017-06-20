@@ -8,7 +8,7 @@ export const socketActions = (io, action) => {
       break;
     case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
-    case 'server.ADD_DIRECT_MESSAGE': convoCtlr.addDirectMessage(io, action);
+    case 'server.ADD_DIRECT_MESSAGE': convoCtlr.findOrCreateDirectMessage(io, action);
       break;
     case 'server.ADD_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
