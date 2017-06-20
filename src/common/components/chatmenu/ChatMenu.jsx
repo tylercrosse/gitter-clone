@@ -4,7 +4,7 @@ import { Link }    from 'react-router';
 import {
   openCreateRoomModal,
   closeModal,
-  addConvo,
+  createConvo,
   fetchConvos }    from '../../actions';
 import convosSelector from '../../selectors/convosSelector';
 import directConvosSelector from '../../selectors/directConvosSelector';
@@ -77,5 +77,5 @@ export const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { openCreateRoomModal, closeModal, addConvo, fetchConvos }
+  { openCreateRoomModal, closeModal, createConvo, fetchConvos }
 )(ChatMenu);

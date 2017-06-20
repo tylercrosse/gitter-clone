@@ -1,5 +1,5 @@
 import { normalize } from 'normalizr';
-// import { push }      from 'react-router-redux';
+import { push }      from 'react-router-redux';
 import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
@@ -40,16 +40,31 @@ export const addMessage = ({
   convo
 });
 
-export const ADD_DIRECT_MESSAGE = 'ADD_DIRECT_MESSAGE';
-export const addDirectMessage = ({ creatorId, targetIds}) => (dispatch) => {
+export const CREATE_DIRECT_MESSAGE_REQUEST = 'CREATE_DIRECT_MESSAGE_REQUEST';
+export const CREATE_DIRECT_MESSAGE_SUCCESS = 'CREATE_DIRECT_MESSAGE_SUCCESS';
+export const CREATE_DIRECT_MESSAGE_FAILURE = 'CREATE_DIRECT_MESSAGE_FAILURE';
+export const findOrCreateDirectMessage = ({ creatorId, targetIds }) => (dispatch) => {
   dispatch({
-    type: 'server.' + ADD_DIRECT_MESSAGE,
-    payload: {
-      creatorId,
-      targetIds
+    [CALL_API]: {
+      endpoint: window.location.origin + '/api/convos/direct',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ creatorId, targetIds }),
+      types: [
+        CREATE_DIRECT_MESSAGE_REQUEST,
+        {
+          type: CREATE_DIRECT_MESSAGE_SUCCESS,
+          payload: /* istanbul ignore next */ (action, state, res) => (
+            res.json().then((json) => {
+              dispatch(push('/' + json.name));
+              return json;
+            })
+          )
+        },
+        CREATE_DIRECT_MESSAGE_FAILURE
+      ]
     }
   });
-  // dispatch(push('/' + name));
 };
 
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
@@ -73,11 +88,32 @@ export const fetchMessages =  (convo) => ({
   }
 });
 
-export const ADD_CONVO = 'ADD_CONVO';
-export const addConvo = ({ name }) => ({
-  type: 'server.' + ADD_CONVO,
-  name
-});
+export const CREATE_CONVO_REQUEST = 'CREATE_CONVO_REQUEST';
+export const CREATE_CONVO_SUCCESS = 'CREATE_CONVO_SUCCESS';
+export const CREATE_CONVO_FAILURE = 'CREATE_CONVO_FAILURE';
+export const createConvo = ({ name }) => (dispatch) => {
+  dispatch({
+    [CALL_API]: {
+      endpoint: window.location.origin + '/api/convos',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name }),
+      types: [
+        CREATE_CONVO_REQUEST,
+        {
+          type: CREATE_CONVO_SUCCESS,
+          payload: /* istanbul ignore next */ (action, state, res) => (
+            res.json().then((json) => {
+              dispatch(push('/' + json.name));
+              return json;
+            })
+          )
+        },
+        CREATE_CONVO_FAILURE
+      ]
+    }
+  });
+};
 
 export const CONVOS_REQUEST = 'CONVOS_REQUEST';
 export const CONVOS_SUCCESS = 'CONVOS_SUCCESS';

@@ -1,7 +1,6 @@
 import express        from 'express';
 import compression    from 'compression';
 import bodyParser     from 'body-parser';
-// import Sequelize      from 'sequelize';
 import SocketIo       from 'socket.io';
 import expressWinston from 'express-winston';
 import logger, {
@@ -12,26 +11,6 @@ import router         from './config/routes';
 
 const app = express();
 const port = process.env.PORT || 3333;
-
-// db config
-// const sequelize = new Sequelize('gitter-dev', 'tcrosse', null, {
-//   host: 'localhost',
-//   dialect: 'postgres',
-//
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     idle: 10000
-//   }
-// });
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     logger.log('info', '==> 🛢 Postgres connected!');
-//   })
-//   .catch((err) => {
-//     logger.error('Unable to connect to the database:', err);
-//   });
 
 /* istanbul ignore next: webpack middleware for dev */
 if (process.env.NODE_ENV === 'development') {

@@ -11,7 +11,7 @@
     "start": "NODE_ENV=production node ./compiled/server",
     "dev": "NODE_ENV=development nodemon ./src/server/",
     "test": "jest --silent --coverage --runInBand",
-    "lint": "eslint .",
+    "lint": "eslint --ext .jsx --ext .js .",
     "build": "rimraf ./compiled && npm run build:server && npm run build:client && sw-precache --config=./config/sw-precache.js",
     "build:client": "NODE_ENV=production webpack --progress --profile --colors",
     "build:server": "npm run babel -- ./src/ -d ./compiled",

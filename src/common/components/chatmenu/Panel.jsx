@@ -29,7 +29,7 @@ const Panel = (props) => {
               user={props.user}
               modalIsOpen={props.modalIsOpen}
               onRequestClose={props.closeModal}
-              onFormSubmit={props.addConvo}
+              onFormSubmit={props.createConvo}
             />
           </div>
         </footer>
@@ -52,7 +52,7 @@ Panel.propTypes = {
   onMouseLeave: PropTypes.func.isRequired,
   openCreateRoomModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  addConvo: PropTypes.func.isRequired,
+  createConvo: PropTypes.func.isRequired,
   modalIsOpen: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired
 };

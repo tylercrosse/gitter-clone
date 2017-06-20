@@ -1,4 +1,3 @@
-import shortid      from 'shortid';
 import * as actions from './index';
 
 describe('actions', () => {

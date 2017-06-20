@@ -15,9 +15,7 @@ export const getMessages = (req, res) => {
       {
         model: Message,
         as: 'messages',
-        include: [
-          User
-        ]
+        include: [User]
       }
     ]
   })
@@ -41,9 +39,11 @@ export const addMessage = (io, action) => {
     rawMarkup
   };
 
+
   Convo.findOne({ where: { name: action.convo } })
     .then(/* istanbul ignore next */ (convo) => _createMessage(content, convo))
-    .then(/* istanbul ignore next */ (result) => _emitAddMessage(io, result))
+    .then(/* istanbul ignore next */ (message) => _eagerLoadMessage(message))
+    .then(/* istanbul ignore next */ (message) => _emitAddMessage(io, message))
     .catch(
       /* istanbul ignore next */ (err) => {
         logger.log('error', err);
@@ -55,12 +55,19 @@ const _createMessage = (content, convo) =>
   Message.create({
     ...content,
     convoId: convo.id
-  }, { include: [User] });
-const _emitAddMessage = (io, message) =>
+  });
+const _eagerLoadMessage = (message) =>
+  // neeeded to get eager loading to work (sequelize bug)
+  Message.find({
+    where: {id: message.id},
+    include: [User]
+  });
+const _emitAddMessage = (io, message) => {
   io.emit('action', {
     // FIXME better decouple db & socket interactions
     type: 'ADD_MESSAGE',
     message
   });
+};
 
 export const pvt = { _createMessage, _emitAddMessage };

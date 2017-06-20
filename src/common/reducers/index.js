@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import messages from './messages';
 import convos from './convos';
-import directMessages from './directMessages';
 import user from './user';
 import ui from './ui';
 import error from './error';
@@ -10,7 +9,6 @@ import error from './error';
 const rootReducer = combineReducers({
   messages,
   convos,
-  directMessages,
   user,
   ui,
   routing,

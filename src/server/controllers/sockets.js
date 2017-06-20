@@ -1,14 +1,9 @@
 import logger from '../config/logger';
 import * as messageCtlr from './messages';
-import * as convoCtlr   from './convos';
 
 export const socketActions = (io, action) => {
   switch (action.type) {
     case 'server.ADD_MESSAGE': messageCtlr.addMessage(io, action);
-      break;
-    case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
-      break;
-    case 'server.ADD_DIRECT_MESSAGE': convoCtlr.findOrCreateDirectMessage(io, action);
       break;
     case 'server.ADD_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development

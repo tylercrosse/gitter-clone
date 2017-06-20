@@ -6,7 +6,9 @@ const Convo = require('../models').Convo;
 const User = require('../models').User;
 
 export const getConvos = (req, res) => {
-  Convo.findAll()
+  Convo.findAll({
+    where: { direct: false }
+  })
     .then((convos) => {
       res.json(convos);
     })
@@ -18,30 +20,34 @@ export const getConvos = (req, res) => {
     );
 };
 
-export const addConvo = (io, action) => {
-  const errHandler = /* istanbul ignore next */ (err) => {
-    logger.error(err);
-  };
-
-  Convo.create({ name: action.name, direct: false })
-    .then((convo) => {
-      io.emit('action', {
-        // FIXME better decouple db & socket interactions
-        type: 'ADD_CONVO',
-        convo
-      });
+export const create = (req, res) => {
+  Convo.findOrCreate({ where: { name: req.body.name, direct: false } })
+    .spread((convo, created) => {
+      if (created) logger.info('convo created: ', convo.name);
+      if (convo === null) res.status(500).send('Something went wrong!');
+      else res.json(convo);
     })
-    .catch(errHandler);
+    .catch(
+      /* istanbul ignore next */ (err) => {
+        logger.error(err);
+        res.status(500).send('Something went wrong!');
+      }
+    );
 };
 
-export const findOrCreateDirectMessage = async (io, action) => {
+export const findOrCreateDirectMessage = async (req, res) => {
   const errHandler = /* istanbul ignore next */ (err) => {
     logger.error(err);
+    res.status(500).send('Something went wrong!');
   };
+
+  if (req.body.creatorId == undefined && req.body.targetIds == undefined) { // eslint-disable-line
+    res.status(400).send('Bad request');
+  }
 
   // find relevant users, their conversations, & the users of those conversations
   const creator = await User.findOne({
-    where: { id: action.payload.creatorId },
+    where: { id: req.body.creatorId },
     include: {
       model: Convo,
       as: 'convos',
@@ -56,7 +62,7 @@ export const findOrCreateDirectMessage = async (io, action) => {
   creator.ConvoMembership = { visible: true };
 
   const targets = await User.findAll({
-    where: { id: action.payload.targetIds },
+    where: { id: req.body.targetIds },
     include: {
       model: Convo,
       as: 'convos',
@@ -70,8 +76,8 @@ export const findOrCreateDirectMessage = async (io, action) => {
   }).catch(errHandler);
 
   const userInstances = [creator, ...targets];
-  const userIds = [action.payload.creatorId]
-    .concat(action.payload.targetIds)
+  const userIds = [req.body.creatorId]
+    .concat(req.body.targetIds)
     .sort();
   const existingConvoId = findExistingConvo(userInstances, userIds);
   let directConvoId;
@@ -96,7 +102,7 @@ export const findOrCreateDirectMessage = async (io, action) => {
     directConvoId = existingConvoId;
   }
 
-  // find & send the new convo (needed for include)
+  // find & send the new convo (needed for eager loading)
   Convo.find({
     where: { id: directConvoId },
     include: [
@@ -107,12 +113,8 @@ export const findOrCreateDirectMessage = async (io, action) => {
     ]
   })
     .then((convo) => {
-      io.emit('action', {
-        // FIXME better decouple db & socket interactions
-        type: 'ADD_DIRECT_MESSAGE',
-        convo
-      });
-      return convo;
+      if (convo === null) res.status(500).send('Something went wrong!');
+      else res.json(convo);
     })
     .catch(errHandler);
 };

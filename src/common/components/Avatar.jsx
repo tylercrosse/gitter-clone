@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addDirectMessage } from '../actions/';
+import { findOrCreateDirectMessage } from '../actions/';
 
 export class Avatar extends React.Component {
 
@@ -13,8 +13,7 @@ export class Avatar extends React.Component {
     // build props and fire action
     const creatorId = this.props.loggedInUser.id;
     const targetIds = [this.props.user.id];
-    console.log('creator, target 🐀:', creatorId, targetIds);
-    this.props.addDirectMessage({ creatorId, targetIds });
+    this.props.findOrCreateDirectMessage({ creatorId, targetIds });
   }
   render() {
     const { user } = this.props;
@@ -39,5 +38,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { addDirectMessage }
+  { findOrCreateDirectMessage }
 )(Avatar);
