@@ -1,6 +1,6 @@
 import shortid       from 'shortid';
 import { normalize } from 'normalizr';
-import { push }      from 'react-router-redux';
+// import { push }      from 'react-router-redux';
 import { CALL_API,
   getJSON }          from 'redux-api-middleware';
 import Schemas       from './schemas';
@@ -52,7 +52,7 @@ export const addDirectMessage = ({ creatorId, targetIds}) => (dispatch) => {
       name
     }
   });
-  dispatch(push('/' + name));
+  // dispatch(push('/' + name));
 };
 
 export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';

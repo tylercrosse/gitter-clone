@@ -55,7 +55,7 @@ const _createMessage = (content, convo) =>
   Message.create({
     ...content,
     convoId: convo.id
-  });
+  }, { include: [User] });
 const _emitAddMessage = (io, message) =>
   io.emit('action', {
     // FIXME better decouple db & socket interactions

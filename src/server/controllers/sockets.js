@@ -8,8 +8,11 @@ export const socketActions = (io, action) => {
       break;
     case 'server.ADD_CONVO': convoCtlr.addConvo(io, action);
       break;
+    case 'server.ADD_DIRECT_MESSAGE': convoCtlr.addDirectMessage(io, action);
+      break;
     case 'server.ADD_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
+      // namespace to convo
       // logger.debug('add 🔫', action.payload);
       io.emit('action', {
         type: 'ADD_TYPING_USER',
@@ -18,6 +21,7 @@ export const socketActions = (io, action) => {
       break;
     case 'server.REMOVE_TYPING_USER':
       // NOTE use 'broadcast' to emit to all clients not including source. emit used for development
+      // namespace to convo
       // logger.debug('remove 🏁', action.payload);
       io.emit('action', {
         type: 'REMOVE_TYPING_USER',
