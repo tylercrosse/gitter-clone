@@ -6,13 +6,21 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     name: DataTypes.STRING,
-    direct: DataTypes.BOOLEAN
+    direct: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   });
 
   Convo.associate = (models) => {
     Convo.hasMany(models.Message, {
       foreignKey: 'convoId',
       as: 'messages'
+    });
+    Convo.belongsToMany(models.User, {
+      through: models.ConvoMembership,
+      foreignKey: 'convoId',
+      as: 'users'
     });
   };
   return Convo;

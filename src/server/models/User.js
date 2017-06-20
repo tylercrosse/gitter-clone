@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'messages'
     });
+    User.belongsToMany(models.Convo, {
+      through: models.ConvoMembership,
+      foreignKey: 'userId',
+      as: 'convos'
+    });
   };
   return User;
 };
