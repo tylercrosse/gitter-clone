@@ -28,6 +28,33 @@ export const modalIsOpen = (state = initialModalState, action) => {
   }
 };
 
+const initialPanelState = {
+  open: false,
+  title: '',
+  inner: ''
+};
+
+export const panel = (state = initialPanelState, action) => {
+  switch (action.type) {
+    case ActionTypes.OPEN_CONVOS_PANEL:
+      return {
+        open: true,
+        title: 'All Conversations',
+        inner: 'Conversations'
+      };
+    case ActionTypes.OPEN_DIRECT_MESSAGES_PANEL:
+      return {
+        open: true,
+        title: 'Direct Messages',
+        inner: 'DirectMessages'
+      };
+    case ActionTypes.CLOSE_PANEL:
+      return initialPanelState;
+    default:
+      return state;
+  }
+};
+
 export const isFetching = (state = false, action) => {
   switch (action.type) {
     case ActionTypes.MESSAGES_REQUEST:
@@ -63,6 +90,7 @@ export const usersTyping = (state = [], action) => {
 
 const ui = combineReducers({
   modalIsOpen,
+  panel,
   isFetching,
   usersTyping
 });

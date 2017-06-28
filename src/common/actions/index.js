@@ -168,6 +168,25 @@ export const openSignInModal = () => ({
 });
 
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const closeModal = () => ({
+export const closeModal = () => (dispatch) => {
+  dispatch(closeModalAction());
+  dispatch(closePanel());
+};
+export const closeModalAction = () => ({
   type: CLOSE_MODAL
+});
+
+export const OPEN_CONVOS_PANEL = 'OPEN_CONVOS_PANEL';
+export const openConvosPanel = () => ({
+  type: OPEN_CONVOS_PANEL
+});
+
+export const OPEN_DIRECT_MESSAGES_PANEL = 'OPEN_DIRECT_MESSAGES_PANEL';
+export const openDirectMessagesPanel = () => ({
+  type: OPEN_DIRECT_MESSAGES_PANEL
+});
+
+export const CLOSE_PANEL = 'CLOSE_PANEL';
+export const closePanel = () => ({
+  type: CLOSE_PANEL
 });
