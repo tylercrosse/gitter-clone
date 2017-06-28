@@ -337,17 +337,15 @@
   }
 }
 
-.create-room-modal {
-  // border: 1px solid #ccc;
-  // background: #fff;
-  // overflow: auto;
-  // -webkit-overflow-scrolling: touch;
-  // border-radius: 4px;
-  // outline: none;
-  // padding: 20px;
-  // left: 50%;
-  // position: absolute;
-  // text-align: center;
-  // top: 50%;
-  // transform: translate(-50%, -50%);
+.minibar-icon {
+  max-height: 22px;
+  stroke-width: 2px;
+  stroke: $flint;
+  fill: $white;
+  stroke-miterlimit: 10;
+}
+
+.icon-gitter-clone {
+  stroke: none;
+  fill: $london;
 }

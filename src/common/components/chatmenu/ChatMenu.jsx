@@ -12,6 +12,9 @@ import {
 } from '../../actions';
 import convosSelector from '../../selectors/convosSelector';
 import directConvosSelector from '../../selectors/directConvosSelector';
+import GitterCloneIcon from '../svgs/GitterCloneIcon';
+import ConvosIcon from '../svgs/ConvosIcon';
+import DirectIcon from '../svgs/DirectIcon';
 import Panel from './Panel';
 
 export class ChatMenu extends React.Component {
@@ -38,24 +41,27 @@ export class ChatMenu extends React.Component {
             <div className="minibar-inner">
               <ul>
                 <li className="minibar-convos">
-                  <Link to={'/'} className="minibar-button">G</Link>
+                  <Link to={'/'} className="minibar-button">
+                    <GitterCloneIcon classes="minibar-icon icon-gitter-clone" />
+                  </Link>
                 </li>
                 <li className="minibar-all">
                   <button
                     className="minibar-button minibar-button-search"
                     onClick={this.props.openConvosPanel}
                   >
-                    C
+                    <ConvosIcon classes="minibar-icon icon-convo" />
                   </button>
                 </li>
-                {this.props.user.loggedIn && <li className="minibar-direct">
-                  <button
-                    className="minibar-button minibar-button-search"
-                    onClick={this.props.openDirectMessagesPanel}
-                  >
-                    D
-                  </button>
-                </li>}
+                {this.props.user.loggedIn &&
+                  <li className="minibar-direct">
+                    <button
+                      className="minibar-button minibar-button-search"
+                      onClick={this.props.openDirectMessagesPanel}
+                    >
+                      <DirectIcon classes="minibar-icon icon-direct" />
+                    </button>
+                  </li>}
               </ul>
             </div>
           </nav>
