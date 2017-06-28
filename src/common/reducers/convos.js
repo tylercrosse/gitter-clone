@@ -1,5 +1,15 @@
 import * as ActionTypes from '../actions';
 
+export const signInConvos = (action) => {
+  const obj = {};
+  action.payload.convos.forEach((convoObj) => {
+    obj[convoObj.name] = {
+      ...convoObj
+    };
+  });
+  return obj;
+};
+
 export const convo = (state, action) => {
   switch (action.type) {
     case ActionTypes.CREATE_CONVO_SUCCESS:
@@ -37,6 +47,11 @@ const convos = (state = {}, action) => {
       return {
         ...state,
         ...convo(undefined, action)
+      };
+    case ActionTypes.SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        ...signInConvos(action)
       };
     default:
       return state;
