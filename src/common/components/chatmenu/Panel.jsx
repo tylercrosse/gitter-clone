@@ -1,9 +1,15 @@
 import React, { PropTypes } from 'react';
-import CreateRoomModal      from '../modals/CreateRoomModal';
-import ConvoItem            from './ConvoItem';
+import Conversations from './Conversations';
+import DirectMessages from './DirectMessages';
 
 const Panel = (props) => {
   const active = props.active ? 'active' : '';
+  let inner;
+  if (props.inner === 'Conversations') {
+    inner = <Conversations {...props} />;
+  } else if (props.inner === 'DirectMessages') {
+    inner = <DirectMessages {...props} />;
+  }
   return (
     <section
       onMouseLeave={props.onMouseLeave}
@@ -13,48 +19,19 @@ const Panel = (props) => {
       <div className="brand-container">Gitter Clone</div>
       <header className="panel-header">
         <div className="panel-header-convos">
-          <h2>All Conversations</h2>
+          <h2>{props.title}</h2>
         </div>
       </header>
-      <div className="panel-inner">
-        <footer className="panel-footer">
-          <div className="panel-footer-convos">
-            <button
-              onClick={props.openCreateRoomModal}
-              className="create-rooom-button"
-            >
-              Add a room
-            </button>
-            <CreateRoomModal
-              user={props.user}
-              modalIsOpen={props.modalIsOpen}
-              onRequestClose={props.closeModal}
-              onFormSubmit={props.createConvo}
-            />
-          </div>
-        </footer>
-        <div className="panel-content scroller">
-          <section className="primary-collection">
-            {props.convos && Object.values(props.convos).map((convo) =>
-              <ConvoItem
-                key={convo.id}
-                {...convo}
-              />
-            )}
-          </section>
-        </div>
-      </div>
+      {inner}
     </section>
   );
 };
 
 Panel.propTypes = {
-  onMouseLeave: PropTypes.func.isRequired,
-  openCreateRoomModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  createConvo: PropTypes.func.isRequired,
-  modalIsOpen: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired
+  inner: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
 
 export default Panel;

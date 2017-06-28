@@ -45,7 +45,7 @@ export class ChatMain extends React.Component {
         }
         <ChatHeader
         user={this.props.user}
-        pathname={this.props.routeParams.path}
+        pathname={this.props.routeParams.convo}
         />
         <div className="chat-and-toolbar-wrapper">
           <ChatToolbar

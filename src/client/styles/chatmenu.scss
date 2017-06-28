@@ -113,8 +113,14 @@
     }
   }
 
-  .minibar-search {
+  .minibar-all {
     top: 65px;
+    left: 0;
+    color: $maroon;
+  }
+
+  .minibar-direct {
+    top: 130px;
     left: 0;
     color: $maroon;
   }
