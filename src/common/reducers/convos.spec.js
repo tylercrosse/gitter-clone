@@ -1,6 +1,20 @@
-import convos, { convo } from './convos';
+import convos, { convo, createConvo, fetchConvos } from './convos';
 
-describe('convo reucer', () => {
+describe('convos actions', () => {
+  it('createConvo should create [CALL_API] action', () => {
+    const convoBody = {name: 'chat'};
+    expect(createConvo(convoBody))
+      .toMatchSnapshot();
+  });
+
+  it('fetchConvos should create [CALL_API] action', () => {
+    expect(fetchConvos())
+      .toMatchSnapshot();
+  });
+});
+
+// reducers
+describe('convo reducer', () => {
   it('should handle ADD_CONVO', () => {
     expect(
       convo({}, {

@@ -2,7 +2,23 @@ import ui, {
   modalIsOpen,
   isFetching,
   usersTyping,
+  openCreateRoomModal,
+  closeModal
 } from './ui';
+
+describe('ui actions', () => {
+  it('openCreateRoomModal should create OPEN_CREATE_ROOM_MODAL action', () => {
+    expect(openCreateRoomModal())
+      .toEqual({
+        type: 'OPEN_CREATE_ROOM_MODAL',
+      });
+  });
+
+  it('closeModal should create CLOSE_MODAL action', () => {
+    expect(closeModal())
+      .toMatchSnapshot();
+  });
+});
 
 describe('ui reducer', () => {
   it('should handle initial state', () => {

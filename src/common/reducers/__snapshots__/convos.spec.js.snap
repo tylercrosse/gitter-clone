@@ -32,6 +32,25 @@ Object {
 }
 `;
 
+exports[`convos actions createConvo should create [CALL_API] action 1`] = `[Function]`;
+
+exports[`convos actions fetchConvos should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "endpoint": "null/api/convos",
+    "method": "GET",
+    "types": Array [
+      "CONVOS_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "CONVOS_SUCCESS",
+      },
+      "CONVOS_FAILURE",
+    ],
+  },
+}
+`;
+
 exports[`default 1`] = `Object {}`;
 
 exports[`no payload 1`] = `Object {}`;

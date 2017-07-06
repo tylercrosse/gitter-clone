@@ -6,9 +6,8 @@ import {
   removeTypingUser,
   openSignInModal,
   closeModal,
-  fetchMessages,
-  addMessage
-} from '../../actions/';
+} from '../../reducers/ui';
+import { fetchMessages, addMessage } from '../../reducers/messages';
 import { signIn, signOut } from '../../reducers/user';
 import makeGetMessagesByConvoId from '../../selectors/messagesByConvo';
 import Generic404 from '../errors/Generic404';

@@ -1,11 +1,14 @@
 import { normalize } from 'normalizr';
 import { CALL_API,
   getJSON }          from 'redux-api-middleware';
-import Schemas       from '../actions/schemas';
+import Schemas       from './schemas';
 import { SIGN_OUT } from './user';
 
 // actions
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
+export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
+export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
 
 // action creators
 export const addMessage = ({
@@ -21,9 +24,6 @@ export const addMessage = ({
   convo
 });
 
-export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
-export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
-export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
 export const fetchMessages =  (convo) => ({
   [CALL_API]: {
     endpoint: window.location.origin + '/api/messages/' + convo,

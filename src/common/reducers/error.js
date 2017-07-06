@@ -1,6 +1,6 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_FAILURE } from './user';
 import { MESSAGES_SUCCESS, MESSAGES_FAILURE } from './messages';
-import * as ActionTypes from '../actions';
+import { CONVOS_SUCCESS, CONVOS_FAILURE } from './convos';
 
 const initialState = {
   messages: false,
@@ -19,7 +19,7 @@ const error = (state = initialState, action) => {
           messages: action.payload
         };
       }
-      case ActionTypes.CONVOS_FAILURE: {
+      case CONVOS_FAILURE: {
         return {
           ...state,
           convos: action.payload
@@ -44,7 +44,7 @@ const error = (state = initialState, action) => {
         messages: false
       };
     }
-    case ActionTypes.CONVOS_SUCCESS: {
+    case CONVOS_SUCCESS: {
       return {
         ...state,
         convos: false

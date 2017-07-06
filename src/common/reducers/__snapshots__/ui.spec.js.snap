@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ui actions closeModal should create CLOSE_MODAL action 1`] = `[Function]`;
+
 exports[`ui reducer modalIsOpen should handle CLOSE_MODAL 1`] = `
 Object {
   "createRoom": false,
