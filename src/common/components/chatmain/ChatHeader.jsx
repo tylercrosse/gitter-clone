@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 export const ChatHeader = ({ signOut, user, pathname }) => {
@@ -30,7 +32,9 @@ export const ChatHeader = ({ signOut, user, pathname }) => {
 };
 
 ChatHeader.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  pathname: PropTypes.string.isRequired,
+  signOut: PropTypes.func.isRequired,
 };
 
 export default ChatHeader;

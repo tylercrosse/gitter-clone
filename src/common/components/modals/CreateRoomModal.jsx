@@ -1,5 +1,5 @@
-import React,
-  { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Modal    from 'react-modal';
 
 /**
@@ -107,7 +107,7 @@ export class CreateRoomModal extends React.Component {
   }
 }
 
-CreateRoomModal.PropTypes = {
+CreateRoomModal.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,

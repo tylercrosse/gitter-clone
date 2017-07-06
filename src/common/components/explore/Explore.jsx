@@ -1,4 +1,5 @@
-import React       from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link }    from 'react-router';
 import { connect } from 'react-redux';
 // import                  './explore.scss';
@@ -7,7 +8,7 @@ export const Explore = (props) => (
   <div className="explore">
     <header className="explore-header">
       <div className="explore-header-logo">Gitter-clone</div>
-      <nav className="explore-header-nav"></nav>
+      <nav className="explore-header-nav" />
       <h1>Explore</h1>
     </header>
     <section className="explore-page-description">
@@ -44,6 +45,10 @@ export const ConvoCards = (props) => {
       {Object.values(props.convos).map(renderConvoCard)}
     </div>
   );
+};
+
+Explore.propTypes = {
+  convos: PropTypes.object.isRequired,
 };
 
 export const mapStateToProps = (state) => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import {
@@ -78,12 +79,28 @@ export class ChatMenu extends React.Component {
   }
 }
 
+ChatMenu.propTypes = {
+  panel: PropTypes.shape({
+    open: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired,
+    inner: PropTypes.string.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    loggedIn: PropTypes.bool.isRequired,
+  }).isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  openConvosPanel: PropTypes.func.isRequired,
+  openDirectMessagesPanel: PropTypes.func.isRequired,
+  closePanel: PropTypes.func.isRequired,
+  fetchConvos: PropTypes.func.isRequired,
+};
+
 export const mapStateToProps = (state) => ({
   modalIsOpen: state.ui.modalIsOpen.createRoom,
   user: state.user,
   panel: state.ui.panel,
   convos: convosSelector(state),
-  directConvos: directConvosSelector(state),
+  directConvos: directConvosSelector(state), //FIXME
 });
 
 export default connect(mapStateToProps, {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { findOrCreateDirectMessage } from '../ducks/convos';
 
@@ -18,6 +19,7 @@ export class Avatar extends React.Component {
   render() {
     const { user } = this.props;
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div onClick={(e) => this.handleClick(e)}>
         <img
         className="avatar"
@@ -29,7 +31,9 @@ export class Avatar extends React.Component {
 }
 
 Avatar.propTypes = {
-  user: React.PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  loggedInUser: PropTypes.object.isRequired,
+  findOrCreateDirectMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

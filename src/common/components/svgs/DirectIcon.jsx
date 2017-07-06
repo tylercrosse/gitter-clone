@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DirectIcon = ({ classes }) =>
   <svg
@@ -16,5 +17,9 @@ const DirectIcon = ({ classes }) =>
       transform="translate(-4 -3.99)"
     />
   </svg>;
+
+DirectIcon.propTypes = {
+  classes: PropTypes.string.isRequired,
+};
 
 export default DirectIcon;

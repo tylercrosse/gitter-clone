@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ChatTypingIndicator = ({ usersTyping }) => {
   let indicatorMessage;
@@ -17,7 +18,7 @@ const ChatTypingIndicator = ({ usersTyping }) => {
 };
 
 ChatTypingIndicator.propTypes = {
-  usersTyping: React.PropTypes.array.isRequired
+  usersTyping: PropTypes.array.isRequired
 };
 
 export default ChatTypingIndicator;

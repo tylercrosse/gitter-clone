@@ -1,5 +1,5 @@
-import React,
-  { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Modal    from 'react-modal';
 
 /**
@@ -102,7 +102,7 @@ export class SignInModal extends React.Component {
   }
 }
 
-SignInModal.PropTypes = {
+SignInModal.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,

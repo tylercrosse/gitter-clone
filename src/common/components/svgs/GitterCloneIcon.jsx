@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const GitterCloneIcon = ({ classes }) => (
   <svg
@@ -27,5 +28,9 @@ const GitterCloneIcon = ({ classes }) => (
     </g>
   </svg>
 );
+
+GitterCloneIcon.propTypes = {
+  classes: PropTypes.string.isRequired,
+};
 
 export default GitterCloneIcon;

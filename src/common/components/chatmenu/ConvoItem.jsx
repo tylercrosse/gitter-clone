@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 const ConvoItem = ({ name, title }) => (
@@ -11,7 +12,8 @@ const ConvoItem = ({ name, title }) => (
 );
 
 ConvoItem.propTypes = {
-  // : React.PropTypes.
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ConvoItem;

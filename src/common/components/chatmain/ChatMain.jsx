@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import {
@@ -82,7 +83,14 @@ ChatMain.propTypes = {
   addMessage: PropTypes.func.isRequired,
   convoName: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  usersTyping: PropTypes.array.isRequired
+  usersTyping: PropTypes.array.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.object.isRequired,
+  addTypingUser: PropTypes.func.isRequired,
+  removeTypingUser: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired,
 };
 
 export const makeMapStateToProps = () => {

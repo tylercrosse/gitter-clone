@@ -60,7 +60,6 @@ export const closePanel = () => ({
   type: CLOSE_PANEL
 });
 
-
 // reducers
 const initialModalState = {
   createRoom: false,
@@ -128,10 +127,11 @@ export const isFetching = (state = false, action) => {
   }
 };
 
-export const addTypingUserHelper = (usersTyping, action) =>
-  usersTyping.indexOf(action.payload.username) >= 0
+export const addTypingUserHelper = (usersTyping, action) => {
+  return usersTyping.indexOf(action.payload.username) >= 0
     ? usersTyping
     : usersTyping.concat(action.payload.username);
+};
 
 export const removeTypingUserHelper = (usersTyping, action) =>
   usersTyping.filter((username) => username !== action.payload.username);

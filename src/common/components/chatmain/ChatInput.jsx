@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 
 const DEBOUNCE_TIME = 3000;
@@ -105,7 +106,8 @@ ChatInput.propTypes = {
   removeTypingUser: PropTypes.func.isRequired,
   onMessageSubmit: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  routeParams: PropTypes.object.isRequired
+  routeParams: PropTypes.object.isRequired,
+  openSignInModal: PropTypes.func.isRequired,
 };
 
 export default ChatInput;

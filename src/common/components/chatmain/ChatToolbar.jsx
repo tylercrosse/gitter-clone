@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _uniqBy from 'lodash/uniqBy';
 import Avatar from '../Avatar';
 
@@ -9,9 +10,9 @@ export const ChatToolbar = ({ messages, user }) => {
     .concat(currentUser);
   const uniqueUsers = _uniqBy(allUsers, 'id');
   const avatars = uniqueUsers
-    .map((user) => (
-      <li className="avatar" key={user.id}>
-        <Avatar user={user} />
+    .map((singleUser) => (
+      <li className="avatar" key={singleUser.id}>
+        <Avatar user={singleUser} />
         {/* <div className="status" /> */}
       </li>
     ));
@@ -22,6 +23,13 @@ export const ChatToolbar = ({ messages, user }) => {
       </ul>
     </aside>
   );
+};
+
+ChatToolbar.propTypes = {
+  messages: PropTypes.array.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ChatToolbar;

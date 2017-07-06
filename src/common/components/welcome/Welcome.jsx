@@ -1,4 +1,5 @@
-import React       from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link }    from 'react-router';
 import {
@@ -123,6 +124,14 @@ export const Welcome = (props) => (
     />
   </div>
 );
+
+Welcome.propTypes = {
+  user: PropTypes.object.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  openSignInModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
+};
 
 export const mapStateToProps = (state) => ({
   modalIsOpen: state.ui.modalIsOpen
