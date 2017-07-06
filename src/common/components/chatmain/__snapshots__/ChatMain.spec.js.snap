@@ -33,6 +33,7 @@ exports[`<ChatMain /> should render correctly 1`] = `
   className="chat-header-wrapper"
 >
   <Component
+    pathname="chat"
     user={
       Object {
         "loggedIn": true,
@@ -116,6 +117,7 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
     />
   </div>
   <Component
+    pathname="chat"
     user={
       Object {
         "loggedIn": true,

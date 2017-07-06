@@ -16,9 +16,7 @@ exports[`<ConvoItem /> should render correctly 1`] = `
     />
     <h2
       className="convo-item-title"
-    >
-      chat2
-    </h2>
+    />
   </a>
 </div>
 `;

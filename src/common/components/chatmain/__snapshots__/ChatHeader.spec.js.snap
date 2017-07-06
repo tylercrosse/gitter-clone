@@ -23,6 +23,7 @@ exports[`<ChatHeader /> logged in should render correctly 1`] = `
     <img
       alt="dan"
       className="avatar"
+      onClick={[Function]}
       src="http://i.pravatar.cc/30?u=dan"
     />
   </div>

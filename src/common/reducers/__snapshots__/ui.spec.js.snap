@@ -28,6 +28,11 @@ Object {
     "createRoom": false,
     "signIn": false,
   },
+  "panel": Object {
+    "inner": "",
+    "open": false,
+    "title": "",
+  },
   "usersTyping": Array [],
 }
 `;

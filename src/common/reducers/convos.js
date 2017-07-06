@@ -1,3 +1,4 @@
+import { SIGN_IN_SUCCESS, SIGN_OUT } from './user';
 import * as ActionTypes from '../actions';
 
 export const signInConvos = (action) => {
@@ -48,12 +49,12 @@ const convos = (state = {}, action) => {
         ...state,
         ...convo(undefined, action)
       };
-    case ActionTypes.SIGN_IN_SUCCESS:
+    case SIGN_IN_SUCCESS:
       return {
         ...state,
         ...signInConvos(action)
       };
-    case ActionTypes.SIGN_OUT:
+    case SIGN_OUT:
       return {};
     default:
       return state;

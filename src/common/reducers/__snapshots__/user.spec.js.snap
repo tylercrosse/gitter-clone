@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`user action creators signIn should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "body": "{\\"username\\":{\\"username\\":\\"Dan\\"}}",
+    "endpoint": "null/api/signIn",
+    "headers": Object {
+      "Content-Type": "application/json",
+    },
+    "method": "POST",
+    "types": Array [
+      "SIGN_IN_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "SIGN_IN_SUCCESS",
+      },
+      "SIGN_IN_FAILURE",
+    ],
+  },
+}
+`;
+
+exports[`user action creators signOut should create SIGN_OUT action 1`] = `[Function]`;
+
 exports[`user reducer should handle SIGN_IN 1`] = `
 Object {
   "loggedIn": false,

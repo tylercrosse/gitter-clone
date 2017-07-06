@@ -4,13 +4,12 @@ import { withRouter } from 'react-router';
 import {
   addTypingUser,
   removeTypingUser,
-  signIn,
-  signOut,
   openSignInModal,
   closeModal,
   fetchMessages,
   addMessage
 } from '../../actions/';
+import { signIn, signOut } from '../../reducers/user';
 import makeGetMessagesByConvoId from '../../selectors/messagesByConvo';
 import Generic404 from '../errors/Generic404';
 import SignInModal from '../modals/SignInModal';

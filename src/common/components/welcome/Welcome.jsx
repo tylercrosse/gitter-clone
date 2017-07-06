@@ -2,9 +2,9 @@ import React       from 'react';
 import { connect } from 'react-redux';
 import { Link }    from 'react-router';
 import {
-  signIn,
   openSignInModal,
   closeModal }     from '../../actions/';
+import { signIn }  from '../../reducers/user';
 import SignInModal from '../modals/SignInModal';
 
 export const Welcome = (props) => (

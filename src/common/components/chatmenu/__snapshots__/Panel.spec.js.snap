@@ -16,77 +16,8 @@ exports[`<Panel /> should render correctly 1`] = `
     <div
       className="panel-header-convos"
     >
-      <h2>
-        All Conversations
-      </h2>
+      <h2 />
     </div>
   </header>
-  <div
-    className="panel-inner"
-  >
-    <footer
-      className="panel-footer"
-    >
-      <div
-        className="panel-footer-convos"
-      >
-        <button
-          className="create-rooom-button"
-          onClick={[Function]}
-        >
-          Add a room
-        </button>
-        <noscript />
-      </div>
-    </footer>
-    <div
-      className="panel-content scroller"
-    >
-      <section
-        className="primary-collection"
-      >
-        <div
-          className="convo-item"
-        >
-          <a
-            className="convo-item-container"
-            onClick={[Function]}
-            style={Object {}}
-          >
-            <img
-              alt="chat"
-              className="convo-item-avatar"
-              src="http://i.pravatar.cc/22?u=chat"
-            />
-            <h2
-              className="convo-item-title"
-            >
-              chat
-            </h2>
-          </a>
-        </div>
-        <div
-          className="convo-item"
-        >
-          <a
-            className="convo-item-container"
-            onClick={[Function]}
-            style={Object {}}
-          >
-            <img
-              alt="chat2"
-              className="convo-item-avatar"
-              src="http://i.pravatar.cc/22?u=chat2"
-            />
-            <h2
-              className="convo-item-title"
-            >
-              chat2
-            </h2>
-          </a>
-        </div>
-      </section>
-    </div>
-  </div>
 </section>
 `;

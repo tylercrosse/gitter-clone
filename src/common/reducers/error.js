@@ -1,3 +1,4 @@
+import { SIGN_IN_SUCCESS, SIGN_IN_FAILURE } from './user';
 import * as ActionTypes from '../actions';
 
 const initialState = {
@@ -23,7 +24,7 @@ const error = (state = initialState, action) => {
           convos: action.payload
         };
       }
-      case ActionTypes.SIGN_IN_FAILURE: {
+      case SIGN_IN_FAILURE: {
         return {
           ...state,
           singIn: action.payload
@@ -48,7 +49,7 @@ const error = (state = initialState, action) => {
         convos: false
       };
     }
-    case ActionTypes.SIGN_IN_SUCCESS: {
+    case SIGN_IN_SUCCESS: {
       return {
         ...state,
         signIn: false

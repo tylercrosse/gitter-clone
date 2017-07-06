@@ -136,34 +136,6 @@ export const fetchConvos = () => ({
   }
 });
 
-export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
-export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
-// FIXME change to something my expressive like 'postSignIn'
-export const signIn = (username) => ({
-  [CALL_API]: {
-    endpoint: window.location.origin + '/api/signIn',
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username }),
-    types: [
-      SIGN_IN_REQUEST,
-      {
-        type: SIGN_IN_SUCCESS,
-        payload: /* istanbul ignore next */ (action, state, res) => getJSON(res)
-      },
-      SIGN_IN_FAILURE
-    ]
-  }
-});
-
-export const SIGN_OUT = 'SIGN_OUT';
-export const signOut = () => (dispatch) => {
-  console.log('out!')
-  dispatch({ type: SIGN_OUT });
-  dispatch(push('/'));
-};
-
 export const OPEN_CREATE_ROOM_MODAL = 'OPEN_CREATE_ROOM_MODAL';
 export const openCreateRoomModal = () => ({
   type: OPEN_CREATE_ROOM_MODAL

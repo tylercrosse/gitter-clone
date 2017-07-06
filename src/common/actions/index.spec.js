@@ -29,11 +29,6 @@ describe('actions', () => {
       .toMatchSnapshot();
   });
 
-  it('signIn should create [CALL_API] action', () => {
-    expect(actions.signIn({username: 'Dan'}))
-      .toMatchSnapshot();
-  });
-
   it('openCreateRoomModal should create OPEN_CREATE_ROOM_MODAL action', () => {
     expect(actions.openCreateRoomModal())
       .toEqual({
