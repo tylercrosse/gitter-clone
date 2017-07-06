@@ -1,23 +1,6 @@
 import * as actions from './index';
 
 describe('actions', () => {
-  it('addMessage should create ADD_MESSAGE action', () => {
-    const message = {
-      userId: '1231231',
-      text: 'Use Redux',
-      rawMarkup: '<p>Use Redux</p>',
-      convo: 'react'
-    };
-    expect(actions.addMessage(message))
-      .toMatchSnapshot();
-  });
-
-  it('fetchMessages should create [CALL_API] action', () => {
-    const convo = 'chat';
-    expect(actions.fetchMessages(convo))
-    .toMatchSnapshot();
-  });
-
   it('addConvo should create ADD_CONVO action', () => {
     const convo = {name: 'chat'};
     expect(actions.addConvo(convo))

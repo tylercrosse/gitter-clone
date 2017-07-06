@@ -1,4 +1,9 @@
 import { combineReducers } from 'redux';
+import {
+  MESSAGES_REQUEST,
+  MESSAGES_SUCCESS,
+  MESSAGES_FAILURE
+} from './messages';
 import * as ActionTypes from '../actions';
 
 const initialModalState = {
@@ -57,25 +62,23 @@ export const panel = (state = initialPanelState, action) => {
 
 export const isFetching = (state = false, action) => {
   switch (action.type) {
-    case ActionTypes.MESSAGES_REQUEST:
+    case MESSAGES_REQUEST:
       return true;
-    case ActionTypes.MESSAGES_SUCCESS:
-    case ActionTypes.MESSAGES_FAILURE:
+    case MESSAGES_SUCCESS:
+    case MESSAGES_FAILURE:
       return false;
     default:
       return state;
   }
 };
 
-export const addTypingUserHelper = (usersTyping, action) => (
+export const addTypingUserHelper = (usersTyping, action) =>
   usersTyping.indexOf(action.payload.username) >= 0
     ? usersTyping
-    : usersTyping.concat(action.payload.username));
+    : usersTyping.concat(action.payload.username);
 
-
-export const removeTypingUserHelper = (usersTyping, action) => (
-  usersTyping.filter((username) => username !== action.payload.username)
-);
+export const removeTypingUserHelper = (usersTyping, action) =>
+  usersTyping.filter((username) => username !== action.payload.username);
 
 export const usersTyping = (state = [], action) => {
   switch (action.type) {

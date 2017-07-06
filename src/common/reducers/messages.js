@@ -1,8 +1,52 @@
-import * as ActionTypes from '../actions';
+import { normalize } from 'normalizr';
+import { CALL_API,
+  getJSON }          from 'redux-api-middleware';
+import Schemas       from '../actions/schemas';
+import { SIGN_OUT } from './user';
 
+// actions
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+
+// action creators
+export const addMessage = ({
+  userId,
+  text,
+  rawMarkup,
+  convo
+}) => ({
+  type: 'server.' + ADD_MESSAGE,
+  userId,
+  text,
+  rawMarkup,
+  convo
+});
+
+export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
+export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
+export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
+export const fetchMessages =  (convo) => ({
+  [CALL_API]: {
+    endpoint: window.location.origin + '/api/messages/' + convo,
+    method: 'GET',
+    types: [
+      MESSAGES_REQUEST,
+      {
+        type: MESSAGES_SUCCESS,
+        payload: /* istanbul ignore next */ (action, state, res) => {
+          return getJSON(res)
+          .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
+        }
+      },
+      MESSAGES_FAILURE
+    ]
+  }
+});
+
+
+// reducers
 export const message = (state, action) => {
   switch (action.type) {
-    case ActionTypes.ADD_MESSAGE:
+    case ADD_MESSAGE:
       return {
         [action.message.createdAt]: {
           ...action.message
@@ -21,13 +65,13 @@ const messages = (state = {}, action) => {
     };
   }
   switch (action.type) {
-    case ActionTypes.ADD_MESSAGE: {
+    case ADD_MESSAGE: {
       return {
         ...state,
         ...message(undefined, action)
       };
     }
-    case ActionTypes.SIGN_OUT:
+    case SIGN_OUT:
       return {};
     default:
       return state;

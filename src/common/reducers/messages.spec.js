@@ -1,41 +1,65 @@
-import messages, { message } from './messages';
+import messages, { addMessage, fetchMessages, message } from './messages';
+
+describe('message actions', () => {
+  it('addMessage should create ADD_MESSAGE action', () => {
+    const messageBody = {
+      userId: '1231231',
+      text: 'Use Redux',
+      rawMarkup: '<p>Use Redux</p>',
+      convo: 'react'
+    };
+    expect(addMessage(messageBody)).toMatchSnapshot();
+  });
+
+  it('fetchMessages should create [CALL_API] action', () => {
+    const convo = 'chat';
+    expect(fetchMessages(convo)).toMatchSnapshot();
+  });
+});
 
 describe('message reucer', () => {
   it('should handle ADD_MESSAGE', () => {
     expect(
-      message({}, {
-        type: 'ADD_MESSAGE',
-        message: {
-          createdAt: '2017-02-01T09:00:00-08:00',
-          username: 'dan',
-          text: 'Run the tests',
-          id: 0
+      message(
+        {},
+        {
+          type: 'ADD_MESSAGE',
+          message: {
+            createdAt: '2017-02-01T09:00:00-08:00',
+            username: 'dan',
+            text: 'Run the tests',
+            id: 0
+          }
         }
-      })
+      )
     ).toMatchSnapshot('-> 1 message');
   });
 
   it('should return state for default switch case', () => {
     expect(
-      message({}, {
-        type: 'fooBar'
-      })
+      message(
+        {},
+        {
+          type: 'fooBar'
+        }
+      )
     ).toMatchSnapshot('default');
   });
 });
 
 describe('messages reducer', () => {
   it('should handle initial state', () => {
-    expect(
-      messages(undefined, {})
-    ).toEqual({});
+    expect(messages(undefined, {})).toEqual({});
   });
 
   it('should return state for default switch case', () => {
     expect(
-      messages({}, {
-        type: 'fooBar'
-      })
+      messages(
+        {},
+        {
+          type: 'fooBar'
+        }
+      )
     ).toMatchSnapshot('default');
   });
 
@@ -44,7 +68,7 @@ describe('messages reducer', () => {
     expect(messages({}, action)).toMatchSnapshot('no payload');
     action = {
       payload: {
-        entities: { messages: {}}
+        entities: { messages: {} }
       }
     };
     expect(messages({}, action)).toMatchSnapshot('with payload');
@@ -52,62 +76,71 @@ describe('messages reducer', () => {
 
   it('should handle ADD_MESSAGE', () => {
     expect(
-      messages({}, {
-        type: 'ADD_MESSAGE',
-        message: {
-          createdAt: '2017-02-01T09:00:00-08:00',
-          username: 'dan',
-          text: 'Run the tests',
-          id: 0
+      messages(
+        {},
+        {
+          type: 'ADD_MESSAGE',
+          message: {
+            createdAt: '2017-02-01T09:00:00-08:00',
+            username: 'dan',
+            text: 'Run the tests',
+            id: 0
+          }
         }
-      })
+      )
     ).toMatchSnapshot('-> 1 message');
 
     expect(
-      messages({
-        0: {
-          createdAt: '2017-02-01T09:00:00-08:00',
-          username: 'dan',
-          text: 'Run the tests',
-          id: 0
+      messages(
+        {
+          0: {
+            createdAt: '2017-02-01T09:00:00-08:00',
+            username: 'dan',
+            text: 'Run the tests',
+            id: 0
+          }
+        },
+        {
+          type: 'ADD_MESSAGE',
+          message: {
+            // 1 min later, same burst
+            createdAt: '2017-02-01T09:01:00-08:00',
+            username: 'dan',
+            text: 'Use Redux',
+            id: 1
+          }
         }
-      }, {
-        type: 'ADD_MESSAGE',
-        message: {
-          // 1 min later, same burst
-          createdAt: '2017-02-01T09:01:00-08:00',
-          username: 'dan',
-          text: 'Use Redux',
-          id: 1
-        }
-      })
+      )
     ).toMatchSnapshot('-> 2 messages');
 
     expect(
-      messages({
-        0: {
-          createdAt: '2017-02-01T09:00:00-08:00',
-          username: 'dan',
-          text: 'Run the tests',
-          id: 0
+      messages(
+        {
+          0: {
+            createdAt: '2017-02-01T09:00:00-08:00',
+            username: 'dan',
+            text: 'Run the tests',
+            id: 0
+          },
+          1: {
+            // 1 min later, same burst
+            createdAt: '2017-02-01T09:01:00-08:00',
+            username: 'dan',
+            text: 'Use Redux',
+            id: 1
+          }
         },
-        1: {
-          // 1 min later, same burst
-          createdAt: '2017-02-01T09:01:00-08:00',
-          username: 'dan',
-          text: 'Use Redux',
-          id: 1
+        {
+          type: 'ADD_MESSAGE',
+          message: {
+            // 20 min later, new burst
+            createdAt: '2017-02-01T09:20:00-08:00',
+            username: 'dan',
+            text: 'Fix the tests',
+            id: 2
+          }
         }
-      }, {
-        type: 'ADD_MESSAGE',
-        message: {
-           // 20 min later, new burst
-          createdAt: '2017-02-01T09:20:00-08:00',
-          username: 'dan',
-          text: 'Fix the tests',
-          id: 2
-        }
-      })
+      )
     ).toMatchSnapshot('-> 3 messages');
   });
 });

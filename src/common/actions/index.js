@@ -26,20 +26,6 @@ export const removeTypingUser = ({ username }) => ({
   }
 });
 
-export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const addMessage = ({
-  userId,
-  text,
-  rawMarkup,
-  convo
-}) => ({
-  type: 'server.' + ADD_MESSAGE,
-  userId,
-  text,
-  rawMarkup,
-  convo
-});
-
 export const CREATE_DIRECT_MESSAGE_REQUEST = 'CREATE_DIRECT_MESSAGE_REQUEST';
 export const CREATE_DIRECT_MESSAGE_SUCCESS = 'CREATE_DIRECT_MESSAGE_SUCCESS';
 export const CREATE_DIRECT_MESSAGE_FAILURE = 'CREATE_DIRECT_MESSAGE_FAILURE';
@@ -66,27 +52,6 @@ export const findOrCreateDirectMessage = ({ creatorId, targetIds }) => (dispatch
     }
   });
 };
-
-export const MESSAGES_REQUEST = 'MESSAGES_REQUEST';
-export const MESSAGES_SUCCESS = 'MESSAGES_SUCCESS';
-export const MESSAGES_FAILURE = 'MESSAGES_FAILURE';
-export const fetchMessages =  (convo) => ({
-  [CALL_API]: {
-    endpoint: window.location.origin + '/api/messages/' + convo,
-    method: 'GET',
-    types: [
-      MESSAGES_REQUEST,
-      {
-        type: MESSAGES_SUCCESS,
-        payload: /* istanbul ignore next */ (action, state, res) => {
-          return getJSON(res)
-          .then((json) => normalize(json, Schemas.MESSAGE_ARRAY));
-        }
-      },
-      MESSAGES_FAILURE
-    ]
-  }
-});
 
 export const CREATE_CONVO_REQUEST = 'CREATE_CONVO_REQUEST';
 export const CREATE_CONVO_SUCCESS = 'CREATE_CONVO_SUCCESS';

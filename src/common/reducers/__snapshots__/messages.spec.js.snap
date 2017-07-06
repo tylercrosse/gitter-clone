@@ -66,6 +66,33 @@ exports[`default 1`] = `Object {}`;
 
 exports[`default 2`] = `Object {}`;
 
+exports[`message actions addMessage should create ADD_MESSAGE action 1`] = `
+Object {
+  "convo": "react",
+  "rawMarkup": "<p>Use Redux</p>",
+  "text": "Use Redux",
+  "type": "server.ADD_MESSAGE",
+  "userId": "1231231",
+}
+`;
+
+exports[`message actions fetchMessages should create [CALL_API] action 1`] = `
+Object {
+  Symbol(Call API): Object {
+    "endpoint": "null/api/messages/chat",
+    "method": "GET",
+    "types": Array [
+      "MESSAGES_REQUEST",
+      Object {
+        "payload": [Function],
+        "type": "MESSAGES_SUCCESS",
+      },
+      "MESSAGES_FAILURE",
+    ],
+  },
+}
+`;
+
 exports[`no payload 1`] = `Object {}`;
 
 exports[`with payload 1`] = `Object {}`;

@@ -1,4 +1,5 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_FAILURE } from './user';
+import { MESSAGES_SUCCESS, MESSAGES_FAILURE } from './messages';
 import * as ActionTypes from '../actions';
 
 const initialState = {
@@ -12,7 +13,7 @@ const error = (state = initialState, action) => {
     // not currently necessary to limit to 404s
     // if (action.payload.status === 404) {
     switch (action.type) {
-      case ActionTypes.MESSAGES_FAILURE: {
+      case MESSAGES_FAILURE: {
         return {
           ...state,
           messages: action.payload
@@ -37,7 +38,7 @@ const error = (state = initialState, action) => {
     // }
   }
   switch (action.type) {
-    case ActionTypes.MESSAGES_SUCCESS: {
+    case MESSAGES_SUCCESS: {
       return {
         ...state,
         messages: false
