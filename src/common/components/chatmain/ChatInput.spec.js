@@ -1,6 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import ChatInput from './ChatInput';
 
 const setup = (propOverrides) => {
@@ -14,7 +14,8 @@ const setup = (propOverrides) => {
     },
     onMessageSubmit: jest.fn(),
     addTypingUser: jest.fn(),
-    removeTypingUser: jest.fn()
+    removeTypingUser: jest.fn(),
+    openSignInModal: jest.fn()
   }, propOverrides);
 
   const component = <ChatInput {...props} />;
@@ -30,11 +31,8 @@ const setup = (propOverrides) => {
 describe('<ChatInput />', () => {
   describe('logged in', () => {
     it('should render correctly', () => {
-      const { component } = setup();
-      const renderedComponent = renderer.create(component);
-      const tree = renderedComponent.toJSON();
-      expect(tree)
-        .toMatchSnapshot();
+      const { wrapper } = setup();
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should contain <form />', () => {
@@ -89,11 +87,8 @@ describe('<ChatInput />', () => {
 
   describe('logged out', () => {
     it('should render correctly', () => {
-      const { component } = setup({user: {loggedIn: false}});
-      const renderedComponent = renderer.create(component);
-      const tree = renderedComponent.toJSON();
-      expect(tree)
-        .toMatchSnapshot();
+      const { wrapper } = setup({user: {loggedIn: false}});
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should not contain <form />', () => {

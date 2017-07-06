@@ -1,6 +1,6 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import ChatHeader from './ChatHeader';
 
 const setup = (propOverrides) => {
@@ -8,33 +8,32 @@ const setup = (propOverrides) => {
     user: {
       loggedIn: true,
       name: 'dan'
-    }
+    },
+    pathname: '',
+    signOut: jest.fn(),
   }, propOverrides);
 
   const component = <ChatHeader {...props} />;
+  const wrapper = shallow(component);
 
   return {
     props,
-    component
+    wrapper
   };
 };
 
 describe('<ChatHeader />', () => {
   describe('logged in', () => {
     it('should render correctly', () => {
-      const { component } = setup();
-      const renderedComponent = renderer.create(component);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { wrapper } = setup();
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
   describe('logged out', () => {
     it('should render correctly', () => {
-      const { component } = setup({user: {loggedIn: false}});
-      const renderedComponent = renderer.create(component);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { wrapper } = setup({user: {loggedIn: false}});
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 });

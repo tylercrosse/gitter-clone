@@ -56,10 +56,12 @@ exports[`<ChatItem /> burstStart == true should render correctly with markup 1`]
     <div
       className="chat-item-aside"
     >
-      <img
-        alt="Dan"
-        className="avatar"
-        src="http://i.pravatar.cc/30?u=Dan"
+      <Connect(Avatar)
+        user={
+          Object {
+            "name": "Dan",
+          }
+        }
       />
     </div>
     <div
@@ -102,10 +104,12 @@ exports[`<ChatItem /> burstStart == true should render correctly without markup 
     <div
       className="chat-item-aside"
     >
-      <img
-        alt="Dan"
-        className="avatar"
-        src="http://i.pravatar.cc/30?u=Dan"
+      <Connect(Avatar)
+        user={
+          Object {
+            "name": "Dan",
+          }
+        }
       />
     </div>
     <div

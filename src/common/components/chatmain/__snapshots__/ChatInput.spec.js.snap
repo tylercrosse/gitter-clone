@@ -48,7 +48,7 @@ exports[`<ChatInput /> logged out should render correctly 1`] = `
   >
     <button
       className="chat-input-btn"
-      onClick={undefined}
+      onClick={[Function]}
     >
       Sign in to start talking
     </button>

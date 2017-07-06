@@ -27,9 +27,7 @@ export const ChatToolbar = ({ messages, user }) => {
 
 ChatToolbar.propTypes = {
   messages: PropTypes.array.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default ChatToolbar;

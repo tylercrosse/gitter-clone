@@ -34,6 +34,7 @@ exports[`<ChatMain /> should render correctly 1`] = `
 >
   <Component
     pathname="chat"
+    signOut={[Function]}
     user={
       Object {
         "loggedIn": true,
@@ -61,6 +62,7 @@ exports[`<ChatMain /> should render correctly 1`] = `
       <ChatInput
         addMessage={[Function]}
         addTypingUser={[Function]}
+        closeModal={[Function]}
         convoName="chat"
         error={
           Object {
@@ -76,13 +78,15 @@ exports[`<ChatMain /> should render correctly 1`] = `
           }
         }
         onMessageSubmit={[Function]}
+        openSignInModal={[Function]}
         removeTypingUser={[Function]}
         routeParams={
           Object {
             "convo": "chat",
           }
         }
-        signIN={[Function]}
+        signIn={[Function]}
+        signOut={[Function]}
         user={
           Object {
             "loggedIn": true,
@@ -94,6 +98,8 @@ exports[`<ChatMain /> should render correctly 1`] = `
   </div>
   <SignInModal
     modalIsOpen={false}
+    onFormSubmit={[Function]}
+    onRequestClose={[Function]}
     user={
       Object {
         "loggedIn": true,
@@ -118,6 +124,7 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
   </div>
   <Component
     pathname="chat"
+    signOut={[Function]}
     user={
       Object {
         "loggedIn": true,
@@ -145,6 +152,7 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
       <ChatInput
         addMessage={[Function]}
         addTypingUser={[Function]}
+        closeModal={[Function]}
         convoName="chat"
         error={
           Object {
@@ -160,13 +168,15 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
           }
         }
         onMessageSubmit={[Function]}
+        openSignInModal={[Function]}
         removeTypingUser={[Function]}
         routeParams={
           Object {
             "convo": "chat",
           }
         }
-        signIN={[Function]}
+        signIn={[Function]}
+        signOut={[Function]}
         user={
           Object {
             "loggedIn": true,
@@ -178,6 +188,8 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
   </div>
   <SignInModal
     modalIsOpen={false}
+    onFormSubmit={[Function]}
+    onRequestClose={[Function]}
     user={
       Object {
         "loggedIn": true,

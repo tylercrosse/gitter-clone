@@ -1,6 +1,6 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import ChatToolbar from './ChatToolbar';
 
 const setup = (propOverrides) => {
@@ -12,23 +12,22 @@ const setup = (propOverrides) => {
     user: {name: 'Liz', id: 323}
   }, propOverrides);
 
+  const wrapper = shallow(<ChatToolbar {...props} />);
+
   return {
-    props
+    props,
+    wrapper
   };
 };
 
 describe('<ChatToolbar />', () => {
   it('should render correctly when logged in', () => {
-    const { props } = setup();
-    const renderedComponent = renderer.create(<ChatToolbar {...props} />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { wrapper } = setup();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render correctly when not logged in', () => {
-    const { props } = setup({user: {}});
-    const renderedComponent = renderer.create(<ChatToolbar {...props} />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { wrapper } = setup({user: {}});
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

@@ -8,14 +8,15 @@ exports[`<ChatHeader /> logged in should render correctly 1`] = `
     className="chat-header-avatar"
   >
     <img
-      alt={undefined}
-      src="http://i.pravatar.cc/32?u=undefined"
+      alt=""
+      src="http://i.pravatar.cc/32?u="
     />
   </div>
-  <a
+  <Link
     className="chat-header-title"
-    onClick={[Function]}
+    onlyActiveOnIndex={false}
     style={Object {}}
+    to="/"
   />
   <div
     className="chat-user-avatar"
@@ -38,14 +39,15 @@ exports[`<ChatHeader /> logged out should render correctly 1`] = `
     className="chat-header-avatar"
   >
     <img
-      alt={undefined}
-      src="http://i.pravatar.cc/32?u=undefined"
+      alt=""
+      src="http://i.pravatar.cc/32?u="
     />
   </div>
-  <a
+  <Link
     className="chat-header-title"
-    onClick={[Function]}
+    onlyActiveOnIndex={false}
     style={Object {}}
+    to="/"
   />
 </header>
 `;

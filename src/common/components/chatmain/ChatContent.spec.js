@@ -1,10 +1,12 @@
 import React       from 'react';
+import { Provider }   from 'react-redux';
 import { shallow, mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import { animateScroll }  from 'react-scroll';
 import sinon       from 'sinon';
-import renderer    from 'react-test-renderer';
 import ChatItem    from './ChatItem';
 import ChatContent from './ChatContent';
+import configureStore from '../../store/configureStore';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
@@ -45,10 +47,8 @@ const setup = (propOverrides) => {
 
 describe('<ChatContent />', () => {
   it('should render correctly', () => {
-    const { component } = setup();
-    const renderedComponent = renderer.create(component);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { wrapper } = setup();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render a <ChatItem /> for each message', () => {
@@ -60,7 +60,12 @@ describe('<ChatContent />', () => {
   describe('componentDidUpdate', () => {
     it('calls animateScroll.scrollToBottom() on update', () => {
       const { props } = setup();
-      const wrapper = mount(<ChatContent {...props} />);
+      const mockStore = configureStore();
+      const wrapper = mount(
+        <Provider store={mockStore}>
+          <ChatContent {...props} />
+        </Provider>
+      );
       const updateSpy = sinon.spy(ChatContent.prototype, 'componentDidUpdate');
       const scrollSpy = sinon.spy(animateScroll, 'scrollToBottom');
       wrapper.update();

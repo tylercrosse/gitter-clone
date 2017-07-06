@@ -10,25 +10,37 @@ exports[`<ChatToolbar /> should render correctly when logged in 1`] = `
     <li
       className="avatar"
     >
-      <img
-        alt="Joe"
-        src="http://i.pravatar.cc/30?u=Joe"
+      <Connect(Avatar)
+        user={
+          Object {
+            "id": 123,
+            "name": "Joe",
+          }
+        }
       />
     </li>
     <li
       className="avatar"
     >
-      <img
-        alt="Josh"
-        src="http://i.pravatar.cc/30?u=Josh"
+      <Connect(Avatar)
+        user={
+          Object {
+            "id": 654,
+            "name": "Josh",
+          }
+        }
       />
     </li>
     <li
       className="avatar"
     >
-      <img
-        alt="Liz"
-        src="http://i.pravatar.cc/30?u=Liz"
+      <Connect(Avatar)
+        user={
+          Object {
+            "id": 323,
+            "name": "Liz",
+          }
+        }
       />
     </li>
   </ul>
@@ -45,17 +57,25 @@ exports[`<ChatToolbar /> should render correctly when not logged in 1`] = `
     <li
       className="avatar"
     >
-      <img
-        alt="Joe"
-        src="http://i.pravatar.cc/30?u=Joe"
+      <Connect(Avatar)
+        user={
+          Object {
+            "id": 123,
+            "name": "Joe",
+          }
+        }
       />
     </li>
     <li
       className="avatar"
     >
-      <img
-        alt="Josh"
-        src="http://i.pravatar.cc/30?u=Josh"
+      <Connect(Avatar)
+        user={
+          Object {
+            "id": 654,
+            "name": "Josh",
+          }
+        }
       />
     </li>
   </ul>

@@ -5,111 +5,41 @@ exports[`<ChatContent /> should render correctly 1`] = `
   className="chat-content scroller"
   id="chat-content"
 >
-  <article
-    className="chat-item burst-start"
-  >
-    <div
-      className="chat-item-container"
-    >
-      <div
-        className="chat-item-aside"
-      >
-        <img
-          alt="liz"
-          className="avatar"
-          src="http://i.pravatar.cc/30?u=liz"
-        />
-      </div>
-      <div
-        className="chat-item-content"
-      >
-        <div
-          className="chat-item-details"
-        >
-          <div
-            className="chat-item-user"
-          >
-            liz
-          </div>
-          <div
-            className="chat-item-time"
-          >
-            Jan 31 15:22
-          </div>
-        </div>
-        <div
-          className="chat-item-text"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>sweet</p>",
-            }
-          }
-        />
-      </div>
-    </div>
-  </article>
-  <article
-    className="chat-item burst-start"
-  >
-    <div
-      className="chat-item-container"
-    >
-      <div
-        className="chat-item-aside"
-      >
-        <img
-          alt="dan"
-          className="avatar"
-          src="http://i.pravatar.cc/30?u=dan"
-        />
-      </div>
-      <div
-        className="chat-item-content"
-      >
-        <div
-          className="chat-item-details"
-        >
-          <div
-            className="chat-item-user"
-          >
-            dan
-          </div>
-          <div
-            className="chat-item-time"
-          >
-            Jan 31 21:34
-          </div>
-        </div>
-        <div
-          className="chat-item-text"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>cool</p>",
-            }
-          }
-        />
-      </div>
-    </div>
-  </article>
-  <article
-    className="chat-item burst-continued"
-  >
-    <div
-      className="chat-item-container"
-    >
-      <div
-        className="chat-item-content"
-      >
-        <div
-          className="chat-item-text"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<p>damn it</p>",
-            }
-          }
-        />
-      </div>
-    </div>
-  </article>
+  <Component
+    User={
+      Object {
+        "name": "liz",
+      }
+    }
+    burstStart={true}
+    createdAt="2017-01-31T23:22:38.808Z"
+    id="58911c3e871fdf24f2079782"
+    rawMarkup="<p>sweet</p>"
+    text="sweet"
+  />
+  <Component
+    User={
+      Object {
+        "name": "dan",
+      }
+    }
+    burstStart={true}
+    createdAt="2017-02-01T05:34:40.591Z"
+    id="58917370eb323841b839f583"
+    rawMarkup="<p>cool</p>"
+    text="cool"
+  />
+  <Component
+    User={
+      Object {
+        "name": "dan",
+      }
+    }
+    burstStart={false}
+    createdAt="2017-02-01T05:34:52.011Z"
+    id="5891737ceb323841b839f584"
+    rawMarkup="<p>damn it</p>"
+    text="damn it"
+  />
 </section>
 `;

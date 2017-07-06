@@ -7,6 +7,7 @@ import { ChatMain,
 const setup = (propOverrides) => {
   const props = Object.assign({
     messages: [],
+    usersTyping: [],
     user: {
       loggedIn: true
     },
@@ -16,15 +17,17 @@ const setup = (propOverrides) => {
     convoName: 'chat',
     isFetching: false,
     modalIsOpen: {signIn: false},
-    fetchMessages: jest.fn(),
-    addMessage: jest.fn(),
-    signIN: jest.fn(),
     error: {
       messages: false
     },
+    fetchMessages: jest.fn(),
+    addMessage: jest.fn(),
+    signIn: jest.fn(),
+    signOut: jest.fn(),
     addTypingUser: jest.fn(),
     removeTypingUser: jest.fn(),
-    usersTyping: []
+    openSignInModal: jest.fn(),
+    closeModal: jest.fn()
   }, propOverrides);
 
   const component = <ChatMain {...props} />;

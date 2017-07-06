@@ -1,6 +1,6 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import ChatItem from './ChatItem';
 
 const setup = (propOverrides) => {
@@ -15,47 +15,42 @@ const setup = (propOverrides) => {
     updatedAt: '2017-01-25T00:58:33.702Z',
     createdAt: '2017-01-25T00:58:33.702Z'
   }, propOverrides);
+
   const component = <ChatItem {...props} />;
+  const wrapper = shallow(component);
 
   return {
     props,
-    component
+    component,
+    wrapper
   };
 };
 
 describe('<ChatItem />', () => {
   describe('burstStart == true', () => {
     it('should render correctly without markup', () => {
-      const { props } = setup();
-      const renderedComponent = renderer.create(<ChatItem {...props} />);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { wrapper } = setup();
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should render correctly with markup', () => {
-      const { props } = setup({rawMarkup: '<p>woohoo!</p>'});
-      const renderedComponent = renderer.create(<ChatItem {...props} />);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { wrapper } = setup({rawMarkup: '<p>woohoo!</p>'});
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
   describe('burstStart == false', () => {
     it('should render correctly without markup', () => {
-      const { props } = setup({burstStart: false});
-      const renderedComponent = renderer.create(<ChatItem {...props} />);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { wrapper } = setup({burstStart: false});
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should render correctly with markup', () => {
-      const { props } = setup({
+      const { wrapper } = setup({
         burstStart: false,
         rawMarkup: '<p>woohoo!</p>'
       });
-      const renderedComponent = renderer.create(<ChatItem {...props} />);
-      const tree = renderedComponent.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 });
