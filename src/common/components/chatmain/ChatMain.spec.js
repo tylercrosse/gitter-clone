@@ -17,9 +17,7 @@ const setup = (propOverrides) => {
     convoName: 'chat',
     isFetching: false,
     modalIsOpen: {signIn: false},
-    error: {
-      messages: false
-    },
+    error: false,
     fetchMessages: jest.fn(),
     addMessage: jest.fn(),
     signIn: jest.fn(),
@@ -52,9 +50,7 @@ describe('<ChatMain />', () => {
   });
   it('should render correctly when 404 error', () => {
     const errorOverride = {
-      error: {
-        status: 404
-      }
+      error: false
     };
     const { props } = setup(errorOverride);
     const wrapper = shallow(<ChatMain {...props} />);

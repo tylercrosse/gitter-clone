@@ -1,6 +1,6 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import ConvoItem from './ConvoItem';
 
 const setup = () => {
@@ -9,21 +9,22 @@ const setup = () => {
     updatedAt: '2017-02-06T17:24:45.657Z',
     createdAt: '2017-02-06T17:24:45.657Z',
     name: 'chat2',
+    title: 'chat2',
     __v: 0
   };
   const component = <ConvoItem {...props} />;
+  const wrapper = shallow(component);
 
   return {
     props,
-    component
+    component,
+    wrapper
   };
 };
 
 describe('<ConvoItem />', () => {
   it('should render correctly', () => {
-    const { component } = setup();
-    const renderedComponent = renderer.create(component);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { wrapper } = setup();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

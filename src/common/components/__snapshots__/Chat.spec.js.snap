@@ -3,5 +3,12 @@
 exports[`<ChatMain /> should render correctly 1`] = `
 <div
   className="chat-container"
-/>
+>
+  <div>
+    menu
+  </div>
+  <div>
+    main
+  </div>
+</div>
 `;

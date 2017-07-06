@@ -2,13 +2,11 @@ import React        from 'react';
 import { shallow }  from 'enzyme';
 import toJson       from 'enzyme-to-json';
 import Chat         from './Chat';
-import { ChatMain } from './chatmain/ChatMain';
-import { ChatMenu } from './chatmenu/ChatMenu';
 
 const setup = (propOverrides) => {
   const props = Object.assign({
-    main: ChatMain,
-    menu: ChatMenu
+    main: <div>main</div>,
+    menu: <div>menu</div>
   }, propOverrides);
 
   const component = <Chat {...props} />;

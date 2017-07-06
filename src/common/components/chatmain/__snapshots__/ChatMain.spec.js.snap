@@ -64,11 +64,7 @@ exports[`<ChatMain /> should render correctly 1`] = `
         addTypingUser={[Function]}
         closeModal={[Function]}
         convoName="chat"
-        error={
-          Object {
-            "messages": false,
-          }
-        }
+        error={false}
         fetchMessages={[Function]}
         isFetching={false}
         messages={Array []}
@@ -109,7 +105,82 @@ exports[`<ChatMain /> should render correctly 1`] = `
 </main>
 `;
 
-exports[`<ChatMain /> should render correctly when 404 error 1`] = `<Generic404 />`;
+exports[`<ChatMain /> should render correctly when 404 error 1`] = `
+<main
+  className="chat-header-wrapper"
+>
+  <Component
+    pathname="chat"
+    signOut={[Function]}
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+  <div
+    className="chat-and-toolbar-wrapper"
+  >
+    <Component
+      messages={Array []}
+      user={
+        Object {
+          "loggedIn": true,
+        }
+      }
+    />
+    <div
+      className="chat-wrapper"
+    >
+      <ChatContent
+        containerId="chat-content"
+        messages={Array []}
+      />
+      <ChatInput
+        addMessage={[Function]}
+        addTypingUser={[Function]}
+        closeModal={[Function]}
+        convoName="chat"
+        error={false}
+        fetchMessages={[Function]}
+        isFetching={false}
+        messages={Array []}
+        modalIsOpen={
+          Object {
+            "signIn": false,
+          }
+        }
+        onMessageSubmit={[Function]}
+        openSignInModal={[Function]}
+        removeTypingUser={[Function]}
+        routeParams={
+          Object {
+            "convo": "chat",
+          }
+        }
+        signIn={[Function]}
+        signOut={[Function]}
+        user={
+          Object {
+            "loggedIn": true,
+          }
+        }
+        usersTyping={Array []}
+      />
+    </div>
+  </div>
+  <SignInModal
+    modalIsOpen={false}
+    onFormSubmit={[Function]}
+    onRequestClose={[Function]}
+    user={
+      Object {
+        "loggedIn": true,
+      }
+    }
+  />
+</main>
+`;
 
 exports[`<ChatMain /> should render correctly when fetching 1`] = `
 <main
@@ -154,11 +225,7 @@ exports[`<ChatMain /> should render correctly when fetching 1`] = `
         addTypingUser={[Function]}
         closeModal={[Function]}
         convoName="chat"
-        error={
-          Object {
-            "messages": false,
-          }
-        }
+        error={false}
         fetchMessages={[Function]}
         isFetching={true}
         messages={Array []}

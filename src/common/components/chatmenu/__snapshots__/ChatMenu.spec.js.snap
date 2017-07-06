@@ -22,17 +22,130 @@ exports[`<ChatMenu /> should render correctly 1`] = `
               onClick={[Function]}
               style={Object {}}
             >
-              G
+              <svg
+                className="minibar-icon icon-gitter-clone"
+                fill="#ba9cc3"
+                height="22px"
+                version="1.1"
+                viewBox="0 0 22.43 32.04"
+                width="15px"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <defs />
+                <g>
+                  <rect
+                    height="24.03"
+                    width="3.2"
+                    y="4.81"
+                  />
+                  <rect
+                    height="5.61"
+                    width="3.2"
+                    x="6.41"
+                    y="1.6"
+                  />
+                  <rect
+                    height="8.81"
+                    width="3.2"
+                    x="19.22"
+                  />
+                  <rect
+                    height="7.21"
+                    width="3.2"
+                    x="19.22"
+                    y="24.83"
+                  />
+                  <rect
+                    height="16.02"
+                    width="3.2"
+                    x="6.41"
+                    y="8.81"
+                  />
+                  <rect
+                    height="5.61"
+                    width="3.2"
+                    x="6.41"
+                    y="26.43"
+                  />
+                  <rect
+                    height="4"
+                    width="3.2"
+                    x="12.81"
+                    y="28.03"
+                  />
+                  <rect
+                    height="20.82"
+                    width="3.2"
+                    x="12.81"
+                    y="5.61"
+                  />
+                  <rect
+                    height="4"
+                    width="3.2"
+                    x="12.81"
+                  />
+                  <rect
+                    height="12.81"
+                    width="3.2"
+                    x="19.22"
+                    y="10.41"
+                  />
+                </g>
+              </svg>
             </a>
           </li>
           <li
-            className="minibar-search"
+            className="minibar-all"
           >
             <button
-              className="minibar-button minibar-button-search"
+              className="minibar-button minibar-button-convos"
               onClick={[Function]}
             >
-              Q
+              <svg
+                className="minibar-icon icon-convo"
+                height="22"
+                viewBox="0 0 30.37 26.65"
+                width="22"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <path
+                  d="M15.81,4.53C8,4.53,1.63,9,1.63,14.58c0,3.35,2.32,6.32,5.88,8.15C7,26.11,2.82,29.44,3.67,29.16a31.32,31.32,0,0,0,9.74-4.68,20,20,0,0,0,2.4.14c7.84,0,14.19-4.5,14.19-10.05S23.65,4.53,15.81,4.53Z"
+                  transform="translate(-0.63 -3.53)"
+                />
+              </svg>
+            </button>
+          </li>
+          <li
+            className="minibar-direct"
+          >
+            <button
+              className="minibar-button minibar-button-direct"
+              onClick={[Function]}
+            >
+              <svg
+                className="minibar-icon icon-direct"
+                height="22"
+                viewBox="0 0 24 25.22"
+                width="22"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <ellipse
+                  cx="12"
+                  cy="6.48"
+                  rx="4.59"
+                  ry="5.48"
+                />
+                <path
+                  d="M27,29.21C27,23.57,22.08,19,16,19S5,23.57,5,29.21"
+                  transform="translate(-4 -3.99)"
+                />
+              </svg>
             </button>
           </li>
         </ul>
@@ -54,57 +167,10 @@ exports[`<ChatMenu /> should render correctly 1`] = `
           className="panel-header-convos"
         >
           <h2>
-            All Conversations
+            chat2
           </h2>
         </div>
       </header>
-      <div
-        className="panel-inner"
-      >
-        <footer
-          className="panel-footer"
-        >
-          <div
-            className="panel-footer-convos"
-          >
-            <button
-              className="create-rooom-button"
-              onClick={[Function]}
-            >
-              Add a room
-            </button>
-            <noscript />
-          </div>
-        </footer>
-        <div
-          className="panel-content scroller"
-        >
-          <section
-            className="primary-collection"
-          >
-            <div
-              className="convo-item"
-            >
-              <a
-                className="convo-item-container"
-                onClick={[Function]}
-                style={Object {}}
-              >
-                <img
-                  alt="chat2"
-                  className="convo-item-avatar"
-                  src="http://i.pravatar.cc/22?u=chat2"
-                />
-                <h2
-                  className="convo-item-title"
-                >
-                  chat2
-                </h2>
-              </a>
-            </div>
-          </section>
-        </div>
-      </div>
     </section>
   </section>
 </aside>

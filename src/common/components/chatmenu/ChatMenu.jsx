@@ -21,9 +21,7 @@ import Panel from './Panel';
 export class ChatMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      active: false
-    };
+
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
   componentDidMount() {
@@ -48,7 +46,7 @@ export class ChatMenu extends React.Component {
                 </li>
                 <li className="minibar-all">
                   <button
-                    className="minibar-button minibar-button-search"
+                    className="minibar-button minibar-button-convos"
                     onClick={this.props.openConvosPanel}
                   >
                     <ConvosIcon classes="minibar-icon icon-convo" />
@@ -57,7 +55,7 @@ export class ChatMenu extends React.Component {
                 {this.props.user.loggedIn &&
                   <li className="minibar-direct">
                     <button
-                      className="minibar-button minibar-button-search"
+                      className="minibar-button minibar-button-direct"
                       onClick={this.props.openDirectMessagesPanel}
                     >
                       <DirectIcon classes="minibar-icon icon-direct" />

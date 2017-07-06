@@ -11,7 +11,8 @@ const setup = () => {
       loggedIn: true
     },
     onFormSubmit: jest.fn(),
-    onRequestClose: jest.fn()
+    onRequestClose: jest.fn(),
+    modalIsOpen: true
   };
   const component = <CreateRoomModal {...props} />;
   const wrapper = shallow(component);

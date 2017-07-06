@@ -3,6 +3,9 @@
 exports[`getMessagesByConvoId selector should burstify messages 1`] = `
 Array [
   Object {
+    "User": Object {
+      "name": "Dan",
+    },
     "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:00:00-08:00",
@@ -10,20 +13,29 @@ Array [
     "text": "Run the tests",
   },
   Object {
-    "burstStart": false,
+    "User": Object {
+      "name": "Liz",
+    },
+    "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:01:00-08:00",
     "id": 1,
     "text": "Use Redux",
   },
   Object {
-    "burstStart": false,
+    "User": Object {
+      "name": "Dan",
+    },
+    "burstStart": true,
     "convoId": 2,
     "createdAt": "2017-02-01T09:10:00-08:00",
     "id": 2,
     "text": "Fix the tests",
   },
   Object {
+    "User": Object {
+      "name": "Joe",
+    },
     "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:20:00-08:00",
@@ -36,6 +48,9 @@ Array [
 exports[`getMessagesByConvoId selector should select desired messages from state 1`] = `
 Array [
   Object {
+    "User": Object {
+      "name": "Dan",
+    },
     "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:00:00-08:00",
@@ -43,13 +58,19 @@ Array [
     "text": "Run the tests",
   },
   Object {
-    "burstStart": false,
+    "User": Object {
+      "name": "Liz",
+    },
+    "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:01:00-08:00",
     "id": 1,
     "text": "Use Redux",
   },
   Object {
+    "User": Object {
+      "name": "Joe",
+    },
     "burstStart": true,
     "convoId": 1,
     "createdAt": "2017-02-01T09:20:00-08:00",
@@ -62,6 +83,9 @@ Array [
 exports[`getMessagesByConvoId selector should select desired messages from state 2`] = `
 Array [
   Object {
+    "User": Object {
+      "name": "Dan",
+    },
     "burstStart": true,
     "convoId": 2,
     "createdAt": "2017-02-01T09:10:00-08:00",

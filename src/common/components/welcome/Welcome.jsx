@@ -127,7 +127,7 @@ export const Welcome = (props) => (
 
 Welcome.propTypes = {
   user: PropTypes.object.isRequired,
-  modalIsOpen: PropTypes.bool.isRequired,
+  modalIsOpen: PropTypes.object.isRequired,
   openSignInModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   signIn: PropTypes.func.isRequired,

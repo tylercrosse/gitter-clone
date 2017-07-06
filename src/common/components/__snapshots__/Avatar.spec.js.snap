@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> should render correctly 1`] = `
+<div
+  onClick={[Function]}
+>
+  <img
+    className="avatar"
+    src="http://i.pravatar.cc/30?u=undefined"
+  />
+</div>
+`;

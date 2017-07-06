@@ -14,24 +14,28 @@ const setup = (overrides) => (
         createdAt: '2017-02-01T09:00:00-08:00',
         text: 'Run the tests',
         convoId: 1,
+        User: { name: 'Dan' }
       },
       1: {
         id: 1,
         createdAt: '2017-02-01T09:01:00-08:00',
         text: 'Use Redux',
         convoId: 1,
+        User: { name: 'Liz' }
       },
       2: {
         id: 2,
         createdAt: '2017-02-01T09:10:00-08:00',
         text: 'Fix the tests',
         convoId: 2,
+        User: { name: 'Dan' }
       },
       3: {
         id: 2,
         createdAt: '2017-02-01T09:20:00-08:00',
         text: 'Fix the tests',
         convoId: 1,
+        User: { name: 'Joe' }
       }
     }
   }, overrides));

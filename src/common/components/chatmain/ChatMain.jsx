@@ -90,7 +90,7 @@ ChatMain.propTypes = {
   modalIsOpen: PropTypes.object.isRequired,
   addTypingUser: PropTypes.func.isRequired,
   removeTypingUser: PropTypes.func.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.bool.isRequired,
 };
 
 export const makeMapStateToProps = () => {

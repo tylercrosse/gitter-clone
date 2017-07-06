@@ -7,7 +7,8 @@ import SignInModal,
 const setup = () => {
   const props = {
     onFormSubmit: jest.fn(),
-    onRequestClose: jest.fn()
+    onRequestClose: jest.fn(),
+    modalIsOpen: true
   };
   const component = <SignInModal {...props} />;
   const wrapper = shallow(component);

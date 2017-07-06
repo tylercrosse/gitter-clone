@@ -4,10 +4,11 @@ exports[`<ConvoItem /> should render correctly 1`] = `
 <div
   className="convo-item"
 >
-  <a
+  <Link
     className="convo-item-container"
-    onClick={[Function]}
+    onlyActiveOnIndex={false}
     style={Object {}}
+    to="/chat2"
   >
     <img
       alt="chat2"
@@ -16,7 +17,9 @@ exports[`<ConvoItem /> should render correctly 1`] = `
     />
     <h2
       className="convo-item-title"
-    />
-  </a>
+    >
+      chat2
+    </h2>
+  </Link>
 </div>
 `;

@@ -16,7 +16,9 @@ exports[`<Panel /> should render correctly 1`] = `
     <div
       className="panel-header-convos"
     >
-      <h2 />
+      <h2>
+        
+      </h2>
     </div>
   </header>
 </section>
