@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { findOrCreateDirectMessage } from '../reducers/convos';
+import { findOrCreateDirectMessage } from '../ducks/convos';
 
 export class Avatar extends React.Component {
 

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link }    from 'react-router';
 import {
   openSignInModal,
-  closeModal }     from '../../reducers/ui';
-import { signIn }  from '../../reducers/user';
+  closeModal }     from '../../ducks/ui';
+import { signIn }  from '../../ducks/user';
 import SignInModal from '../modals/SignInModal';
 
 export const Welcome = (props) => (

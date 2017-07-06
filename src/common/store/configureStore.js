@@ -8,7 +8,7 @@ import { composeWithDevTools }  from 'redux-devtools-extension/developmentOnly';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io                       from 'socket.io-client';
 import { apiMiddleware }        from 'redux-api-middleware';
-import rootReducer              from '../reducers/';
+import rootReducer              from '../ducks/';
 
 const socket = io('');
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'server.');
@@ -32,8 +32,8 @@ const configureStore = (preloadedState) => {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers/', () => {
-      const nextRootReducer = require('../reducers/').default;
+    module.hot.accept('../ducks/', () => {
+      const nextRootReducer = require('../ducks/').default;
       store.replaceReducer(nextRootReducer);
     });
   }

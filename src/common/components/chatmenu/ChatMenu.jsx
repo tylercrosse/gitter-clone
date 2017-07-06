@@ -7,9 +7,9 @@ import {
   openConvosPanel,
   openDirectMessagesPanel,
   closePanel,
-} from '../../reducers/ui';
+} from '../../ducks/ui';
 import { createConvo,
-fetchConvos } from '../../reducers/convos';
+fetchConvos } from '../../ducks/convos';
 import convosSelector from '../../selectors/convosSelector';
 import directConvosSelector from '../../selectors/directConvosSelector';
 import GitterCloneIcon from '../svgs/GitterCloneIcon';

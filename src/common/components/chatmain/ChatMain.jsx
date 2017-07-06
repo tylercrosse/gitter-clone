@@ -6,9 +6,9 @@ import {
   removeTypingUser,
   openSignInModal,
   closeModal,
-} from '../../reducers/ui';
-import { fetchMessages, addMessage } from '../../reducers/messages';
-import { signIn, signOut } from '../../reducers/user';
+} from '../../ducks/ui';
+import { fetchMessages, addMessage } from '../../ducks/messages';
+import { signIn, signOut } from '../../ducks/user';
 import makeGetMessagesByConvoId from '../../selectors/messagesByConvo';
 import Generic404 from '../errors/Generic404';
 import SignInModal from '../modals/SignInModal';
