@@ -27,6 +27,8 @@ const messages = (state = {}, action) => {
         ...message(undefined, action)
       };
     }
+    case ActionTypes.SIGN_OUT:
+      return {};
     default:
       return state;
   }

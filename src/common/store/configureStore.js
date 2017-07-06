@@ -2,6 +2,7 @@ import { createStore,
   applyMiddleware }             from 'redux';
 import thunk                    from 'redux-thunk';
 import { browserHistory }       from 'react-router';
+import { autoRehydrate }        from 'redux-persist'
 import { routerMiddleware }     from 'react-router-redux';
 import { composeWithDevTools }  from 'redux-devtools-extension/developmentOnly';
 import createSocketIoMiddleware from 'redux-socket.io';
@@ -23,7 +24,10 @@ const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    composeWithDevTools(
+      applyMiddleware(...middlewares),
+      autoRehydrate()
+    )
   );
 
   if (module.hot) {

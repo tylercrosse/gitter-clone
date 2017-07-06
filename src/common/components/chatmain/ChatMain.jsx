@@ -1,22 +1,23 @@
-import React,
-  { PropTypes }       from 'react';
-import { connect }    from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import {
   addTypingUser,
   removeTypingUser,
   signIn,
+  signOut,
   openSignInModal,
   closeModal,
   fetchMessages,
-  addMessage }        from '../../actions/';
+  addMessage
+} from '../../actions/';
 import makeGetMessagesByConvoId from '../../selectors/messagesByConvo';
-import Generic404     from '../errors/Generic404';
-import SignInModal    from '../modals/SignInModal';
-import ChatHeader     from './ChatHeader';
-import ChatToolbar    from './ChatToolbar';
-import ChatContent    from './ChatContent';
-import ChatInput      from './ChatInput';
+import Generic404 from '../errors/Generic404';
+import SignInModal from '../modals/SignInModal';
+import ChatHeader from './ChatHeader';
+import ChatToolbar from './ChatToolbar';
+import ChatContent from './ChatContent';
+import ChatInput from './ChatInput';
 import ChatTypingIndicator from './ChatTypingIndicator';
 
 export class ChatMain extends React.Component {
@@ -38,41 +39,37 @@ export class ChatMain extends React.Component {
     }
     return (
       <main className="chat-header-wrapper">
-        { this.props.isFetching &&
+        {this.props.isFetching &&
           <div className="loading-container">
             <div className="loading-spinner" />
-          </div>
-        }
+          </div>}
         <ChatHeader
-        user={this.props.user}
-        pathname={this.props.routeParams.convo}
+          signOut={this.props.signOut}
+          user={this.props.user}
+          pathname={this.props.routeParams.convo}
         />
         <div className="chat-and-toolbar-wrapper">
-          <ChatToolbar
-          messages={this.props.messages}
-          user={this.props.user}
-          />
+          <ChatToolbar messages={this.props.messages} user={this.props.user} />
           <div className="chat-wrapper">
             <ChatContent
-            containerId="chat-content"
-            messages={this.props.messages}
+              containerId="chat-content"
+              messages={this.props.messages}
             />
             {this.props.usersTyping.length > 0 &&
-              <ChatTypingIndicator usersTyping={this.props.usersTyping} />
-            }
+              <ChatTypingIndicator usersTyping={this.props.usersTyping} />}
             <ChatInput
-            {...this.props}
-            addTypingUser={this.props.addTypingUser}
-            removeTypingUser={this.props.removeTypingUser}
-            onMessageSubmit={this.props.addMessage}
+              {...this.props}
+              addTypingUser={this.props.addTypingUser}
+              removeTypingUser={this.props.removeTypingUser}
+              onMessageSubmit={this.props.addMessage}
             />
           </div>
         </div>
         <SignInModal
-        user={this.props.user}
-        modalIsOpen={this.props.modalIsOpen.signIn}
-        onRequestClose={this.props.closeModal}
-        onFormSubmit={this.props.signIn}
+          user={this.props.user}
+          modalIsOpen={this.props.modalIsOpen.signIn}
+          onRequestClose={this.props.closeModal}
+          onFormSubmit={this.props.signIn}
         />
       </main>
     );
@@ -94,9 +91,9 @@ export const makeMapStateToProps = () => {
   const getMessagesByConvoId = makeGetMessagesByConvoId();
   const mapStateToProps = (state, props) => {
     const convoName = props.routeParams.convo;
-    const messages = state.convos[convoName] ?
-    getMessagesByConvoId(state, convoName) :
-    [];
+    const messages = state.convos[convoName]
+      ? getMessagesByConvoId(state, convoName)
+      : [];
     return {
       messages,
       user: state.user,
@@ -111,7 +108,15 @@ export const makeMapStateToProps = () => {
   return mapStateToProps;
 };
 
-export default withRouter(connect(
-  makeMapStateToProps,
-  { addTypingUser, removeTypingUser, signIn, openSignInModal, closeModal, fetchMessages, addMessage }
-)(ChatMain));
+export default withRouter(
+  connect(makeMapStateToProps, {
+    addTypingUser,
+    removeTypingUser,
+    signIn,
+    signOut,
+    openSignInModal,
+    closeModal,
+    fetchMessages,
+    addMessage
+  })(ChatMain)
+);

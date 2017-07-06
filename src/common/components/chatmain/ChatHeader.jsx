@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-export const ChatHeader = ({ user, pathname }) => {
+export const ChatHeader = ({ signOut, user, pathname }) => {
   const userInfo = user.loggedIn && (
-    <div className="chat-user-avatar">
+    <div className="chat-user-avatar" >
       <img
+      onClick={() => signOut()}
       className="avatar"
       src={'http://i.pravatar.cc/30?u=' + user.name} alt={user.name}
       />

@@ -157,6 +157,13 @@ export const signIn = (username) => ({
   }
 });
 
+export const SIGN_OUT = 'SIGN_OUT';
+export const signOut = () => (dispatch) => {
+  console.log('out!')
+  dispatch({ type: SIGN_OUT });
+  dispatch(push('/'));
+};
+
 export const OPEN_CREATE_ROOM_MODAL = 'OPEN_CREATE_ROOM_MODAL';
 export const openCreateRoomModal = () => ({
   type: OPEN_CREATE_ROOM_MODAL

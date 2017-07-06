@@ -12,11 +12,10 @@ const user = (state = initialState, action) => {
         ...action.payload,
         loggedIn: true
       };
-    // case 'SIGN_OUT':
-    //   return {
-    //     ...state,
-    //     loggedIn: false
-    //   };
+    case 'SIGN_OUT':
+      return {
+        loggedIn: false
+      };
     default:
       return state;
   }
