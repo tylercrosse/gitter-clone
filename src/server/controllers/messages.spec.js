@@ -24,7 +24,7 @@ const setup = () => {
 };
 
 describe('messages controller', () => {
-  describe('getMessages', () => {
+  xdescribe('getMessages', () => {
     it('should res with json messages when chat exists', () => {
       const req = { params: {convo: 'chat'} };
       const res = {
@@ -71,7 +71,7 @@ describe('messages controller', () => {
     });
   });
 
-  describe('addMessage', () => {
+  xdescribe('addMessage', () => {
     it('should find a convo', () => {
       const { io, action } = setup();
 

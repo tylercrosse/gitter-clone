@@ -1,7 +1,7 @@
 import Convo from '../models/Convo';
 import * as convosCtlr from './convos';
 
-describe('convos controller', () => {
+xdescribe('convos controller', () => {
   beforeEach(() => {
     Convo.find = jest.fn().mockReturnThis();
     Convo.create = jest.fn().mockReturnThis();
