@@ -6,7 +6,7 @@
   <img src="https://media.giphy.com/media/xUA7aUL7DgmAmxPMPK/giphy.gif" alt="preview gif">
 </div>
 
-This is app was built as portfolio piece representing a subset of the features of Troupe Technology's wonderful chat app, [Gitter](https://gitter.im/). I'm currently looking for a new position - Hire me!
+This is app was built as portfolio piece representing a subset of the features of Troupe Technology's wonderful chat app, [Gitter](https://gitter.im/).
 
 ---
 ### Demo
