@@ -148,14 +148,16 @@
       "/coverage/",
       "/webpack*",
       "/ecosystem*",
-      "/*store/"
+      "/*store/",
+      "/models/",
+      "/migrations/"
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 61,
-        "branches": 51,
-        "functions": 56,
-        "lines": 65
+        "statements": 75,
+        "branches": 67,
+        "functions": 67,
+        "lines": 77
       }
     },
     "coverageReporters": [
