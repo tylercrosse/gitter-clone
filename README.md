@@ -9,11 +9,6 @@
 This is app was built as portfolio piece representing a subset of the features of Troupe Technology's wonderful chat app, [Gitter](https://gitter.im/).
 
 ---
-### Demo
-
-You can test a fully working live demo at http://gitter-clone.com/
-
----
 ### Major features
 
 - MD / syntax highlighting support for messages
